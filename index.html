@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Join</title>
+
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <script src="assets/js/login.js"></script>
 </head>
-<body>
-    
+
+<body onload="renderStartScreen()">
+    <div class="login-bg">
+    </div>
+
+    <div class="start-screen">
+        <img src="assets/img/login/Capa 2.svg" class="start-screen-logo-big" id="start-screen-logo-big">
+    </div>
+    <div class="login-screen-start" id="login-screen">
+        <div class="user-sign-up">
+            <a href="#">Not a Join user?</a>
+            <button onclick="">Sign up</button>
+        </div>
+        <div class="login-window">
+            <div class="login-headline">Log in</div>
+            <input type="text" class="login-window-input-email" id="login-window-input-email" placeholder="Email" >
+            <input type="text" class="login-window-input-passwort" id="login-window-input-passwort" placeholder="Password">
+            <div class="remember-me-forgot-my-passwort">
+                <div class="remember-me-clickbox">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Forgot my password</a>
+            </div>
+            <div class="login-guestlogin">
+                <button class="login-button" onclick="">Login In</button>
+                <button class="guestlogin-button" onclick="">Guest Login in</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
 </body>
+
 </html>
+
+
+
+<!-- to-do :
+    - Bild ins input-field implementieren geht nicht, Zugriff auf url geht nicht
+    - Zugriff auf font-family geht nicht
+-->
