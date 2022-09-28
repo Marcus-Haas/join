@@ -3,6 +3,10 @@ body {
     font-family: 'Inter' !important;
 }
 
+.d-none {
+    display: none !important;
+}
+
 .login-bg {
     background-color: #F6F7F8;
     height: 100vh;
@@ -61,7 +65,9 @@ body {
     align-items: center;
     position: absolute;
     top: 80px;
-    right: 40px;
+    right: 150px;
+    z-index: 2;
+    gap: 20px;
 }
 
 .user-sign-up a {
@@ -92,35 +98,72 @@ body {
 
     width: 91px;
     height: 51px;
-
+    border: 1px solid #2A3647;
     background: #2A3647;
     border-radius: 8px;
     color: #FFFFFF;
+    font-size: 16px;
+}
 
+.user-sign-up button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.set-login-window {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .login-window {
-
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 35px 0px;
     gap: 35px;
-
-    position: absolute;
+    position: relative;
     width: 652px;
-    height: 513px;
-    left: 394px;
-    top: 274px;
-
-    /* white */
-
     background: #FFFFFF;
-    /* shadoe backlog box */
-
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 4%);
     border-radius: 30px;
 }
+
+.signup-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    position: relative;
+    width: 652px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 4%);
+    border-radius: 30px;
+    top: 25px;
+}
+
+.forgot-password-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    position: relative;
+    width: 789px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 4%);
+    border-radius: 30px;
+    top: -18px;
+}
+
 
 .login-headline {
     font-family: 'Inter';
@@ -146,6 +189,68 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+    padding-bottom: 24px;
+    border-bottom: #29ABE2 2px solid;
+}
+
+.forgot-password-headline {
+    font-family: 'Inter';
+    width: 626px;
+    height: 73px;
+
+    /* Version 2/t1 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    /* or 73px */
+
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    padding-bottom: 24px;
+    border-bottom: #29ABE2 2px solid;
+}
+
+.login-window-input-username {
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+
+    width: 422px;
+    height: 51px;
+
+    background: #FFFFFF;
+    /* Style */
+
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+
+    /* Inside auto layout */
+    font-size: 21px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    background-image: url(../img/login/user.png);
+    background-size: 18px;
+    background-position: 95%, right;
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .login-window-input-email {
@@ -169,12 +274,15 @@ body {
     border-radius: 10px;
 
     /* Inside auto layout */
-
+    font-size: 21px;
     flex: none;
     order: 0;
     flex-grow: 0;
-    background-image: url(./assets/img/login/letter.png);
-    background: url(./assets/img/login/letter.png);
+    background-image: url(../img/login/letter.png);
+    background-size: 18px;
+    background-position: 95%, right;
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .login-window-input-passwort {
@@ -198,15 +306,28 @@ body {
     border-radius: 10px;
 
     /* Inside auto layout */
-
+    font-size: 21px;
     flex: none;
     order: 0;
     flex-grow: 0;
-    background: url(./assets/img/login/letter.svg);
+    background: url(../img/login/lock.png);
+    background-size: 18px;
+    background-position: 95%, right;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.login-password-visibilty-on {
+    background-image: url(../img/login/visibility_on.png) !important;
+}
+
+.login-password-visibilty-off {
+    background-image: url(../img/login/visibility_off.png) !important;
 }
 
 .remember-me-clickbox input {
     /* position: absolute; */
+    cursor: pointer;
     left: 0%;
     right: 0%;
     top: 0%;
@@ -282,8 +403,16 @@ body {
     flex-grow: 0;
 }
 
+.login-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+
 .guestlogin-button {
-    width: 160px;
+    width: 170px;
     height: 51px;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -305,4 +434,115 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+.guestlogin-button:hover {
+    border: 2px solid #29ABE2;
+    color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+}
+
+
+.signup-button {
+    padding: 4px 0px;
+    margin-top: 20px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.signup-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.forgot-password-button {
+    padding: 4px 0px;
+    margin-top: 20px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+    /* Inside auto layout */
+
+    padding: 4px 0px;
+    gap: 10px;
+
+    width: 264px;
+    height: 51px;
+
+    background: #2A3647;
+    border-radius: 8px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+    color: #FFFFFF;
+    /* Inside auto layout */
+    flex: none;
+}
+.forgot-password-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.signup-back {
+    position: absolute;
+    left: 6.67%;
+    top: 8.59%;
+    bottom: 17.59%;
+    cursor: pointer;
+}
+
+.forgot-back {
+    position: absolute;
+    left: 4%;
+    top: 8.59%;
+    bottom: 17.59%;
+    cursor: pointer;
+}
+
+
+.forgot-password-window span {
+    width: 656px;
+    height: 50px;
+
+    /* Version 2/t6 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+    z-index: 1;
+
 }

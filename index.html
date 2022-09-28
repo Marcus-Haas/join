@@ -22,36 +22,60 @@
     <div class="login-screen-start" id="login-screen">
         <div class="user-sign-up">
             <a href="#">Not a Join user?</a>
-            <button onclick="">Sign up</button>
+            <button onclick="showSignUp()">Sign up</button>
         </div>
-        <div class="login-window">
-            <div class="login-headline">Log in</div>
-            <input type="text" class="login-window-input-email" id="login-window-input-email" placeholder="Email" >
-            <input type="text" class="login-window-input-passwort" id="login-window-input-passwort" placeholder="Password">
-            <div class="remember-me-forgot-my-passwort">
-                <div class="remember-me-clickbox">
-                    <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="remember-me">Remember me</label>
+        <div class="set-login-window">
+            <div class="login-window" id="login-window">
+                <div class="login-headline">Log in</div>
+                <input type="text" class="login-window-input-email" id="login-window-input-email" placeholder="Email">
+                <input type="text" class="login-window-input-passwort" id="login-window-input-passwort"
+                    placeholder="Password" onclick="showSignInPassword()">
+                <div class="remember-me-forgot-my-passwort">
+                    <div class="remember-me-clickbox">
+                        <input type="checkbox" id="remember-me" name="remember-me">
+                        <label for="remember-me">Remember me</label>
+                    </div>
+                    <a href="#" onclick="showForgetPassword()">Forgot my password</a>
                 </div>
-                <a href="#">Forgot my password</a>
+                <div class="login-guestlogin">
+                    <button class="login-button" onclick="">Log in</button>
+                    <button class="guestlogin-button" onclick="">Guest Log in</button>
+                </div>
             </div>
-            <div class="login-guestlogin">
-                <button class="login-button" onclick="">Login In</button>
-                <button class="guestlogin-button" onclick="">Guest Login in</button>
-            </div>
+            <!-- *********************** SIGN UP SECTION FOR JS ****************** -->
+            <div class="signup-window d-none" id="signup-window">
+                <img src="assets/img/login/signup-back.png" class="signup-back" id="signup-back"
+                    onclick="signUpBackToLoginScreen()">
+                <div class="login-headline">Sign up</div>
+                <input type="text" class="login-window-input-username" id="signup-window-input-username"
+                    placeholder="Name">
+                <input type="text" class="login-window-input-email" id="signup-window-input-email" placeholder="Email">
+                <input type="text" class="login-window-input-passwort" id="signup-window-input-passwort"
+                    placeholder="Password" onclick="showSignUpPassword()">
 
+                <div class="login-guestlogin">
+                    <button class="signup-button" onclick="">Sign up</button>
+                </div>
+            </div>
+            <!-- *********************** FORGOT PASSWORD SECTION FOR JS ****************** -->
+            <div class="forgot-password-window d-none" id="forgot-password-window">
+                <img src="assets/img/login/signup-back.png" class="forgot-back" id="signup-back"
+                    onclick="forgotPasswordBackToLoginScreen()">
+                <div class="forgot-password-headline">I forgot my password</div>
+                <span>Don't worry! We will send you an email with the instructions to <br> reset you password.</span>
+                <input type="text" class="login-window-input-email" id="forgot-password-window-input-email"
+                    placeholder="Email">
+                <div class="login-guestlogin">
+                    <button class="forgot-password-button" onclick="">Send me the email</button>
+                </div>
+            </div>
         </div>
-
     </div>
-
-
 </body>
-
 </html>
 
 
 
 <!-- to-do :
-    - Bild ins input-field implementieren geht nicht, Zugriff auf url geht nicht
-    - Zugriff auf font-family geht nicht
+    - Bild im input field nur anclickbar
 -->
