@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/img/favicon/join.logo-dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/board.css">
+    <script src="assets/js/script.js"></script>
+    <script src="/assets/js/header.js"></script>
+    <script src="assets/js/board.js"></script>
+    <title>Board</title>
+</head>
+
+<body onload="init()">
+
+    <div w3-include-html="assets/templates/header.html"></div>
+
+    <div w3-include-html="assets/templates/sidebar.html"></div>
+
+    <div class="main-container">
+
+        <div class="first-container">
+            <div class="text-board">Board</div>
+            <div>
+                <input class="inputfield" type="text" id="searchTask" name="searchTask" placeholder="Find Task">
+                <button class="btn">Add Task <img class="icon-plus " src="assets/img/board/plus-icon.png"></button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
