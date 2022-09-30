@@ -4,12 +4,14 @@ body {
 
 .main-container {
     position: absolute;
-    width: 1145px;
-    height: 327px;
-    left: 267px;
+    width: 1200px;
+    left: 360px;
     top: 167px;
 }
 
+/*
+* CSS for first container
+*/
 .first-container {
     display: flex;
     justify-content: space-between;
@@ -33,8 +35,6 @@ body {
     border-radius: 10px;
     font-weight: 400;
     font-size: 16px;
-    background-image: url(assets/img/board/search-icon.svg);
-    background-repeat: no-repeat;
 }
 
 .inputfield::placeholder {
@@ -46,11 +46,15 @@ body {
     border: 1px solid #2A3647;
     border-radius: 10px;
     color: white;
-    padding-top: 10px;
+    padding-top: 9px;
     padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-weight: 600;
     font-size: 21px;
     cursor: pointer;
+    margin-left: 35px;
+    height: 43px;
 }
 
 .btn:hover {
@@ -60,4 +64,139 @@ body {
 .icon-plus {
     height: 15px;
     width: 15px;
+}
+
+.line {
+    width: 0px;
+    height: 40px;
+    border: 1px solid #D1D1D1;
+}
+
+.inputfield-and-button {
+    display: flex;
+}
+
+.inputfield-container {
+    position: relative;
+}
+
+.line-container {
+    position: absolute;
+    top: 12px;
+    right: 40px;
+}
+
+.search-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.icon-search {
+    height: 18px;
+    width: 18px;
+}
+
+.d-none {
+    display: none;
+}
+
+/*
+* CSS for second container
+*/
+.second-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 140px;
+}
+
+.todo-child-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 37.5px;
+}
+
+.title-area {
+    font-weight: 700;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.plus-button {
+    cursor: pointer;
+}
+
+.box {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    padding: 18px 19px;
+    gap: 10px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.category {
+    text-align: center;
+    color: #FFFFFF;
+    width: 100px;
+    height: 27px;
+    background: #FF7A00;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.title {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    word-break: break-all;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #A8A8A8;
+    word-break: break-all;
+    margin-bottom: 10px;
+}
+
+.assigned {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: #0190E0;
+    border: 1px solid #FFFFFF;
+    border-radius: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.assigned-and-prio {
+    display: flex;
+    justify-content: space-between;
+}
+
+.prio {
+    position: relative;
+    margin-right: 35px;
+}
+
+.first-arrow {
+    position: absolute;
+}
+
+.second-arrow {
+    position: absolute;
+    top: 5px;
 }

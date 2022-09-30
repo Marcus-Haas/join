@@ -16,7 +16,7 @@
     <title>Board</title>
 </head>
 
-<body onload="init()">
+<body onload="init(); onload();">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -26,12 +26,36 @@
 
         <div class="first-container">
             <div class="text-board">Board</div>
-            <div>
-                <input class="inputfield" type="text" id="searchTask" name="searchTask" placeholder="Find Task">
-                <button class="btn">Add Task <img class="icon-plus " src="assets/img/board/plus-icon.png"></button>
+            <div class="inputfield-and-button">
+                <div class="inputfield-container">
+                    <input onkeydown="deleteIconInSearchInputField()" onkeyup="loadIconAndLine()" class="inputfield" type="text" id="searchTask" name="searchTask" placeholder="Find Task">
+                        <div id="line" class="line-container"><span class="line"></span></div>
+                        <div id="iconSearch" class="search-container"><img class="icon-search" src="assets/img/board/search-icon.svg"></div>
+                </div>
+
+
+                <button class="btn">Add Task <img class="icon-plus" src="assets/img/board/plus-icon.png"></button>
             </div>
         </div>
 
+        <div class="second-container">
+
+            <div id="todo">
+
+            </div>
+
+            <div id="inProgess">
+
+            </div>
+
+            <div id="awaitingFeedback">
+
+            </div>
+
+            <div id="done">
+
+            </div>
+        </div>
     </div>
 </body>
 
