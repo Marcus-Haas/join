@@ -122,6 +122,9 @@ function deleteIconInSearchInputField() {
 }
 
 
+/*
+ * remov line and icon if inputfield is empty
+ */
 function loadIconAndLine() {
     let searchTask = document.getElementById('searchTask');
     searchTask = searchTask.value;
@@ -132,4 +135,82 @@ function loadIconAndLine() {
         line.classList.remove('d-none');
         iconSearch.classList.remove('d-none');
     }
+}
+
+
+/*
+ * change bg color of urgent
+ */
+function changeColorUrgent() {
+    let urgent = document.getElementById('urgentPopup');
+    let medium = document.getElementById('mediumPopup');
+    let low = document.getElementById('lowPopup');
+    urgent.classList.add('urgent-bg-color');
+    medium.classList.remove('medium-bg-color');
+    low.classList.remove('low-bg-color');
+
+    let changeColorFirst = document.getElementById('mediumFirstPopup');
+    let changeColorSecond = document.getElementById('mediumSecondPopup');
+    changeColorFirst.classList.remove('change-color-img');
+    changeColorSecond.classList.remove('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopup');
+    let changeColorSecondLow = document.getElementById('lowSecondPopup');
+    changeColorFirstLow.classList.remove('change-color-img');
+    changeColorSecondLow.classList.remove('change-color-img');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopup');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopup');
+    changeColorFirstUrgent.classList.add('change-color-img');
+    changeColorSecondUrgent.classList.add('change-color-img');
+}
+
+
+/*
+ * change bg color of medium
+ */
+function changeColorMedium() {
+    let urgent = document.getElementById('urgentPopup');
+    let medium = document.getElementById('mediumPopup');
+    let low = document.getElementById('lowPopup');
+    urgent.classList.remove('urgent-bg-color');
+    medium.classList.add('medium-bg-color');
+    low.classList.remove('low-bg-color');
+
+    let changeColorFirst = document.getElementById('mediumFirstPopup');
+    let changeColorSecond = document.getElementById('mediumSecondPopup');
+    changeColorFirst.classList.add('change-color-img');
+    changeColorSecond.classList.add('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopup');
+    let changeColorSecondLow = document.getElementById('lowSecondPopup');
+    changeColorFirstLow.classList.remove('change-color-img');
+    changeColorSecondLow.classList.remove('change-color-img');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopup');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopup');
+    changeColorFirstUrgent.classList.remove('change-color-img');
+    changeColorSecondUrgent.classList.remove('change-color-img');
+}
+
+
+/*
+ * change bg color of low
+ */
+function changeColorLow() {
+    let urgent = document.getElementById('urgentPopup');
+    let medium = document.getElementById('mediumPopup');
+    let low = document.getElementById('lowPopup');
+    urgent.classList.remove('urgent-bg-color');
+    medium.classList.remove('medium-bg-color');
+    low.classList.add('low-bg-color');
+
+    let changeColorFirst = document.getElementById('mediumFirstPopup');
+    let changeColorSecond = document.getElementById('mediumSecondPopup');
+    changeColorFirst.classList.remove('change-color-img');
+    changeColorSecond.classList.remove('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopup');
+    let changeColorSecondLow = document.getElementById('lowSecondPopup');
+    changeColorFirstLow.classList.add('change-color-img');
+    changeColorSecondLow.classList.add('change-color-img');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopup');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopup');
+    changeColorFirstUrgent.classList.remove('change-color-img');
+    changeColorSecondUrgent.classList.remove('change-color-img');
 }
