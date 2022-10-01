@@ -214,3 +214,14 @@ function changeColorLow() {
     changeColorFirstUrgent.classList.remove('change-color-img');
     changeColorSecondUrgent.classList.remove('change-color-img');
 }
+
+
+function openForm() {
+    document.getElementById("popup-window").style.display = "unset";
+  }
+
+
+
+function closeForm() {
+    document.getElementById("popup-window").style.display = "none";
+  }
