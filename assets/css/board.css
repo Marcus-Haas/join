@@ -204,14 +204,6 @@ body {
 /*
 * CSS for pop-up window
 */
-.cross-popup {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 8px;
-    margin-top: 12px;
-    cursor: pointer;
-}
-
 .add-task-pop-up {
     position: absolute;
     top: 80px;
@@ -221,6 +213,14 @@ body {
     border-radius: 30px;
     cursor: pointer;
     display: none;
+}
+
+.cross-popup {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8px;
+    margin-top: 12px;
+    cursor: pointer;
 }
 
 .container-for-seperate-left-and-right-content {

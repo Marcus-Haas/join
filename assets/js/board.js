@@ -12,7 +12,7 @@ function onload() {
 function todo() {
     let todo = document.getElementById('todo');
     todo.innerHTML = `
-    <div class="todo-child-container">
+    <div onclick="openForm()" class="todo-child-container">
         <div class="title-area">To do</div>
         <img class="plus-button" src="assets/img/board/plus-button.svg">
     </div>
@@ -38,7 +38,7 @@ function todo() {
 function inProgress() {
     let inProgress = document.getElementById('inProgess');
     inProgress.innerHTML = `
-    <div class="todo-child-container">
+    <div onclick="openForm()" class="todo-child-container">
         <div class="title-area">In progress</div>
         <img class="plus-button" src="assets/img/board/plus-button.svg">
     </div>
@@ -64,7 +64,7 @@ function inProgress() {
 function awaitingFeedback() {
     let awaitingFeedback = document.getElementById('awaitingFeedback');
     awaitingFeedback.innerHTML = `
-    <div class="todo-child-container">
+    <div onclick="openForm()" class="todo-child-container">
         <div class="title-area">Awaiting Feedback</div>
         <img class="plus-button" src="assets/img/board/plus-button.svg">
     </div>
@@ -90,7 +90,7 @@ function awaitingFeedback() {
 function done() {
     let done = document.getElementById('done');
     done.innerHTML = `
-    <div class="todo-child-container">
+    <div onclick="openForm()" class="todo-child-container">
         <div class="title-area">Done</div>
         <img class="plus-button" src="assets/img/board/plus-button.svg">
     </div>
@@ -217,11 +217,13 @@ function changeColorLow() {
 
 
 function openForm() {
-    document.getElementById("popup-window").style.display = "unset";
+    document.getElementById('popup-window').style.display = 'unset';
+    document.getElementById('mainContainer').style.opacity = '0.5';
   }
 
 
 
 function closeForm() {
-    document.getElementById("popup-window").style.display = "none";
+    document.getElementById('popup-window').style.display = "none";
+    document.getElementById('mainContainer').style.opacity = 'unset';
   }
