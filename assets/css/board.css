@@ -457,5 +457,62 @@ body {
 }
 
 .change-color-img {
-    filter:  brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+.btn-popup {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 270px;
+}
+
+.first-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 177px;
+    height: 61px;
+    background: white;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 21px;
+    margin-right: 20px;
+    font-weight: 400;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.first-btn:hover {
+    color: #0D99FF;
+    border: 2px solid #0D99FF;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+#btn-first:hover .cross-popup-btn {
+    filter: invert(39%) sepia(66%) saturate(1450%) hue-rotate(184deg) brightness(107%) contrast(102%);
+}
+
+.second-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 177px;
+    height: 61px;
+    background: #2A3647;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.second-btn:hover {
+    background-color: #0D99FF;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
