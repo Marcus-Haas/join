@@ -4,7 +4,7 @@ body {
     font-family: 'Inter';
 }
 
-.ln-back-btn {
+.privacy-back-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,35 +15,50 @@ body {
     top: 165px;
 }
 
-.ln-back-btn img {
+.privacy-back-btn img {
     height: 25px;
 }
 
-.ln-title-container {
+.privacy-title-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 30px;
     position: absolute;
     width: 371px;
     height: 73px;
-    left: 355px;
+    left: 100px;
     top: 171px;
 }
 
-.ln-title {
+.privacy-title {
     font-weight: 700;
     font-size: 61px;
 }
 
-.ln-text-container {
+.privacy-text-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
     width: 969px;
-    left: 347px;
+    left: 100px;
     top: 292px;
     font-size: 20px;
+}
+
+.privacy-back-btn-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    left: 1281px;
+    bottom: 40px;
+}
+
+.privacy-back-btn-bottom img {
+    height: 25px;
 }
