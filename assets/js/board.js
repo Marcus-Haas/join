@@ -1,28 +1,59 @@
-function onload() {
-    todo();
-    inProgress();
-    awaitingFeedback();
-    done();
-}
+let title = [];
+let description = [];
+let category = [];
+let assigned = [];
+let duedate = [];
+let currentTitle;
+let currentDescription;
+let currentCategory;
+let currentAssigned;
+let currentDuedate;
+let currentDraggedElement;
+let index = 0;
 
 
 /*
- * render todo box
- */
-function todo() {
+* render todo box
+*/
+function createTodo() {
+    updateArray();
     let todo = document.getElementById('todo');
-    todo.innerHTML = `
-    <div onclick="openForm()" class="todo-child-container">
-        <div class="title-area">To do</div>
-        <img class="plus-button" src="assets/img/board/plus-button.svg">
-    </div>
-                
-    <div class="box">
-        <div class="category">Design</div>
-        <div class="title">Here is the title of the task</div>
-        <div class="description">Here is the description of the task</div>
+    todo.innerHTML += templateCreateTodo();
+    currentTitle.value = ``;
+    currentDescription.value = ``;
+    currentDuedate.value = ``;
+    closeForm();
+    changeColorAfterCreateTask();
+    changeColorOfCategory();
+    index++;
+}
+
+
+/*
+* render todo box
+*/
+function updateArray() {
+    currentTitle = document.getElementById('title');
+    title.push(currentTitle.value);
+    currentDescription = document.getElementById('descriptionPopup');
+    description.push(currentDescription.value);
+    currentCategory = document.getElementById('category-popup');
+    category.push(currentCategory.value);
+    currentAssigned = document.getElementById('assignedto-popup');
+    assigned.push(currentAssigned.value);
+    currentDuedate = document.getElementById('duedate');
+    duedate.push(currentDuedate.value);
+}
+
+
+function templateCreateTodo() {
+    return `    
+    <div draggable="true" ondragstart="startDragging(${index})" class="box">
+        <div id="changeColorOfCategory${index}" class="category">${category[index]}</div>
+        <div class="title">${title[index]}</div>
+        <div class="description">${description[index]}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">SM</div>
+            <div class="assigned">${assigned[index]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img src="assets/img/board/arrow-low.svg"></div>
                     <div class="second-arrow"><img src="assets/img/board/arrow-low.svg"></div>
@@ -33,22 +64,33 @@ function todo() {
 
 
 /*
- * render inProgress box
- */
-function inProgress() {
-    let inProgress = document.getElementById('inProgess');
-    inProgress.innerHTML = `
-    <div onclick="openForm()" class="todo-child-container">
-        <div class="title-area">In progress</div>
-        <img class="plus-button" src="assets/img/board/plus-button.svg">
-    </div>
-                
-    <div class="box">
-        <div class="category">Design</div>
-        <div class="title">Here is the title of the task</div>
-        <div class="description">Here is the description of the task</div>
+* drag and drop a task
+*/
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+function moveTo(getIdOfBox) {
+    let dragAndDrop = document.getElementById(getIdOfBox);
+    dragAndDrop.innerHTML += templateDragAndDrop();
+    changeColorOfCategoryAfterDragAndDrop();
+}
+
+
+function templateDragAndDrop() {
+    return `    
+    <div draggable="true" ondragstart="startDragging(${currentDraggedElement})" class="box">
+        <div id="changeColorOfCategoryAfterDragAndDrop${currentDraggedElement}" class="category">${category[currentDraggedElement]}</div>
+        <div class="title">${title[currentDraggedElement]}</div>
+        <div class="description">${description[currentDraggedElement]}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">SM</div>
+            <div class="assigned">${assigned[currentDraggedElement]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img src="assets/img/board/arrow-low.svg"></div>
                     <div class="second-arrow"><img src="assets/img/board/arrow-low.svg"></div>
@@ -58,61 +100,10 @@ function inProgress() {
 }
 
 
-/*
- * render awaiting feedback box
- */
-function awaitingFeedback() {
-    let awaitingFeedback = document.getElementById('awaitingFeedback');
-    awaitingFeedback.innerHTML = `
-    <div onclick="openForm()" class="todo-child-container">
-        <div class="title-area">Awaiting Feedback</div>
-        <img class="plus-button" src="assets/img/board/plus-button.svg">
-    </div>
-                
-    <div class="box">
-        <div class="category">Design</div>
-        <div class="title">Here is the title of the task</div>
-        <div class="description">Here is the description of the task</div>
-        <div class="assigned-and-prio">
-            <div class="assigned">SM</div>
-                <div class="prio">
-                    <div class="first-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                    <div class="second-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                </div>
-        </div>
-    </div>`;
-}
-
 
 /*
- * render done box
- */
-function done() {
-    let done = document.getElementById('done');
-    done.innerHTML = `
-    <div onclick="openForm()" class="todo-child-container">
-        <div class="title-area">Done</div>
-        <img class="plus-button" src="assets/img/board/plus-button.svg">
-    </div>
-                
-    <div class="box">
-        <div class="category">Design</div>
-        <div class="title">Here is the title of the task</div>
-        <div class="description">Here is the description of the task</div>
-        <div class="assigned-and-prio">
-            <div class="assigned">SM</div>
-                <div class="prio">
-                    <div class="first-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                    <div class="second-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                </div>
-        </div>
-    </div>`;
-}
-
-
-/*
- * delete icon if someone is tiping
- */
+* delete icon if someone is tiping
+*/
 function deleteIconInSearchInputField() {
     let line = document.getElementById('line');
     let iconSearch = document.getElementById('iconSearch');
@@ -123,8 +114,8 @@ function deleteIconInSearchInputField() {
 
 
 /*
- * remov line and icon if inputfield is empty
- */
+* remov line and icon if inputfield is empty
+*/
 function loadIconAndLine() {
     let searchTask = document.getElementById('searchTask');
     searchTask = searchTask.value;
@@ -139,8 +130,8 @@ function loadIconAndLine() {
 
 
 /*
- * change bg color of urgent
- */
+* change bg color of urgent
+*/
 function changeColorUrgent() {
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
@@ -165,8 +156,8 @@ function changeColorUrgent() {
 
 
 /*
- * change bg color of medium
- */
+* change bg color of medium
+*/
 function changeColorMedium() {
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
@@ -191,8 +182,8 @@ function changeColorMedium() {
 
 
 /*
- * change bg color of low
- */
+* change bg color of low
+*/
 function changeColorLow() {
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
@@ -216,14 +207,85 @@ function changeColorLow() {
 }
 
 
+/*
+* open the pop-up
+*/
 function openForm() {
     document.getElementById('popup-window').style.display = 'unset';
     document.getElementById('mainContainer').style.opacity = '0.5';
-  }
+}
 
 
-
+/*
+* close the pop-up
+*/
 function closeForm() {
     document.getElementById('popup-window').style.display = "none";
     document.getElementById('mainContainer').style.opacity = 'unset';
-  }
+}
+
+
+/*
+ * change the prio to the basic form 
+*/
+function changeColorAfterCreateTask() {
+    let urgent = document.getElementById('urgentPopup');
+    let medium = document.getElementById('mediumPopup');
+    let low = document.getElementById('lowPopup');
+    urgent.classList.remove('change-color-img');
+    medium.classList.remove('change-color-img');
+    low.classList.remove('change-color-img');
+    urgent.classList.remove('urgent-bg-color');
+    medium.classList.remove('medium-bg-color');
+    low.classList.remove('low-bg-color');
+}
+
+
+function changeColorOfCategory() {
+    let category = document.getElementById('category-popup')
+    let categoryAddColor = document.getElementById('changeColorOfCategory' + index);
+    category = category.value;
+    if (category == 'Sales') {
+        categoryAddColor.classList.add('sales');
+    }
+    if (category == 'Design') {
+        categoryAddColor.classList.add('design');
+    }
+    if (category == 'Backoffice') {
+        categoryAddColor.classList.add('backoffice');
+    }
+    if (category == 'Marketing') {
+        categoryAddColor.classList.add('marketing');
+    }
+    if (category == 'IT') {
+        categoryAddColor.classList.add('it');
+    }
+    if (category == 'Media') {
+        categoryAddColor.classList.add('media');
+    }
+
+}
+
+function changeColorOfCategoryAfterDragAndDrop() {
+    let category = document.getElementById('category-popup')
+    let categoryAddColor = document.getElementById('changeColorOfCategoryAfterDragAndDrop' + currentDraggedElement);
+    category = category.value;
+    if (category == 'Sales') {
+        categoryAddColor.classList.add('sales');
+    }
+    if (category == 'Design') {
+        categoryAddColor.classList.add('design');
+    }
+    if (category == 'Backoffice') {
+        categoryAddColor.classList.add('backoffice');
+    }
+    if (category == 'Marketing') {
+        categoryAddColor.classList.add('marketing');
+    }
+    if (category == 'IT') {
+        categoryAddColor.classList.add('it');
+    }
+    if (category == 'Media') {
+        categoryAddColor.classList.add('media');
+    }
+}

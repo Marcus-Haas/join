@@ -134,6 +134,7 @@ body {
     gap: 10px;
     width: 200px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .category {
@@ -141,7 +142,6 @@ body {
     color: #FFFFFF;
     width: 100px;
     height: 27px;
-    background: #FF7A00;
     border-radius: 8px;
     font-weight: 400;
     font-size: 16px;
@@ -516,4 +516,31 @@ body {
 .second-btn:hover {
     background-color: #0D99FF;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/*
+* CSS class for category in popup
+*/
+.sales {
+    background-color: #FC71FF;
+}
+
+.design {
+    background-color: #FF7A00;
+}
+
+.backoffice {
+    background-color: #1FD7C1;
+}
+
+.marketing {
+    background-color: #0038FF;
+}
+
+.it {
+    background-color: #4E963D;
+}
+
+.media {
+    background-color: #FFC701;
 }

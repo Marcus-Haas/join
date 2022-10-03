@@ -16,7 +16,7 @@
     <title>Board</title>
 </head>
 
-<body onload="init(); onload();">
+<body onload="init()">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -36,26 +36,39 @@
                 </div>
 
 
-                <button onclick="openForm()" class="btn">Add Task <img class="icon-plus" src="assets/img/board/plus-icon.png"></button>
+                <button onclick="openForm()" class="btn">Add Task <img class="icon-plus"
+                        src="assets/img/board/plus-icon.png"></button>
             </div>
         </div>
 
         <div class="second-container">
 
-            <div id="todo">
-
+            <div id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+                    <div class="title-area">To do</div>
+                    <img class="plus-button" src="assets/img/board/plus-button.svg">
+                </div>
             </div>
 
-            <div id="inProgess">
-
+            <div id="inProgess" ondrop="moveTo('inProgess')" ondragover="allowDrop(event)">
+                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+                    <div class="title-area">In Progress</div>
+                    <img class="plus-button" src="assets/img/board/plus-button.svg">
+                </div>
             </div>
 
-            <div id="awaitingFeedback">
-
+            <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" id="awaitingFeedback">
+                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+                    <div class="title-area">Awaiting Feedback</div>
+                    <img class="plus-button" src="assets/img/board/plus-button.svg">
+                </div>
             </div>
 
-            <div id="done">
-
+            <div id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+                    <div class="title-area">Done</div>
+                    <img class="plus-button" src="assets/img/board/plus-button.svg">
+                </div>
             </div>
         </div>
     </div>
@@ -64,80 +77,79 @@
         <div onclick="closeForm()" class="cross-popup"><img src="assets/img/board/close-popup.svg"></div>
         <div class="padding-popup-box">
             <div class="title-pop-up">Add Task</div>
-            <form action="/action_page.php">
-                <div class="container-for-seperate-left-and-right-content">
-                    <div>
-                        <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
-                        <input class="title-popup" type="text" id="title" name="title" placeholder="Enter a title">
+            <div class="container-for-seperate-left-and-right-content">
+                <div>
+                    <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
+                    <input class="title-popup" type="text" id="title" name="title" placeholder="Enter a title">
 
-                        <div class="margin-popup"><label class="pop-up-child"
-                                for="descriptionPopup">Description</label><br>
-                        </div>
-                        <textarea class="description-popup" type="text" id="descriptionPopup" name="descriptionPopup"
-                            rows="5" cols="20" placeholder="Enter a Description"></textarea>
+                    <div class="margin-popup"><label class="pop-up-child" for="descriptionPopup">Description</label><br>
+                    </div>
+                    <textarea class="description-popup" type="text" id="descriptionPopup" name="descriptionPopup"
+                        rows="5" cols="20" placeholder="Enter a Description"></textarea>
 
-                        <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
-                        </div>
-                        <select class="category-popup" id="category-popup">
-                            <option value="sales">Sales</option>
-                            <option value="design">Design</option>
-                            <option value="backoffice">Backoffice</option>
-                            <option value="marketing">Marketing</option>
-                            <option value="it">IT</option>
-                            <option value="media">Media</option>
-                        </select><br>
+                    <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
+                    </div>
+                    <select class="category-popup" id="category-popup">
+                        <option value="Sales">Sales</option>
+                        <option value="Design">Design</option>
+                        <option value="Backoffice">Backoffice</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="IT">IT</option>
+                        <option value="Media">Media</option>
+                    </select><br>
 
-                        <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
-                                to</label><br>
+                    <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
+                            to</label><br>
+                    </div>
+                    <select class="assignedto-popup" id="assignedto-popup">
+                        <option value="maxmustermann">Max Mustermann</option>
+                    </select>
+                </div>
+
+                <div class="seperate-line-popup">
+
+                </div>
+
+                <div>
+                    <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
+                    <input class="duedate-popup" type="date" id="duedate" name="duedate">
+
+                    <div class="margin-popup pop-up-child">Prio</div>
+                    <div class="prio-popup">
+                        <div id="urgentPopup" onclick="changeColorUrgent()" class="urgent-popup">Urgent
+                            <div class="urgent-popup-child">
+                                <div class="position-urgent-arrow-popup-first"><img id="urgentFirstPopup"
+                                        src="assets/img/board/arrow-urgent.svg"></div>
+                                <div class="position-urgent-arrow-popup-second"><img id="urgentSecondPopup"
+                                        src="assets/img/board/arrow-urgent.svg"></div>
+                            </div>
                         </div>
-                        <select class="assignedto-popup" id="assignedto-popup">
-                            <option value="maxmustermann">Max Mustermann</option>
-                        </select>
+                        <div id="mediumPopup" onclick="changeColorMedium()" class="medium-popup">Medium
+                            <div class="medium-popup-child">
+                                <div class="position-medium-arrow-popup-first"><img id="mediumFirstPopup"
+                                        src="assets/img/board/arrow-medium.svg"></div>
+                                <div class="position-medium-arrow-popup-second"><img id="mediumSecondPopup"
+                                        src="assets/img/board/arrow-medium.svg"></div>
+                            </div>
+                        </div>
+                        <div id="lowPopup" onclick="changeColorLow()" class="low-popup">Low
+                            <div class="low-popup-child">
+                                <div class="position-low-arrow-popup-first"><img id="lowFirstPopup"
+                                        src="assets/img/board/arrow-low.svg"></div>
+                                <div class="position-low-arrow-popup-second"><img id="lowSecondPopup"
+                                        src="assets/img/board/arrow-low.svg"></div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="seperate-line-popup">
-
-                    </div>
-
-                    <div>
-                        <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
-                        <input class="duedate-popup" type="date" id="duedate" name="duedate">
-
-                        <div class="margin-popup pop-up-child">Prio</div>
-                        <div class="prio-popup">
-                            <div id="urgentPopup" onclick="changeColorUrgent()" class="urgent-popup">Urgent
-                                <div class="urgent-popup-child">
-                                    <div class="position-urgent-arrow-popup-first"><img id="urgentFirstPopup"
-                                            src="assets/img/board/arrow-urgent.svg"></div>
-                                    <div class="position-urgent-arrow-popup-second"><img id="urgentSecondPopup"
-                                            src="assets/img/board/arrow-urgent.svg"></div>
-                                </div>
-                            </div>
-                            <div id="mediumPopup" onclick="changeColorMedium()" class="medium-popup">Medium
-                                <div class="medium-popup-child">
-                                    <div class="position-medium-arrow-popup-first"><img id="mediumFirstPopup"
-                                            src="assets/img/board/arrow-medium.svg"></div>
-                                    <div class="position-medium-arrow-popup-second"><img id="mediumSecondPopup"
-                                            src="assets/img/board/arrow-medium.svg"></div>
-                                </div>
-                            </div>
-                            <div id="lowPopup" onclick="changeColorLow()" class="low-popup">Low
-                                <div class="low-popup-child">
-                                    <div class="position-low-arrow-popup-first"><img id="lowFirstPopup"
-                                            src="assets/img/board/arrow-low.svg"></div>
-                                    <div class="position-low-arrow-popup-second"><img id="lowSecondPopup"
-                                            src="assets/img/board/arrow-low.svg"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="btn-popup">
-                            <button id="btn-first" class="first-btn">Cancel<img class="cross-popup-btn" src="assets/img/board/close-popup.svg"></button>
-                            <button class="second-btn">Create Task<img src="assets/img/board/hook-popup.svg"></button>
-                        </div>
+                    <div class="btn-popup">
+                        <button onclick="closeForm()" id="btn-first" class="first-btn">Cancel<img
+                                class="cross-popup-btn" src="assets/img/board/close-popup.svg"></button>
+                        <button onclick="createTodo()" class="second-btn">Create Task<img
+                                src="assets/img/board/hook-popup.svg"></button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </body>
