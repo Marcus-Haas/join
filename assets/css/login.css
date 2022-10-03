@@ -136,6 +136,18 @@ body {
     border-radius: 30px;
 }
 
+.login-window form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    position: relative;
+    width: 652px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 4%);
+    border-radius: 30px;
+}
+
 .signup-window {
     display: flex;
     flex-direction: column;
@@ -150,6 +162,13 @@ body {
     top: 25px;
 }
 
+.signup-window form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
 .forgot-password-window {
     display: flex;
     flex-direction: column;
@@ -160,6 +179,32 @@ body {
     width: 789px;
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 4%);
+    border-radius: 30px;
+    top: -18px;
+}
+
+.reset-password-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    position: relative;
+    width: 789px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgb(0 0 0 / 4%);
+    border-radius: 30px;
+    top: 20px;
+}
+
+.confirm-password-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    position: relative;
+    width: 789px;
     border-radius: 30px;
     top: -18px;
 }
@@ -204,6 +249,34 @@ body {
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
+    line-height: 120%;
+    /* or 73px */
+
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    padding-bottom: 24px;
+    border-bottom: #29ABE2 2px solid;
+}
+
+.reset-password-headline {
+    font-family: 'Inter';
+    width: 626px;
+    height: 73px;
+
+    /* Version 2/t1 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
     line-height: 120%;
     /* or 73px */
 
@@ -385,6 +458,13 @@ body {
     gap: 40px;
 }
 
+.repeat-password {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-direction: column;
+}
+
 .login-button {
 
     padding: 4px 0px;
@@ -446,7 +526,6 @@ body {
 
 .signup-button {
     padding: 4px 0px;
-    margin-top: 20px;
     width: 145px;
     height: 51px;
     color: #FFFFFF;
@@ -469,7 +548,6 @@ body {
 
 .forgot-password-button {
     padding: 4px 0px;
-    margin-top: 20px;
     width: 145px;
     height: 51px;
     color: #FFFFFF;
@@ -497,6 +575,7 @@ body {
     /* Inside auto layout */
     flex: none;
 }
+
 .forgot-password-button:hover {
     background-color: #29ABE2;
     cursor: pointer;
@@ -513,6 +592,14 @@ body {
 }
 
 .forgot-back {
+    position: absolute;
+    left: 4%;
+    top: 8.59%;
+    bottom: 17.59%;
+    cursor: pointer;
+}
+
+.reset-back {
     position: absolute;
     left: 4%;
     top: 8.59%;
@@ -545,4 +632,113 @@ body {
     flex-grow: 0;
     z-index: 1;
 
+}
+
+.forgot-password-window form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.reset-password-window span {
+    width: 656px;
+
+    /* Version 2/t6 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+    text-align: center;
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    flex-grow: 0;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.reset-password-window form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.confirm-password-button {
+    padding: 4px 0px;
+    margin-top: 20px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+    padding: 8px 9px;
+    gap: 10px;
+    width: 300px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+    flex: none;
+}
+
+.confirm-password-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.confirm-signup-button {
+    padding: 4px 0px;
+    margin-top: 20px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+    padding: 8px 9px;
+    width: 300px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+    flex: none;
+    box-sizing: content-box;
+}
+
+.confirm-signup-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+
+.red-font {
+    color: red !important;
 }
