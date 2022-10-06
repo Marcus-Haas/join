@@ -15,4 +15,8 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+    //<!-- *********************** Test Marius: Übergabe von Werten ****************** -->
+    await downloadFromServer(); // wait for server
+    activeUser = JSON.parse(backend.getItem('activeUser')) || [];
+    //<!-- *********************** Test Marius: Übergabe von Werten ****************** -->
 }

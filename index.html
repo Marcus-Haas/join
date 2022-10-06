@@ -12,10 +12,10 @@
     <script src="assets/js/mini_backend.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/register.js"></script>
-    <script> setURL('http://gruppe-330.developerakademie.net/smallest_backend_ever/');</script>
+    <script> setURL('https://gruppe-330.developerakademie.net/smallest_backend_ever/');</script>
 </head>
 
-<body onload="init (); renderStartScreen()">
+<body onload="initStart(); renderStartScreen()">
     <div class="login-bg">
     </div>
 
@@ -128,11 +128,11 @@
 
 
 <!-- to-do :
-    - intergration mini-backend, wichtig: Übergabe Wert vom Login für aktuellen Benutzer für die jeweiligen Tasks
-    - SPEICHERN IM BACKEND GEM. VIDEO ingetrieren
+    - intergration mini-backend, wichtig: Übergabe Wert vom Login für aktuellen Benutzer für die jeweiligen Tasks:
+        - Problem: es werden alles User übergeben in das Array activeUser
+    - SPEICHERN IM BACKEND GEM. VIDEO ingetrieren, Problem mit CORS?
     - Bild im input field nur anclickbar
     - JSDocs - Dokumentation integrieren
     - JS HTML-Templates für Login-Bereich
-
     Anil -> Bord
 -->

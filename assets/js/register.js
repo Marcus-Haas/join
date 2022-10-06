@@ -31,20 +31,21 @@ let guestUser = [
 
 let activeUser = [];
 
-async function init() {
+async function initStart() {
     await downloadFromServer(); // wait for server
     users = JSON.parse(backend.getItem('users')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
+    activeUser = JSON.parse(backend.getItem('activeUser')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
 }
 
 // Save
 // Add a user with this function:
 
-function confirmSignUpScreen() { //Add user
+async function confirmSignUpScreen() { //Add user
     let name = document.getElementById('signup-window-input-username');
     let email = document.getElementById('signup-window-input-email');
     let password = document.getElementById('signup-window-input-passwort');
     users.push({ name: name.value, email: email.value, password: password.value }); // push to Array 'users'
-    backend.setItem('users', JSON.stringify(users));
+    await backend.setItem('users', JSON.stringify(users));
     document.getElementById(`signup-window-input-username`).value = ``;
     document.getElementById(`signup-window-input-email`).value = ``;
     document.getElementById(`signup-window-input-passwort`).value = ``;
