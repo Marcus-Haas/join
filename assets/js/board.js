@@ -22,8 +22,8 @@ function createTodo() {
     currentTitle.value = ``;
     currentDescription.value = ``;
     currentDuedate.value = ``;
-    closeForm();
     changeColorAfterCreateTask();
+    closeForm();
     changeColorOfCategory();
     index++;
 }
@@ -48,7 +48,7 @@ function updateArray() {
 
 function templateCreateTodo() {
     return `    
-    <div draggable="true" ondragstart="startDragging(${index})" class="box">
+    <div draggable="true" id="startDragging${index}" ondrag="dragging()" class="box">
         <div id="changeColorOfCategory${index}" class="category">${category[index]}</div>
         <div class="title">${title[index]}</div>
         <div class="description">${description[index]}</div>
@@ -66,37 +66,87 @@ function templateCreateTodo() {
 /*
 * drag and drop a task
 */
-function startDragging(id) {
-    currentDraggedElement = id;
-}
+function dragging() {
+    const todo = document.querySelector("#startDragging" + (index - 1));
+    todo.addEventListener("dragstart", (ev) => {
+        console.log("dragStart");
+        // Change the source element's background color
+        // to show that drag has started
+        ev.currentTarget.classList.add("dragging");
+        // Clear the drag data cache (for all formats/types)
+        ev.dataTransfer.clearData();
+        // Set the drag's format and data.
+        // Use the event target's id for the data
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+    });
+    todo.addEventListener("dragend", (ev) =>
+        ev.target.classList.remove("dragging")
+    );
 
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
+    if (document.getElementsByClassName('for-height-todo')) {
+        const target = document.querySelector("#todo");
+        target.addEventListener("dragover", (ev) => {
+            console.log("dragOver");
+            ev.preventDefault();
+        });
+        target.addEventListener("drop", (ev) => {
+            console.log("Drop");
+            ev.preventDefault();
+            // Get the data, which is the id of the source element
+            const data = ev.dataTransfer.getData("text");
+            const todo = document.getElementById(data);
+            ev.target.appendChild(todo);
+        });
+    }
 
+    if (document.getElementsByClassName('for-height-inprogess')) {
+        const target = document.querySelector("#inProgess");
+        target.addEventListener("dragover", (ev) => {
+            console.log("dragOver");
+            ev.preventDefault();
+        });
+        target.addEventListener("drop", (ev) => {
+            console.log("Drop");
+            ev.preventDefault();
+            // Get the data, which is the id of the source element
+            const data = ev.dataTransfer.getData("text");
+            const todo = document.getElementById(data);
+            ev.target.appendChild(todo);
+        });
+    }
 
-function moveTo(getIdOfBox) {
-    let dragAndDrop = document.getElementById(getIdOfBox);
-    dragAndDrop.innerHTML += templateDragAndDrop();
-    changeColorOfCategoryAfterDragAndDrop();
-}
+    if (document.getElementsByClassName('for-height-awaitingfeedback')) {
+        const target = document.querySelector("#awaitingFeedback");
+        target.addEventListener("dragover", (ev) => {
+            console.log("dragOver");
+            ev.preventDefault();
+        });
+        target.addEventListener("drop", (ev) => {
+            console.log("Drop");
+            ev.preventDefault();
+            // Get the data, which is the id of the source element
+            const data = ev.dataTransfer.getData("text");
+            const todo = document.getElementById(data);
+            ev.target.appendChild(todo);
+        });
+    }
+    if (document.getElementsByClassName('for-height-done')) {
+        const target = document.querySelector("#done");
+        target.addEventListener("dragover", (ev) => {
+            console.log("dragOver");
+            ev.preventDefault();
+        });
+        target.addEventListener("drop", (ev) => {
+            console.log("Drop");
+            ev.preventDefault();
+            // Get the data, which is the id of the source element
+            const data = ev.dataTransfer.getData("text");
+            const todo = document.getElementById(data);
+            ev.target.appendChild(todo);
+        });
+    }
 
-
-function templateDragAndDrop() {
-    return `    
-    <div draggable="true" ondragstart="startDragging(${currentDraggedElement})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${currentDraggedElement}" class="category">${category[currentDraggedElement]}</div>
-        <div class="title">${title[currentDraggedElement]}</div>
-        <div class="description">${description[currentDraggedElement]}</div>
-        <div class="assigned-and-prio">
-            <div class="assigned">${assigned[currentDraggedElement]}</div>
-                <div class="prio">
-                    <div class="first-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                    <div class="second-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                </div>
-        </div>
-    </div>`;
 }
 
 
@@ -238,6 +288,18 @@ function changeColorAfterCreateTask() {
     urgent.classList.remove('urgent-bg-color');
     medium.classList.remove('medium-bg-color');
     low.classList.remove('low-bg-color');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopup');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopup');
+    changeColorFirstUrgent.classList.remove('change-color-img');
+    changeColorSecondUrgent.classList.remove('change-color-img');
+    let changeColorFirst = document.getElementById('mediumFirstPopup');
+    let changeColorSecond = document.getElementById('mediumSecondPopup');
+    changeColorFirst.classList.remove('change-color-img');
+    changeColorSecond.classList.remove('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopup');
+    let changeColorSecondLow = document.getElementById('lowSecondPopup');
+    changeColorFirstLow.classList.remove('change-color-img');
+    changeColorSecondLow.classList.remove('change-color-img');
 }
 
 

@@ -43,28 +43,28 @@
 
         <div class="second-container">
 
-            <div id="todo" ondrop="moveTo('todo')" ondragover="allowDrop(event)">
+            <div class="for-height-todo" id="todo">
                 <div id="todoChild" onclick="openForm()" class="todo-child-container">
                     <div class="title-area">To do</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
             </div>
 
-            <div id="inProgess" ondrop="moveTo('inProgess')" ondragover="allowDrop(event)">
+            <div class="for-height-inprogess" id="inProgess">
                 <div id="todoChild" onclick="openForm()" class="todo-child-container">
                     <div class="title-area">In Progress</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
             </div>
 
-            <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" id="awaitingFeedback">
+            <div class="for-height-awaitingfeedback" id="awaitingFeedback" ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)">
                 <div id="todoChild" onclick="openForm()" class="todo-child-container">
                     <div class="title-area">Awaiting Feedback</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
             </div>
 
-            <div id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+            <div class="for-height-done" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                 <div id="todoChild" onclick="openForm()" class="todo-child-container">
                     <div class="title-area">Done</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">

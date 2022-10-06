@@ -110,10 +110,27 @@ body {
     margin-top: 140px;
 }
 
+.for-height-todo {
+    height: 100vh;
+}
+
+.for-height-inprogess {
+    height: 100vh;
+}
+
+.for-height-awaitingfeedback {
+    height: 100vh;
+}
+
+.for-height-done {
+    height: 100vh;
+}
+
 .todo-child-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 37.5px;
+    width: 240px;
 }
 
 .title-area {
