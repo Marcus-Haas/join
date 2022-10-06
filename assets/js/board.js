@@ -10,6 +10,7 @@ let currentAssigned;
 let currentDuedate;
 let currentDraggedElement;
 let index = 0;
+let prior;
 
 
 /*
@@ -25,6 +26,25 @@ function createTodo() {
     changeColorAfterCreateTask();
     closeForm();
     changeColorOfCategory();
+
+    if (prior == 'Urgent') {
+        let firstImage = document.getElementById('createFirstImg');
+        let secondImage = document.getElementById('createSecondImg');
+        firstImage.src = "assets/img/board/arrow-urgent.svg";
+        secondImage.src = "assets/img/board/arrow-urgent.svg";
+    }
+    if (prior == 'Medium') {
+        let firstImage = document.getElementById('createFirstImg');
+        let secondImage = document.getElementById('createSecondImg');
+        firstImage.src = "assets/img/board/arrow-medium.svg";
+        secondImage.src = "assets/img/board/arrow-medium.svg";
+    }
+    if (prior == 'Low') {
+        let firstImage = document.getElementById('createFirstImg');
+        let secondImage = document.getElementById('createSecondImg');
+        firstImage.src = "assets/img/board/arrow-low.svg";
+        secondImage.src = "assets/img/board/arrow-low.svg";
+    }
     index++;
 }
 
@@ -55,8 +75,8 @@ function templateCreateTodo() {
         <div class="assigned-and-prio">
             <div class="assigned">${assigned[index]}</div>
                 <div class="prio">
-                    <div class="first-arrow"><img src="assets/img/board/arrow-low.svg"></div>
-                    <div class="second-arrow"><img src="assets/img/board/arrow-low.svg"></div>
+                    <div class="first-arrow"><img id="createFirstImg" src=""></div>
+                    <div class="second-arrow"><img id="createSecondImg" src=""></div>
                 </div>
         </div>
     </div>`;
@@ -69,7 +89,6 @@ function templateCreateTodo() {
 function dragging() {
     const todo = document.querySelector("#startDragging" + (index - 1));
     todo.addEventListener("dragstart", (ev) => {
-        console.log("dragStart");
         // Change the source element's background color
         // to show that drag has started
         ev.currentTarget.classList.add("dragging");
@@ -87,11 +106,9 @@ function dragging() {
     if (document.getElementsByClassName('for-height-todo')) {
         const target = document.querySelector("#todo");
         target.addEventListener("dragover", (ev) => {
-            console.log("dragOver");
             ev.preventDefault();
         });
         target.addEventListener("drop", (ev) => {
-            console.log("Drop");
             ev.preventDefault();
             // Get the data, which is the id of the source element
             const data = ev.dataTransfer.getData("text");
@@ -103,11 +120,9 @@ function dragging() {
     if (document.getElementsByClassName('for-height-inprogess')) {
         const target = document.querySelector("#inProgess");
         target.addEventListener("dragover", (ev) => {
-            console.log("dragOver");
             ev.preventDefault();
         });
         target.addEventListener("drop", (ev) => {
-            console.log("Drop");
             ev.preventDefault();
             // Get the data, which is the id of the source element
             const data = ev.dataTransfer.getData("text");
@@ -119,11 +134,9 @@ function dragging() {
     if (document.getElementsByClassName('for-height-awaitingfeedback')) {
         const target = document.querySelector("#awaitingFeedback");
         target.addEventListener("dragover", (ev) => {
-            console.log("dragOver");
             ev.preventDefault();
         });
         target.addEventListener("drop", (ev) => {
-            console.log("Drop");
             ev.preventDefault();
             // Get the data, which is the id of the source element
             const data = ev.dataTransfer.getData("text");
@@ -134,11 +147,9 @@ function dragging() {
     if (document.getElementsByClassName('for-height-done')) {
         const target = document.querySelector("#done");
         target.addEventListener("dragover", (ev) => {
-            console.log("dragOver");
             ev.preventDefault();
         });
         target.addEventListener("drop", (ev) => {
-            console.log("Drop");
             ev.preventDefault();
             // Get the data, which is the id of the source element
             const data = ev.dataTransfer.getData("text");
@@ -183,6 +194,7 @@ function loadIconAndLine() {
 * change bg color of urgent
 */
 function changeColorUrgent() {
+    prior = document.getElementById('urgentPopup').innerText;
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
     let low = document.getElementById('lowPopup');
@@ -209,6 +221,7 @@ function changeColorUrgent() {
 * change bg color of medium
 */
 function changeColorMedium() {
+    prior = document.getElementById('mediumPopup').innerText;
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
     let low = document.getElementById('lowPopup');
@@ -235,6 +248,7 @@ function changeColorMedium() {
 * change bg color of low
 */
 function changeColorLow() {
+    prior = document.getElementById('lowPopup').innerText;
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
     let low = document.getElementById('lowPopup');
