@@ -64,17 +64,13 @@ function ConfirmPasswordBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
 }
 
-function confirmSignUpScreen() {
-    document.getElementById(`signup-window`).classList.add(`d-none`);
-    document.getElementById(`confirm-signup-window`).classList.remove(`d-none`);
-}
+// function confirmSignUpScreen() {
+
+// }
 
 function ConfirmSignUpBackToLoginScreen() {
     document.getElementById(`confirm-signup-window`).classList.add(`d-none`);
     document.getElementById(`login-window`).classList.remove(`d-none`);
-    document.getElementById(`signup-window-input-username`).value = ``;
-    document.getElementById(`signup-window-input-email`).value = ``;
-    document.getElementById(`signup-window-input-passwort`).value = ``;
 }
 
 
@@ -95,12 +91,12 @@ function showSignUpPassword() {
     let password = document.getElementById("signup-window-input-passwort");
     if (password.type === "password") {
         password.type = "text";
-        document.getElementById(`signup-window-input-passwort`).classList.add(`login-password-visibilty-off`);
-        document.getElementById(`signup-window-input-passwort`).classList.remove(`login-password-visibilty-on`);
+        document.getElementById(`new-password-window-input-email`).classList.add(`login-password-visibilty-off`);
+        document.getElementById(`new-password-window-input-email`).classList.remove(`login-password-visibilty-on`);
     } else {
         password.type = "password";
-        document.getElementById(`signup-window-input-passwort`).classList.add(`login-password-visibilty-on`);
-        document.getElementById(`signup-window-input-passwort`).classList.remove(`login-password-visibilty-off`);
+        document.getElementById(`new-password-window-input-email`).classList.add(`login-password-visibilty-on`);
+        document.getElementById(`new-password-window-input-email`).classList.remove(`login-password-visibilty-off`);
     }
 }
 
@@ -131,12 +127,24 @@ function confirmNewPassword() {
 }
 
 
+// <!-- *********************** LOG IN FUNCTION ****************** -->
 
 
-function openUserStartScreen() {
-    window.open("summary.html", "_self");
+function openUserStartScreen() { // Log in when signed up
+    let email = document.getElementById('login-window-input-email');
+    let password = document.getElementById('login-window-input-passwort');
+    // let user = users.find(u => u.email == email.value && u.password == password.value);
+    if (users.find(u => u.email == email.value && u.password == password.value)) { // if the user and password exists ...
+        document.getElementById('failed-login').classList.add('d-none');
+        activeUser.push(users);
+        backend.setItem('activeUser', JSON.stringify(activeUser));
+        window.open("summary.html", "_self"); //... open start screen 'summary'
+    } else {
+        document.getElementById('failed-login').classList.remove('d-none'); //... or let errer msg appear
+    }
+
 }
 
-function openGuestStartScreen() {
+function openGuestStartScreen() { // Log in as a guest
     window.open("summary.html", "_self");
 }

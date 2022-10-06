@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/fonts.css">
     <script src="assets/js/mini_backend.js"></script>
     <script src="assets/js/login.js"></script>
-    <script src="assets/js/user_files.js"></script>
+    <script src="assets/js/register.js"></script>
     <script> setURL('http://gruppe-330.developerakademie.net/smallest_backend_ever/');</script>
 </head>
 
@@ -34,7 +34,7 @@
                 <form onsubmit="openUserStartScreen(); return false;">
                     <input type="email" required class="login-window-input-email" id="login-window-input-email"
                         placeholder="Email">
-                    <input type="text" required class="login-window-input-passwort" id="login-window-input-passwort"
+                    <input type="password" required class="login-window-input-passwort" id="login-window-input-passwort"
                         placeholder="Password" onclick="showSignInPassword()">
                     <div class="remember-me-forgot-my-passwort">
                         <div class="remember-me-clickbox">
@@ -43,6 +43,7 @@
                         </div>
                         <a href="#" onclick="showForgetPassword()">Forgot my password</a>
                     </div>
+                    <span class="d-none red-font" id="failed-login">Email or password is wrong</span>
                     <div class="login-guestlogin">
                         <button class="login-button">Log in</button>
                         <div><button class="guestlogin-button" onclick="openGuestStartScreen()">Guest Log in</button>
@@ -62,7 +63,7 @@
                 placeholder="Name">
             <input type="email" required class="login-window-input-email" id="signup-window-input-email"
                 placeholder="Email">
-            <input type="text" required class="login-window-input-passwort" id="signup-window-input-passwort"
+            <input type="password" required class="login-window-input-passwort" id="signup-window-input-passwort"
                 placeholder="Password" onclick="showSignUpPassword()">
 
             <div class="login-guestlogin">
@@ -128,6 +129,7 @@
 
 <!-- to-do :
     - intergration mini-backend, wichtig: Übergabe Wert vom Login für aktuellen Benutzer für die jeweiligen Tasks
+    - SPEICHERN IM BACKEND GEM. VIDEO ingetrieren
     - Bild im input field nur anclickbar
     - JSDocs - Dokumentation integrieren
     - JS HTML-Templates für Login-Bereich
