@@ -147,7 +147,7 @@ async function openUserStartScreen() { // Log in when signed up
             activeUser.push(userEmail);
             activeUser.push(userPassword);
         }
-        
+
     }
     await backend.setItem('activeUser', JSON.stringify(activeUser));
     window.open("summary.html", "_self"); //... open start screen 'summary'
@@ -158,8 +158,9 @@ async function openUserStartScreen() { // Log in when signed up
 }
 
 async function openGuestStartScreen() { // Log in as a guest
-    let userName = 'Guest user';
-    guestUser.push(userName);
+    // let userName = 'Guest user';
+    // guestUser.push(userName);
+    guestUser.push({'name': 'Guest User', 'email': '', 'password': ''});
     await backend.setItem('guestUser', guestUser); // save to backend
     // await backend.setItem('guestUser', JSON.stringify(guestUser)); // save to backend
     window.open("summary.html", "_self");

@@ -69,14 +69,14 @@
                     <input type="password" required class="login-window-input-passwort"
                         id="signup-window-input-passwort" placeholder="Password" onclick="showSignUpPassword()">
 
-                    <div class="login-guestlogin">
+                    <div class="position-button">
                         <button class="signup-button">Sign up</button>
                     </div>
                 </form>
             </div>
             <!-- *********************** CONFIRM SIGN UP SECTION FOR JS ****************** -->
             <div class="confirm-signup-window d-none" id="confirm-signup-window">
-                <div class="login-guestlogin">
+                <div class="position-button">
                     <button class="confirm-signup-button" onclick="ConfirmSignUpBackToLoginScreen()">To finish the sign
                         up,
                         please confirm your email adress</button>
@@ -93,7 +93,7 @@
                 <form onsubmit="showResetPassword(); return false;">
                     <input type="email" required class="login-window-input-email"
                         id="forgot-password-window-input-email" placeholder="Email">
-                    <div class="login-guestlogin">
+                    <div class="position-button">
                         <button class="forgot-password-button">Send me the email</button>
                     </div>
                 </form>
@@ -120,7 +120,7 @@
             </div>
             <!-- *********************** CONFIRM NEW PASSWORD SECTION FOR JS ****************** -->
             <div class="confirm-password-window d-none" id="confirm-password-window">
-                <div class="login-guestlogin">
+                <div class="position-button">
                     <button class="confirm-password-button" onclick="ConfirmPasswordBackToLoginScreen()">You reset your
                         password</button>
                 </div>
@@ -133,9 +133,7 @@
 
 
 <!-- to-do :
-    - intergration mini-backend, wichtig: Übergabe Wert vom Login für aktuellen Benutzer für die jeweiligen Tasks:
-        - Problem: es werden alles User übergeben in das Array activeUser
-    - SPEICHERN IM BACKEND GEM. VIDEO ingetrieren, Problem mit CORS?
+    - Speichern / Abrufen des Arrays activeUser und guestUser
     - Bild im input field nur anclickbar
     - JSDocs - Dokumentation integrieren
     - JS HTML-Templates für Login-Bereich

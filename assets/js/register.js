@@ -24,9 +24,9 @@ let users = [
 ];
 
 let guestUser = [
-    {
-        'name': 'Guest user',
-    }
+    // {
+    //     'name': 'Guest user',
+    // }
 ];
 
 let activeUser = [];
@@ -58,7 +58,7 @@ async function confirmSignUpScreen() { //Add user
 // Add a user with this function:
 
 async function addUser() {
-    users.push('John');
+    users.push({'name': 'John', 'email': 'johndoe.dev.com', 'password': 'test123'});
     await backend.setItem('users', JSON.stringify(users));
 }
 
@@ -68,6 +68,6 @@ async function addUser() {
 // Delete
 // Delete all users from your array:
 
-async function deleteUser(name) {
-    await backend.deleteItem('users');
+async function deleteUser() {
+    await backend.deleteItem('guestUser');
 }
