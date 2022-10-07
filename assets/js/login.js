@@ -131,31 +131,36 @@ function confirmNewPassword() {
 
 
 
-function openUserStartScreen() { // Log in when signed up
+async function openUserStartScreen() { // Log in when signed up
     let email = document.getElementById('login-window-input-email').value;
     let password = document.getElementById('login-window-input-passwort').value;
     // let user = users.find(u => u.email == email.value && u.password == password.value);
     // if (users.find(u => u.email == email.value && u.password == password.value)) { // if the user and password exists ...
-        document.getElementById('failed-login').classList.add('d-none');
-        // activeUser.push(users); for-schleife erforderlich?
-        for (let i = 0; i < users.length; i++) {
-            let userName = users[i]['name'];
-            let userEmail = users[i]['email'];
-            let userPassword = users[i]['password'];
-            if (email == userEmail && password == userPassword) {
-                activeUser.push(userName);
-                activeUser.push(userEmail);
-                activeUser.push(userPassword);
-                }
-            backend.setItem('activeUser', JSON.stringify(activeUser));
+    document.getElementById('failed-login').classList.add('d-none');
+    // activeUser.push(users); for-schleife erforderlich?
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]['name'];
+        let userEmail = users[i]['email'];
+        let userPassword = users[i]['password'];
+        if (email == userEmail && password == userPassword) {
+            activeUser.push(userName);
+            activeUser.push(userEmail);
+            activeUser.push(userPassword);
         }
-        window.open("summary.html", "_self"); //... open start screen 'summary'
+        
+    }
+    await backend.setItem('activeUser', JSON.stringify(activeUser));
+    window.open("summary.html", "_self"); //... open start screen 'summary'
     // } else {
     //     document.getElementById('failed-login').classList.remove('d-none'); //... or let errer msg appear
     // }
-// }
-    }
+    // }
+}
 
-function openGuestStartScreen() { // Log in as a guest
+async function openGuestStartScreen() { // Log in as a guest
+    let userName = 'Guest user';
+    guestUser.push(userName);
+    await backend.setItem('guestUser', guestUser); // save to backend
+    // await backend.setItem('guestUser', JSON.stringify(guestUser)); // save to backend
     window.open("summary.html", "_self");
 }

@@ -27,11 +27,12 @@
             <a href="#">Not a Join user?</a>
             <button onclick="showSignUp()">Sign up</button>
         </div>
+        <!-- *********************** LOGIN SECTION FOR JS ****************** -->
         <div class="set-login-window">
             <div class="login-window" id="login-window">
                 <div class="login-headline">Log in</div>
                 <!-- <form onsubmit="openUserStartScreen(); return false;"> -->
-                <form onsubmit="openUserStartScreen(); return false;">
+                <form onsubmit="openUserStartScreen()">
                     <input type="email" required class="login-window-input-email" id="login-window-input-email"
                         placeholder="Email">
                     <input type="password" required class="login-window-input-passwort" id="login-window-input-passwort"
@@ -46,81 +47,85 @@
                     <span class="d-none red-font" id="failed-login">Email or password is wrong</span>
                     <div class="login-guestlogin">
                         <button class="login-button">Log in</button>
-                        <div><button class="guestlogin-button" onclick="openGuestStartScreen()">Guest Log in</button>
+                    </div>
+                </form>
+                <div><button class="guestlogin-button" onclick="openGuestStartScreen(); return false;">Guest Log
+                        in</button>
+                    <!-- </div> -->
+                    <!-- <button class="login-button" onclick="openUserStartScreen()">Log in</button> -->
+                </div>
+                <!-- </form> -->
+            </div>
+            <!-- *********************** SIGN UP SECTION FOR JS ****************** -->
+            <div class="signup-window d-none" id="signup-window">
+                <img src="assets/img/login/signup-back.png" class="signup-back" id="signup-back"
+                    onclick="signUpBackToLoginScreen()">
+                <div class="login-headline">Sign up</div>
+                <form onsubmit="confirmSignUpScreen(); return false;">
+                    <input type="text" required class="login-window-input-username" id="signup-window-input-username"
+                        placeholder="Name">
+                    <input type="email" required class="login-window-input-email" id="signup-window-input-email"
+                        placeholder="Email">
+                    <input type="password" required class="login-window-input-passwort"
+                        id="signup-window-input-passwort" placeholder="Password" onclick="showSignUpPassword()">
+
+                    <div class="login-guestlogin">
+                        <button class="signup-button">Sign up</button>
+                    </div>
                 </form>
             </div>
-            <!-- <button class="login-button" onclick="openUserStartScreen()">Log in</button> -->
-        </div>
-        <!-- </form> -->
-    </div>
-    <!-- *********************** SIGN UP SECTION FOR JS ****************** -->
-    <div class="signup-window d-none" id="signup-window">
-        <img src="assets/img/login/signup-back.png" class="signup-back" id="signup-back"
-            onclick="signUpBackToLoginScreen()">
-        <div class="login-headline">Sign up</div>
-        <form onsubmit="confirmSignUpScreen(); return false;">
-            <input type="text" required class="login-window-input-username" id="signup-window-input-username"
-                placeholder="Name">
-            <input type="email" required class="login-window-input-email" id="signup-window-input-email"
-                placeholder="Email">
-            <input type="password" required class="login-window-input-passwort" id="signup-window-input-passwort"
-                placeholder="Password" onclick="showSignUpPassword()">
-
-            <div class="login-guestlogin">
-                <button class="signup-button">Sign up</button>
+            <!-- *********************** CONFIRM SIGN UP SECTION FOR JS ****************** -->
+            <div class="confirm-signup-window d-none" id="confirm-signup-window">
+                <div class="login-guestlogin">
+                    <button class="confirm-signup-button" onclick="ConfirmSignUpBackToLoginScreen()">To finish the sign
+                        up,
+                        please confirm your email adress</button>
+                </div>
             </div>
-        </form>
-    </div>
-    <!-- *********************** CONFIRM SIGN UP SECTION FOR JS ****************** -->
-    <div class="confirm-signup-window d-none" id="confirm-signup-window">
-        <div class="login-guestlogin">
-            <button class="confirm-signup-button" onclick="ConfirmSignUpBackToLoginScreen()">To finish the sign up,
-                please confirm your email adress</button>
-        </div>
-    </div>
 
-    <!-- *********************** FORGOT PASSWORD SECTION FOR JS ****************** -->
-    <div class="forgot-password-window d-none" id="forgot-password-window">
-        <img src="assets/img/login/signup-back.png" class="forgot-back" id="signup-back"
-            onclick="forgotPasswordBackToLoginScreen()">
-        <div class="forgot-password-headline">I forgot my password</div>
-        <!-- *********************** FORM VALIDATION ****************** -->
-        <span>Don't worry! We will send you an email with the instructions to <br> reset you password.</span>
-        <form onsubmit="showResetPassword(); return false;">
-            <input type="email" required class="login-window-input-email" id="forgot-password-window-input-email"
-                placeholder="Email">
-            <div class="login-guestlogin">
-                <button class="forgot-password-button">Send me the email</button>
+            <!-- *********************** FORGOT PASSWORD SECTION FOR JS ****************** -->
+            <div class="forgot-password-window d-none" id="forgot-password-window">
+                <img src="assets/img/login/signup-back.png" class="forgot-back" id="signup-back"
+                    onclick="forgotPasswordBackToLoginScreen()">
+                <div class="forgot-password-headline">I forgot my password</div>
+                <!-- *********************** FORM VALIDATION ****************** -->
+                <span>Don't worry! We will send you an email with the instructions to <br> reset you password.</span>
+                <form onsubmit="showResetPassword(); return false;">
+                    <input type="email" required class="login-window-input-email"
+                        id="forgot-password-window-input-email" placeholder="Email">
+                    <div class="login-guestlogin">
+                        <button class="forgot-password-button">Send me the email</button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-    <!-- *********************** RESET PASSWORD SECTION FOR JS ****************** -->
-    <div class="reset-password-window d-none" id="reset-password-window">
-        <img src="assets/img/login/signup-back.png" class="reset-back" id="signup-back"
-            onclick="resetPasswordBackToForgotPasswordScreen()">
-        <div class="reset-password-headline">Reset your Password</div>
-        <!-- *********************** FORM VALIDATION ****************** -->
-        <span>Change your account password.</span>
-        <form onsubmit="showConfirmPassword(); return false;">
-            <input type="password" required class="login-window-input-passwort" id="new-password-window-input-email"
-                onclick="newPassword()" placeholder="New password">
-            <input type="password" required class="login-window-input-passwort" id="confirm-password-window-input-email"
-                onclick="confirmNewPassword()" placeholder="Confirm password">
-            <div class="repeat-password">
-                <span class="d-none red-font" id="repeat-password">Please repeat new password!</span>
+            <!-- *********************** RESET PASSWORD SECTION FOR JS ****************** -->
+            <div class="reset-password-window d-none" id="reset-password-window">
+                <img src="assets/img/login/signup-back.png" class="reset-back" id="signup-back"
+                    onclick="resetPasswordBackToForgotPasswordScreen()">
+                <div class="reset-password-headline">Reset your Password</div>
+                <!-- *********************** FORM VALIDATION ****************** -->
+                <span>Change your account password.</span>
+                <form onsubmit="showConfirmPassword(); return false;">
+                    <input type="password" required class="login-window-input-passwort"
+                        id="new-password-window-input-email" onclick="newPassword()" placeholder="New password">
+                    <input type="password" required class="login-window-input-passwort"
+                        id="confirm-password-window-input-email" onclick="confirmNewPassword()"
+                        placeholder="Confirm password">
+                    <div class="repeat-password">
+                        <span class="d-none red-font" id="repeat-password">Please repeat new password!</span>
 
-                <button class="forgot-password-button">Continue</button>
+                        <button class="forgot-password-button">Continue</button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-    <!-- *********************** CONFIRM NEW PASSWORD SECTION FOR JS ****************** -->
-    <div class="confirm-password-window d-none" id="confirm-password-window">
-        <div class="login-guestlogin">
-            <button class="confirm-password-button" onclick="ConfirmPasswordBackToLoginScreen()">You reset your
-                password</button>
+            <!-- *********************** CONFIRM NEW PASSWORD SECTION FOR JS ****************** -->
+            <div class="confirm-password-window d-none" id="confirm-password-window">
+                <div class="login-guestlogin">
+                    <button class="confirm-password-button" onclick="ConfirmPasswordBackToLoginScreen()">You reset your
+                        password</button>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
     </div>
 </body>
 

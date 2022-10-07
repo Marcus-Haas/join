@@ -33,7 +33,8 @@ let activeUser = [];
 
 async function initStart() {
     await downloadFromServer(); // wait for server
-    users = JSON.parse(backend.getItem('users')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
+    // users.push('users'); // Test
+    // users = JSON.parse(backend.getItem('users')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
     activeUser = JSON.parse(backend.getItem('activeUser')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
 }
 
