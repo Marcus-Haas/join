@@ -276,7 +276,7 @@ body {
     margin-bottom: 4px;
 }
 
-.title-popup-popup::placeholder {
+.title-popup::placeholder {
     color: #D1D1D1;
 }
 

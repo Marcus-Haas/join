@@ -34,6 +34,14 @@ function createTodo() {
 }
 
 
+function createTodoFromAddTask() {
+    let todo = document.getElementById('todo');
+    todo.innerHTML += templateCreateTodo();
+    changeColorOfCategory();
+    index++;
+}
+
+
 function changePrior() {
     if (currentPrior == 'Urgent') {
         let firstImage = document.getElementById('createFirstImg' + index);
@@ -382,6 +390,12 @@ function openForm() {
 function closeForm() {
     document.getElementById('popup-window').style.display = "none";
     document.getElementById('mainContainer').style.opacity = 'unset';
+    currentTitle = document.getElementById('title');
+    currentDescription = document.getElementById('descriptionPopup');
+    currentDuedate = document.getElementById('duedate');
+    currentTitle.value = ``;
+    currentDescription.value = ``;
+    currentDuedate.value = ``;
 }
 
 
