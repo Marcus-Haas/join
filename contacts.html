@@ -7,12 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
 
+    <link rel="shortcut icon" href="/assets/img/favicon/join.logo-dark.png" type="image/x-icon">
+
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/contacts.css">
+    <link rel="stylesheet" href="assets/css/contacts-overlay.css">
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/contatcs.js"></script>
 </head>
 
 <body onload="init()">
@@ -27,54 +31,54 @@
         <div class="contacts-slogan">Better with a team</div>
     </div>
 
-    <div class="new-contacts-btn">
+    <div class="new-contacts-btn" onclick="showOverlay()">
         <div class="new-contacts-btn-text">New contact</div>
         <img class="new-contacts-icon" src="assets/img/contacts/new-contact.png">
     </div>
 
     <!-----------------Overlay add contact------------------>
 
-    <div class="overlay-add-contact-container">
-        <div class="overlay-left-part">
-            <img class="overlay-join-logo" src="assets/img/contacts/logo.png">
-            <div class="overlay-headline">Add contact</div>
-            <div class="overlay-slogan">Tasks are better with a team!</div>
-            <div class="overlay-slogan-border"></div>
-        </div>
-
-        <img class="close-overlay" src="assets/img/contacts/cancel-icon.png">
-
-        <div class="overlay-user-icon-container">
-            <img class="overlay-user-icon-white" src="assets/img/contacts/user-white.png">
-        </div>
-
-        <div class="overlay-contacts-details-container">
-            <div class="overlay-contacts-details-frame">
-                <input class="overlay-input-design input-icon-user" type="text" placeholder="Name">
+    <div class="overlay-bg d-none" id="overlay-background">
+        <div class="overlay-add-contact-container" id="overlay-container">
+            <div class="overlay-left-part">
+                <img class="overlay-join-logo" src="assets/img/contacts/logo.png">
+                <div class="overlay-headline">Add contact</div>
+                <div class="overlay-slogan">Tasks are better with a team!</div>
+                <div class="overlay-slogan-border"></div>
             </div>
-            <div class="overlay-contacts-details-frame">
-                <input class="overlay-input-design input-icon-letter" type="email" placeholder="Email">
-            </div>
-            <div class="overlay-contacts-details-frame">
-                <input class="overlay-input-design input-icon-phone" type="tel" placeholder="Phone">
-            </div>
-        </div>
+            <div class="overlay-right-part">
+                <img class="close-overlay" src="assets/img/contacts/cancel-icon.png" onclick="closeOverlay()">
+                <div class="user-contacts-help-frame">
+                    <div class="overlay-user-icon-container">
+                        <img class="overlay-user-icon-white" src="assets/img/contacts/user-white.png">
+                    </div>
 
-        <div class="overlay-btn-frame">
-            <div class="overlay-btn-inner-frame">
-                <div class="overlay-cancel-btn">
-                    <div class="overlay-cancel-btn-text">Cancel</div>
-                    <div class="overlay-cancel-btn-image"></div>
+                    <div class="overlay-contacts-details-container">
+                        <div class="overlay-contacts-details-frame">
+                            <input class="overlay-input-design input-icon-user" type="text" placeholder="Name">
+                        </div>
+                        <div class="overlay-contacts-details-frame">
+                            <input class="overlay-input-design input-icon-letter" type="email" placeholder="Email">
+                        </div>
+                        <div class="overlay-contacts-details-frame">
+                            <input class="overlay-input-design input-icon-phone" type="tel" placeholder="Phone">
+                        </div>
+                    </div>
                 </div>
-                <div class="overlay-create-btn">
-                    <div class="overlay-create-btn-text">Create contact</div>
-                    <img src="assets/img/contacts/check.png">
+
+                <div class="overlay-btn-frame">
+                    <div class="overlay-cancel-btn" onclick="closeOverlay()">
+                        <div class="overlay-cancel-btn-text">Cancel</div>
+                        <div class="overlay-cancel-btn-image"></div>
+                    </div>
+                    <div class="overlay-create-btn">
+                        <div class="overlay-create-btn-text">Create contact</div>
+                        <img src="assets/img/contacts/check.png">
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
 
 </html>
