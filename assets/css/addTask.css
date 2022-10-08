@@ -4,11 +4,23 @@ body {
     margin: 0;
 }
 
-.main-container {
-    position: absolute;
-    width: 1200px;
-    left: 360px;
-    top: 167px;
+.main-container-addTask {
+    margin-left: 350px;
+    margin-top: 81px;
+    margin-right: 123px;
+}
+
+.container-for-seperate-left-and-right-content-addTask {
+    display: flex;
+}
+
+.seperate-line-popup-addTask {
+    width: 0px;
+    height: 551px;
+    border: 1px solid #D1D1D1;
+    margin-left: 60px;
+    margin-right: 60px;
+    box-sizing: border-box;
 }
 
 .text-header {
