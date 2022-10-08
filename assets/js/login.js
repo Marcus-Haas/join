@@ -8,7 +8,7 @@ function renderStartScreen() {
 }
 
 // <!-- *********************** LOG IN FUNCTION ****************** -->
-
+// marius.katzer@posteo.de
 async function openUserStartScreen() { // Log in when signed up
     let email = document.getElementById('login-window-input-email').value;
     let password = document.getElementById('login-window-input-passwort').value;
