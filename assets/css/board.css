@@ -1,5 +1,7 @@
 body {
     background-color: #F5F5F5;
+    padding: 0;
+    margin: 0;
 }
 
 .main-container {
@@ -276,7 +278,7 @@ body {
     margin-bottom: 4px;
 }
 
-.title-popup-popup::placeholder {
+.title-popup::placeholder {
     color: #D1D1D1;
 }
 
