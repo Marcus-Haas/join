@@ -110,23 +110,20 @@ body {
     margin-top: 140px;
 }
 
-.for-height-todo {
-    height: 100vh;
+.drag-area-highlight {
+    height: 190px;
+    border: dashed;
+    border-radius: 30px;
+    width: 240px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-.for-height-inprogess {
-    height: 100vh;
+.container-tasks {
+    min-height: 500px;
 }
 
-.for-height-awaitingfeedback {
-    height: 100vh;
-}
-
-.for-height-done {
-    height: 100vh;
-}
-
-.todo-child-container {
+.child-container-tasks{
     display: flex;
     justify-content: space-between;
     margin-bottom: 37.5px;
@@ -141,6 +138,8 @@ body {
 
 .plus-button {
     cursor: pointer;
+    height: 22px;
+    width: 22px;
 }
 
 .box {

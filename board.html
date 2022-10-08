@@ -43,31 +43,43 @@
 
         <div class="second-container">
 
-            <div class="for-height-todo" id="todo">
-                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+            <div ondrop="moveTo('todo')" ondragover="allowDrop(event)" class="container-tasks">
+                <div id="todoChild" onclick="openForm()" class="child-container-tasks">
                     <div class="title-area">To do</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
+                <div id="todo">
+
+                </div>
             </div>
 
-            <div class="for-height-inprogess" id="inProgess">
-                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+            <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" class="container-tasks">
+                <div id=" todoChild" onclick="openForm()" class="child-container-tasks">
                     <div class="title-area">In Progress</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
-            </div>
+                <div id="inProgress">
 
-            <div class="for-height-awaitingfeedback" id="awaitingFeedback" ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)">
-                <div id="todoChild" onclick="openForm()" class="todo-child-container">
-                    <div class="title-area">Awaiting Feedback</div>
-                    <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
             </div>
 
-            <div class="for-height-done" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                <div id="todoChild" onclick="openForm()" class="todo-child-container">
+            <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" class="container-tasks">
+                <div id="todoChild" onclick="openForm()" class="child-container-tasks">
+                    <div class="title-area">Awaiting Feedback</div>
+                    <img class="plus-button" src="assets/img/board/plus-button.svg">
+                </div>
+                <div id="awaitingFeedback">
+
+                </div>
+            </div>
+
+            <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="container-tasks">
+                <div id=" todoChild" onclick="openForm()" class="child-container-tasks">
                     <div class="title-area">Done</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
+                </div>
+                <div id="done">
+
                 </div>
             </div>
         </div>
