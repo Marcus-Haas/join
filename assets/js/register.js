@@ -38,6 +38,18 @@ async function initStart() {
     activeUser = JSON.parse(backend.getItem('activeUser')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
 }
 
+
+// **** TEST JSON ARRAY 'users' vom Backend laden ***
+// async function initStart() {
+//     await setURL(
+//         "https://gruppe-330.developerakademie.net/smallest_backend_ever/"
+//     );
+//     await downloadFromServer();
+//     users = (await JSON.parse(backend.getItem("users"))) || [];
+// }
+
+
+
 // Save
 // Add a user with this function:
 
@@ -58,7 +70,7 @@ async function confirmSignUpScreen() { //Add user
 // Add a user with this function:
 
 async function addUser() {
-    users.push({'name': 'John', 'email': 'johndoe.dev.com', 'password': 'test123'});
+    users.push({ 'name': 'John', 'email': 'johndoe.dev.com', 'password': 'test123' });
     await backend.setItem('users', JSON.stringify(users));
 }
 

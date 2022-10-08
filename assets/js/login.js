@@ -7,6 +7,34 @@ function renderStartScreen() {
     }, 350);
 }
 
+// <!-- *********************** LOG IN FUNCTION ****************** -->
+
+async function openUserStartScreen() { // Log in when signed up
+    let email = document.getElementById('login-window-input-email').value;
+    let password = document.getElementById('login-window-input-passwort').value;
+    document.getElementById('failed-login').classList.add('d-none');
+    for (let i = 0; i < users.length; i++) {
+        let userName = users[i]['name'];
+        let userEmail = users[i]['email'];
+        let userPassword = users[i]['password'];
+        if (email == userEmail && password == userPassword) {
+            activeUser.push(userName);
+            activeUser.push(userEmail);
+            activeUser.push(userPassword);
+        }
+    }
+    await backend.setItem('activeUser', JSON.stringify(activeUser));
+    window.open("summary.html", "_self");
+}
+
+async function openGuestStartScreen() { // Log in as a guest
+    guestUser.push({ 'name': 'Guest User', 'email': '', 'password': '' });
+    await backend.setItem('guestUser', guestUser); // save to backend
+    window.open("summary.html", "_self");
+}
+
+// <!-- *********************** LOG IN FUNCTIONALTY ****************** -->
+
 function showSignUp() {
     document.getElementById(`login-window`).classList.add(`d-none`);
     document.getElementById(`signup-window`).classList.remove(`d-none`);
@@ -30,8 +58,17 @@ function showForgetPassword() {
 }
 
 function showResetPassword() {
-    document.getElementById(`reset-password-window`).classList.remove(`d-none`);
-    document.getElementById(`forgot-password-window`).classList.add(`d-none`);
+    let email = document.getElementById('forgot-password-window-input-email').value;
+    for (let i = 0; i < users.length; i++) {
+        let userEmail = users[i]['email'];
+        if (email == userEmail) {
+            document.getElementById('failed-forgot-password-window-input-email').classList.add('d-none');
+            document.getElementById(`reset-password-window`).classList.remove(`d-none`);
+            document.getElementById(`forgot-password-window`).classList.add(`d-none`);
+        } else {
+            document.getElementById('failed-forgot-password-window-input-email').classList.remove('d-none');
+        }
+    }
 }
 
 function forgotPasswordBackToLoginScreen() {
@@ -44,13 +81,14 @@ function resetPasswordBackToForgotPasswordScreen() {
     document.getElementById(`forgot-password-window`).classList.remove(`d-none`);
 }
 
-function showConfirmPassword() {
+function showConfirmPasswordScreen() {
     let newPassword = document.getElementById(`new-password-window-input-email`).value;
     let confirmPassword = document.getElementById(`confirm-password-window-input-email`).value;
     if (newPassword == confirmPassword) {
         document.getElementById(`reset-password-window`).classList.add(`d-none`);
         document.getElementById(`confirm-password-window`).classList.remove(`d-none`);
         document.getElementById(`repeat-password`).classList.add(`d-none`);
+        // Hier müsste noch eine Änderung / Speicherung des Arrays erfolgen, nach Übergabe der Daten aus dem Array 'users'
     } else {
         document.getElementById(`repeat-password`).classList.remove(`d-none`);
     }
@@ -64,104 +102,77 @@ function ConfirmPasswordBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
 }
 
-// function confirmSignUpScreen() {
-
-// }
-
 function ConfirmSignUpBackToLoginScreen() {
     document.getElementById(`confirm-signup-window`).classList.add(`d-none`);
     document.getElementById(`login-window`).classList.remove(`d-none`);
 }
 
-
 function showSignInPassword() {
     let password = document.getElementById("login-window-input-passwort");
     if (password.type === "password") {
         password.type = "text";
-        document.getElementById(`login-window-input-passwort`).classList.add(`login-password-visibilty-off`);
-        document.getElementById(`login-window-input-passwort`).classList.remove(`login-password-visibilty-on`);
+        document.getElementById(`login-input-image`).classList.add(`login-password-visibilty-off`);
+        document.getElementById(`login-input-image`).classList.remove(`login-password-visibilty-on`);
     } else {
         password.type = "password";
-        document.getElementById(`login-window-input-passwort`).classList.add(`login-password-visibilty-on`);
-        document.getElementById(`login-window-input-passwort`).classList.remove(`login-password-visibilty-off`);
+        document.getElementById(`login-input-image`).classList.add(`login-password-visibilty-on`);
+        document.getElementById(`login-input-image`).classList.remove(`login-password-visibilty-off`);
     }
+}
+
+function activateShowSignInPassword() {
+    document.getElementById(`login-input-image`).classList.add(`login-password-visibilty-on`);
 }
 
 function showSignUpPassword() {
     let password = document.getElementById("signup-window-input-passwort");
     if (password.type === "password") {
         password.type = "text";
-        document.getElementById(`new-password-window-input-email`).classList.add(`login-password-visibilty-off`);
-        document.getElementById(`new-password-window-input-email`).classList.remove(`login-password-visibilty-on`);
+        document.getElementById(`signup-input-image`).classList.add(`login-password-visibilty-off`);
+        document.getElementById(`signup-input-image`).classList.remove(`login-password-visibilty-on`);
     } else {
         password.type = "password";
-        document.getElementById(`new-password-window-input-email`).classList.add(`login-password-visibilty-on`);
-        document.getElementById(`new-password-window-input-email`).classList.remove(`login-password-visibilty-off`);
+        document.getElementById(`signup-input-image`).classList.add(`login-password-visibilty-on`);
+        document.getElementById(`signup-input-image`).classList.remove(`login-password-visibilty-off`);
     }
 }
 
-function newPassword() {
+function activateShowSignUpPassword() {
+    document.getElementById(`signup-input-image`).classList.add(`login-password-visibilty-on`);
+}
+
+
+function showNewPassword() {
     let password = document.getElementById("new-password-window-input-email");
     if (password.type === "password") {
         password.type = "text";
-        document.getElementById(`new-password-window-input-email`).classList.add(`login-password-visibilty-off`);
-        document.getElementById(`new-password-window-input-email`).classList.remove(`login-password-visibilty-on`);
+        document.getElementById(`new-password-input-image`).classList.add(`login-password-visibilty-off`);
+        document.getElementById(`new-password-input-image`).classList.remove(`login-password-visibilty-on`);
     } else {
         password.type = "password";
-        document.getElementById(`new-password-window-input-email`).classList.add(`login-password-visibilty-on`);
-        document.getElementById(`new-password-window-input-email`).classList.remove(`login-password-visibilty-off`);
+        document.getElementById(`new-password-input-image`).classList.add(`login-password-visibilty-on`);
+        document.getElementById(`new-password-input-image`).classList.remove(`login-password-visibilty-off`);
     }
 }
 
-function confirmNewPassword() {
+function activateShowNewPassword() {
+    document.getElementById(`new-password-input-image`).classList.add(`login-password-visibilty-on`);
+}
+
+function showConfirmPassword() {
     let password = document.getElementById("confirm-password-window-input-email");
     if (password.type === "password") {
         password.type = "text";
-        document.getElementById(`confirm-password-window-input-email`).classList.add(`login-password-visibilty-off`);
-        document.getElementById(`confirm-password-window-input-email`).classList.remove(`login-password-visibilty-on`);
+        document.getElementById(`confirm-password-input-image`).classList.add(`login-password-visibilty-off`);
+        document.getElementById(`confirm-password-input-image`).classList.remove(`login-password-visibilty-on`);
     } else {
         password.type = "password";
-        document.getElementById(`confirm-password-window-input-email`).classList.add(`login-password-visibilty-on`);
-        document.getElementById(`confirm-password-window-input-email`).classList.remove(`login-password-visibilty-off`);
+        document.getElementById(`confirm-password-input-image`).classList.add(`login-password-visibilty-on`);
+        document.getElementById(`confirm-password-input-image`).classList.remove(`login-password-visibilty-off`);
     }
 }
 
-
-// <!-- *********************** LOG IN FUNCTION ****************** -->
-
-
-
-async function openUserStartScreen() { // Log in when signed up
-    let email = document.getElementById('login-window-input-email').value;
-    let password = document.getElementById('login-window-input-passwort').value;
-    // let user = users.find(u => u.email == email.value && u.password == password.value);
-    // if (users.find(u => u.email == email.value && u.password == password.value)) { // if the user and password exists ...
-    document.getElementById('failed-login').classList.add('d-none');
-    // activeUser.push(users); for-schleife erforderlich?
-    for (let i = 0; i < users.length; i++) {
-        let userName = users[i]['name'];
-        let userEmail = users[i]['email'];
-        let userPassword = users[i]['password'];
-        if (email == userEmail && password == userPassword) {
-            activeUser.push(userName);
-            activeUser.push(userEmail);
-            activeUser.push(userPassword);
-        }
-
-    }
-    await backend.setItem('activeUser', JSON.stringify(activeUser));
-    window.open("summary.html", "_self"); //... open start screen 'summary'
-    // } else {
-    //     document.getElementById('failed-login').classList.remove('d-none'); //... or let errer msg appear
-    // }
-    // }
+function activateShowConfirmNewPassword() {
+    document.getElementById(`confirm-password-input-image`).classList.add(`login-password-visibilty-on`);
 }
 
-async function openGuestStartScreen() { // Log in as a guest
-    // let userName = 'Guest user';
-    // guestUser.push(userName);
-    guestUser.push({'name': 'Guest User', 'email': '', 'password': ''});
-    await backend.setItem('guestUser', guestUser); // save to backend
-    // await backend.setItem('guestUser', JSON.stringify(guestUser)); // save to backend
-    window.open("summary.html", "_self");
-}

@@ -381,7 +381,7 @@ body {
     flex: none;
     order: 0;
     flex-grow: 0;
-    background: url(../img/login/lock.png);
+    /* background: url(../img/login/lock.png); */
     background-size: 18px;
     background-position: 95%, right;
     background-repeat: no-repeat;
@@ -390,10 +390,18 @@ body {
 
 .login-password-visibilty-on {
     background-image: url(../img/login/visibility_on.png) !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-sizing: border-box !important;;
+    background-size: contain !important;;
 }
 
 .login-password-visibilty-off {
     background-image: url(../img/login/visibility_off.png) !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-sizing: border-box !important;;
+    background-size: contain !important;;
 }
 
 .remember-me-clickbox input {
@@ -609,7 +617,7 @@ body {
 
 .forgot-password-window span {
     width: 656px;
-    height: 50px;
+    /* height: 50px; */
 
     /* Version 2/t6 */
 
@@ -668,6 +676,52 @@ body {
     justify-content: center;
 
 }
+
+.login-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 135px;
+    top: 100px;
+    cursor: pointer;
+}
+
+.signup-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 135px;
+    top: 355px;
+    cursor: pointer;
+}
+
+.new-password-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 200px;
+    top: 245px;
+    cursor: pointer;
+}
+
+.confirm-password-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 200px;
+    top: 330px;
+    cursor: pointer;
+}
+
+
 
 .reset-password-window form {
     display: flex;
