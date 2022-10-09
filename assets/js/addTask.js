@@ -26,7 +26,8 @@ function createTodoInBoard() {
 function clearAndPushPriorAndRenderTaskInBoard() {
     pushPrior();
     clearTodo();
-    createTodoFromAddTask();
+    let url = '/board.html';
+    window.location.href = url;
 }
 
 /*
