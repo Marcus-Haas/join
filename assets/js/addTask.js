@@ -1,7 +1,7 @@
 /*
  * create form addTask a task in the board page
 */
-function createTodoInBoard() {
+function createTodoForBoard() {
     currentTitle = document.getElementById('title');
     title.push(currentTitle.value);
     currentDescription = document.getElementById('descriptionPopup');
@@ -26,8 +26,6 @@ function createTodoInBoard() {
 function clearAndPushPriorAndRenderTaskInBoard() {
     pushPrior();
     clearTodo();
-    let url = '/board.html';
-    window.location.href = url;
 }
 
 /*
