@@ -26,7 +26,10 @@ function createTodoForBoard() {
 function clearAndPushPriorAndRenderTaskInBoard() {
     pushPrior();
     clearTodo();
+    let url = 'board.html';
+    window.open(url);
 }
+
 
 /*
  * clear the form
