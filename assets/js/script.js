@@ -1,7 +1,8 @@
 async function init() {
     await includeHTML();
-    showMyName(); // from summary.js //
+    showMyName();
 }
+
 
 // Include HTML Templates //
 async function includeHTML() {

@@ -1,7 +1,6 @@
 function showOverlay() {
     document.getElementById('overlay-background').classList.remove('d-none');
     document.getElementById('overlay-container').classList.add('show-overlay-add-container');
-    startTransition();
 }
 
 
