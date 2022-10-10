@@ -7,20 +7,21 @@ body {
 .privacy-main {
     display: flex;
     flex-direction: column;
-    padding-top: 80px;
+    padding-top: 50px;
     padding-left: 350px;
-    padding-right: 200px;
+    padding-right: 50px;
     overflow: auto;
     height: calc(100vh - 170px);
 }
 
 .privacy-back-btn {
+    box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     width: 37px;
     height: 37px;
     width: 100%;
+    padding-top: 40px;
 }
 
 .privacy-back-btn img {
