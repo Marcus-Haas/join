@@ -2,7 +2,7 @@ function showLogout() {
     document.getElementById('header-logout').innerHTML = /*html*/ `
     <div class="popup-frame-logout" id="hide-btn" onclick="hideLogout()">
         <div onclick="doNotClose(event)">
-            <div class="logout-btn">
+            <div class="logout-btn" onclick="Logout()">
                 <div class="logout-inner-btn">Log out</div>
             </div>
         </div>
@@ -18,4 +18,9 @@ function hideLogout() {
 
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+
+function Logout() {
+    window.open("index.html", "_self");
 }

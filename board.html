@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="assets/css/board.css">
     <script src="assets/js/script.js"></script>
     <script src="/assets/js/header.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
     <script src="assets/js/board.js"></script>
     <title>Board</title>
 </head>
 
-<body onload="init()">
+<body onload="init();">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -85,7 +86,7 @@
         </div>
     </div>
 
-    <form onsubmit="createTodo()">
+    <form onsubmit="createTodo(); return false;">
         <div id="popup-window" class="add-task-pop-up">
             <div onclick="closeForm()" class="cross-popup"><img src="assets/img/board/close-popup.svg"></div>
             <div class="padding-popup-box">

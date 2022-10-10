@@ -34,6 +34,9 @@ function createTodo() {
 }
 
 
+/*
+* render todo box from addTask
+*/
 function createTodoFromAddTask() {
     let todo = document.getElementById('todo');
     todo.innerHTML += templateCreateTodo();
@@ -42,6 +45,9 @@ function createTodoFromAddTask() {
 }
 
 
+/*
+* change color prior in task box
+*/
 function changePrior() {
     if (currentPrior == 'Urgent') {
         let firstImage = document.getElementById('createFirstImg' + index);
@@ -89,7 +95,7 @@ function changePriorAfterDragAndDrop(i) {
 }
 
 /*
-* render todo box
+* update todo array
 */
 function updateArrayTodo() {
     currentTitle = document.getElementById('title');
@@ -124,6 +130,9 @@ function templateCreateTodo() {
 }
 
 
+/*
+* render todo area after drag and drop
+*/
 function updateTodo() {
     let todo = document.getElementById('todo');
     todo.innerHTML = ``;
@@ -154,6 +163,9 @@ function templateUpdateTodo(i) {
 }
 
 
+/*
+* render in progress area after drag and drop
+*/
 function updateInProgress() {
     let inProgress = document.getElementById('inProgress');
     inProgress.innerHTML = ``;
@@ -184,7 +196,9 @@ function templateUpdateInProgress(i) {
 }
 
 
-
+/*
+* render awaiting feedback area after drag and drop
+*/
 function updateAwaitingFeedback() {
     let awaitingFeedback = document.getElementById('awaitingFeedback');
     awaitingFeedback.innerHTML = ``;
@@ -215,6 +229,9 @@ function templateUpdateAwaitingFeedback(i) {
 }
 
 
+/*
+* render done area after drag and drop
+*/
 function updateDone() {
     let done = document.getElementById('done');
     done.innerHTML = ``;
@@ -243,6 +260,7 @@ function templateUpdateDone(i) {
         </div>
     </div>`;
 }
+
 
 /*
 * drag and drop a task
@@ -305,7 +323,11 @@ function changeColorUrgent() {
     urgent.classList.add('urgent-bg-color');
     medium.classList.remove('medium-bg-color');
     low.classList.remove('low-bg-color');
+    changeColorUrgentReverse();
+}
 
+
+function changeColorUrgentReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopup');
     let changeColorSecond = document.getElementById('mediumSecondPopup');
     changeColorFirst.classList.remove('change-color-img');
@@ -332,7 +354,11 @@ function changeColorMedium() {
     urgent.classList.remove('urgent-bg-color');
     medium.classList.add('medium-bg-color');
     low.classList.remove('low-bg-color');
+    changeColorMediumReverse();
+}
 
+
+function changeColorMediumReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopup');
     let changeColorSecond = document.getElementById('mediumSecondPopup');
     changeColorFirst.classList.add('change-color-img');
@@ -359,7 +385,11 @@ function changeColorLow() {
     urgent.classList.remove('urgent-bg-color');
     medium.classList.remove('medium-bg-color');
     low.classList.add('low-bg-color');
+    changeColorLowReverse();
+}
 
+
+function changeColorLowReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopup');
     let changeColorSecond = document.getElementById('mediumSecondPopup');
     changeColorFirst.classList.remove('change-color-img');
@@ -412,6 +442,11 @@ function changeColorAfterCreateTask() {
     urgent.classList.remove('urgent-bg-color');
     medium.classList.remove('medium-bg-color');
     low.classList.remove('low-bg-color');
+    changeColorAfterCreateTaskReverse();
+}
+
+
+function changeColorAfterCreateTaskReverse() {
     let changeColorFirstUrgent = document.getElementById('urgentFirstPopup');
     let changeColorSecondUrgent = document.getElementById('urgentSecondPopup');
     changeColorFirstUrgent.classList.remove('change-color-img');
@@ -427,6 +462,9 @@ function changeColorAfterCreateTask() {
 }
 
 
+/*
+ * change the category color 
+*/
 function changeColorOfCategory() {
     let categoryAddColor = document.getElementById('changeColorOfCategory' + index);
     let category = categoryAddColor.innerText;
@@ -449,6 +487,7 @@ function changeColorOfCategory() {
         categoryAddColor.classList.add('media');
     }
 }
+
 
 function changeColorOfCategoryAfterDragAndDrop(i) {
     let categoryAddColor = document.getElementById('changeColorOfCategoryAfterDragAndDrop' + i);

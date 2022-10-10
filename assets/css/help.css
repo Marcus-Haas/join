@@ -4,28 +4,31 @@ body {
     font-family: 'Inter';
 }
 
-.help-back-btn {
+.help-main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-left: 350px;
+    padding-right: 50px;
+}
+
+.help-back-btn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
     width: 37px;
     height: 37px;
-    left: 1281px;
-    top: 165px;
+    width: 100%;
+    padding-top: 40px;
+    z-index: 1;
 }
 
 .help-title-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 30px;
-    position: absolute;
-    width: 138px;
-    height: 73px;
-    left: 355px;
-    top: 171px;
+    margin-bottom: 30px;
+
 }
 
 .help-title {
@@ -38,11 +41,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 35px;
-    position: absolute;
-    width: 976px;
-    height: 411px;
-    left: 347px;
-    top: 292px;
 }
 
 .help-explain-top-frame {
@@ -50,27 +48,18 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    width: 969px;
-    height: 137px;
 }
 
 .help-explain-title {
-    width: 346px;
-    height: 32px;
     font-weight: 700;
     font-size: 27px;
 }
 
 .help-explain-text {
-    width: 969px;
-    height: 95px;
-    font-weight: 400;
     font-size: 16px;
 }
 
 .how-to-use-title {
-    width: 346px;
-    height: 32px;
     font-weight: 700;
     font-size: 27px;
 }
@@ -80,8 +69,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    width: 976px;
-    height: 172px;
 }
 
 .help-instructions-frame {
@@ -89,19 +76,15 @@ body {
     flex-direction: row;
     align-items: flex-start;
     gap: 35px;
-    width: 971px;
-    height: 50px;
 }
 
 .help-instructions-number {
     width: 21px;
-    height: 32px;
     font-weight: 700;
     font-size: 27px;
 }
 
 .help-instructions-text {
-    width: 915px;
     font-family: 'Poppins';
     font-weight: 400;
     font-size: 16px;

@@ -1,6 +1,8 @@
-function init() {
-    includeHTML();
+async function init() {
+    await includeHTML();
+    showMyName();
 }
+
 
 // Include HTML Templates //
 async function includeHTML() {
@@ -18,5 +20,5 @@ async function includeHTML() {
     //<!-- *********************** Test Marius: Übergabe von Werten ****************** -->
     await downloadFromServer(); // wait for server
     activeUser = JSON.parse(backend.getItem('activeUser')) || [];
-    //<!-- *********************** Test Marius: Übergabe von Werten ****************** -->
+    //<!-- *********************** Test Marius: Übergabe von Werten ****************** -->;
 }

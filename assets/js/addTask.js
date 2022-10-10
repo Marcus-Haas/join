@@ -1,4 +1,7 @@
-function createTodoInBoard() {
+/*
+ * create form addTask a task in the board page
+*/
+function createTodoForBoard() {
     currentTitle = document.getElementById('title');
     title.push(currentTitle.value);
     currentDescription = document.getElementById('descriptionPopup');
@@ -11,13 +14,26 @@ function createTodoInBoard() {
     duedate.push(currentDuedate.value);
     statusContainer.push('todo');
     id.push(index);
-    pushPrior();
     let addTask = document.getElementById('addedTask');
     addTask.style = "display: flex;";
-    clearTodo();
-    createTodoFromAddTask();
+    clearAndPushPriorAndRenderTaskInBoard();
 }
 
+
+/*
+ * clear form and push task before render task in board
+*/
+function clearAndPushPriorAndRenderTaskInBoard() {
+    pushPrior();
+    clearTodo();
+    let url = 'board.html';
+    window.open(url);
+}
+
+
+/*
+ * clear the form
+*/
 function clearTodo() {
     currentTitle.value = ``;
     currentDescription.value = ``;
@@ -26,6 +42,9 @@ function clearTodo() {
 }
 
 
+/*
+ * push prior status
+*/
 function pushPrior() {
     if (currentPrior == 'Urgent') {
         prior.push(currentPrior);
