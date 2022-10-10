@@ -21,6 +21,8 @@ function doNotClose(event) {
 }
 
 
-function Logout() {
+async function Logout() {
+    await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
     window.open("index.html", "_self");
+    
 }

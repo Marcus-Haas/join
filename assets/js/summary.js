@@ -1,7 +1,10 @@
-// show my Name at summary.html //
-
+// show my Name or Guest at summary.html //
 function showMyName() {
     let myName = activeUser[0];
     let Name = document.getElementById('my-name');
-    Name.innerHTML = myName;
+    if (activeUser == 0) {
+        Name.innerHTML = 'Guest';
+    } else {
+        Name.innerHTML = myName;
+    }
 }

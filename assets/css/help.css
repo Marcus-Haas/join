@@ -56,7 +56,7 @@ body {
 }
 
 .help-explain-text {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .how-to-use-title {
@@ -68,18 +68,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 30px;
 }
 
 .help-instructions-frame {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: 35px;
 }
 
 .help-instructions-number {
-    width: 21px;
     font-weight: 700;
     font-size: 27px;
 }
@@ -87,5 +85,5 @@ body {
 .help-instructions-text {
     font-family: 'Poppins';
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
 }
