@@ -1,11 +1,4 @@
 let allTasks = [];
-let title = [];
-let description = [];
-let category = [];
-let assigned = [];
-let duedate = [];
-let id = [];
-let statusContainer = [];
 let prior = [];
 let currentTitle;
 let currentDescription;
@@ -17,7 +10,7 @@ let index = 0;
 let currentPrior;
 
 
-/*
+/**
 * render todo box
 */
 function createTodo() {
@@ -35,7 +28,7 @@ function createTodo() {
 }
 
 
-/*
+/**
 * render todo box from addTask
 */
 function createTodoFromAddTask() {
@@ -46,7 +39,7 @@ function createTodoFromAddTask() {
 }
 
 
-/*
+/**
 * change color prior in task box
 */
 function changePrior() {
@@ -95,29 +88,17 @@ function changePriorAfterDragAndDrop(i) {
     }
 }
 
-/*
+
+/**
 * update todo array
 */
 function updateArrayTodo() {
-    currentTitle = document.getElementById('title');
-    title.push(currentTitle.value);
-
-    currentDescription = document.getElementById('descriptionPopup');
-    description.push(currentDescription.value);
-
-    currentCategory = document.getElementById('category-popup');
-    category.push(currentCategory.value);
-
-    currentAssigned = document.getElementById('assignedto-popup');
-    assigned.push(currentAssigned.value);
-
-    currentDuedate = document.getElementById('duedate');
-    duedate.push(currentDuedate.value);
-
-    statusContainer.push('todo');
-    id.push(index);
-
-    /*let task = {
+    currentTitle = document.getElementById('title').value;
+    currentDescription = document.getElementById('descriptionPopup').value;
+    currentCategory = document.getElementById('category-popup').value;
+    currentAssigned = document.getElementById('assignedto-popup').value;
+    currentDuedate = document.getElementById('duedate').value;
+    let task = {
         'title': currentTitle,
         'description': currentDescription,
         'category': currentCategory,
@@ -126,38 +107,18 @@ function updateArrayTodo() {
         'status': 'todo',
         'id': index,
     };
-
-    console.log(task);
     allTasks.push(task);
-    console.log(allTasks)*/
 }
-
-
-/*function templateCreateTodo() {
-    return `    
-    <div draggable="true" ondragstart="startDragging(${index})" class="box">
-        <div id="changeColorOfCategory${index}" class="category">${allTasks['category'][index]}</div>
-        <div class="title">${allTasks['title'][index]}</div>
-        <div class="description">${allTasks['description'][index]}</div>
-        <div class="assigned-and-prio">
-            <div class="assigned">${allTasks['assigned'][index]}</div>
-                <div class="prio">
-                    <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
-                    <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
-                </div>
-        </div>
-    </div>`;
-}*/
 
 
 function templateCreateTodo() {
     return `    
-    <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
-        <div id="changeColorOfCategory${index}" class="category">${category[index]}</div>
-        <div class="title">${title[index]}</div>
-        <div class="description">${description[index]}</div>
+    <div draggable="true" ondragstart="startDragging(${index})" class="box">
+        <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
+        <div class="title">${allTasks[index]['title']}</div>
+        <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[index]}</div>
+            <div class="assigned">${allTasks[index]['assigned']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
@@ -167,14 +128,14 @@ function templateCreateTodo() {
 }
 
 
-/*
+/**
 * render todo area after drag and drop
 */
 function updateTodo() {
     let todo = document.getElementById('todo');
     todo.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'todo') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'todo') {
             todo.innerHTML += templateUpdateTodo(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -186,11 +147,11 @@ function updateTodo() {
 function templateUpdateTodo(i) {
     return `    
     <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${allTasks[i]['assigned']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -200,14 +161,14 @@ function templateUpdateTodo(i) {
 }
 
 
-/*
+/**
 * render in progress area after drag and drop
 */
 function updateInProgress() {
     let inProgress = document.getElementById('inProgress');
     inProgress.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'inProgress') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'inProgress') {
             inProgress.innerHTML += templateUpdateInProgress(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -219,11 +180,11 @@ function updateInProgress() {
 function templateUpdateInProgress(i) {
     return `    
     <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${allTasks[i]['assigned']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -233,14 +194,14 @@ function templateUpdateInProgress(i) {
 }
 
 
-/*
+/**
 * render awaiting feedback area after drag and drop
 */
 function updateAwaitingFeedback() {
     let awaitingFeedback = document.getElementById('awaitingFeedback');
     awaitingFeedback.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'awaitingFeedback') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'awaitingFeedback') {
             awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -252,11 +213,11 @@ function updateAwaitingFeedback() {
 function templateUpdateAwaitingFeedback(i) {
     return `    
     <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${allTasks[i]['assigned']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -266,14 +227,14 @@ function templateUpdateAwaitingFeedback(i) {
 }
 
 
-/*
+/**
 * render done area after drag and drop
 */
 function updateDone() {
     let done = document.getElementById('done');
     done.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'done') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'done') {
             done.innerHTML += templateUpdateDone(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -285,11 +246,11 @@ function updateDone() {
 function templateUpdateDone(i) {
     return `    
     <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${allTasks[i]['assigned']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -299,7 +260,7 @@ function templateUpdateDone(i) {
 }
 
 
-/*
+/**
 * drag and drop a task
 */
 function startDragging(id) {
@@ -313,7 +274,7 @@ function allowDrop(ev) {
 
 
 function moveTo(changeStatus) {
-    statusContainer[currentDraggedElement] = changeStatus;
+    allTasks[currentDraggedElement]['status'] = changeStatus;
     updateTodo();
     updateInProgress();
     updateAwaitingFeedback();
@@ -321,7 +282,7 @@ function moveTo(changeStatus) {
 }
 
 
-/*
+/**
 * delete icon if someone is tiping
 */
 function deleteIconInSearchInputField() {
@@ -333,7 +294,7 @@ function deleteIconInSearchInputField() {
 }
 
 
-/*
+/**
 * remov line and icon if inputfield is empty
 */
 function loadIconAndLine() {
@@ -349,7 +310,7 @@ function loadIconAndLine() {
 }
 
 
-/*
+/**
 * change bg color of urgent
 */
 function changeColorUrgent() {
@@ -380,7 +341,7 @@ function changeColorUrgentReverse() {
 }
 
 
-/*
+/**
 * change bg color of medium
 */
 function changeColorMedium() {
@@ -411,7 +372,7 @@ function changeColorMediumReverse() {
 }
 
 
-/*
+/**
 * change bg color of low
 */
 function changeColorLow() {
@@ -442,7 +403,7 @@ function changeColorLowReverse() {
 }
 
 
-/*
+/**
 * open the pop-up
 */
 function openForm() {
@@ -450,7 +411,7 @@ function openForm() {
 }
 
 
-/*
+/**
 * close the pop-up
 */
 function closeForm() {
@@ -465,7 +426,7 @@ function closeForm() {
 }
 
 
-/*
+/**
  * change the prio to the basic form 
 */
 function changeColorAfterCreateTask() {
@@ -498,7 +459,7 @@ function changeColorAfterCreateTaskReverse() {
 }
 
 
-/*
+/**
  * change the category color 
 */
 function changeColorOfCategory() {
@@ -549,11 +510,15 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 }
 
 
+/**
+ * open details of the task
+*/
 function openTaskDetails() {
     document.getElementById('openTask').classList.remove('d-none');
     let openTask = document.getElementById('openTask');
     openTask.innerHTML = templateOpenTaskDetails();
 }
+
 
 function templateOpenTaskDetails() {
     return `
