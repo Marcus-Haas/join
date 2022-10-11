@@ -95,8 +95,6 @@ function changePriorAfterDragAndDrop(i) {
 function updateArrayTodo() {
     currentTitle = document.getElementById('title').value;
     currentDescription = document.getElementById('descriptionPopup').value;
-    currentCategory = document.getElementById('category-popup').value;
-    currentAssigned = document.getElementById('assignedto-popup').value;
     currentDuedate = document.getElementById('duedate').value;
     let task = {
         'title': currentTitle,
@@ -111,9 +109,25 @@ function updateArrayTodo() {
 }
 
 
+/**
+* identify the selected category
+*/
+function identifySelectedCategory(sel) {
+    currentCategory = sel.options[sel.selectedIndex].text;
+}
+
+
+/**
+* identify the selected assigne
+*/
+function identifySelectedAssigne(sel) {
+    currentAssigned = sel.options[sel.selectedIndex].text;
+}
+
+
 function templateCreateTodo() {
     return `    
-    <div draggable="true" ondragstart="startDragging(${index})" class="box">
+    <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
         <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
@@ -146,7 +160,7 @@ function updateTodo() {
 
 function templateUpdateTodo(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -179,7 +193,7 @@ function updateInProgress() {
 
 function templateUpdateInProgress(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -212,7 +226,7 @@ function updateAwaitingFeedback() {
 
 function templateUpdateAwaitingFeedback(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -245,7 +259,7 @@ function updateDone() {
 
 function templateUpdateDone(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -513,24 +527,24 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 /**
  * open details of the task
 */
-function openTaskDetails() {
+function openTaskDetails(i) {
     document.getElementById('openTask').classList.remove('d-none');
     let openTask = document.getElementById('openTask');
-    openTask.innerHTML = templateOpenTaskDetails();
+    openTask.innerHTML = templateOpenTaskDetails(i);
 }
 
 
-function templateOpenTaskDetails() {
+function templateOpenTaskDetails(i) {
     return `
     <div class="open-taks">
     <div onclick="closeTaskDetails()" class="close-open-task"><img src="assets/img/board/close-popup.svg"></div>
-    <div class="category-open-task">Sales</div>
-    <div class="title-open-task">Call potencial clients</div>
-    <div class="description-open-task">Make the product presentation to prospective buyers</div>
-    <div class="duedate-open-task">Due date: <span class="date-open-task">05-08-2022</span></div>
+    <div class="category-open-task">${allTasks[i]['category']}</div>
+    <div class="title-open-task">${allTasks[i]['title']}</div>
+    <div class="description-open-task">${allTasks[i]['description']}</div>
+    <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
     <div class="container-priority-open-task">
         <div class="priority-open-task">Priority:</div>
-        <div class="current-prior-open-task">Urgent
+        <div class="current-prior-open-task">${prior[i]}
             <div class="current-prior-img-position-open-task">
                 <img class="current-prior-img-first-open-task" src="assets/img/board/arrow-urgent.svg"><img
                     class="current-prior-img-second-open-task" src="assets/img/board/arrow-urgent.svg">
@@ -543,7 +557,7 @@ function templateOpenTaskDetails() {
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
                 <div class="profile-assigned-open-task">MM</div>
-                <div class="name-assigned-open-task">Max Mustermann</div>
+                <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
             <div class="edit-open-task">
                 <img class="edit-img-pen-open-task" src="assets/img/board/pen.svg">
