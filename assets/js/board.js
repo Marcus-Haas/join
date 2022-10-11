@@ -1,3 +1,4 @@
+let allTasks = [];
 let title = [];
 let description = [];
 let category = [];
@@ -100,22 +101,58 @@ function changePriorAfterDragAndDrop(i) {
 function updateArrayTodo() {
     currentTitle = document.getElementById('title');
     title.push(currentTitle.value);
+
     currentDescription = document.getElementById('descriptionPopup');
     description.push(currentDescription.value);
+
     currentCategory = document.getElementById('category-popup');
     category.push(currentCategory.value);
+
     currentAssigned = document.getElementById('assignedto-popup');
     assigned.push(currentAssigned.value);
+
     currentDuedate = document.getElementById('duedate');
     duedate.push(currentDuedate.value);
+
     statusContainer.push('todo');
     id.push(index);
+
+    /*let task = {
+        'title': currentTitle,
+        'description': currentDescription,
+        'category': currentCategory,
+        'assigned': currentAssigned,
+        'duedate': currentDuedate,
+        'status': 'todo',
+        'id': index,
+    };
+
+    console.log(task);
+    allTasks.push(task);
+    console.log(allTasks)*/
 }
+
+
+/*function templateCreateTodo() {
+    return `    
+    <div draggable="true" ondragstart="startDragging(${index})" class="box">
+        <div id="changeColorOfCategory${index}" class="category">${allTasks['category'][index]}</div>
+        <div class="title">${allTasks['title'][index]}</div>
+        <div class="description">${allTasks['description'][index]}</div>
+        <div class="assigned-and-prio">
+            <div class="assigned">${allTasks['assigned'][index]}</div>
+                <div class="prio">
+                    <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
+                    <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
+                </div>
+        </div>
+    </div>`;
+}*/
 
 
 function templateCreateTodo() {
     return `    
-    <div draggable="true" ondragstart="startDragging(${index})" class="box">
+    <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
         <div id="changeColorOfCategory${index}" class="category">${category[index]}</div>
         <div class="title">${title[index]}</div>
         <div class="description">${description[index]}</div>
@@ -410,7 +447,6 @@ function changeColorLowReverse() {
 */
 function openForm() {
     document.getElementById('popup-window').style.display = 'unset';
-    document.getElementById('mainContainer').style.opacity = '0.5';
 }
 
 
@@ -510,4 +546,51 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
     if (category == 'Media') {
         categoryAddColor.classList.add('media');
     }
+}
+
+
+function openTaskDetails() {
+    document.getElementById('openTask').classList.remove('d-none');
+    let openTask = document.getElementById('openTask');
+    openTask.innerHTML = templateOpenTaskDetails();
+}
+
+function templateOpenTaskDetails() {
+    return `
+    <div class="open-taks">
+    <div onclick="closeTaskDetails()" class="close-open-task"><img src="assets/img/board/close-popup.svg"></div>
+    <div class="category-open-task">Sales</div>
+    <div class="title-open-task">Call potencial clients</div>
+    <div class="description-open-task">Make the product presentation to prospective buyers</div>
+    <div class="duedate-open-task">Due date: <span class="date-open-task">05-08-2022</span></div>
+    <div class="container-priority-open-task">
+        <div class="priority-open-task">Priority:</div>
+        <div class="current-prior-open-task">Urgent
+            <div class="current-prior-img-position-open-task">
+                <img class="current-prior-img-first-open-task" src="assets/img/board/arrow-urgent.svg"><img
+                    class="current-prior-img-second-open-task" src="assets/img/board/arrow-urgent.svg">
+            </div>
+        </div>
+    </div>
+    <div class="container-assigned-open-task">
+
+        <div class="assigned-open-task">Assigned to:</div>
+        <div class="person-and-profile-assigned-open-task-container">
+            <div class="person-assigned-open-task-container">
+                <div class="profile-assigned-open-task">MM</div>
+                <div class="name-assigned-open-task">Max Mustermann</div>
+            </div>
+            <div class="edit-open-task">
+                <img class="edit-img-pen-open-task" src="assets/img/board/pen.svg">
+                <img class="edit-img-penpeak-open-task" src="assets/img/board/penpeak.svg">
+            </div>
+        </div>
+
+    </div>
+</div>`;
+}
+
+
+function closeTaskDetails() {
+    document.getElementById('openTask').classList.add('d-none');
 }
