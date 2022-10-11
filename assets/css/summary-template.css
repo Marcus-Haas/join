@@ -1,33 +1,30 @@
 .summary-headline-container {
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0px;
+    padding-left: 300px;
+    padding-top: 40px;
     gap: 30px;
-    position: absolute;
-    width: 679px;
-    height: 73px;
-    left: 355px;
-    top: 171px;
+    width: 100%;
 }
 
 .summary-headline-left {
     width: 315px;
     height: 73px;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 60px;
 }
 
 .summary-headline-middle {
-    width: 0px;
     height: 59px;
     border: 3px solid #29ABE2;
+    background-color: #29ABE2;
 }
 
 .summary-headline-right {
     width: 304px;
     height: 32px;
-    font-weight: 400;
     font-size: 25px;
     color: #2A3647;
 }
@@ -42,7 +39,7 @@
     width: 385px;
     height: 136px;
     left: 1002px;
-    top: 533px;
+    top: 433px;
 }
 
 .summary-greet-top {
@@ -62,24 +59,23 @@
 }
 
 .summary-details-container {
+    box-sizing: border-box;
+    padding-left: 300px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     gap: 35px;
-    position: absolute;
-    width: 580px;
-    height: 540px;
-    left: 355px;
-    top: 331px;
+    width: 100%;
 }
 
 .summary-tasks-container {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 35px;
     width: 580px;
-    height: 170px;
 }
 
 .summary-tasks-btn {
@@ -89,8 +85,8 @@
     align-items: center;
     padding: 25px 0px;
     gap: 13px;
-    width: 170px;
-    height: 170px;
+    width: 150px;
+    height: 150px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
@@ -122,18 +118,15 @@
 
 .summary-tasks-amount {
     width: 41px;
-    height: 77px;
     font-weight: 600;
-    font-size: 64px;
+    font-size: 50px;
     text-align: center;
 }
 
 .summary-tasks-text {
     width: 87px;
     height: 50px;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
+    font-size: 20px;
     text-align: center;
     color: #2A3647;
 }
@@ -213,6 +206,7 @@
     width: 0px;
     height: 102px;
     border: 2px solid #D1D1D1;
+    background-color: #D1D1D1;
 }
 
 .summary-urgency-deadline {
