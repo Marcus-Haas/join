@@ -369,6 +369,7 @@ body {
     font-size: 21px;
     margin-right: 10px;
     box-sizing: border-box;
+    padding-right: 20px;
     cursor: pointer;
 }
 
@@ -409,6 +410,7 @@ body {
     font-weight: 400;
     font-size: 21px;
     margin-right: 10px;
+    padding-right: 21px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -451,6 +453,7 @@ body {
     font-size: 21px;
     box-sizing: border-box;
     cursor: pointer;
+    padding-right: 20px;
 }
 
 .low-popup:hover {

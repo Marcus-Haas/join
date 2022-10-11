@@ -20,12 +20,31 @@ function createTodo() {
     currentTitle.value = ``;
     currentDescription.value = ``;
     currentDuedate.value = ``;
+    selectedCategoryDefaultValue();
+    selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     closeForm();
     changeColorOfCategory();
     changePrior();
     index++;
 }
+
+
+/**
+* set the default value of category after submit form
+*/
+function selectedCategoryDefaultValue() {
+    document.getElementById("category-popup").selectedIndex = "0";
+}
+
+
+/**
+* set the default value of assign after submit form
+*/
+function selectedAssignedDefaultValue() {
+    document.getElementById("assignedto-popup").selectedIndex = "0";
+}
+
 
 
 /**
