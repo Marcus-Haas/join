@@ -1,11 +1,7 @@
-let title = [];
-let description = [];
-let category = [];
-let assigned = [];
-let duedate = [];
-let id = [];
-let statusContainer = [];
+let allTasks = [];
 let prior = [];
+let firstLetterFirstName = [];
+let firstLetterSecondName = [];
 let currentTitle;
 let currentDescription;
 let currentCategory;
@@ -14,18 +10,26 @@ let currentDuedate;
 let currentDraggedElement;
 let index = 0;
 let currentPrior;
+let splitFirstAndSecondNameOfAssignedAsArray;
+let firstNameLetter;
+let secondNameLetter;
 
 
-/*
+
+/**
 * render todo box
 */
 function createTodo() {
     updateArrayTodo();
+    firstLetterFirstName.push(firstNameLetter);
+    firstLetterSecondName.push(secondNameLetter);
     let todo = document.getElementById('todo');
     todo.innerHTML += templateCreateTodo();
     currentTitle.value = ``;
     currentDescription.value = ``;
     currentDuedate.value = ``;
+    selectedCategoryDefaultValue();
+    selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     closeForm();
     changeColorOfCategory();
@@ -34,7 +38,44 @@ function createTodo() {
 }
 
 
-/*
+/**
+* update todo array
+*/
+function updateArrayTodo() {
+    currentTitle = document.getElementById('title').value;
+    currentDescription = document.getElementById('descriptionPopup').value;
+    currentDuedate = document.getElementById('duedate').value;
+    let task = {
+        'title': currentTitle,
+        'description': currentDescription,
+        'category': currentCategory,
+        'assigned': currentAssigned,
+        'duedate': currentDuedate,
+        'status': 'todo',
+        'id': index,
+    };
+    allTasks.push(task);
+}
+
+
+/**
+* set the default value of category after submit form
+*/
+function selectedCategoryDefaultValue() {
+    document.getElementById("category-popup").selectedIndex = "0";
+}
+
+
+/**
+* set the default value of assign after submit form
+*/
+function selectedAssignedDefaultValue() {
+    document.getElementById("assignedto-popup").selectedIndex = "0";
+}
+
+
+
+/**
 * render todo box from addTask
 */
 function createTodoFromAddTask() {
@@ -45,7 +86,7 @@ function createTodoFromAddTask() {
 }
 
 
-/*
+/**
 * change color prior in task box
 */
 function changePrior() {
@@ -94,33 +135,34 @@ function changePriorAfterDragAndDrop(i) {
     }
 }
 
-/*
-* update todo array
+
+/**
+* identify the selected category
 */
-function updateArrayTodo() {
-    currentTitle = document.getElementById('title');
-    title.push(currentTitle.value);
-    currentDescription = document.getElementById('descriptionPopup');
-    description.push(currentDescription.value);
-    currentCategory = document.getElementById('category-popup');
-    category.push(currentCategory.value);
-    currentAssigned = document.getElementById('assignedto-popup');
-    assigned.push(currentAssigned.value);
-    currentDuedate = document.getElementById('duedate');
-    duedate.push(currentDuedate.value);
-    statusContainer.push('todo');
-    id.push(index);
+function identifySelectedCategory(sel) {
+    currentCategory = sel.options[sel.selectedIndex].text;
+}
+
+
+/**
+* identify the selected assigne
+*/
+function identifySelectedAssigne(sel) {
+    currentAssigned = sel.options[sel.selectedIndex].text;
+    splitFirstAndSecondNameOfAssignedAsArray = currentAssigned.split(" ");
+    firstNameLetter = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
+    secondNameLetter = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
 }
 
 
 function templateCreateTodo() {
     return `    
-    <div draggable="true" ondragstart="startDragging(${index})" class="box">
-        <div id="changeColorOfCategory${index}" class="category">${category[index]}</div>
-        <div class="title">${title[index]}</div>
-        <div class="description">${description[index]}</div>
+    <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
+        <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
+        <div class="title">${allTasks[index]['title']}</div>
+        <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[index]}</div>
+            <div class="assigned">${firstLetterFirstName[index]}${firstLetterSecondName[index]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
@@ -130,14 +172,14 @@ function templateCreateTodo() {
 }
 
 
-/*
+/**
 * render todo area after drag and drop
 */
 function updateTodo() {
     let todo = document.getElementById('todo');
     todo.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'todo') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'todo') {
             todo.innerHTML += templateUpdateTodo(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -148,12 +190,12 @@ function updateTodo() {
 
 function templateUpdateTodo(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -163,14 +205,14 @@ function templateUpdateTodo(i) {
 }
 
 
-/*
+/**
 * render in progress area after drag and drop
 */
 function updateInProgress() {
     let inProgress = document.getElementById('inProgress');
     inProgress.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'inProgress') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'inProgress') {
             inProgress.innerHTML += templateUpdateInProgress(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -181,12 +223,12 @@ function updateInProgress() {
 
 function templateUpdateInProgress(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -196,14 +238,14 @@ function templateUpdateInProgress(i) {
 }
 
 
-/*
+/**
 * render awaiting feedback area after drag and drop
 */
 function updateAwaitingFeedback() {
     let awaitingFeedback = document.getElementById('awaitingFeedback');
     awaitingFeedback.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'awaitingFeedback') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'awaitingFeedback') {
             awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -214,12 +256,12 @@ function updateAwaitingFeedback() {
 
 function templateUpdateAwaitingFeedback(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -229,14 +271,14 @@ function templateUpdateAwaitingFeedback(i) {
 }
 
 
-/*
+/**
 * render done area after drag and drop
 */
 function updateDone() {
     let done = document.getElementById('done');
     done.innerHTML = ``;
-    for (let i = 0; i < statusContainer.length; i++) {
-        if (statusContainer[i] == 'done') {
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['status'] == 'done') {
             done.innerHTML += templateUpdateDone(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
@@ -247,12 +289,12 @@ function updateDone() {
 
 function templateUpdateDone(i) {
     return `    
-    <div draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${category[i]}</div>
-        <div class="title">${title[i]}</div>
-        <div class="description">${description[i]}</div>
+    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="title">${allTasks[i]['title']}</div>
+        <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${assigned[i]}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -262,7 +304,7 @@ function templateUpdateDone(i) {
 }
 
 
-/*
+/**
 * drag and drop a task
 */
 function startDragging(id) {
@@ -276,7 +318,7 @@ function allowDrop(ev) {
 
 
 function moveTo(changeStatus) {
-    statusContainer[currentDraggedElement] = changeStatus;
+    allTasks[currentDraggedElement]['status'] = changeStatus;
     updateTodo();
     updateInProgress();
     updateAwaitingFeedback();
@@ -284,7 +326,7 @@ function moveTo(changeStatus) {
 }
 
 
-/*
+/**
 * delete icon if someone is tiping
 */
 function deleteIconInSearchInputField() {
@@ -296,7 +338,7 @@ function deleteIconInSearchInputField() {
 }
 
 
-/*
+/**
 * remov line and icon if inputfield is empty
 */
 function loadIconAndLine() {
@@ -312,7 +354,7 @@ function loadIconAndLine() {
 }
 
 
-/*
+/**
 * change bg color of urgent
 */
 function changeColorUrgent() {
@@ -343,7 +385,7 @@ function changeColorUrgentReverse() {
 }
 
 
-/*
+/**
 * change bg color of medium
 */
 function changeColorMedium() {
@@ -374,7 +416,7 @@ function changeColorMediumReverse() {
 }
 
 
-/*
+/**
 * change bg color of low
 */
 function changeColorLow() {
@@ -405,16 +447,15 @@ function changeColorLowReverse() {
 }
 
 
-/*
+/**
 * open the pop-up
 */
 function openForm() {
     document.getElementById('popup-window').style.display = 'unset';
-    document.getElementById('mainContainer').style.opacity = '0.5';
 }
 
 
-/*
+/**
 * close the pop-up
 */
 function closeForm() {
@@ -429,7 +470,7 @@ function closeForm() {
 }
 
 
-/*
+/**
  * change the prio to the basic form 
 */
 function changeColorAfterCreateTask() {
@@ -462,7 +503,7 @@ function changeColorAfterCreateTaskReverse() {
 }
 
 
-/*
+/**
  * change the category color 
 */
 function changeColorOfCategory() {
@@ -491,6 +532,126 @@ function changeColorOfCategory() {
 
 function changeColorOfCategoryAfterDragAndDrop(i) {
     let categoryAddColor = document.getElementById('changeColorOfCategoryAfterDragAndDrop' + i);
+    let category = categoryAddColor.innerText;
+    if (category == 'Sales') {
+        categoryAddColor.classList.add('sales');
+    }
+    if (category == 'Design') {
+        categoryAddColor.classList.add('design');
+    }
+    if (category == 'Backoffice') {
+        categoryAddColor.classList.add('backoffice');
+    }
+    if (category == 'Marketing') {
+        categoryAddColor.classList.add('marketing');
+    }
+    if (category == 'IT') {
+        categoryAddColor.classList.add('it');
+    }
+    if (category == 'Media') {
+        categoryAddColor.classList.add('media');
+    }
+}
+
+
+/**
+ * open details of the task
+*/
+function openTaskDetails(i) {
+    document.getElementById('openTask').classList.remove('d-none');
+    let openTask = document.getElementById('openTask');
+    openTask.innerHTML = templateOpenTaskDetails(i);
+    changeColorPriorInShowDetails(i);
+    changePriorShowDetails(i);
+    changeCategoryShowDetails(i);
+}
+
+
+function templateOpenTaskDetails(i) {
+    return `
+    <div class="open-taks">
+    <div onclick="closeTaskDetails()" class="close-open-task"><img src="assets/img/board/close-popup.svg"></div>
+    <div id="categoryOpenTask${i}" class="category-open-task">${allTasks[i]['category']}</div>
+    <div class="title-open-task">${allTasks[i]['title']}</div>
+    <div class="description-open-task">${allTasks[i]['description']}</div>
+    <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
+    <div class="container-priority-open-task">
+        <div class="priority-open-task">Priority:</div>
+        <div id="currentPriorOpenTask${i}" class="current-prior-open-task">${prior[i]}
+            <div class="current-prior-img-position-open-task">
+                <img id="currentPriorImgFirstOpenTask${i}" class="current-prior-img-first-open-task" src="">
+                <img id="currentPriorImgSecondOpenTask${i}" class="current-prior-img-second-open-task" src="">
+            </div>
+        </div>
+    </div>
+    <div class="container-assigned-open-task">
+
+        <div class="assigned-open-task">Assigned to:</div>
+        <div class="person-and-profile-assigned-open-task-container">
+            <div class="person-assigned-open-task-container">
+                <div class="profile-assigned-open-task">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
+                <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
+            </div>
+            <div class="edit-open-task">
+                <img class="edit-img-pen-open-task" src="assets/img/board/pen.svg">
+                <img class="edit-img-penpeak-open-task" src="assets/img/board/penpeak.svg">
+            </div>
+        </div>
+
+    </div>
+</div>`;
+}
+
+
+function closeTaskDetails() {
+    document.getElementById('openTask').classList.add('d-none');
+}
+
+
+function changeColorPriorInShowDetails(i) {
+    if (prior[i] == 'Urgent') {
+        let urgent = document.getElementById('currentPriorOpenTask' + i);
+        urgent.style.backgroundColor = '#FF3D00';
+    }
+    if (prior[i] == 'Medium') {
+        let urgent = document.getElementById('currentPriorOpenTask' + i);
+        urgent.style.backgroundColor = '#FFA800';
+    }
+    if (prior[i] == 'Low') {
+        let urgent = document.getElementById('currentPriorOpenTask' + i);
+        urgent.style.backgroundColor = '#7AE229';
+    }
+}
+
+
+function changePriorShowDetails(i) {
+    if (prior[i] == 'Urgent') {
+        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+        firstImage.src = "assets/img/board/arrow-urgent.svg";
+        secondImage.src = "assets/img/board/arrow-urgent.svg";
+    }
+    if (prior[i] == 'Medium') {
+        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+        firstImage.style = 'top: -1px;';
+        secondImage.style = 'top: 4px;';
+        firstImage.src = "assets/img/board/arrow-medium.svg";
+        secondImage.src = "assets/img/board/arrow-medium.svg";
+    }
+    if (prior[i] == 'Low') {
+        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+        firstImage.style = 'top: -5px';
+        secondImage.style = 'top: 0px';
+        firstImage.src = "assets/img/board/arrow-low.svg";
+        secondImage.src = "assets/img/board/arrow-low.svg";
+    }
+}
+
+
+function changeCategoryShowDetails(i) {
+    let categoryAddColor = document.getElementById('categoryOpenTask' + i);
     let category = categoryAddColor.innerText;
     if (category == 'Sales') {
         categoryAddColor.classList.add('sales');

@@ -22,7 +22,7 @@
     <title>Board</title>
 </head>
 
-<body onload="init();">
+<body id="bodyContainer" onload="init()">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -110,7 +110,8 @@
 
                         <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
                         </div>
-                        <select class="category-popup" id="category-popup">
+                        <select class="category-popup" id="category-popup" onChange="identifySelectedCategory(this);" required>
+                            <option value="" disabled selected>Select task category</option>
                             <option value="Sales">Sales</option>
                             <option value="Design">Design</option>
                             <option value="Backoffice">Backoffice</option>
@@ -122,8 +123,11 @@
                         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                                 to</label><br>
                         </div>
-                        <select class="assignedto-popup" id="assignedto-popup">
-                            <option value="maxmustermann">Max Mustermann</option>
+                        <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);" required>
+                            <option value="" disabled selected>Select contacts to assign</option>
+                            <option value="marcushaas">Marcus Haas</option>
+                            <option value="mariuskatzer">Marius Katzer</option>
+                            <option value="anilorhan">Anil Orhan</option>
                         </select>
                     </div>
 
@@ -174,6 +178,12 @@
             </div>
         </div>
     </form>
+
+    <div id="openTask" class="open-position d-none">
+
+    </div>
+
+    </div>
 </body>
 
 </html>

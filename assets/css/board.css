@@ -6,7 +6,8 @@ body {
 }
 
 .main-container {
-    margin-left: 355px;;
+    margin-left: 355px;
+    ;
     margin-top: 81px;
     margin-right: 65px;
 }
@@ -233,6 +234,10 @@ body {
     display: none;
 }
 
+.add-task-bg-color {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .cross-popup {
     display: flex;
     justify-content: flex-end;
@@ -364,6 +369,7 @@ body {
     font-size: 21px;
     margin-right: 10px;
     box-sizing: border-box;
+    padding-right: 20px;
     cursor: pointer;
 }
 
@@ -404,6 +410,7 @@ body {
     font-weight: 400;
     font-size: 21px;
     margin-right: 10px;
+    padding-right: 21px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -446,6 +453,7 @@ body {
     font-size: 21px;
     box-sizing: border-box;
     cursor: pointer;
+    padding-right: 20px;
 }
 
 .low-popup:hover {
@@ -561,4 +569,193 @@ body {
 
 .media {
     background-color: #FFC701;
+}
+
+/* CSS open Tast */
+.open-position {
+    position: absolute;
+    top: 150px;
+    left: 650px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+    width: 450px;
+    padding: 25px;
+    gap: 25px;
+}
+
+.close-open-task {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.open-task {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.category-open-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    width: 142px;
+    height: 40px;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.title-open-task {
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    word-break: break-all;
+    margin-bottom: 25px;
+}
+
+.description-open-task {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    margin-bottom: 25px;
+}
+
+.duedate-open-task {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    margin-bottom: 29px;
+}
+
+.date-open-task {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.container-priority-open-task {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.priority-open-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    margin-right: 25px;
+}
+
+.current-prior-open-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 15px;
+    width: 131px;
+    height: 33px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: white;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 21px;
+}
+
+.current-prior-img-position-open-task {
+    position: relative;
+}
+
+.current-prior-img-first-open-task {
+    filter: brightness(0) invert(1);
+    position: absolute;
+    top: -6px;
+}
+
+.current-prior-img-second-open-task {
+    filter: brightness(0) invert(1);
+    position: absolute;
+    top: -1px;
+}
+
+.container-assigned-open-task {
+    display: flex;
+    flex-direction: column;
+}
+
+.assigned-open-task {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.person-and-profile-assigned-open-task-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.person-assigned-open-task-container {
+    display: flex;
+    margin-top: 25px;
+}
+
+.profile-assigned-open-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    gap: 10px;
+    width: 45px;
+    height: 45px;
+    background: #9327FF;
+    border: 2px solid #FFFFFF;
+    border-radius: 58px;
+}
+
+.name-assigned-open-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.edit-open-task {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    width: 57px;
+    height: 57px;
+    background-color: #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-open-task:hover {
+    background-color: #0D99FF;
+}
+
+.edit-img-pen-open-task {
+    position: absolute;
+    width: 20px;
+    height: 27px;
+    left: 21px;
+    top: 10px;
+}
+
+.edit-img-penpeak-open-task {
+    position: absolute;
+    width: 13px;
+    height: 7px;
+    left: 18px;
+    top: 33px;
 }

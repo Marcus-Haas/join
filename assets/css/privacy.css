@@ -11,7 +11,7 @@ body {
     padding-left: 350px;
     padding-right: 50px;
     overflow: auto;
-    height: calc(100vh - 170px);
+    height: calc(100vh - 130px);
 }
 
 .privacy-back-btn {
