@@ -600,7 +600,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #FC71FF;
     border-radius: 8px;
     width: 142px;
     height: 40px;
@@ -660,7 +659,6 @@ body {
     padding-right: 15px;
     width: 131px;
     height: 33px;
-    background-color: #FF3D00;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     color: white;

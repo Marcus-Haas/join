@@ -550,6 +550,9 @@ function openTaskDetails(i) {
     document.getElementById('openTask').classList.remove('d-none');
     let openTask = document.getElementById('openTask');
     openTask.innerHTML = templateOpenTaskDetails(i);
+    changeColorPriorInShowDetails(i);
+    changePriorShowDetails(i);
+    changeCategoryShowDetails(i);
 }
 
 
@@ -557,16 +560,16 @@ function templateOpenTaskDetails(i) {
     return `
     <div class="open-taks">
     <div onclick="closeTaskDetails()" class="close-open-task"><img src="assets/img/board/close-popup.svg"></div>
-    <div class="category-open-task">${allTasks[i]['category']}</div>
+    <div id="categoryOpenTask${i}" class="category-open-task">${allTasks[i]['category']}</div>
     <div class="title-open-task">${allTasks[i]['title']}</div>
     <div class="description-open-task">${allTasks[i]['description']}</div>
     <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
     <div class="container-priority-open-task">
         <div class="priority-open-task">Priority:</div>
-        <div class="current-prior-open-task">${prior[i]}
+        <div id="currentPriorOpenTask${i}" class="current-prior-open-task">${prior[i]}
             <div class="current-prior-img-position-open-task">
-                <img class="current-prior-img-first-open-task" src="assets/img/board/arrow-urgent.svg"><img
-                    class="current-prior-img-second-open-task" src="assets/img/board/arrow-urgent.svg">
+                <img id="currentPriorImgFirstOpenTask${i}" class="current-prior-img-first-open-task" src="">
+                <img id="currentPriorImgSecondOpenTask${i}" class="current-prior-img-second-open-task" src="">
             </div>
         </div>
     </div>
@@ -591,4 +594,70 @@ function templateOpenTaskDetails(i) {
 
 function closeTaskDetails() {
     document.getElementById('openTask').classList.add('d-none');
+}
+
+
+function changeColorPriorInShowDetails(i) {
+    if(prior[i] == 'Urgent') {
+        let urgent = document.getElementById('currentPriorOpenTask' + i);
+        urgent.style.backgroundColor = '#FF3D00';
+    }
+    if(prior[i] == 'Medium') {
+        let urgent = document.getElementById('currentPriorOpenTask' + i);
+        urgent.style.backgroundColor = '#FFA800';
+    }
+    if(prior[i] == 'Low') {
+        let urgent = document.getElementById('currentPriorOpenTask' + i);
+        urgent.style.backgroundColor = '#7AE229';
+    }
+}
+
+
+function changePriorShowDetails(i) {
+    if (prior[i] == 'Urgent') {
+        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+        firstImage.src = "assets/img/board/arrow-urgent.svg";
+        secondImage.src = "assets/img/board/arrow-urgent.svg";
+    }
+    if (prior[i] == 'Medium') {
+        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+        firstImage.style = 'top: -1px;';
+        secondImage.style = 'top: 4px;';
+        firstImage.src = "assets/img/board/arrow-medium.svg";
+        secondImage.src = "assets/img/board/arrow-medium.svg";
+    }
+    if (prior[i] == 'Low') {
+        let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
+        let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
+        firstImage.style = 'top: -5px';
+        secondImage.style = 'top: 0px';
+        firstImage.src = "assets/img/board/arrow-low.svg";
+        secondImage.src = "assets/img/board/arrow-low.svg";
+    }
+}
+
+
+function changeCategoryShowDetails(i) {
+    let categoryAddColor = document.getElementById('categoryOpenTask' + i);
+    let category = categoryAddColor.innerText;
+    if (category == 'Sales') {
+        categoryAddColor.classList.add('sales');
+    }
+    if (category == 'Design') {
+        categoryAddColor.classList.add('design');
+    }
+    if (category == 'Backoffice') {
+        categoryAddColor.classList.add('backoffice');
+    }
+    if (category == 'Marketing') {
+        categoryAddColor.classList.add('marketing');
+    }
+    if (category == 'IT') {
+        categoryAddColor.classList.add('it');
+    }
+    if (category == 'Media') {
+        categoryAddColor.classList.add('media');
+    }
 }
