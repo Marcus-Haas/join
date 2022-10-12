@@ -8,11 +8,11 @@ function renderStartScreen() {
 }
 
 // <!-- *********************** LOG IN FUNCTION ****************** -->
-//marius.katzer@posteo.de
 async function openUserStartScreen() { // Log in when signed up
     let email = document.getElementById('login-window-input-email').value;
     let password = document.getElementById('login-window-input-passwort').value;
     document.getElementById('failed-login').classList.add('d-none');
+    document.getElementById('user-sign-up').classList.add('d-none');
     for (let i = 0; i < users.length; i++) {
         let userName = users[i]['name'];
         let userEmail = users[i]['email'];
@@ -44,17 +44,20 @@ function showSignUp() {
     document.getElementById(`new-password-window-input-email`).value = ``;
     document.getElementById(`confirm-password-window-input-email`).value = ``;
     document.getElementById(`forgot-password-window-input-email`).value = ``;
+    document.getElementById(`confirm-signup-window`).classList.add(`d-none`);
+    document.getElementById('user-sign-up').classList.add('d-none');
 }
 
 function signUpBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById(`signup-window`).classList.add(`d-none`);
+    document.getElementById('user-sign-up').classList.remove('d-none');
 }
 
 function showForgetPassword() {
     document.getElementById(`login-window`).classList.add(`d-none`);
     document.getElementById(`forgot-password-window`).classList.remove(`d-none`);
-    document.getElementById(`signup-window`).classList.add(`d-none`);
+    document.getElementById(`user-sign-up`).classList.add(`d-none`);
 }
 
 function showResetPassword() {
@@ -74,15 +77,13 @@ function showResetPassword() {
 function forgotPasswordBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById(`forgot-password-window`).classList.add(`d-none`);
+    document.getElementById('user-sign-up').classList.remove('d-none');
 }
 
 function resetPasswordBackToForgotPasswordScreen() {
     document.getElementById(`reset-password-window`).classList.add(`d-none`);
     document.getElementById(`forgot-password-window`).classList.remove(`d-none`);
 }
-
-
-
 
 function showConfirmPasswordScreen() {
     let newPassword = document.getElementById(`new-password-window-input-email`).value;
@@ -95,13 +96,13 @@ function showConfirmPasswordScreen() {
             let userPassword = users[i]['password']; //...Variable definieren...
             if (emailForNewPassword == userEmail) { // wenn es keine Übereinstimmung bei der Email-Adresse gibt, dann...
                 users.splice(i, 1) // ... gefundene Elemente gem. i löschen aus dem Array
-                users.push({'name': JSON.stringify(userName), "email": JSON.stringify(userEmail), "password": JSON.stringify(confirmPassword)}); // ... und wieder samt NEUEM PASSWORT einfügen.
+                users.push({ "name": userName, "email": userEmail, "password": confirmPassword}); // ... und wieder samt NEUEM PASSWORT einfügen.
+                // await backend.setItem('user'); // es muss noch in eine async-function umgewandelt werden
             }; // check for existing users / email
         }
-        document.getElementById(`reset-password-window`).classList.add(`d-none`);
         document.getElementById(`confirm-password-window`).classList.remove(`d-none`);
         document.getElementById(`repeat-password`).classList.add(`d-none`);
-            // Hier müsste noch eine Änderung / Speicherung des Arrays erfolgen, nach Übergabe der Daten aus dem Array 'users'
+        document.getElementById('user-sign-up').classList.add('d-none');
         } else {
             document.getElementById(`repeat-password`).classList.remove(`d-none`);
         }
@@ -111,13 +112,20 @@ function showConfirmPasswordScreen() {
         document.getElementById(`new-password-window-input-email`).value = ``;
         document.getElementById(`confirm-password-window-input-email`).value = ``;
         document.getElementById(`forgot-password-window-input-email`).value = ``;
+        document.getElementById(`reset-password-window`).classList.add(`d-none`);
         document.getElementById(`confirm-password-window`).classList.add(`d-none`);
         document.getElementById(`login-window`).classList.remove(`d-none`);
+        document.getElementById('user-sign-up').classList.remove('d-none');
     }
 
     function ConfirmSignUpBackToLoginScreen() {
+        document.getElementById(`signup-window-input-username`).value = ``;
+        document.getElementById(`signup-window-input-email`).value = ``;
+        document.getElementById(`signup-window-input-passwort`).value = ``;
         document.getElementById(`confirm-signup-window`).classList.add(`d-none`);
         document.getElementById(`login-window`).classList.remove(`d-none`);
+        document.getElementById(`signup-window`).classList.add(`d-none`);
+        document.getElementById('user-sign-up').classList.remove('d-none');
     }
 
     function showSignInPassword() {
@@ -154,7 +162,6 @@ function showConfirmPasswordScreen() {
         document.getElementById(`signup-input-image`).classList.add(`login-password-visibilty-on`);
     }
 
-
     function showNewPassword() {
         let password = document.getElementById("new-password-window-input-email");
         if (password.type === "password") {
@@ -188,4 +195,3 @@ function showConfirmPasswordScreen() {
     function activateShowConfirmNewPassword() {
         document.getElementById(`confirm-password-input-image`).classList.add(`login-password-visibilty-on`);
     }
-

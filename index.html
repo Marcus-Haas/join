@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="assets/img/favicon/join.logo-dark.png" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/login-responsive.css">
     <link rel="stylesheet" href="assets/css/fonts.css">
     <script src="assets/js/mini_backend.js"></script>
     <script src="assets/js/login.js"></script>
@@ -25,7 +26,7 @@
         <img src="assets/img/login/Capa 2.svg" class="start-screen-logo-big" id="start-screen-logo-big">
     </div>
     <div class="login-screen-start" id="login-screen">
-        <div class="user-sign-up">
+        <div class="user-sign-up" id="user-sign-up">
             <a href="#">Not a Join user?</a>
             <button onclick="showSignUp()">Sign up</button>
         </div>
@@ -38,7 +39,7 @@
                         placeholder="Email">
 
 
-                    <div>
+                    <div class="set-login-window-input-passwort">
                         <input type="password" required class="login-window-input-passwort"
                             id="login-window-input-passwort" placeholder="Password"
                             onclick="activateShowSignInPassword()">
@@ -166,11 +167,8 @@
 
 <!-- to-do :
     - Speichern / Abrufen des Arrays activeUser und guestUser
-    - showConfirmPasswordScreen() - verändern / speichern des neuen Passwortes
-    - Das users Array wird zum backendUser Array, function herstellen, Daten werden nur noch online bearbeitet
-    - "I forgot my password" -> prüfen, um User / backendUser bereits angelegt ist, wenn nicht, dann Fehler
+    - showConfirmPasswordScreen() - backend-Funktion einbauen
     - "Reset your Password" -> das Password ist tatsächlich änderbar im backendUser
-    - "Sign up" prüfen, o User bereits angelegt ist
     - User / Array löschen
     - Array users: Ergänzung des JSONS um ein User-Icon und ID ?
     - JSDocs - Dokumentation integrieren

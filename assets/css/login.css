@@ -34,6 +34,7 @@ body {
     animation-duration: 2s;
     /* animation-timing-function: ease-in-out; */
     z-index: 0;
+    
 
     /* scale: 1; */
 }
@@ -46,7 +47,7 @@ body {
     to {
         transform: scale(0.3);
         left: 77px;
-        top: -40px;
+        top: -45px;
     }
 }
 
@@ -64,10 +65,14 @@ body {
     display: flex;
     align-items: center;
     position: absolute;
-    top: 80px;
+    top: 90px;
     right: 150px;
-    z-index: 2;
     gap: 20px;
+    z-index: 1;
+}
+
+.z-index-0 {
+    z-index: 0 !important;
 }
 
 .user-sign-up a {
@@ -196,17 +201,19 @@ body {
 }
 
 .confirm-password-window {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 35px 0px;
-    gap: 35px;
-    position: relative;
-    width: 789px;
-    border-radius: 30px;
-    top: -18px;
+    backdrop-filter: brightness(60%);
+    overflow: auto;
+    opacity: 1;
+    z-index: 1;
 }
-
 
 .login-headline {
     font-family: 'Inter';
@@ -731,16 +738,6 @@ body {
 }
 
 .confirm-password-button {
-    padding: 4px 0px;
-    margin-top: 20px;
-    width: 145px;
-    height: 51px;
-    color: #FFFFFF;
-    background: #2A3647;
-    border-radius: 8px;
-    font-size: 21px;
-    padding: 8px 9px;
-    gap: 10px;
     width: 300px;
     height: 51px;
     background: #2A3647;
@@ -749,10 +746,26 @@ body {
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
-    line-height: 120%;
     color: #FFFFFF;
-    flex: none;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: confirm-password-button;
+    animation-duration: 1s;
 }
+
+@keyframes confirm-password-button {
+    from {
+        top: 700px;
+        /* opacity: 0; */
+    }
+
+    to {
+        top: 0px;
+        /* opacity: 1; */
+    }
+}
+
+
 
 .confirm-password-button:hover {
     background-color: #29ABE2;
@@ -761,27 +774,37 @@ body {
     border: 1px solid #29ABE2;
 }
 
+.confirm-signup-window {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: brightness(60%);
+    overflow: auto;
+    opacity: 1;
+    z-index: 1;
+}
+
 .confirm-signup-button {
-    padding: 4px 0px;
-    margin-top: 20px;
-    width: 145px;
-    height: 51px;
-    color: #FFFFFF;
-    background: #2A3647;
-    border-radius: 8px;
-    font-size: 21px;
-    padding: 8px 9px;
     width: 300px;
+    height: 51px;
     background: #2A3647;
     border-radius: 8px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
-    line-height: 120%;
     color: #FFFFFF;
-    flex: none;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: confirm-password-button;
+    animation-duration: 1s;
     box-sizing: content-box;
+    padding: 8px;
 }
 
 .confirm-signup-button:hover {
