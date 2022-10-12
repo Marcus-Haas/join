@@ -15,6 +15,10 @@ let firstNameLetter;
 let secondNameLetter;
 
 
+function initialize() {
+    allTasks = JSON.parse(backend.getItem('allTasks'));
+}
+
 
 /**
 * render todo box
@@ -55,6 +59,7 @@ function updateArrayTodo() {
         'id': index,
     };
     allTasks.push(task);
+    backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
 
