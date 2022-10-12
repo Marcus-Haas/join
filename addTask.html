@@ -32,7 +32,7 @@
     <div class="main-container-addTask">
         <div class="text-header">Add Task</div>
 
-        <form onsubmit="createTodoForBoard()">
+        <form onsubmit="createTodoForBoard(); return false;">
             <div class="container-for-seperate-left-and-right-content-addTask">
                 <div>
                     <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
@@ -45,7 +45,8 @@
 
                     <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
                     </div>
-                    <select class="category-popup" id="category-popup">
+                    <select class="category-popup" id="category-popup" onChange="identifySelectedCategory(this);">
+                        <option value="" disabled selected>Select task category</option>
                         <option value="Sales">Sales</option>
                         <option value="Design">Design</option>
                         <option value="Backoffice">Backoffice</option>
@@ -57,8 +58,11 @@
                     <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                             to</label><br>
                     </div>
-                    <select class="assignedto-popup" id="assignedto-popup">
-                        <option value="maxmustermann">Max Mustermann</option>
+                    <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
+                        <option value="" disabled selected>Select contacts to assign</option>
+                            <option value="marcushaas">Marcus Haas</option>
+                            <option value="mariuskatzer">Marius Katzer</option>
+                            <option value="anilorhan">Anil Orhan</option>
                     </select>
                 </div>
 

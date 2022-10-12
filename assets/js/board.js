@@ -15,8 +15,20 @@ let firstNameLetter;
 let secondNameLetter;
 
 
-function initialize() {
-    allTasks = JSON.parse(backend.getItem('allTasks'));
+async function initialize() {
+    await downloadFromServer();
+    await getTasksFromBackend();
+    if(allTasks != null) {
+        updateBoard();
+    }
+}
+
+
+function updateBoard() {
+    updateTodo();
+    updateInProgress();
+    updateAwaitingFeedback();
+    updateDone();
 }
 
 
@@ -38,6 +50,8 @@ function createTodo() {
     closeForm();
     changeColorOfCategory();
     changePrior();
+    addInBackend();
+    updateBoard();
     index++;
 }
 
@@ -59,8 +73,34 @@ function updateArrayTodo() {
         'id': index,
     };
     allTasks.push(task);
-    backend.setItem('allTasks', JSON.stringify(allTasks));
 }
+
+
+async function addInBackend() {
+    await backend.setItem('allTasks', JSON.stringify(allTasks));
+    await backend.setItem('prior', JSON.stringify(prior));
+    await backend.setItem('firstLetterFirstName', JSON.stringify(firstLetterFirstName));
+    await backend.setItem('firstLetterSecondName', JSON.stringify(firstLetterSecondName));
+}
+
+async function getTasksFromBackend() {
+    let allTasksAsJson = await backend.getItem('allTasks');
+    let priorAsJson = await backend.getItem('prior');
+    let firstLetterFirstNameAsJson = await backend.getItem('firstLetterFirstName');
+    let firstLetterSecondNameAsJson = await backend.getItem('firstLetterSecondName');
+    allTasks = JSON.parse(allTasksAsJson);
+    prior = JSON.parse(priorAsJson);
+    firstLetterFirstName = JSON.parse(firstLetterFirstNameAsJson);
+    firstLetterSecondName = JSON.parse(firstLetterSecondNameAsJson);
+}
+
+
+/*async function deleteTasks() {
+    await backend.deleteItem('allTasks');
+    await backend.deleteItem('prior');
+    await backend.deleteItem('firstLetterFirstName');
+    await backend.deleteItem('firstLetterSecondName');
+}*/
 
 
 /**
