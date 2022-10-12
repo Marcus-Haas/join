@@ -1,5 +1,7 @@
 let allTasks = [];
 let prior = [];
+let firstLetterFirstName = [];
+let firstLetterSecondName = [];
 let currentTitle;
 let currentDescription;
 let currentCategory;
@@ -8,6 +10,10 @@ let currentDuedate;
 let currentDraggedElement;
 let index = 0;
 let currentPrior;
+let splitFirstAndSecondNameOfAssignedAsArray;
+let firstNameLetter;
+let secondNameLetter;
+
 
 
 /**
@@ -15,6 +21,8 @@ let currentPrior;
 */
 function createTodo() {
     updateArrayTodo();
+    firstLetterFirstName.push(firstNameLetter);
+    firstLetterSecondName.push(secondNameLetter);
     let todo = document.getElementById('todo');
     todo.innerHTML += templateCreateTodo();
     currentTitle.value = ``;
@@ -27,6 +35,26 @@ function createTodo() {
     changeColorOfCategory();
     changePrior();
     index++;
+}
+
+
+/**
+* update todo array
+*/
+function updateArrayTodo() {
+    currentTitle = document.getElementById('title').value;
+    currentDescription = document.getElementById('descriptionPopup').value;
+    currentDuedate = document.getElementById('duedate').value;
+    let task = {
+        'title': currentTitle,
+        'description': currentDescription,
+        'category': currentCategory,
+        'assigned': currentAssigned,
+        'duedate': currentDuedate,
+        'status': 'todo',
+        'id': index,
+    };
+    allTasks.push(task);
 }
 
 
@@ -109,26 +137,6 @@ function changePriorAfterDragAndDrop(i) {
 
 
 /**
-* update todo array
-*/
-function updateArrayTodo() {
-    currentTitle = document.getElementById('title').value;
-    currentDescription = document.getElementById('descriptionPopup').value;
-    currentDuedate = document.getElementById('duedate').value;
-    let task = {
-        'title': currentTitle,
-        'description': currentDescription,
-        'category': currentCategory,
-        'assigned': currentAssigned,
-        'duedate': currentDuedate,
-        'status': 'todo',
-        'id': index,
-    };
-    allTasks.push(task);
-}
-
-
-/**
 * identify the selected category
 */
 function identifySelectedCategory(sel) {
@@ -141,6 +149,9 @@ function identifySelectedCategory(sel) {
 */
 function identifySelectedAssigne(sel) {
     currentAssigned = sel.options[sel.selectedIndex].text;
+    splitFirstAndSecondNameOfAssignedAsArray = currentAssigned.split(" ");
+    firstNameLetter = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
+    secondNameLetter = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
 }
 
 
@@ -151,7 +162,7 @@ function templateCreateTodo() {
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[index]['assigned']}</div>
+            <div class="assigned">${firstLetterFirstName[index]}${firstLetterSecondName[index]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
@@ -184,7 +195,7 @@ function templateUpdateTodo(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['assigned']}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -217,7 +228,7 @@ function templateUpdateInProgress(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['assigned']}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -250,7 +261,7 @@ function templateUpdateAwaitingFeedback(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['assigned']}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -283,7 +294,7 @@ function templateUpdateDone(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['assigned']}</div>
+            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -578,7 +589,7 @@ function templateOpenTaskDetails(i) {
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
-                <div class="profile-assigned-open-task">MM</div>
+                <div class="profile-assigned-open-task">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
             <div class="edit-open-task">
@@ -598,15 +609,15 @@ function closeTaskDetails() {
 
 
 function changeColorPriorInShowDetails(i) {
-    if(prior[i] == 'Urgent') {
+    if (prior[i] == 'Urgent') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
         urgent.style.backgroundColor = '#FF3D00';
     }
-    if(prior[i] == 'Medium') {
+    if (prior[i] == 'Medium') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
         urgent.style.backgroundColor = '#FFA800';
     }
-    if(prior[i] == 'Low') {
+    if (prior[i] == 'Low') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
         urgent.style.backgroundColor = '#7AE229';
     }
