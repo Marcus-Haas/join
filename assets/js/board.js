@@ -105,9 +105,10 @@ async function deleteTask(i) {
     allTasks.splice(i, 1);
     if (allTasks.length < 1) {
         await deleteAllTasksArray();
-    } else {
-        addInBackend();
         updateBoard();
+    } else {
+        await addInBackend();
+        await initialize();
     }
 }
 
@@ -252,12 +253,12 @@ function templateUpdateTodo(i) {
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
-            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+            <div class="trash-icon"><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -293,7 +294,7 @@ function templateUpdateInProgress(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -329,7 +330,7 @@ function templateUpdateAwaitingFeedback(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -365,7 +366,7 @@ function templateUpdateDone(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -646,7 +647,7 @@ function templateOpenTaskDetails(i) {
     <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
     <div class="container-priority-open-task">
         <div class="priority-open-task">Priority:</div>
-        <div id="currentPriorOpenTask${i}" class="current-prior-open-task">${allTasks[index]['prior']}
+        <div id="currentPriorOpenTask${i}" class="current-prior-open-task">${allTasks[i]['prior']}
             <div class="current-prior-img-position-open-task">
                 <img id="currentPriorImgFirstOpenTask${i}" class="current-prior-img-first-open-task" src="">
                 <img id="currentPriorImgSecondOpenTask${i}" class="current-prior-img-second-open-task" src="">
@@ -658,7 +659,7 @@ function templateOpenTaskDetails(i) {
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
-                <div class="profile-assigned-open-task">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+                <div class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
             <div class="edit-open-task">
