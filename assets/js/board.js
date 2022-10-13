@@ -1,7 +1,4 @@
 let allTasks = [];
-let prior = [];
-let firstLetterFirstName = [];
-let firstLetterSecondName = [];
 let currentTitle;
 let currentDescription;
 let currentCategory;
@@ -18,9 +15,6 @@ let secondNameLetter;
 async function initialize() {
     await downloadFromServer();
     await getTasksFromBackend();
-    if (allTasks.length >= 1) {
-        updateBoard();
-    }
 }
 
 
@@ -37,10 +31,17 @@ function updateBoard() {
 */
 function createTodo() {
     updateArrayTodo();
-    firstLetterFirstName.push(firstNameLetter);
-    firstLetterSecondName.push(secondNameLetter);
-    let todo = document.getElementById('todo');
-    todo.innerHTML += templateCreateTodo();
+    pushTask();
+    changePrior();
+    cleanValues();
+    changeColorOfCategory();
+    addInBackend();
+    updateBoard();
+    index++;
+}
+
+
+function cleanValues() {
     currentTitle.value = ``;
     currentDescription.value = ``;
     currentDuedate.value = ``;
@@ -48,11 +49,6 @@ function createTodo() {
     selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
     closeForm();
-    changeColorOfCategory();
-    changePrior();
-    addInBackend();
-    updateBoard();
-    index++;
 }
 
 
@@ -63,54 +59,62 @@ function updateArrayTodo() {
     currentTitle = document.getElementById('title').value;
     currentDescription = document.getElementById('descriptionPopup').value;
     currentDuedate = document.getElementById('duedate').value;
+}
+
+
+/**
+* push task
+*/
+function pushTask() {
     let task = {
         'title': currentTitle,
         'description': currentDescription,
         'category': currentCategory,
         'assigned': currentAssigned,
         'duedate': currentDuedate,
+        'firstLetter': firstNameLetter,
+        'secondLetter': secondNameLetter,
+        'prior': currentPrior,
         'status': 'todo',
         'id': index,
     };
     allTasks.push(task);
+    let todo = document.getElementById('todo');
+    todo.innerHTML += templateCreateTodo();
 }
+
 
 
 async function addInBackend() {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
-    await backend.setItem('prior', JSON.stringify(prior));
-    await backend.setItem('firstLetterFirstName', JSON.stringify(firstLetterFirstName));
-    await backend.setItem('firstLetterSecondName', JSON.stringify(firstLetterSecondName));
 }
 
 async function getTasksFromBackend() {
     let allTasksAsJson = await backend.getItem('allTasks');
-    let priorAsJson = await backend.getItem('prior');
-    let firstLetterFirstNameAsJson = await backend.getItem('firstLetterFirstName');
-    let firstLetterSecondNameAsJson = await backend.getItem('firstLetterSecondName');
-    allTasks = JSON.parse(allTasksAsJson);
-    prior = JSON.parse(priorAsJson);
-    firstLetterFirstName = JSON.parse(firstLetterFirstNameAsJson);
-    firstLetterSecondName = JSON.parse(firstLetterSecondNameAsJson);
+    if (allTasksAsJson != null) {
+        allTasks = JSON.parse(allTasksAsJson);
+        updateBoard();
+    }
 }
 
 
 /**
 * delete a task
 */
-function deleteTask(i) {
+async function deleteTask(i) {
     allTasks.splice(i, 1);
-    addInBackend();
-    updateBoard();
+    if (allTasks.length < 1) {
+        await deleteAllTasksArray();
+    } else {
+        addInBackend();
+        updateBoard();
+    }
 }
 
 
-/*async function deleteTasks() {
+async function deleteAllTasksArray() {
     await backend.deleteItem('allTasks');
-    await backend.deleteItem('prior');
-    await backend.deleteItem('firstLetterFirstName');
-    await backend.deleteItem('firstLetterSecondName');
-}*/
+}
 
 
 /**
@@ -150,39 +154,36 @@ function changePrior() {
         let secondImage = document.getElementById('createSecondImg' + index);
         firstImage.src = "assets/img/board/arrow-urgent.svg";
         secondImage.src = "assets/img/board/arrow-urgent.svg";
-        prior.push(currentPrior);
     }
     if (currentPrior == 'Medium') {
         let firstImage = document.getElementById('createFirstImg' + index);
         let secondImage = document.getElementById('createSecondImg' + index);
         firstImage.src = "assets/img/board/arrow-medium.svg";
         secondImage.src = "assets/img/board/arrow-medium.svg";
-        prior.push(currentPrior);
     }
     if (currentPrior == 'Low') {
         let firstImage = document.getElementById('createFirstImg' + index);
         let secondImage = document.getElementById('createSecondImg' + index);
         firstImage.src = "assets/img/board/arrow-low.svg";
         secondImage.src = "assets/img/board/arrow-low.svg";
-        prior.push(currentPrior);
     }
 }
 
 
 function changePriorAfterDragAndDrop(i) {
-    if (prior[i] == 'Urgent') {
+    if (allTasks[i]['prior'] == 'Urgent') {
         let firstImage = document.getElementById('createFirstImg' + i);
         let secondImage = document.getElementById('createSecondImg' + i);
         firstImage.src = "assets/img/board/arrow-urgent.svg";
         secondImage.src = "assets/img/board/arrow-urgent.svg";
     }
-    if (prior[i] == 'Medium') {
+    if (allTasks[i]['prior'] == 'Medium') {
         let firstImage = document.getElementById('createFirstImg' + i);
         let secondImage = document.getElementById('createSecondImg' + i);
         firstImage.src = "assets/img/board/arrow-medium.svg";
         secondImage.src = "assets/img/board/arrow-medium.svg";
     }
-    if (prior[i] == 'Low') {
+    if (allTasks[i]['prior'] == 'Low') {
         let firstImage = document.getElementById('createFirstImg' + i);
         let secondImage = document.getElementById('createSecondImg' + i);
         firstImage.src = "assets/img/board/arrow-low.svg";
@@ -220,7 +221,7 @@ function templateCreateTodo() {
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${firstLetterFirstName[index]}${firstLetterSecondName[index]}</div>
+            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
@@ -249,11 +250,14 @@ function updateTodo() {
 function templateUpdateTodo(i) {
     return `    
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="category-with-trash">
+            <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+        </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
+            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -282,11 +286,14 @@ function updateInProgress() {
 function templateUpdateInProgress(i) {
     return `    
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="category-with-trash">
+            <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+        </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
+            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -315,11 +322,14 @@ function updateAwaitingFeedback() {
 function templateUpdateAwaitingFeedback(i) {
     return `    
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="category-with-trash">
+            <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+        </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
+            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -348,11 +358,14 @@ function updateDone() {
 function templateUpdateDone(i) {
     return `    
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
-        <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+        <div class="category-with-trash">
+            <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
+            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+        </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
+            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -522,9 +535,6 @@ function closeForm() {
     currentTitle = document.getElementById('title');
     currentDescription = document.getElementById('descriptionPopup');
     currentDuedate = document.getElementById('duedate');
-    currentTitle.value = ``;
-    currentDescription.value = ``;
-    currentDuedate.value = ``;
 }
 
 
@@ -617,6 +627,7 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 */
 function openTaskDetails(i) {
     document.getElementById('openTask').classList.remove('d-none');
+    document.getElementById('openTask').classList.add('open-position');
     let openTask = document.getElementById('openTask');
     openTask.innerHTML = templateOpenTaskDetails(i);
     changeColorPriorInShowDetails(i);
@@ -635,7 +646,7 @@ function templateOpenTaskDetails(i) {
     <div class="duedate-open-task">Due date: <span class="date-open-task">${allTasks[i]['duedate']}</span></div>
     <div class="container-priority-open-task">
         <div class="priority-open-task">Priority:</div>
-        <div id="currentPriorOpenTask${i}" class="current-prior-open-task">${prior[i]}
+        <div id="currentPriorOpenTask${i}" class="current-prior-open-task">${allTasks[index]['prior']}
             <div class="current-prior-img-position-open-task">
                 <img id="currentPriorImgFirstOpenTask${i}" class="current-prior-img-first-open-task" src="">
                 <img id="currentPriorImgSecondOpenTask${i}" class="current-prior-img-second-open-task" src="">
@@ -647,7 +658,7 @@ function templateOpenTaskDetails(i) {
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
-                <div class="profile-assigned-open-task">${firstLetterFirstName[i]}${firstLetterSecondName[i]}</div>
+                <div class="profile-assigned-open-task">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
             <div class="edit-open-task">
@@ -663,19 +674,20 @@ function templateOpenTaskDetails(i) {
 
 function closeTaskDetails() {
     document.getElementById('openTask').classList.add('d-none');
+    document.getElementById('openTask').classList.remove('open-position');
 }
 
 
 function changeColorPriorInShowDetails(i) {
-    if (prior[i] == 'Urgent') {
+    if (allTasks[i]['prior'] == 'Urgent') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
         urgent.style.backgroundColor = '#FF3D00';
     }
-    if (prior[i] == 'Medium') {
+    if (allTasks[i]['prior'] == 'Medium') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
         urgent.style.backgroundColor = '#FFA800';
     }
-    if (prior[i] == 'Low') {
+    if (allTasks[i]['prior'] == 'Low') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
         urgent.style.backgroundColor = '#7AE229';
     }
@@ -683,13 +695,13 @@ function changeColorPriorInShowDetails(i) {
 
 
 function changePriorShowDetails(i) {
-    if (prior[i] == 'Urgent') {
+    if (allTasks[i]['prior'] == 'Urgent') {
         let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
         let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
         firstImage.src = "assets/img/board/arrow-urgent.svg";
         secondImage.src = "assets/img/board/arrow-urgent.svg";
     }
-    if (prior[i] == 'Medium') {
+    if (allTasks[i]['prior'] == 'Medium') {
         let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
         let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
         firstImage.style = 'top: -1px;';
@@ -697,7 +709,7 @@ function changePriorShowDetails(i) {
         firstImage.src = "assets/img/board/arrow-medium.svg";
         secondImage.src = "assets/img/board/arrow-medium.svg";
     }
-    if (prior[i] == 'Low') {
+    if (allTasks[i]['prior'] == 'Low') {
         let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);
         let secondImage = document.getElementById('currentPriorImgSecondOpenTask' + i);
         firstImage.style = 'top: -5px';
