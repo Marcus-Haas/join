@@ -32,6 +32,8 @@ function updateBoard() {
 function createTodo() {
     updateArrayTodo();
     pushTask();
+    let todo = document.getElementById('todo');
+    todo.innerHTML += templateCreateTodo();
     changePrior();
     cleanValues();
     changeColorOfCategory();
@@ -79,8 +81,6 @@ function pushTask() {
         'id': index,
     };
     allTasks.push(task);
-    let todo = document.getElementById('todo');
-    todo.innerHTML += templateCreateTodo();
 }
 
 
@@ -253,7 +253,7 @@ function templateUpdateTodo(i) {
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
-            <div class="trash-icon"><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
