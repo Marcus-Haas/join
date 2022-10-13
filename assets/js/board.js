@@ -18,7 +18,7 @@ let secondNameLetter;
 async function initialize() {
     await downloadFromServer();
     await getTasksFromBackend();
-    if(allTasks != null) {
+    if (allTasks.length >= 1) {
         updateBoard();
     }
 }
@@ -92,6 +92,16 @@ async function getTasksFromBackend() {
     prior = JSON.parse(priorAsJson);
     firstLetterFirstName = JSON.parse(firstLetterFirstNameAsJson);
     firstLetterSecondName = JSON.parse(firstLetterSecondNameAsJson);
+}
+
+
+/**
+* delete a task
+*/
+function deleteTask(i) {
+    allTasks.splice(i, 1);
+    addInBackend();
+    updateBoard();
 }
 
 
@@ -203,7 +213,10 @@ function identifySelectedAssigne(sel) {
 function templateCreateTodo() {
     return `    
     <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
-        <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
+        <div class="category-with-trash">
+            <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
+            <div><img onclick="deleteTask(${index})" src="assets/img/board/trash.png"></div>
+        </div>
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
