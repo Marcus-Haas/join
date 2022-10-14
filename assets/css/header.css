@@ -64,6 +64,11 @@ header {
 
 .logout-btn:hover {
     cursor: pointer;
+    background: #29ABE2;
+}
+
+.logout-btn:hover .logout-inner-btn {
+    color: white;
 }
 
 .logout-inner-btn {

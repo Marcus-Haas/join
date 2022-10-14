@@ -25,7 +25,7 @@
     <script> setURL('https://gruppe-330.developerakademie.net/smallest_backend_ever/');</script>
 </head>
 
-<body onload="init()">
+<body onload="init(), initStart(), loadBackend()">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -59,17 +59,23 @@
                         <img class="overlay-user-icon-white" src="assets/img/contacts/user-white.png">
                     </div>
 
-                    <div class="overlay-contacts-details-container">
-                        <div class="overlay-contacts-details-frame">
-                            <input class="overlay-input-design input-icon-user" type="text" placeholder="Name">
+                    <form onsubmit="addNewContact(); return false;">
+                        <div class="overlay-contacts-details-container">
+                            <div class="overlay-contacts-details-frame">
+                                <input id="new-name" class="overlay-input-design input-icon-user" required type="text"
+                                    placeholder="Name">
+                            </div>
+                            <div class="overlay-contacts-details-frame">
+                                <input id="new-email" class="overlay-input-design input-icon-letter" required
+                                    type="email" placeholder="Email">
+                                    <div class="d-none warning-text" id="warning"></div>
+                            </div>
+                            <div class="overlay-contacts-details-frame">
+                                <input id="new-phone" class="overlay-input-design input-icon-phone" placeholder="Phone"
+                                    required>
+                            </div>
                         </div>
-                        <div class="overlay-contacts-details-frame">
-                            <input class="overlay-input-design input-icon-letter" type="email" placeholder="Email">
-                        </div>
-                        <div class="overlay-contacts-details-frame">
-                            <input class="overlay-input-design input-icon-phone" type="tel" placeholder="Phone">
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="overlay-btn-frame">
@@ -77,14 +83,33 @@
                         <div class="overlay-cancel-btn-text">Cancel</div>
                         <div class="overlay-cancel-btn-image"></div>
                     </div>
-                    <div class="overlay-create-btn">
+
+                    <button class="overlay-create-btn">
                         <div class="overlay-create-btn-text">Create contact</div>
                         <img src="assets/img/contacts/check.png">
-                    </div>
+                    </button>
                 </div>
+
+                </form>
             </div>
+
         </div>
     </div>
+
+
+    <!----------------------------------------------Kontaktbuch via JS-------------------------------------->
+
+    <div class="contact-book-main" id="contact-book"></div>
+
+
+    <!---------------------------------------------Business Card via JS------------------------------------->
+
+    <div id="business-card"></div>
+
+
+    <!-----------------------------------------Edit Contact Overlay via JS---------------------------------->
+    <div id="edit"></div>
+
 </body>
 
 </html>

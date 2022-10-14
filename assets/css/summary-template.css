@@ -5,12 +5,11 @@
     align-items: center;
     padding-left: 300px;
     padding-top: 40px;
-    gap: 30px;
+    gap: 20px;
     width: 100%;
 }
 
 .summary-headline-left {
-    width: 315px;
     height: 73px;
     font-weight: 700;
     font-size: 60px;
@@ -38,7 +37,7 @@
     position: absolute;
     width: 385px;
     height: 136px;
-    left: 1002px;
+    left: 930px;
     top: 433px;
 }
 
