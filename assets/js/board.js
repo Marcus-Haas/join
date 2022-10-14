@@ -10,6 +10,9 @@ let currentPrior;
 let splitFirstAndSecondNameOfAssignedAsArray;
 let firstNameLetter;
 let secondNameLetter;
+let currentTitleValue;
+let currentDescriptionValue;
+let currentDuedateValue;
 
 
 async function initialize() {
@@ -37,8 +40,8 @@ function createTodo() {
     changePrior();
     cleanValues();
     changeColorOfCategory();
+    changeBgColorOfInitialLetters();
     addInBackend();
-    updateBoard();
     index++;
 }
 
@@ -58,9 +61,12 @@ function cleanValues() {
 * update todo array
 */
 function updateArrayTodo() {
-    currentTitle = document.getElementById('title').value;
-    currentDescription = document.getElementById('descriptionPopup').value;
-    currentDuedate = document.getElementById('duedate').value;
+    currentTitle = document.getElementById('title');
+    currentTitleValue = currentTitle.value;
+    currentDescription = document.getElementById('descriptionPopup');
+    currentDescriptionValue = currentDescription.value;
+    currentDuedate = document.getElementById('duedate');
+    currentDuedateValue = currentDuedate.value;
 }
 
 
@@ -69,11 +75,11 @@ function updateArrayTodo() {
 */
 function pushTask() {
     let task = {
-        'title': currentTitle,
-        'description': currentDescription,
+        'title': currentTitleValue,
+        'description': currentDescriptionValue,
         'category': currentCategory,
         'assigned': currentAssigned,
-        'duedate': currentDuedate,
+        'duedate': currentDuedateValue,
         'firstLetter': firstNameLetter,
         'secondLetter': secondNameLetter,
         'prior': currentPrior,
@@ -81,6 +87,32 @@ function pushTask() {
         'id': index,
     };
     allTasks.push(task);
+}
+
+
+function changeBgColorOfInitialLetters() {
+    if (firstNameLetter == 'A' && secondNameLetter == 'O') {
+        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-first');
+    }
+    if (firstNameLetter == 'M' && secondNameLetter == 'H') {
+        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-second');
+    }
+    if (firstNameLetter == 'M' && secondNameLetter == 'K') {
+        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-third'); 
+    }
+}
+
+
+function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
+    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third'); 
+    }
 }
 
 
@@ -143,6 +175,7 @@ function createTodoFromAddTask() {
     let todo = document.getElementById('todo');
     todo.innerHTML += templateCreateTodo();
     changeColorOfCategory();
+    changeBgColorOfInitialLetters();
     index++;
 }
 
@@ -223,7 +256,7 @@ function templateCreateTodo() {
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div id="assignedForInitialLetters${index}" class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
@@ -244,6 +277,7 @@ function updateTodo() {
             todo.innerHTML += templateUpdateTodo(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
+            changeBgColorOfInitialLettersAfterDragAndDrop(i);
         }
     }
 }
@@ -259,7 +293,7 @@ function templateUpdateTodo(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -280,6 +314,7 @@ function updateInProgress() {
             inProgress.innerHTML += templateUpdateInProgress(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
+            changeBgColorOfInitialLettersAfterDragAndDrop(i);
         }
     }
 }
@@ -295,7 +330,7 @@ function templateUpdateInProgress(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -316,6 +351,7 @@ function updateAwaitingFeedback() {
             awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
+            changeBgColorOfInitialLettersAfterDragAndDrop(i);
         }
     }
 }
@@ -331,7 +367,7 @@ function templateUpdateAwaitingFeedback(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div  id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -352,6 +388,7 @@ function updateDone() {
             done.innerHTML += templateUpdateDone(i);
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
+            changeBgColorOfInitialLettersAfterDragAndDrop(i);
         }
     }
 }
@@ -367,7 +404,7 @@ function templateUpdateDone(i) {
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
         <div class="assigned-and-prio">
-            <div class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+            <div  id="assignedForInitialLetters${i}" class="assigned">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${i}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${i}" src=""></div>
@@ -635,6 +672,7 @@ function openTaskDetails(i) {
     changeColorPriorInShowDetails(i);
     changePriorShowDetails(i);
     changeCategoryShowDetails(i);
+    changeBgColorOfInitialLettersAfterDragAndDrop(i);
 }
 
 
@@ -660,7 +698,7 @@ function templateOpenTaskDetails(i) {
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
-                <div class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+                <div  id="assignedForInitialLetters${i}" class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
             <div class="edit-open-task">
@@ -743,4 +781,13 @@ function changeCategoryShowDetails(i) {
     if (category == 'Media') {
         categoryAddColor.classList.add('media');
     }
+}
+
+
+function getCurrentDate() {
+    let now = new Date();
+    let day = ("0" + now.getDate()).slice(-2);
+    let month = ("0" + (now.getMonth() + 1)).slice(-2);
+    let today = now.getFullYear() + "-" + (month) + "-" + (day);
+    document.getElementById('duedate').value = today;
 }
