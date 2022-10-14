@@ -37,10 +37,10 @@ function createTodo() {
     pushTask();
     let todo = document.getElementById('todo');
     todo.innerHTML += templateCreateTodo();
+    changeBgColorOfInitialLetters();
     changePrior();
     cleanValues();
     changeColorOfCategory();
-    changeBgColorOfInitialLetters();
     addInBackend();
     index++;
 }
@@ -90,13 +90,13 @@ function pushTask() {
 
 
 function changeBgColorOfInitialLetters() {
-    if (firstNameLetter == 'A' && secondNameLetter == 'O') {
+    if (allTasks[index]['firstLetter'] == 'A' && allTasks[index]['secondLetter'] == 'O') {
         document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-first');
     }
-    if (firstNameLetter == 'M' && secondNameLetter == 'H') {
+    if (allTasks[index]['firstLetter'] == 'M' && allTasks[index]['secondLetter'] == 'H') {
         document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-second');
     }
-    if (firstNameLetter == 'M' && secondNameLetter == 'K') {
+    if (allTasks[index]['firstLetter'] == 'M' && allTasks[index]['secondLetter'] == 'K') {
         document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-third');
     }
 }
@@ -679,6 +679,8 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 */
 function openTaskDetails(i, event) {
     event.stopPropagation();
+    let edit = document.getElementById('editOpenTaskDetails');
+    edit.classList.add('d-none');
     document.getElementById('overlay').classList.add('overlay-bg');
     document.getElementById('openTask').classList.remove('d-none');
     document.getElementById('openTask').classList.add('open-position');
@@ -715,7 +717,7 @@ function templateOpenTaskDetails(i) {
                 <div  id="assignedForInitialLettersDetails${i}" class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
-            <div class="edit-open-task">
+            <div onclick="editShowDetails(${i})" class="edit-open-task">
                 <img class="edit-img-pen-open-task" src="assets/img/board/pen.svg">
                 <img class="edit-img-penpeak-open-task" src="assets/img/board/penpeak.svg">
             </div>
@@ -818,10 +820,165 @@ function editShowDetails(i) {
     document.getElementById('overlay').classList.add('overlay-bg');
     let edit = document.getElementById('editOpenTaskDetails');
     edit.classList.add('open-position');
+    edit.classList.remove('d-none');
     edit.innerHTML = templateEditShowDetails(i);
 }
 
 
 function templateEditShowDetails(i) {
-    return ``;
+    return `
+    <div>
+            <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
+            <input class="title-popup" type="text" id="title" name="title" placeholder="Enter a title" required>
+        </div>
+
+        <div class="margin-popup"><label class="pop-up-child" for="descriptionPopup">Description</label><br>
+        </div>
+        <textarea class="description-popup" type="text" id="descriptionPopup" name="descriptionPopup" rows="5" cols="20"
+            placeholder="Enter a Description" required></textarea>
+
+        <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
+        <input class="duedate-popup" type="date" id="duedate" name="duedate" required>
+
+        <div class="margin-popup pop-up-child">Prio</div>
+        <div class="prio-popup edit-prio-popup">
+            <div id="urgentPopupEdit" onclick="changeColorUrgentEdit()" class="urgent-popup">Urgent
+                <div class="urgent-popup-child">
+                    <div class="position-urgent-arrow-popup-first"><img id="urgentFirstPopupEdit"
+                            src="assets/img/board/arrow-urgent.svg"></div>
+                    <div class="position-urgent-arrow-popup-second"><img id="urgentSecondPopupEdit"
+                            src="assets/img/board/arrow-urgent.svg"></div>
+                </div>
+            </div>
+            <div id="mediumPopupEdit" onclick="changeColorEditMedium()" class="medium-popup">Medium
+                <div class="medium-popup-child">
+                    <div class="position-medium-arrow-popup-first"><img id="mediumFirstPopupEdit"
+                            src="assets/img/board/arrow-medium.svg"></div>
+                    <div class="position-medium-arrow-popup-second"><img id="mediumSecondPopupEdit"
+                            src="assets/img/board/arrow-medium.svg"></div>
+                </div>
+            </div>
+            <div id="lowPopupEdit" onclick="changeColorEditLow()" class="low-popup">Low
+                <div class="low-popup-child">
+                    <div class="position-low-arrow-popup-first"><img id="lowFirstPopupEdit"
+                            src="assets/img/board/arrow-low.svg"></div>
+                    <div class="position-low-arrow-popup-second"><img id="lowSecondPopupEdit"
+                            src="assets/img/board/arrow-low.svg"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
+                to</label><br>
+        </div>
+        <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
+            <option value="" disabled selected>Select contacts to assign</option>
+            <option value="marcushaas">Marcus Haas</option>
+            <option value="mariuskatzer">Marius Katzer</option>
+            <option value="anilorhan">Anil Orhan</option>
+        </select>
+
+        <div class="person-and-profile-assigned-open-task-container">
+            <div class="person-assigned-open-task-container">
+                <div class="profile-assigned-open-task"></div>
+                <div class="name-assigned-open-task"></div>
+            </div>
+            <div onclick="openTaskDetails(${i}, event)" class="edit-open-task-okay-and-hook">
+                <div class="edit-open-task-okay">Ok</div>
+                <div class="edit-open-task-hook-container"><img class="edit-open-task-hook" src="assets/img/board/hook.svg"></div>
+            </div>
+        </div>`;
+}
+
+
+/**
+* change bg color of urgent
+*/
+function changeColorUrgentEdit() {
+    currentPrior = document.getElementById('urgentPopupEdit').innerText;
+    let urgent = document.getElementById('urgentPopupEdit');
+    let medium = document.getElementById('mediumPopupEdit');
+    let low = document.getElementById('lowPopupEdit');
+    urgent.classList.add('urgent-bg-color');
+    medium.classList.remove('medium-bg-color');
+    low.classList.remove('low-bg-color');
+    changeColorUrgentEditReverse();
+}
+
+
+function changeColorUrgentEditReverse() {
+    let changeColorFirst = document.getElementById('mediumFirstPopupEdit');
+    let changeColorSecond = document.getElementById('mediumSecondPopupEdit');
+    changeColorFirst.classList.remove('change-color-img');
+    changeColorSecond.classList.remove('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopupEdit');
+    let changeColorSecondLow = document.getElementById('lowSecondPopupEdit');
+    changeColorFirstLow.classList.remove('change-color-img');
+    changeColorSecondLow.classList.remove('change-color-img');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopupEdit');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopupEdit');
+    changeColorFirstUrgent.classList.add('change-color-img');
+    changeColorSecondUrgent.classList.add('change-color-img');
+}
+
+
+/**
+* change bg color of medium
+*/
+function changeColorEditMedium() {
+    currentPrior = document.getElementById('mediumPopupEdit').innerText;
+    let urgent = document.getElementById('urgentPopupEdit');
+    let medium = document.getElementById('mediumPopupEdit');
+    let low = document.getElementById('lowPopupEdit');
+    urgent.classList.remove('urgent-bg-color');
+    medium.classList.add('medium-bg-color');
+    low.classList.remove('low-bg-color');
+    changeColorEditMediumReverse();
+}
+
+
+function changeColorEditMediumReverse() {
+    let changeColorFirst = document.getElementById('mediumFirstPopupEdit');
+    let changeColorSecond = document.getElementById('mediumSecondPopupEdit');
+    changeColorFirst.classList.add('change-color-img');
+    changeColorSecond.classList.add('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopupEdit');
+    let changeColorSecondLow = document.getElementById('lowSecondPopupEdit');
+    changeColorFirstLow.classList.remove('change-color-img');
+    changeColorSecondLow.classList.remove('change-color-img');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopupEdit');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopupEdit');
+    changeColorFirstUrgent.classList.remove('change-color-img');
+    changeColorSecondUrgent.classList.remove('change-color-img');
+}
+
+
+/**
+* change bg color of low
+*/
+function changeColorEditLow() {
+    currentPrior = document.getElementById('lowPopupEdit').innerText;
+    let urgent = document.getElementById('urgentPopupEdit');
+    let medium = document.getElementById('mediumPopupEdit');
+    let low = document.getElementById('lowPopupEdit');
+    urgent.classList.remove('urgent-bg-color');
+    medium.classList.remove('medium-bg-color');
+    low.classList.add('low-bg-color');
+    changeColorEditLowReverse();
+}
+
+
+function changeColorEditLowReverse() {
+    let changeColorFirst = document.getElementById('mediumFirstPopupEdit');
+    let changeColorSecond = document.getElementById('mediumSecondPopupEdit');
+    changeColorFirst.classList.remove('change-color-img');
+    changeColorSecond.classList.remove('change-color-img');
+    let changeColorFirstLow = document.getElementById('lowFirstPopupEdit');
+    let changeColorSecondLow = document.getElementById('lowSecondPopupEdit');
+    changeColorFirstLow.classList.add('change-color-img');
+    changeColorSecondLow.classList.add('change-color-img');
+    let changeColorFirstUrgent = document.getElementById('urgentFirstPopupEdit');
+    let changeColorSecondUrgent = document.getElementById('urgentSecondPopupEdit');
+    changeColorFirstUrgent.classList.remove('change-color-img');
+    changeColorSecondUrgent.classList.remove('change-color-img');
 }

@@ -625,7 +625,7 @@ body {
 /* CSS open Tast */
 .open-position {
     position: absolute;
-    top: 150px;
+    top: 100px;
     left: 650px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -635,6 +635,7 @@ body {
     padding: 25px;
     gap: 25px;
     z-index: 2;
+    min-height: 770px;
 }
 
 .close-open-task {
@@ -815,12 +816,37 @@ body {
     top: 33px;
 }
 
-.edit-open-task {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .edit-prio-popup {
     margin-bottom: 35px;
+}
+
+.edit-open-task-okay-and-hook {
+    display: flex;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 57px;
+    height: 57px;
+    background-color: #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-open-task-okay-and-hook:hover {
+    background-color: #0D99FF;
+}
+
+.edit-open-task-okay {
+    margin-left: 5px;
+}
+
+.edit-open-task-hook-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.edit-open-task-hook {
+    height: 15px;
+    width: 15px;
 }

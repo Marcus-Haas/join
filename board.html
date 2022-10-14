@@ -185,57 +185,7 @@
 
     </div>
 
-    <div id="editOpenTaskDetails" class="open-position">
-        <div>
-            <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
-            <input class="title-popup" type="text" id="title" name="title" placeholder="Enter a title" required>
-        </div>
-
-        <div class="margin-popup"><label class="pop-up-child" for="descriptionPopup">Description</label><br>
-        </div>
-        <textarea class="description-popup" type="text" id="descriptionPopup" name="descriptionPopup" rows="5" cols="20"
-            placeholder="Enter a Description" required></textarea>
-
-        <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
-        <input class="duedate-popup" type="date" id="duedate" name="duedate" required>
-
-        <div class="margin-popup pop-up-child">Prio</div>
-        <div class="prio-popup edit-prio-popup">
-            <div id="urgentPopup" onclick="changeColorUrgent()" class="urgent-popup">Urgent
-                <div class="urgent-popup-child">
-                    <div class="position-urgent-arrow-popup-first"><img id="urgentFirstPopup"
-                            src="assets/img/board/arrow-urgent.svg"></div>
-                    <div class="position-urgent-arrow-popup-second"><img id="urgentSecondPopup"
-                            src="assets/img/board/arrow-urgent.svg"></div>
-                </div>
-            </div>
-            <div id="mediumPopup" onclick="changeColorMedium()" class="medium-popup">Medium
-                <div class="medium-popup-child">
-                    <div class="position-medium-arrow-popup-first"><img id="mediumFirstPopup"
-                            src="assets/img/board/arrow-medium.svg"></div>
-                    <div class="position-medium-arrow-popup-second"><img id="mediumSecondPopup"
-                            src="assets/img/board/arrow-medium.svg"></div>
-                </div>
-            </div>
-            <div id="lowPopup" onclick="changeColorLow()" class="low-popup">Low
-                <div class="low-popup-child">
-                    <div class="position-low-arrow-popup-first"><img id="lowFirstPopup"
-                            src="assets/img/board/arrow-low.svg"></div>
-                    <div class="position-low-arrow-popup-second"><img id="lowSecondPopup"
-                            src="assets/img/board/arrow-low.svg"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
-                to</label><br>
-        </div>
-        <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
-            <option value="" disabled selected>Select contacts to assign</option>
-            <option value="marcushaas">Marcus Haas</option>
-            <option value="mariuskatzer">Marius Katzer</option>
-            <option value="anilorhan">Anil Orhan</option>
-        </select>
+    <div id="editOpenTaskDetails" onclick="doNotCloseDiv(event)">
 
     </div>
 </body>
