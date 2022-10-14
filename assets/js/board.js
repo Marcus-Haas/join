@@ -116,6 +116,18 @@ function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
 }
 
 
+function changeBgColorOfInitialLettersDetails(i) {
+    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third'); 
+    }
+}
+
 
 async function addInBackend() {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
@@ -672,7 +684,7 @@ function openTaskDetails(i) {
     changeColorPriorInShowDetails(i);
     changePriorShowDetails(i);
     changeCategoryShowDetails(i);
-    changeBgColorOfInitialLettersAfterDragAndDrop(i);
+    changeBgColorOfInitialLettersDetails(i);
 }
 
 
@@ -698,7 +710,7 @@ function templateOpenTaskDetails(i) {
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
-                <div  id="assignedForInitialLetters${i}" class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
+                <div  id="assignedForInitialLettersDetails${i}" class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
             </div>
             <div class="edit-open-task">

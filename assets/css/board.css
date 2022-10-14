@@ -3,11 +3,11 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Inter';
+    height: 100vh;
 }
 
 .main-container {
     margin-left: 355px;
-    ;
     margin-top: 81px;
     margin-right: 65px;
 }
@@ -112,6 +112,30 @@ body {
 /*
 * CSS for second container
 */
+.scrollbar-task {
+    overflow-y: scroll;
+    height: 54vh;
+    scroll-behavior: smooth;
+}
+
+.scrollbar-task::-webkit-scrollbar {
+    width: 20px;
+}
+
+.scrollbar-task::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px #F5F5F5;;
+    border-radius: 10px;
+}
+
+.scrollbar-task::-webkit-scrollbar-thumb {
+    background: #F5F5F5;
+    border-radius: 10px;
+}
+
+.scrollbar-task::-webkit-scrollbar-thumb:hover {
+    background: #F5F5F5;
+}
+
 .second-container {
     display: flex;
     justify-content: space-between;
@@ -621,6 +645,8 @@ body {
     height: 40px;
     color: white;
     margin-bottom: 25px;
+    font-size: 27px;
+    padding: 4px 36.5px;
 }
 
 .title-open-task {
@@ -730,9 +756,9 @@ body {
     gap: 10px;
     width: 45px;
     height: 45px;
-    background: #9327FF;
     border: 2px solid #FFFFFF;
     border-radius: 58px;
+    color: white;
 }
 
 .name-assigned-open-task {
