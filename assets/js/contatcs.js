@@ -109,7 +109,6 @@ function generateBusinessCard(i) {
                 <img src="assets/img/contacts/pen.png">
                 <div onclick="editContact(${i})">Edit Contact</div>
             </div>
-            <div style="cursor:pointer" onclick="deleteContact(${i})">Delete Contact!</div>
         </div>
         <div class="business-card-email-frame">
             <div class="business-card-email-headline">Email</div>
@@ -119,7 +118,9 @@ function generateBusinessCard(i) {
             <div class="business-card-phone-headline">Phone</div>
             <div class="business-card-phone-number">${contacts[i]['phone']}</div>
         </div>
+        <div class="delete-contact" onclick="deleteContact(${i})">Delete Contact!</div>
     </div>
+    
     `;
 }
 
@@ -201,6 +202,7 @@ function updateContatcs(i, contactName, contactEmail, contactPhone, contactIniti
 
 }
 
+
 function pushContactsToBackend() {
     let key = activeUser[0];
     localStorage.setItem(key, JSON.stringify(contacts));
@@ -219,6 +221,7 @@ function deleteContact(i) {
     renderContactBook();
     pushContactsToBackend();
 }
+
 
 async function InitContacts() {
     await init();
