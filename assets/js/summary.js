@@ -1,3 +1,10 @@
+async function initSummary() {
+    await init();
+    await initStart();
+    showMyName();
+}
+
+
 // show my Name or Guest at summary.html //
 function showMyName() {
     let myName = activeUser[0];

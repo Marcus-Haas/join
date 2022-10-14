@@ -1,16 +1,8 @@
-//let contact_book = [{
-//    'name': [],
-//    'email': [],
-//    'phone': [],
-//    'initials': [],
-//}];
-
 let contactName;
 let contactEmail;
 let contactPhone;
 let contactInitials;
 
-let currentUser;
 
 let contacts = [];
 
@@ -46,22 +38,14 @@ async function addNewContact() {
 
 
 function pushContacts(contactName, contactEmail, contactPhone, contactInitials) {
-    for (let index = 0; index < contacts.length; index++) {
-        let existingEmail = contacts[index]['email'];
-        if (existingEmail == contactEmail) {
-            showEmailMessage();
-        } else {
-
-            let contact = {
-                'name': contactName,
-                'email': contactEmail,
-                'phone': contactPhone,
-                'initials': contactInitials,
-            }
-            contacts.push(contact);
-            pushToBackend();
-        }
+    let contact = {
+        'name': contactName,
+        'email': contactEmail,
+        'phone': contactPhone,
+        'initials': contactInitials,
     }
+    contacts.push(contact);
+    pushContactsToBackend();
 }
 
 
@@ -213,22 +197,32 @@ function updateContatcs(i, contactName, contactEmail, contactPhone, contactIniti
     contacts[i]['email'] = contactEmail
     contacts[i]['phone'] = contactPhone
     contacts[i]['initials'] = contactInitials
-    pushToBackend();
+    pushContactsToBackend();
 
 }
 
-function pushToBackend() {
-    localStorage.setItem('contactsMH', JSON.stringify(contacts));
+function pushContactsToBackend() {
+    let key = activeUser[0];
+    localStorage.setItem(key, JSON.stringify(contacts));
 }
 
 
-function loadBackend() {
-    contacts = JSON.parse(localStorage.getItem('contactsMH'));
-    renderContactBook();
+function loadContactsFromBackend() {
+    let key = activeUser[0];
+    contacts = JSON.parse(localStorage.getItem(key)) || [];
+
 }
 
 
 function deleteContact(i) {
     contacts.splice(i, 1);
+    renderContactBook();
+    pushContactsToBackend();
+}
+
+async function InitContacts() {
+    await init();
+    await initStart();
+    loadContactsFromBackend();
     renderContactBook();
 }
