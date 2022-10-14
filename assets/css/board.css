@@ -3,7 +3,16 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Inter';
+}
+
+.overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100vh;
+    width: 100vw;
+    background-color: rgba(12, 12, 12, 0.5);
+    z-index: 1;
 }
 
 .main-container {
@@ -123,8 +132,9 @@ body {
 }
 
 .scrollbar-task::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 3px #F5F5F5;;
+    box-shadow: inset 0 0 3px #F5F5F5;
     border-radius: 10px;
+    display: none;
 }
 
 .scrollbar-task::-webkit-scrollbar-thumb {
@@ -272,6 +282,7 @@ body {
     border-radius: 30px;
     cursor: pointer;
     display: none;
+    z-index: 2;
 }
 
 .add-task-bg-color {
@@ -623,6 +634,7 @@ body {
     width: 450px;
     padding: 25px;
     gap: 25px;
+    z-index: 2;
 }
 
 .close-open-task {
@@ -801,4 +813,14 @@ body {
     height: 7px;
     left: 18px;
     top: 33px;
+}
+
+.edit-open-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-prio-popup {
+    margin-bottom: 35px;
 }

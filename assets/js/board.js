@@ -84,7 +84,6 @@ function pushTask() {
         'secondLetter': secondNameLetter,
         'prior': currentPrior,
         'status': 'todo',
-        'id': index,
     };
     allTasks.push(task);
 }
@@ -98,7 +97,7 @@ function changeBgColorOfInitialLetters() {
         document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-second');
     }
     if (firstNameLetter == 'M' && secondNameLetter == 'K') {
-        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-third'); 
+        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-third');
     }
 }
 
@@ -111,7 +110,7 @@ function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
         document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
     }
     if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
-        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third'); 
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
     }
 }
 
@@ -124,7 +123,7 @@ function changeBgColorOfInitialLettersDetails(i) {
         document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-second');
     }
     if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
-        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third'); 
+        document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third');
     }
 }
 
@@ -260,7 +259,7 @@ function identifySelectedAssigne(sel) {
 
 function templateCreateTodo() {
     return `    
-    <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
+    <div onclick="openTaskDetails(${index}, event)" draggable="true" ondragstart="startDragging(${index})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
             <div><img onclick="deleteTask(${index}, event)" src="assets/img/board/trash.png"></div>
@@ -297,7 +296,7 @@ function updateTodo() {
 
 function templateUpdateTodo(i) {
     return `    
-    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i}, event)" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
             <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
@@ -334,7 +333,7 @@ function updateInProgress() {
 
 function templateUpdateInProgress(i) {
     return `    
-    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i}, event)" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
             <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
@@ -371,7 +370,7 @@ function updateAwaitingFeedback() {
 
 function templateUpdateAwaitingFeedback(i) {
     return `    
-    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i}, event)" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
             <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
@@ -408,7 +407,7 @@ function updateDone() {
 
 function templateUpdateDone(i) {
     return `    
-    <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
+    <div onclick="openTaskDetails(${i}, event)" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
             <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
@@ -573,6 +572,7 @@ function changeColorLowReverse() {
 * open the pop-up
 */
 function openForm() {
+    document.getElementById('overlayAddTask').classList.add('overlay-bg');
     document.getElementById('popup-window').style.display = 'unset';
 }
 
@@ -581,6 +581,7 @@ function openForm() {
 * close the pop-up
 */
 function closeForm() {
+    document.getElementById('overlayAddTask').classList.remove('overlay-bg');
     document.getElementById('popup-window').style.display = "none";
     document.getElementById('mainContainer').style.opacity = 'unset';
     currentTitle = document.getElementById('title');
@@ -676,7 +677,9 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 /**
  * open details of the task
 */
-function openTaskDetails(i) {
+function openTaskDetails(i, event) {
+    event.stopPropagation();
+    document.getElementById('overlay').classList.add('overlay-bg');
     document.getElementById('openTask').classList.remove('d-none');
     document.getElementById('openTask').classList.add('open-position');
     let openTask = document.getElementById('openTask');
@@ -690,7 +693,7 @@ function openTaskDetails(i) {
 
 function templateOpenTaskDetails(i) {
     return `
-    <div class="open-taks">
+    <div>
     <div onclick="closeTaskDetails()" class="close-open-task"><img src="assets/img/board/close-popup.svg"></div>
     <div id="categoryOpenTask${i}" class="category-open-task">${allTasks[i]['category']}</div>
     <div class="title-open-task">${allTasks[i]['title']}</div>
@@ -706,7 +709,6 @@ function templateOpenTaskDetails(i) {
         </div>
     </div>
     <div class="container-assigned-open-task">
-
         <div class="assigned-open-task">Assigned to:</div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
@@ -718,13 +720,13 @@ function templateOpenTaskDetails(i) {
                 <img class="edit-img-penpeak-open-task" src="assets/img/board/penpeak.svg">
             </div>
         </div>
-
     </div>
 </div>`;
 }
 
 
 function closeTaskDetails() {
+    document.getElementById('overlay').classList.remove('overlay-bg');
     document.getElementById('openTask').classList.add('d-none');
     document.getElementById('openTask').classList.remove('open-position');
 }
@@ -796,10 +798,30 @@ function changeCategoryShowDetails(i) {
 }
 
 
+
+
 function getCurrentDate() {
     let now = new Date();
     let day = ("0" + now.getDate()).slice(-2);
     let month = ("0" + (now.getMonth() + 1)).slice(-2);
     let today = now.getFullYear() + "-" + (month) + "-" + (day);
     document.getElementById('duedate').value = today;
+}
+
+
+function doNotCloseDiv(event) {
+    event.stopPropagation();
+}
+
+function editShowDetails(i) {
+    closeTaskDetails();
+    document.getElementById('overlay').classList.add('overlay-bg');
+    let edit = document.getElementById('editOpenTaskDetails');
+    edit.classList.add('open-position');
+    edit.innerHTML = templateEditShowDetails(i);
+}
+
+
+function templateEditShowDetails(i) {
+    return ``;
 }
