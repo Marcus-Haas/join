@@ -101,7 +101,8 @@ async function getTasksFromBackend() {
 /**
 * delete a task
 */
-async function deleteTask(i) {
+async function deleteTask(i, event) {
+    event.stopPropagation();
     allTasks.splice(i, 1);
     if (allTasks.length < 1) {
         await deleteAllTasksArray();
@@ -217,7 +218,7 @@ function templateCreateTodo() {
     <div onclick="openTaskDetails(${index})" draggable="true" ondragstart="startDragging(${index})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
-            <div><img onclick="deleteTask(${index})" src="assets/img/board/trash.png"></div>
+            <div><img onclick="deleteTask(${index}, event)" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
@@ -253,7 +254,7 @@ function templateUpdateTodo(i) {
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
-            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+            <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -289,7 +290,7 @@ function templateUpdateInProgress(i) {
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
-            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+            <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -325,7 +326,7 @@ function templateUpdateAwaitingFeedback(i) {
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
-            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+            <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
@@ -361,7 +362,7 @@ function templateUpdateDone(i) {
     <div onclick="openTaskDetails(${i})" draggable="true" ondragstart="startDragging(${i})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategoryAfterDragAndDrop${i}" class="category">${allTasks[i]['category']}</div>
-            <div><img onclick="deleteTask(${i})" src="assets/img/board/trash.png"></div>
+            <div><img onclick="deleteTask(${i}, event)" src="assets/img/board/trash.png"></div>
         </div>
         <div class="title">${allTasks[i]['title']}</div>
         <div class="description">${allTasks[i]['description']}</div>
