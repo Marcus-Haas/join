@@ -863,7 +863,9 @@ function saveEditDetails(i) {
         allTasks[i]['secondLetter'] = secondNameLetterEdit;
         allTasks[i]['assigned'] = assignedEdit;
     }
-    allTasks[i]['prior'] = currentPriorEdit;
+    if (currentPriorEdit != undefined) {
+        allTasks[i]['prior'] = currentPriorEdit;
+    }
     changeBgColorOfInitialLettersDetails(i);
     addInBackend();
     updateBoard();
