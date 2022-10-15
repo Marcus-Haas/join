@@ -3,7 +3,7 @@ let contactEmail;
 let contactPhone;
 let contactInitials;
 
-let newEmail;
+let newEmail = 0;
 
 
 let contacts = [];
@@ -43,13 +43,16 @@ function pushContacts(contactName, contactEmail, contactPhone, contactInitials) 
 
 
 function checkForDuplicate(contactName, contactEmail, contactPhone, contactInitials) {
+    newEmail = 0;
     for (let i = 0; i < contacts.length; i++) {
         let existingMail = contacts[i]['email'];
-        let newEmail = 0;
         if (existingMail == contactEmail) { // check for existing users / email
             newEmail += 1;
         } else {
             newEmail += 0;
+        }
+        if (newEmail == 1) {
+            showEmailMessage();
         }
     }
     if (newEmail == 0) {
@@ -57,8 +60,6 @@ function checkForDuplicate(contactName, contactEmail, contactPhone, contactIniti
         closeOverlay();
         renderContactBook();
         clearInputAtOverlay();
-    } else {
-        showEmailMessage();
     }
 }
 
