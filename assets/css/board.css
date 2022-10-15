@@ -850,3 +850,16 @@ body {
     height: 15px;
     width: 15px;
 }
+
+.profile-assigned-open-task-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    gap: 10px;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #FFFFFF;
+    border-radius: 58px;
+    color: white;
+}

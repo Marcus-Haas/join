@@ -7,12 +7,18 @@ let currentDuedate;
 let currentDraggedElement;
 let index = 0;
 let currentPrior;
+let currentPriorEdit;
 let splitFirstAndSecondNameOfAssignedAsArray;
 let firstNameLetter;
 let secondNameLetter;
 let currentTitleValue;
 let currentDescriptionValue;
 let currentDuedateValue;
+let assignedEdit;
+let firstNameLetterEdit;
+let secondNameLetterEdit;
+let splitFirstAndSecondNameOfAssignedAsArrayEdit;
+
 
 
 async function initialize() {
@@ -289,6 +295,7 @@ function updateTodo() {
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
+            addInBackend();
         }
     }
 }
@@ -326,6 +333,7 @@ function updateInProgress() {
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
+            addInBackend();
         }
     }
 }
@@ -363,6 +371,7 @@ function updateAwaitingFeedback() {
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
+            addInBackend();
         }
     }
 }
@@ -400,6 +409,7 @@ function updateDone() {
             changeColorOfCategoryAfterDragAndDrop(i);
             changePriorAfterDragAndDrop(i);
             changeBgColorOfInitialLettersAfterDragAndDrop(i);
+            addInBackend();
         }
     }
 }
@@ -822,23 +832,70 @@ function editShowDetails(i) {
     edit.classList.add('open-position');
     edit.classList.remove('d-none');
     edit.innerHTML = templateEditShowDetails(i);
+    let titleEdit = document.getElementById('titleEdit');
+    titleEdit.value = allTasks[i]['title'];
+    let descriptionEdit = document.getElementById('descriptionPopupEdit');
+    descriptionEdit.value = allTasks[i]['description'];
+    let duedateEdit = document.getElementById('duedateEdit');
+    duedateEdit.value = allTasks[i]['duedate'];
+    let profile = document.getElementById('profileAssignedEdit' + i);
+    profile.innerHTML = `${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}`;
+    changeBgColorOfInitialLettersEdit(i);
+    changePriorColorByEdit(i);
 }
+
+
+function openTaskDetailsAfter(i, event) {
+    saveEditDetails(i);
+    openTaskDetails(i, event);
+}
+
+
+function saveEditDetails(i) {
+    let titleEdit = document.getElementById('titleEdit');
+    allTasks[i]['title'] = titleEdit.value;
+    let descriptionEdit = document.getElementById('descriptionPopupEdit');
+    allTasks[i]['description'] = descriptionEdit.value;
+    let duedateEdit = document.getElementById('duedateEdit');
+    allTasks[i]['duedate'] = duedateEdit.value;
+    if (assignedEdit != undefined) {
+        allTasks[i]['firstLetter'] = firstNameLetterEdit;
+        allTasks[i]['secondLetter'] = secondNameLetterEdit;
+        allTasks[i]['assigned'] = assignedEdit;
+    }
+    allTasks[i]['prior'] = currentPriorEdit;
+    changeBgColorOfInitialLettersDetails(i);
+    addInBackend();
+    updateBoard();
+}
+
+
+/**
+* identify the selected assigne edit
+*/
+function identifySelectedAssigneEdit(sel) {
+    assignedEdit = sel.options[sel.selectedIndex].text;
+    splitFirstAndSecondNameOfAssignedAsArrayEdit = assignedEdit.split(" ");
+    firstNameLetterEdit = splitFirstAndSecondNameOfAssignedAsArrayEdit[0].charAt(0);
+    secondNameLetterEdit = splitFirstAndSecondNameOfAssignedAsArrayEdit[1].charAt(0);
+}
+
 
 
 function templateEditShowDetails(i) {
     return `
     <div>
             <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
-            <input class="title-popup" type="text" id="title" name="title" placeholder="Enter a title" required>
+            <input class="title-popup" type="text" id="titleEdit" name="title" placeholder="Enter a title" required>
         </div>
 
         <div class="margin-popup"><label class="pop-up-child" for="descriptionPopup">Description</label><br>
         </div>
-        <textarea class="description-popup" type="text" id="descriptionPopup" name="descriptionPopup" rows="5" cols="20"
+        <textarea class="description-popup" type="text" id="descriptionPopupEdit" name="descriptionPopup" rows="5" cols="20"
             placeholder="Enter a Description" required></textarea>
 
         <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
-        <input class="duedate-popup" type="date" id="duedate" name="duedate" required>
+        <input class="duedate-popup" type="date" id="duedateEdit" name="duedate" required>
 
         <div class="margin-popup pop-up-child">Prio</div>
         <div class="prio-popup edit-prio-popup">
@@ -871,7 +928,7 @@ function templateEditShowDetails(i) {
         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                 to</label><br>
         </div>
-        <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
+        <select class="assignedto-popup" id="assignedEdit" onChange="identifySelectedAssigneEdit(this);">
             <option value="" disabled selected>Select contacts to assign</option>
             <option value="marcushaas">Marcus Haas</option>
             <option value="mariuskatzer">Marius Katzer</option>
@@ -880,10 +937,9 @@ function templateEditShowDetails(i) {
 
         <div class="person-and-profile-assigned-open-task-container">
             <div class="person-assigned-open-task-container">
-                <div class="profile-assigned-open-task"></div>
-                <div class="name-assigned-open-task"></div>
+                <div id="profileAssignedEdit${i}" class="profile-assigned-open-task-edit"></div>
             </div>
-            <div onclick="openTaskDetails(${i}, event)" class="edit-open-task-okay-and-hook">
+            <div onclick="openTaskDetailsAfter(${i}, event);" class="edit-open-task-okay-and-hook">
                 <div class="edit-open-task-okay">Ok</div>
                 <div class="edit-open-task-hook-container"><img class="edit-open-task-hook" src="assets/img/board/hook.svg"></div>
             </div>
@@ -892,10 +948,26 @@ function templateEditShowDetails(i) {
 
 
 /**
+* change colors depend on initial letters
+*/
+function changeBgColorOfInitialLettersEdit(i) {
+    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
+        document.getElementById('profileAssignedEdit' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
+        document.getElementById('profileAssignedEdit' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
+        document.getElementById('profileAssignedEdit' + i).classList.add('assigned-for-initial-letters-third');
+    }
+}
+
+
+/**
 * change bg color of urgent
 */
 function changeColorUrgentEdit() {
-    currentPrior = document.getElementById('urgentPopupEdit').innerText;
+    currentPriorEdit = document.getElementById('urgentPopupEdit').innerText;
     let urgent = document.getElementById('urgentPopupEdit');
     let medium = document.getElementById('mediumPopupEdit');
     let low = document.getElementById('lowPopupEdit');
@@ -926,7 +998,7 @@ function changeColorUrgentEditReverse() {
 * change bg color of medium
 */
 function changeColorEditMedium() {
-    currentPrior = document.getElementById('mediumPopupEdit').innerText;
+    currentPriorEdit = document.getElementById('mediumPopupEdit').innerText;
     let urgent = document.getElementById('urgentPopupEdit');
     let medium = document.getElementById('mediumPopupEdit');
     let low = document.getElementById('lowPopupEdit');
@@ -957,7 +1029,7 @@ function changeColorEditMediumReverse() {
 * change bg color of low
 */
 function changeColorEditLow() {
-    currentPrior = document.getElementById('lowPopupEdit').innerText;
+    currentPriorEdit = document.getElementById('lowPopupEdit').innerText;
     let urgent = document.getElementById('urgentPopupEdit');
     let medium = document.getElementById('mediumPopupEdit');
     let low = document.getElementById('lowPopupEdit');
@@ -981,4 +1053,23 @@ function changeColorEditLowReverse() {
     let changeColorSecondUrgent = document.getElementById('urgentSecondPopupEdit');
     changeColorFirstUrgent.classList.remove('change-color-img');
     changeColorSecondUrgent.classList.remove('change-color-img');
+}
+
+
+function changePriorColorByEdit(i) {
+    if (allTasks[i]['prior'] == 'Urgent') {
+        document.getElementById('urgentPopupEdit').classList.add('urgent-bg-color');
+        document.getElementById('urgentFirstPopupEdit').classList.add('change-color-img');
+        document.getElementById('urgentSecondPopupEdit').classList.add('change-color-img');
+    }
+    if (allTasks[i]['prior'] == 'Medium') {
+        document.getElementById('mediumPopupEdit').classList.add('medium-bg-color');
+        document.getElementById('mediumFirstPopupEdit').classList.add('change-color-img');
+        document.getElementById('mediumSecondPopupEdit').classList.add('change-color-img');
+    }
+    if (allTasks[i]['prior'] == 'Low') {
+        document.getElementById('lowPopupEdit').classList.add('low-bg-color');
+        document.getElementById('lowFirstPopupEdit').classList.add('change-color-img');
+        document.getElementById('lowSecondPopupEdit').classList.add('change-color-img');
+    }
 }

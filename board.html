@@ -27,7 +27,7 @@
 
     <div w3-include-html="assets/templates/sidebar.html"></div>
     <div id="overlay"></div>
-    <div id="overlayAddTask"></div>
+    <div onclick="closeForm()" id="overlayAddTask"></div>
     <div id="mainContainer" class="main-container">
 
         <div class="first-container">
@@ -92,7 +92,7 @@
     </div>
 
     <form onsubmit="createTodo(); return false;">
-        <div id="popup-window" class="add-task-pop-up">
+        <div onclick="doNotCloseDiv(event)" id="popup-window" class="add-task-pop-up">
             <div onclick="closeForm()" class="cross-popup"><img src="assets/img/board/close-popup.svg"></div>
             <div class="padding-popup-box">
                 <div class="title-pop-up">Add Task</div>
