@@ -3,8 +3,11 @@ let contactEmail;
 let contactPhone;
 let contactInitials;
 
+let newEmail;
+
 
 let contacts = [];
+
 
 function showOverlay() {
     document.getElementById('overlay-background').classList.remove('d-none');
@@ -13,7 +16,8 @@ function showOverlay() {
 
 function closeOverlay() {
     document.getElementById('overlay-background').classList.add('d-none');
-    hideEmailMesage();
+    hideEmailMessage();
+    clearInputAtOverlay();
 }
 
 
@@ -22,19 +26,8 @@ async function addNewContact() {
     let contactEmail = document.getElementById('new-email').value;
     let contactPhone = document.getElementById('new-phone').value;
     let contactInitials = contactName.match(/(\b\S)?/g).join("").toUpperCase();
-    await pushContacts(contactName, contactEmail, contactPhone, contactInitials);
-    //pushNewContactToArray(contactName, contactEmail, contactPhone);
-    closeOverlay();
-    renderContactBook();
-    clearInputAtOverlay();
+    checkForDuplicate(contactName, contactEmail, contactPhone, contactInitials);
 }
-
-//function pushNewContactToArray(contactName, contactEmail, contactPhone) {
-
-//    contacts.push(contactName);
-//    contacts.push(contactEmail);
-//    contacts.push(contactPhone);
-//}
 
 
 function pushContacts(contactName, contactEmail, contactPhone, contactInitials) {
@@ -49,13 +42,33 @@ function pushContacts(contactName, contactEmail, contactPhone, contactInitials) 
 }
 
 
+function checkForDuplicate(contactName, contactEmail, contactPhone, contactInitials) {
+    for (let i = 0; i < contacts.length; i++) {
+        let existingMail = contacts[i]['email'];
+        let newEmail = 0;
+        if (existingMail == contactEmail) { // check for existing users / email
+            newEmail += 1;
+        } else {
+            newEmail += 0;
+        }
+    }
+    if (newEmail == 0) {
+        pushContacts(contactName, contactEmail, contactPhone, contactInitials);
+        closeOverlay();
+        renderContactBook();
+        clearInputAtOverlay();
+    } else {
+        showEmailMessage();
+    }
+}
+
 function showEmailMessage() {
-    document.getElementById('warning').classList.remove('d-none');
+    document.getElementById('double-email').innerHTML = 'This contact already exists!';
 }
 
 
-function hideEmailMesage() {
-    document.getElementById('warning').innerHTML = '';
+function hideEmailMessage() {
+    document.getElementById('double-email').innerHTML = '';
 }
 
 
