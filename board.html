@@ -21,7 +21,7 @@
     <title>Board</title>
 </head>
 
-<body id="bodyContainer" onload="init(); initialize();">
+<body id="bodyContainer" onload="init(); initialize();" onclick="closeTaskDetails()">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -42,7 +42,7 @@
                 </div>
 
 
-                <button onclick="openForm()" class="btn">Add Task <img class="icon-plus"
+                <button onclick="openForm(); getCurrentDate();" class="btn">Add Task <img class="icon-plus"
                         src="assets/img/board/plus-icon.png"></button>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <div class="title-area">To do</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
-                <div id="todo">
+                <div class="scrollbar-task" id="todo">
 
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <div class="title-area">In Progress</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
-                <div id="inProgress">
+                <div class="scrollbar-task" id="inProgress">
 
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     <div class="title-area">Awaiting Feedback</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
-                <div id="awaitingFeedback">
+                <div class="scrollbar-task" id="awaitingFeedback">
 
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     <div class="title-area">Done</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
-                <div id="done">
+                <div class="scrollbar-task" id="done">
 
                 </div>
             </div>
@@ -181,9 +181,11 @@
         </div>
     </form>
 
-    <div id="openTask" class="d-none">
+    <div id="openTask" class="d-none" onclick="doNotCloseDiv(event)">
 
     </div>
+
+    <div id="editOpenTaskDetails" onclick="doNotCloseDiv(event)">
 
     </div>
 </body>
