@@ -20,13 +20,18 @@ let secondNameLetterEdit;
 let splitFirstAndSecondNameOfAssignedAsArrayEdit;
 
 
-
+/**
+* load task from server
+*/
 async function initialize() {
     await downloadFromServer();
     await getTasksFromBackend();
 }
 
 
+/**
+* update the board
+*/
 function updateBoard() {
     updateTodo();
     updateInProgress();
@@ -52,6 +57,29 @@ function createTodo() {
 }
 
 
+function templateCreateTodo() {
+    return `    
+    <div onclick="openTaskDetails(${index}, event)" draggable="true" ondragstart="startDragging(${index})" class="box">
+        <div class="category-with-trash">
+            <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
+            <div><img onclick="deleteTask(${index}, event)" src="assets/img/board/trash.png"></div>
+        </div>
+        <div class="title">${allTasks[index]['title']}</div>
+        <div class="description">${allTasks[index]['description']}</div>
+        <div class="assigned-and-prio">
+            <div id="assignedForInitialLetters${index}" class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+                <div class="prio">
+                    <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
+                    <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
+                </div>
+        </div>
+    </div>`;
+}
+
+
+/**
+* reset the inputfield
+*/
 function cleanValues() {
     currentTitle.value = ``;
     currentDescription.value = ``;
@@ -95,6 +123,9 @@ function pushTask() {
 }
 
 
+/**
+* change the color depend on the inital letters
+*/
 function changeBgColorOfInitialLetters() {
     if (allTasks[index]['firstLetter'] == 'A' && allTasks[index]['secondLetter'] == 'O') {
         document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-first');
@@ -134,10 +165,17 @@ function changeBgColorOfInitialLettersDetails(i) {
 }
 
 
+/**
+* safe all task in backend
+*/
 async function addInBackend() {
     await backend.setItem('allTasks', JSON.stringify(allTasks));
 }
 
+
+/**
+* get all task from backend and update board
+*/
 async function getTasksFromBackend() {
     let allTasksAsJson = await backend.getItem('allTasks');
     if (allTasksAsJson != null) {
@@ -182,7 +220,6 @@ function selectedCategoryDefaultValue() {
 function selectedAssignedDefaultValue() {
     document.getElementById("assignedto-popup").selectedIndex = "0";
 }
-
 
 
 /**
@@ -260,26 +297,6 @@ function identifySelectedAssigne(sel) {
     splitFirstAndSecondNameOfAssignedAsArray = currentAssigned.split(" ");
     firstNameLetter = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
     secondNameLetter = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
-}
-
-
-function templateCreateTodo() {
-    return `    
-    <div onclick="openTaskDetails(${index}, event)" draggable="true" ondragstart="startDragging(${index})" class="box">
-        <div class="category-with-trash">
-            <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
-            <div><img onclick="deleteTask(${index}, event)" src="assets/img/board/trash.png"></div>
-        </div>
-        <div class="title">${allTasks[index]['title']}</div>
-        <div class="description">${allTasks[index]['description']}</div>
-        <div class="assigned-and-prio">
-            <div id="assignedForInitialLetters${index}" class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
-                <div class="prio">
-                    <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
-                    <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
-                </div>
-        </div>
-    </div>`;
 }
 
 
@@ -737,6 +754,9 @@ function templateOpenTaskDetails(i) {
 }
 
 
+/**
+ * close the popup task detail
+*/
 function closeTaskDetails() {
     document.getElementById('overlay').classList.remove('overlay-bg');
     document.getElementById('openTask').classList.add('d-none');
@@ -744,6 +764,9 @@ function closeTaskDetails() {
 }
 
 
+/**
+ * change the color of prior depend of prior
+*/
 function changeColorPriorInShowDetails(i) {
     if (allTasks[i]['prior'] == 'Urgent') {
         let urgent = document.getElementById('currentPriorOpenTask' + i);
@@ -786,6 +809,9 @@ function changePriorShowDetails(i) {
 }
 
 
+/**
+ * change the category of details
+*/
 function changeCategoryShowDetails(i) {
     let categoryAddColor = document.getElementById('categoryOpenTask' + i);
     let category = categoryAddColor.innerText;
@@ -810,8 +836,9 @@ function changeCategoryShowDetails(i) {
 }
 
 
-
-
+/**
+ * get the current date for the inputfield type date
+*/
 function getCurrentDate() {
     let now = new Date();
     let day = ("0" + now.getDate()).slice(-2);
@@ -821,10 +848,17 @@ function getCurrentDate() {
 }
 
 
+/**
+ * function for stop propagation
+*/
 function doNotCloseDiv(event) {
     event.stopPropagation();
 }
 
+
+/**
+ * show edit details 
+*/
 function editShowDetails(i) {
     closeTaskDetails();
     document.getElementById('overlay').classList.add('overlay-bg');
@@ -851,6 +885,9 @@ function openTaskDetailsAfter(i, event) {
 }
 
 
+/**
+ * save new task details
+*/
 function saveEditDetails(i) {
     let titleEdit = document.getElementById('titleEdit');
     allTasks[i]['title'] = titleEdit.value;
@@ -881,7 +918,6 @@ function identifySelectedAssigneEdit(sel) {
     firstNameLetterEdit = splitFirstAndSecondNameOfAssignedAsArrayEdit[0].charAt(0);
     secondNameLetterEdit = splitFirstAndSecondNameOfAssignedAsArrayEdit[1].charAt(0);
 }
-
 
 
 function templateEditShowDetails(i) {
@@ -1058,6 +1094,9 @@ function changeColorEditLowReverse() {
 }
 
 
+/**
+ * change color of prior after edit
+*/
 function changePriorColorByEdit(i) {
     if (allTasks[i]['prior'] == 'Urgent') {
         document.getElementById('urgentPopupEdit').classList.add('urgent-bg-color');
