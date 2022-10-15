@@ -96,13 +96,9 @@ function changeLoginPassword () {
     document.getElementById(`failed-signup-window-input-email`).classList.remove(`d-none`); // Test, Funktion noch nicht fertig
 }
 
-
-
-
 async function deleteUser() {
     await backend.deleteItem('guestUser');
 }
-
 
 function deleteSingleUser() { //Übergabe des Wertes, der gelöscht werden soll, fehlt noch, Funktion noch nicht fertig, Key fehlt
  for (let i = 0; i < users.length; i++) {

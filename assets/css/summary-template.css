@@ -69,6 +69,14 @@
     width: 100%;
 }
 
+.summary-details-container a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: inherit;
+}
+
 .summary-tasks-container {
     display: flex;
     justify-content: space-between;
@@ -80,16 +88,13 @@
 .summary-tasks-btn {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 25px 0px;
-    gap: 13px;
     width: 150px;
     height: 150px;
     background: #FFFFFF;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
     border-radius: 30px;
-    box-sizing: border-box;
 }
 
 .summary-tasks-btn:hover {
@@ -135,20 +140,67 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 28px 48px;
     gap: 61px;
     width: 580px;
     height: 150px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    box-sizing: border-box;
 }
 
 .summary-urgency-container:hover {
     background: #2A3647;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+}
+
+.summary-urgency-image {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-urgency-image-urgent {
+    background-color: #FF3D01 !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.summary-urgency-image-medium {
+    background-color: #FFA901 !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.summary-urgency-image-low {
+    background-color: #7AE229 !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.summary-urgency-image img {
+    scale: 1.2;
 }
 
 .summary-urgency-container:hover .summary-urgency-text {
@@ -199,6 +251,7 @@
     font-weight: 400;
     font-size: 16px;
     color: #2A3647;
+    text-align: center;
 }
 
 .summary-urgency-border {
