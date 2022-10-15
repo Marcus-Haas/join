@@ -22,7 +22,7 @@ async function addNewContact() {
     let contactEmail = document.getElementById('new-email').value;
     let contactPhone = document.getElementById('new-phone').value;
     let contactInitials = contactName.match(/(\b\S)?/g).join("").toUpperCase();
-    pushContacts(contactName, contactEmail, contactPhone, contactInitials);
+    await pushContacts(contactName, contactEmail, contactPhone, contactInitials);
     //pushNewContactToArray(contactName, contactEmail, contactPhone);
     closeOverlay();
     renderContactBook();
@@ -181,12 +181,12 @@ function generateEditOverlay(i) {
 }
 
 
-function saveContact(i) {
+async function saveContact(i) {
     let contactName = document.getElementById('edit-name').value;
     let contactEmail = document.getElementById('edit-email').value;
     let contactPhone = document.getElementById('edit-phone').value;
     let contactInitials = contactName.match(/(\b\S)?/g).join("").toUpperCase();
-    updateContatcs(i, contactName, contactEmail, contactPhone, contactInitials);
+    await updateContatcs(i, contactName, contactEmail, contactPhone, contactInitials);
     closeEditOverlay();
     renderContactBook();
     openBusinessCard(i);
@@ -205,13 +205,13 @@ function updateContatcs(i, contactName, contactEmail, contactPhone, contactIniti
 
 function pushContactsToBackend() {
     let key = activeUser[0];
-    localStorage.setItem(key, JSON.stringify(contacts));
+    backend.setItem(key, JSON.stringify(contacts));
 }
 
 
 function loadContactsFromBackend() {
     let key = activeUser[0];
-    contacts = JSON.parse(localStorage.getItem(key)) || [];
+    contacts = JSON.parse(backend.getItem(key)) || [];
 
 }
 
@@ -226,6 +226,6 @@ function deleteContact(i) {
 async function InitContacts() {
     await init();
     await initStart();
-    loadContactsFromBackend();
+    await loadContactsFromBackend();
     renderContactBook();
 }
