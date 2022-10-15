@@ -5,9 +5,18 @@ body {
     font-family: 'Inter';
 }
 
+.overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(12, 12, 12, 0.5);
+    z-index: 1;
+}
+
 .main-container {
     margin-left: 355px;
-    ;
     margin-top: 81px;
     margin-right: 65px;
 }
@@ -112,6 +121,31 @@ body {
 /*
 * CSS for second container
 */
+.scrollbar-task {
+    overflow-y: scroll;
+    height: 54vh;
+    scroll-behavior: smooth;
+}
+
+.scrollbar-task::-webkit-scrollbar {
+    width: 20px;
+}
+
+.scrollbar-task::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px #F5F5F5;
+    border-radius: 10px;
+    display: none;
+}
+
+.scrollbar-task::-webkit-scrollbar-thumb {
+    background: #F5F5F5;
+    border-radius: 10px;
+}
+
+.scrollbar-task::-webkit-scrollbar-thumb:hover {
+    background: #F5F5F5;
+}
+
 .second-container {
     display: flex;
     justify-content: space-between;
@@ -179,7 +213,7 @@ body {
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
-    word-break: break-all;
+    word-break: break-word;
     margin-bottom: 10px;
 }
 
@@ -188,7 +222,7 @@ body {
     font-size: 16px;
     line-height: 120%;
     color: #A8A8A8;
-    word-break: break-all;
+    word-break: break-word;
     margin-bottom: 10px;
 }
 
@@ -198,12 +232,23 @@ body {
     align-items: center;
     width: 35px;
     height: 35px;
-    background-color: #0190E0;
     border: 1px solid #FFFFFF;
     border-radius: 100%;
     font-weight: 400;
     font-size: 12px;
     color: #FFFFFF;
+}
+
+.assigned-for-initial-letters-first {
+    background-color: #0190E0;
+}
+
+.assigned-for-initial-letters-second {
+    background-color: #9327FF;
+}
+
+.assigned-for-initial-letters-third {
+    background-color: #FF5C00;
 }
 
 .assigned-and-prio {
@@ -237,6 +282,7 @@ body {
     border-radius: 30px;
     cursor: pointer;
     display: none;
+    z-index: 2;
 }
 
 .add-task-bg-color {
@@ -579,7 +625,7 @@ body {
 /* CSS open Tast */
 .open-position {
     position: absolute;
-    top: 150px;
+    top: 100px;
     left: 650px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -588,6 +634,8 @@ body {
     width: 450px;
     padding: 25px;
     gap: 25px;
+    z-index: 2;
+    min-height: 770px;
 }
 
 .close-open-task {
@@ -610,13 +658,15 @@ body {
     height: 40px;
     color: white;
     margin-bottom: 25px;
+    font-size: 27px;
+    padding: 4px 36.5px;
 }
 
 .title-open-task {
     font-weight: 700;
     font-size: 61px;
     line-height: 120%;
-    word-break: break-all;
+    word-break: break-word;
     margin-bottom: 25px;
 }
 
@@ -625,6 +675,7 @@ body {
     font-size: 21px;
     line-height: 120%;
     margin-bottom: 25px;
+    word-break: break-word;
 }
 
 .duedate-open-task {
@@ -718,9 +769,9 @@ body {
     gap: 10px;
     width: 45px;
     height: 45px;
-    background: #9327FF;
     border: 2px solid #FFFFFF;
     border-radius: 58px;
+    color: white;
 }
 
 .name-assigned-open-task {
@@ -763,4 +814,39 @@ body {
     height: 7px;
     left: 18px;
     top: 33px;
+}
+
+.edit-prio-popup {
+    margin-bottom: 35px;
+}
+
+.edit-open-task-okay-and-hook {
+    display: flex;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 57px;
+    height: 57px;
+    background-color: #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-open-task-okay-and-hook:hover {
+    background-color: #0D99FF;
+}
+
+.edit-open-task-okay {
+    margin-left: 5px;
+}
+
+.edit-open-task-hook-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.edit-open-task-hook {
+    height: 15px;
+    width: 15px;
 }

@@ -285,13 +285,13 @@
     color: #FFFFFF;
 }
 
-.overlay-user-initials{
+.overlay-user-initials {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 120px;
     height: 120px;
-    background:#29ABE2;
+    background: #29ABE2;
     border: 3px solid #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 70px;
@@ -299,7 +299,7 @@
     font-size: 35px;
 }
 
-.overlay-save-frame{
+.overlay-save-frame {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -312,7 +312,7 @@
     background-color: #FFFFFF;
 }
 
-.warning-text{
+.red-text {
     display: flex;
     justify-content: center;
     text-align: center;

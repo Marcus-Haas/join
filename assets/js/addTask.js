@@ -12,6 +12,9 @@ async function createTodoForBoard() {
 }
 
 
+/*
+ * get the task in backend
+*/
 async function getTaskFromBackendAddTask() {
     let allTasksAsJson = await backend.getItem('allTasks');
     if (allTasksAsJson != null) {
@@ -20,9 +23,12 @@ async function getTaskFromBackendAddTask() {
 }
 
 
+/*
+ * forward to board page after create task
+*/
 function openWindow() {
     let url = 'board.html';
-    setTimeout(function() {window.open(url) }, 4000);
+    setTimeout(function() {window.open(url, '_self') }, 2700);
 
 }
 
@@ -31,9 +37,12 @@ function openWindow() {
  * create form addTask a task in the board page
 */
 function createTodoAddTask() {
-    currentTitle = document.getElementById('title').value;
-    currentDescription = document.getElementById('descriptionPopup').value;
-    currentDuedate = document.getElementById('duedate').value;
+    currentTitle = document.getElementById('title');
+    currentTitleValue = currentTitle.value;
+    currentDescription = document.getElementById('descriptionPopup');
+    currentDescriptionValue = currentDescription.value;
+    currentDuedate = document.getElementById('duedate');
+    currentDuedateValue = currentDuedate.value;
     pushTask();
     addInBackend();
 }

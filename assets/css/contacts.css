@@ -214,3 +214,8 @@ body {
 .business-card-phone-headline {
     font-weight: bold;
 }
+
+.delete-contact{
+    margin-top: 40px;
+    cursor: pointer;
+}

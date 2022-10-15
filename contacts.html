@@ -25,7 +25,7 @@
     <script> setURL('https://gruppe-330.developerakademie.net/smallest_backend_ever/');</script>
 </head>
 
-<body onload="init(), initStart(), loadBackend()">
+<body onload="InitContacts()">
 
     <div w3-include-html="assets/templates/header.html"></div>
 
@@ -68,7 +68,7 @@
                             <div class="overlay-contacts-details-frame">
                                 <input id="new-email" class="overlay-input-design input-icon-letter" required
                                     type="email" placeholder="Email">
-                                    <div class="d-none warning-text" id="warning"></div>
+                                <div class="red-text" id="double-email"></div>
                             </div>
                             <div class="overlay-contacts-details-frame">
                                 <input id="new-phone" class="overlay-input-design input-icon-phone" placeholder="Phone"

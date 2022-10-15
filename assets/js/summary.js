@@ -1,3 +1,10 @@
+async function initSummary() {
+    await init();
+    await initStart();
+    showMyName();
+}
+
+
 async function initializeSummary() {
     await downloadFromServer();
     await getTasksFromBackend();

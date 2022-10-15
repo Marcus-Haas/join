@@ -1,18 +1,13 @@
-//let contact_book = [{
-//    'name': [],
-//    'email': [],
-//    'phone': [],
-//    'initials': [],
-//}];
-
 let contactName;
 let contactEmail;
 let contactPhone;
 let contactInitials;
 
-let currentUser;
+let newEmail;
+
 
 let contacts = [];
+
 
 function showOverlay() {
     document.getElementById('overlay-background').classList.remove('d-none');
@@ -21,7 +16,8 @@ function showOverlay() {
 
 function closeOverlay() {
     document.getElementById('overlay-background').classList.add('d-none');
-    hideEmailMesage();
+    hideEmailMessage();
+    clearInputAtOverlay();
 }
 
 
@@ -30,48 +26,49 @@ async function addNewContact() {
     let contactEmail = document.getElementById('new-email').value;
     let contactPhone = document.getElementById('new-phone').value;
     let contactInitials = contactName.match(/(\b\S)?/g).join("").toUpperCase();
-    pushContacts(contactName, contactEmail, contactPhone, contactInitials);
-    //pushNewContactToArray(contactName, contactEmail, contactPhone);
-    closeOverlay();
-    renderContactBook();
-    clearInputAtOverlay();
+    checkForDuplicate(contactName, contactEmail, contactPhone, contactInitials);
 }
-
-//function pushNewContactToArray(contactName, contactEmail, contactPhone) {
-
-//    contacts.push(contactName);
-//    contacts.push(contactEmail);
-//    contacts.push(contactPhone);
-//}
 
 
 function pushContacts(contactName, contactEmail, contactPhone, contactInitials) {
-    for (let index = 0; index < contacts.length; index++) {
-        let existingEmail = contacts[index]['email'];
-        if (existingEmail == contactEmail) {
-            showEmailMessage();
-        } else {
+    let contact = {
+        'name': contactName,
+        'email': contactEmail,
+        'phone': contactPhone,
+        'initials': contactInitials,
+    }
+    contacts.push(contact);
+    pushContactsToBackend();
+}
 
-            let contact = {
-                'name': contactName,
-                'email': contactEmail,
-                'phone': contactPhone,
-                'initials': contactInitials,
-            }
-            contacts.push(contact);
-            pushToBackend();
+
+function checkForDuplicate(contactName, contactEmail, contactPhone, contactInitials) {
+    for (let i = 0; i < contacts.length; i++) {
+        let existingMail = contacts[i]['email'];
+        let newEmail = 0;
+        if (existingMail == contactEmail) { // check for existing users / email
+            newEmail += 1;
+        } else {
+            newEmail += 0;
         }
+    }
+    if (newEmail == 0) {
+        pushContacts(contactName, contactEmail, contactPhone, contactInitials);
+        closeOverlay();
+        renderContactBook();
+        clearInputAtOverlay();
+    } else {
+        showEmailMessage();
     }
 }
 
-
 function showEmailMessage() {
-    document.getElementById('warning').classList.remove('d-none');
+    document.getElementById('double-email').innerHTML = 'This contact already exists!';
 }
 
 
-function hideEmailMesage() {
-    document.getElementById('warning').innerHTML = '';
+function hideEmailMessage() {
+    document.getElementById('double-email').innerHTML = '';
 }
 
 
@@ -125,7 +122,6 @@ function generateBusinessCard(i) {
                 <img src="assets/img/contacts/pen.png">
                 <div onclick="editContact(${i})">Edit Contact</div>
             </div>
-            <div style="cursor:pointer" onclick="deleteContact(${i})">Delete Contact!</div>
         </div>
         <div class="business-card-email-frame">
             <div class="business-card-email-headline">Email</div>
@@ -135,7 +131,9 @@ function generateBusinessCard(i) {
             <div class="business-card-phone-headline">Phone</div>
             <div class="business-card-phone-number">${contacts[i]['phone']}</div>
         </div>
+        <div class="delete-contact" onclick="deleteContact(${i})">Delete Contact!</div>
     </div>
+    
     `;
 }
 
@@ -196,12 +194,12 @@ function generateEditOverlay(i) {
 }
 
 
-function saveContact(i) {
+async function saveContact(i) {
     let contactName = document.getElementById('edit-name').value;
     let contactEmail = document.getElementById('edit-email').value;
     let contactPhone = document.getElementById('edit-phone').value;
     let contactInitials = contactName.match(/(\b\S)?/g).join("").toUpperCase();
-    updateContatcs(i, contactName, contactEmail, contactPhone, contactInitials);
+    await updateContatcs(i, contactName, contactEmail, contactPhone, contactInitials);
     closeEditOverlay();
     renderContactBook();
     openBusinessCard(i);
@@ -213,22 +211,34 @@ function updateContatcs(i, contactName, contactEmail, contactPhone, contactIniti
     contacts[i]['email'] = contactEmail
     contacts[i]['phone'] = contactPhone
     contacts[i]['initials'] = contactInitials
-    pushToBackend();
+    pushContactsToBackend();
 
 }
 
-function pushToBackend() {
-    localStorage.setItem('contactsMH', JSON.stringify(contacts));
+
+function pushContactsToBackend() {
+    let key = activeUser[0];
+    backend.setItem(key, JSON.stringify(contacts));
 }
 
 
-function loadBackend() {
-    contacts = JSON.parse(localStorage.getItem('contactsMH'));
-    renderContactBook();
+function loadContactsFromBackend() {
+    let key = activeUser[0];
+    contacts = JSON.parse(backend.getItem(key)) || [];
+
 }
 
 
 function deleteContact(i) {
     contacts.splice(i, 1);
+    renderContactBook();
+    pushContactsToBackend();
+}
+
+
+async function InitContacts() {
+    await init();
+    await initStart();
+    await loadContactsFromBackend();
     renderContactBook();
 }
