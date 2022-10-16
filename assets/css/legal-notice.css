@@ -68,6 +68,7 @@ body {
         padding: 0;
         padding-left: 25px;
         padding-right: 25px;
+        overflow: auto;
     }
 
     .ln-title-container {
@@ -87,16 +88,16 @@ body {
     }
 }
 
-@media(max-width: 340px){
+@media(max-width: 340px) {
     .ln-title {
         font-size: 40px;
     }
 
-    .kanban-title{
+    .kanban-title {
         font-size: 14px;
     }
 
-    .ln-back-btn img{
+    .ln-back-btn img {
         height: 20px;
     }
 

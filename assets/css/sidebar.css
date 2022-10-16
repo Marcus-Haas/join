@@ -117,7 +117,9 @@
 @media (max-width: 850px) {
     .sidebar-main-frame {
         display: none;
-        flex-shrink: 1;
+        position: absolute;
+        bottom: 0;
+
     }
 
     .rs-main {
