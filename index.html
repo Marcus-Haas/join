@@ -21,7 +21,6 @@
 <body onload="initStart(); renderStartScreen()">
     <div class="login-bg">
     </div>
-
     <div class="start-screen">
         <img src="assets/img/login/Capa 2.svg" class="start-screen-logo-big" id="start-screen-logo-big">
     </div>
@@ -37,16 +36,12 @@
                 <form onsubmit="openUserStartScreen(); return false;">
                     <input type="email" required class="login-window-input-email" id="login-window-input-email"
                         placeholder="Email">
-
-
                     <div class="set-login-window-input-passwort">
                         <input type="password" required class="login-window-input-passwort"
                             id="login-window-input-passwort" placeholder="Password"
                             onclick="activateShowSignInPassword()">
                         <div class="login-input-image" onclick="showSignInPassword()" id="login-input-image"></div>
                     </div>
-
-
                     <div class="remember-me-forgot-my-passwort">
                         <div class="remember-me-clickbox">
                             <input type="checkbox" id="remember-me" name="remember-me">
@@ -61,10 +56,7 @@
                 </form>
                 <div><button class="guestlogin-button" onclick="openGuestStartScreen(); return false;">Guest Log
                         in</button>
-                    <!-- </div> -->
-                    <!-- <button class="login-button" onclick="openUserStartScreen()">Log in</button> -->
                 </div>
-                <!-- </form> -->
             </div>
             <!-- *********************** SIGN UP SECTION FOR JS ****************** -->
             <div class="signup-window d-none" id="signup-window">
@@ -76,16 +68,13 @@
                         placeholder="Name">
                     <input type="email" required class="login-window-input-email" id="signup-window-input-email"
                         placeholder="Email">
-
                     <div>
                         <input type="password" required class="login-window-input-passwort"
                             id="signup-window-input-passwort" placeholder="Password"
                             onclick="activateShowSignUpPassword()">
                         <div class="signup-input-image" onclick="showSignUpPassword()" id="signup-input-image"></div>
                     </div>
-
                     <span class="d-none red-font" id="failed-signup-window-input-email">User already exists!</span>
-
                     <div class="position-button">
                         <button class="signup-button">Sign up</button>
                     </div>
@@ -99,7 +88,6 @@
                         please confirm your email adress</button>
                 </div>
             </div>
-
             <!-- *********************** FORGOT PASSWORD SECTION FOR JS ****************** -->
             <div class="forgot-password-window d-none" id="forgot-password-window">
                 <img src="assets/img/login/signup-back.png" class="forgot-back" id="signup-back"
@@ -110,7 +98,6 @@
                 <form onsubmit="showResetPassword(); return false;">
                     <input type="email" required class="login-window-input-email"
                         id="forgot-password-window-input-email" placeholder="Email">
-
                     <span class="d-none red-font" id="failed-forgot-password-window-input-email">Please sign up
                         first!</span>
 
@@ -127,8 +114,6 @@
                 <!-- *********************** FORM VALIDATION ****************** -->
                 <span>Change your account password.</span>
                 <form onsubmit="showConfirmPasswordScreen(); return false;">
-
-
                     <div>
                         <input type="password" required class="login-window-input-passwort"
                             id="new-password-window-input-email" onclick="activateShowNewPassword()" placeholder="New password">
@@ -141,9 +126,6 @@
                             placeholder="Confirm password">
                             <div class="confirm-password-input-image" onclick="showConfirmPassword()" id="confirm-password-input-image"></div>
                     </div>
-
-
-
                     <div class="repeat-password">
                         <span class="d-none red-font" id="repeat-password">Please repeat new password!</span>
 
@@ -163,15 +145,3 @@
 </body>
 
 </html>
-
-
-<!-- to-do :
-    - Speichern / Abrufen des Arrays activeUser und guestUser : guestUser noch einmal prüfen
-    - CSS Müll entfernen
-    - Array users: Ergänzung des JSONS um ein User-Icon und ID ?
-    - JSDocs - Dokumentation integrieren
-    - JS HTML-Templates für Login-Bereich
--->
-
-<!-- - activeUser : Array leeren, wenn schon mal eingelogt? Password; Array leeren, sonst kann sich jeder einloggen?
-- Übergabe der Werte von activeUser für z.B. Kontakte oder Tasks, Speicherung separat? -->

@@ -89,16 +89,15 @@ function showConfirmPasswordScreen() {
     let newPassword = document.getElementById(`new-password-window-input-email`).value;
     let confirmPassword = document.getElementById(`confirm-password-window-input-email`).value;
     let emailForNewPassword = document.getElementById(`forgot-password-window-input-email`).value;
-    if (newPassword == confirmPassword) { // wenn beide Passwörter gleich sind, dann...
-        for (let i = 0; i < users.length; i++) { //...Array users druchgehen...
-            let userName = users[i]['name']; //...Variable definieren...
-            let userEmail = users[i]['email']; //...Variable definieren...
-            let userPassword = users[i]['password']; //...Variable definieren...
-            if (emailForNewPassword == userEmail) { // wenn es keine Übereinstimmung bei der Email-Adresse gibt, dann...
-                users.splice(i, 1) // ... gefundene Elemente gem. i löschen aus dem Array
-                users.push({ "name": userName, "email": userEmail, "password": confirmPassword}); // ... und wieder samt NEUEM PASSWORT einfügen.
-                // await backend.setItem('user'); // es muss noch in eine async-function umgewandelt werden
-            }; // check for existing users / email
+    if (newPassword == confirmPassword) {
+        for (let i = 0; i < users.length; i++) {
+            let userName = users[i]['name'];
+            let userEmail = users[i]['email'];
+            let userPassword = users[i]['password'];
+            if (emailForNewPassword == userEmail) {
+                users.splice(i, 1);
+                users.push({ "name": userName, "email": userEmail, "password": confirmPassword});
+            };
         }
         document.getElementById(`confirm-password-window`).classList.remove(`d-none`);
         document.getElementById(`repeat-password`).classList.add(`d-none`);
