@@ -21,6 +21,13 @@
     background-color: #29ABE2;
 }
 
+.summary-headline-middle2 {
+    display: none;
+    height: 59px;
+    border: 3px solid #29ABE2;
+    background-color: #29ABE2;
+}
+
 .summary-headline-right {
     width: 304px;
     height: 32px;

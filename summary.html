@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/summary.css">
     <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/summary-template.css">
+    <link rel="stylesheet" href="assets/css/summary-template-responsive.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/fonts.css">
@@ -30,11 +31,11 @@
 
 </head>
 <body onload="initializeSummary()">
-    <div w3-include-html="assets/templates/header.html"></div> 
+    <div w3-include-html="assets/templates/header.html" ></div> 
+
+    <div w3-include-html="assets/templates/summary-template.html" class="body-responsive"></div> 
 
     <div w3-include-html="assets/templates/sidebar.html"></div> 
-
-    <div w3-include-html="assets/templates/summary-template.html"></div> 
     
 </body>
 </html>
