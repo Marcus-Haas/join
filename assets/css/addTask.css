@@ -46,20 +46,621 @@ body {
     color: white;
 }
 
+.urgent-popup-addTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 136px;
+    height: 51px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 21px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.medium-popup-addTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 136px;
+    height: 51px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 21px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.low-popup-addTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 136px;
+    height: 51px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 21px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
 #addedTask {
     animation: cssAnimation 3s forwards;
 }
+
 @keyframes cssAnimation {
-    0%   {
+    0% {
         bottom: 20px;
         opacity: 1;
     }
-    60%  {
+
+    60% {
         bottom: 30px;
         opacity: 1;
     }
+
     100% {
         bottom: 50px;
         opacity: 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .hide-mediaquery {
+        display: none;
+    }
+
+    .container-for-seperate-left-and-right-content-addTask {
+        display: unset;
+    }
+
+    .btn-popup {
+        justify-content: unset;
+        margin-top: 59px;
+        margin-bottom: 20px;
+        width: 305px;
+    }
+
+    .text-header {
+        font-size: 40px;
+    }
+
+    .main-container-addTask {
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 20px;
+    }
+
+    .title-popup {
+        width: 305px;
+    }
+
+    .description-popup {
+        width: 305px;
+    }
+
+    .category-popup {
+        width: 305px;
+    }
+
+    .assignedto-popup {
+        width: 305px;
+    }
+
+    .duedate-popup {
+        width: 305px;
+    }
+
+    .prio-popup {
+        display: flex;
+        width: 300px;
+    }
+
+    .cross-popup-btn {
+        height: 20px;
+        width: 20px;
+    }
+
+    .hook-popup-btn {
+        height: 15px;
+        width: 15px;
+    }
+
+    .first-btn {
+        font-size: 16px;
+    }
+
+    .second-btn {
+        font-size: 16px;
+    }
+
+    .urgent-popup {
+        width: 125px;
+        font-size: 15px;
+    }
+
+    .medium-popup {
+        width: 125px;
+        font-size: 15px;
+    }
+
+    .low-popup {
+        width: 125px;
+        font-size: 15px;
+    }
+
+    .position-medium-arrow-popup-first {
+        bottom: -5px;
+        left: 6px;
+    }
+
+    .position-medium-arrow-popup-second {
+        bottom: -9px;
+        left: 6px;
+    }
+
+    .position-urgent-arrow-popup-first {
+        left: 6px;
+        bottom: -6px;
+    }
+
+    .position-urgent-arrow-popup-second {
+        position: absolute;
+        left: 6px;
+        bottom: -11px;
+    }
+
+    .position-low-arrow-popup-second {
+        position: absolute;
+        left: 9px;
+        bottom: -8px;
+    }
+
+    .position-low-arrow-popup-first {
+        position: absolute;
+        left: 9px;
+        bottom: -12px;
+    }
+}
+
+@media(min-width: 451px) and (max-width: 700px) {
+    .hide-mediaquery {
+        display: none;
+    }
+
+    .container-for-seperate-left-and-right-content-addTask {
+        display: unset;
+    }
+
+    .btn-popup {
+        justify-content: unset;
+        margin-top: 59px;
+        margin-bottom: 20px;
+        width: 400px;
+    }
+
+    .text-header {
+        font-size: 40px;
+    }
+
+    .main-container-addTask {
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 20px;
+    }
+
+    .title-popup {
+        width: 400px;
+    }
+
+    .description-popup {
+        width: 400px;
+    }
+
+    .category-popup {
+        width: 400px;
+    }
+
+    .assignedto-popup {
+        width: 400px;
+    }
+
+    .duedate-popup {
+        width: 400px;
+    }
+
+    .prio-popup {
+        display: flex;
+        width: 400px;
+    }
+
+    .urgent-popup {
+        width: 125px;
+        font-size: 18px;
+    }
+
+    .medium-popup {
+        width: 125px;
+        font-size: 18px;
+    }
+
+    .low-popup {
+        width: 125px;
+        font-size: 18px;
+    }
+
+    .position-medium-arrow-popup-first {
+        bottom: -5px;
+        left: 6px;
+    }
+
+    .position-medium-arrow-popup-second {
+        bottom: -9px;
+        left: 6px;
+    }
+
+    .position-urgent-arrow-popup-first {
+        left: 6px;
+        bottom: -6px;
+    }
+
+    .position-urgent-arrow-popup-second {
+        position: absolute;
+        left: 6px;
+        bottom: -11px;
+    }
+
+    .position-low-arrow-popup-second {
+        position: absolute;
+        left: 9px;
+        bottom: -8px;
+    }
+
+    .position-low-arrow-popup-first {
+        position: absolute;
+        left: 9px;
+        bottom: -12px;
+    }
+}
+
+@media(min-width: 701px) and (max-width: 850px) {
+    .btn-popup {
+        justify-content: unset;
+        margin-top: 59px;
+        margin-bottom: 20px;
+    }
+
+    .main-container-addTask {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+    .title-popup {
+        width: 280px;
+
+    }
+
+    .first-btn {
+        font-size: 14px;
+    }
+
+    .second-btn {
+        font-size: 14px;
+    }
+
+    .cross-popup-btn {
+        height: 20px;
+        width: 20px;
+    }
+
+    .hook-popup-btn {
+        height: 15px;
+        width: 15px;
+    }
+
+    .description-popup {
+        width: 280px;
+    }
+
+    .category-popup {
+        width: 280px;
+    }
+
+    .assignedto-popup {
+        width: 280px;
+    }
+
+    .duedate-popup {
+        width: 280px;
+    }
+
+    .btn-popup {
+        justify-content: unset;
+        margin-top: 59px;
+        margin-bottom: 20px;
+    }
+
+    .urgent-popup {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .medium-popup {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .low-popup {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .prio-popup {
+        display: flex;
+        width: 280px;
+    }
+
+    .btn-popup {
+        width: 280px;
+    }
+
+    .position-medium-arrow-popup-first {
+        bottom: -5px;
+        left: 6px;
+    }
+
+    .position-medium-arrow-popup-second {
+        bottom: -9px;
+        left: 6px;
+    }
+
+    .position-urgent-arrow-popup-first {
+        left: 6px;
+        bottom: -6px;
+    }
+
+    .position-urgent-arrow-popup-second {
+        position: absolute;
+        left: 6px;
+        bottom: -11px;
+    }
+
+    .position-low-arrow-popup-second {
+        position: absolute;
+        left: 9px;
+        bottom: -8px;
+    }
+
+    .position-low-arrow-popup-first {
+        position: absolute;
+        left: 9px;
+        bottom: -12px;
+    }
+}
+
+@media (min-width: 851px) and (max-width: 1149px) {
+    .hide-mediaquery {
+        display: none;
+    }
+
+    .container-for-seperate-left-and-right-content-addTask {
+        display: unset;
+    }
+
+    .main-container-addTask {
+        margin-top: 20px;
+    }
+
+    .text-header {
+        margin-bottom: 20px;
+        font-size: 35px;
+    }
+
+    .title-popup {
+        width: 490px;
+        margin-bottom: 20px;
+    }
+
+    .description-popup {
+        width: 490px;
+        margin-bottom: 20px;
+    }
+
+    .category-popup {
+        width: 490px;
+        margin-bottom: 20px;
+    }
+
+    .assignedto-popup {
+        width: 490px;
+        margin-bottom: 20px;
+    }
+
+    .duedate-popup {
+        width: 490px;
+        margin-bottom: 20px;
+    }
+
+    .prio-popup {
+        width: 490px;
+    }
+
+    .urgent-popup {
+        width: 156px;
+        font-size: 18px;
+    }
+
+    .medium-popup {
+        width: 156px;
+        font-size: 18px;
+    }
+
+    .low-popup {
+        width: 156px;
+        font-size: 18px;
+    }
+
+    .btn-popup {
+        margin-top: 47px;
+        margin-bottom: 20px;
+        width: 490px;
+    }
+}
+
+@media (min-width: 1150px) and (max-width: 1274px) {
+    .main-container-addTask {
+        margin-left: 342px;
+    }
+
+    .text-header {
+        margin-bottom: 41px;
+    }
+
+    .title-popup {
+        width: 330px;
+
+    }
+
+    .description-popup {
+        width: 330px;
+    }
+
+    .category-popup {
+        width: 330px;
+    }
+
+    .assignedto-popup {
+        width: 330px;
+    }
+
+    .duedate-popup {
+        width: 330px;
+    }
+
+    .btn-popup {
+        justify-content: unset;
+        margin-top: 59px;
+        margin-bottom: 20px;
+    }
+
+    .urgent-popup {
+        width: 125px;
+        font-size: 16px;
+    }
+
+    .medium-popup {
+        width: 125px;
+        font-size: 16px;
+    }
+
+    .low-popup {
+        width: 125px;
+        font-size: 16px;
+    }
+
+    .prio-popup {
+        width: 333px;
+    }
+
+    .btn-popup {
+        width: 330px;
+    }
+
+    .first-btn {
+        font-size: 18px;
+    }
+
+    .second-btn {
+        font-size: 18px;
+    }
+
+    .position-medium-arrow-popup-first {
+        bottom: -5px;
+        left: 6px;
+    }
+
+    .position-medium-arrow-popup-second {
+        bottom: -9px;
+        left: 6px;
+    }
+
+    .position-urgent-arrow-popup-first {
+        left: 6px;
+        bottom: -6px;
+    }
+
+    .position-urgent-arrow-popup-second {
+        position: absolute;
+        left: 6px;
+        bottom: -11px;
+    }
+
+    .position-low-arrow-popup-second {
+        position: absolute;
+        left: 9px;
+        bottom: -8px;
+    }
+
+    .position-low-arrow-popup-first {
+        position: absolute;
+        left: 9px;
+        bottom: -12px;
+    }
+}
+
+@media (min-width: 1275px) and (max-width: 1350px) {
+    .main-container-addTask {
+        margin-left: 339px;
+    }
+
+    .title-popup {
+        width: 400px;
+
+    }
+
+    .description-popup {
+        width: 400px;
+    }
+
+    .category-popup {
+        width: 400px;
+    }
+
+    .assignedto-popup {
+        width: 400px;
+    }
+
+    .duedate-popup {
+        width: 400px;
+    }
+
+    .urgent-popup {
+        width: 127px;
+    }
+
+    .medium-popup {
+        width: 127px;
+    }
+
+    .low-popup {
+        width: 127px;
+    }
+
+    .prio-popup {
+        width: 410px;
     }
 }
