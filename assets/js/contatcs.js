@@ -132,9 +132,9 @@ function generateBusinessCard(i) {
             <div class="business-card-phone-headline">Phone</div>
             <div class="business-card-phone-number">${contacts[i]['phone']}</div>
         </div>
+        <div class="edit-responsive"><img src="assets/img/contacts/edit-responsive.svg" onclick="deleteContact(${i})"></div>
         <div class="delete-contact" onclick="deleteContact(${i})">Delete Contact!</div>
     </div>
-    
     `;
 }
 
@@ -243,3 +243,12 @@ async function InitContacts() {
     await loadContactsFromBackend();
     renderContactBook();
 }
+
+
+/////////////////////////////Responsive JS//////////////////////////////////////
+
+function showOverlayResponsive() {
+    showOverlay();
+}
+
+function hideResponsvieContactBook(){}

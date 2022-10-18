@@ -78,6 +78,8 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding: 0px 12px;
+    position: absolute;
+    bottom: 0;
 }
 
 .rs-links {
@@ -117,9 +119,6 @@
 @media (max-width: 850px) {
     .sidebar-main-frame {
         display: none;
-        position: absolute;
-        bottom: 0;
-
     }
 
     .rs-main {

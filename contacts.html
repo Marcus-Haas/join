@@ -29,7 +29,7 @@
 
     <div w3-include-html="assets/templates/header.html"></div>
 
-    <div w3-include-html="assets/templates/sidebar.html"></div>
+    <div class="kanban-title">Kanban Project Managment Tool</div>
 
     <div class="contacts-headline-container">
         <div class="contacts-headline">Contacts</div>
@@ -41,6 +41,13 @@
         <div class="new-contacts-btn-text">New contact</div>
         <img class="new-contacts-icon" src="assets/img/contacts/new-contact.png">
     </div>
+
+
+    <div class="new-contacts-btn-rs" onclick="showOverlayResponsive()">
+        <div class="new-contacts-btn-text">New contact</div>
+        <img class="new-contacts-icon" src="assets/img/contacts/new-contact.png">
+    </div>
+
 
     <!-----------------Overlay add contact------------------>
 
@@ -54,6 +61,7 @@
             </div>
             <div class="overlay-right-part">
                 <img class="close-overlay" src="assets/img/contacts/cancel-icon.png" onclick="closeOverlay()">
+                <img class="close-overlay-rs" src="assets/img/contacts/cancel-white.svg" onclick="closeOverlay()">
                 <div class="user-contacts-help-frame">
                     <div class="overlay-user-icon-container">
                         <img class="overlay-user-icon-white" src="assets/img/contacts/user-white.png">
@@ -97,8 +105,8 @@
     </div>
 
 
-    <!----------------------------------------------Kontaktbuch via JS-------------------------------------->
 
+    <!----------------------------------------------Kontaktbuch via JS-------------------------------------->
     <div class="contact-book-main" id="contact-book"></div>
 
 
@@ -110,6 +118,8 @@
     <!-----------------------------------------Edit Contact Overlay via JS---------------------------------->
     <div id="edit"></div>
 
+    
+    <div w3-include-html="assets/templates/sidebar.html"></div>
 </body>
 
 </html>

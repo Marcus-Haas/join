@@ -2,7 +2,11 @@ body {
     margin: 0;
     background: #F5F5F5;
     font-family: 'Inter';
-    overflow-x: hidden;
+}
+
+.kanban-title {
+    display: none;
+    margin-top: 30px;
 }
 
 .contacts-headline-container {
@@ -43,7 +47,7 @@ body {
     align-items: center;
     position: absolute;
     right: 5%;
-    bottom: 10%;
+    bottom: 3%;
     gap: 10px;
     width: 193px;
     height: 53px;
@@ -72,6 +76,29 @@ body {
     height: 29px;
 }
 
+.new-contacts-btn-rs {
+    box-sizing: border-box;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 90px;
+    right: 25px;
+    gap: 10px;
+    width: 193px;
+    height: 53px;
+    background: #2A3647;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+}
+
+.new-contacts-btn-rs:hover {
+    cursor: pointer;
+    border: 1px solid #29ABE2;
+    background: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .contact-book-main {
     overflow-y: auto;
     box-sizing: border-box;
@@ -84,18 +111,20 @@ body {
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 40px;
     z-index: -1;
 }
 
 .contact-book-container {
     box-sizing: border-box;
     padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 75px;
-    gap: 50px;
+    gap: 30px;
     border-radius: 10px;
     background: #FFFFFF;
     margin-top: 15px;
@@ -105,10 +134,6 @@ body {
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
     cursor: pointer;
 }
-
-.contact-book-container:target{
-    background: #2A3647;
-} 
 
 .contact-circle {
     display: flex;
@@ -122,8 +147,13 @@ body {
     border: 2px solid white;
 }
 
+.contact-book-frame {
+    width: 55%;
+}
+
 .contact-book-name {
     font-size: 20px;
+    word-wrap: break-word;
 }
 
 .contact-book-email {
@@ -133,7 +163,6 @@ body {
 .business-card-main {
     display: flex;
     flex-direction: column;
-    width: 500px;
     position: absolute;
     top: 250px;
     left: 690px;
@@ -142,7 +171,8 @@ body {
 .business-card-header {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
+    width: 500px;
 }
 
 .business-card-initials {
@@ -154,12 +184,14 @@ body {
     width: 80px;
     background-color: #29ABE2;
     border-radius: 100%;
-    font-size: 35px;
+    font-size: 28px;
     border: 3px solid white;
 }
 
 .business-card-name {
     font-size: 35px;
+    word-wrap: break-word;
+    width: 360px;
 }
 
 .business-card-task {
@@ -215,7 +247,152 @@ body {
     font-weight: bold;
 }
 
-.delete-contact{
+.delete-contact {
     margin-top: 40px;
     cursor: pointer;
+}
+
+.edit-responsive {
+    display: none;
+    cursor: pointer;
+}
+
+
+@media(max-width: 1160px) {
+    .contact-book-main {
+        width: 280px;
+    }
+
+    .contact-book-container {
+        padding-left: 20px;
+        gap: 30px;
+    }
+
+    .contacts-headline-container {
+        width: 378px;
+        gap: 10px;
+        left: 460px;
+    }
+
+    .contacts-headline {
+        height: auto;
+        font-size: 30px;
+    }
+
+    .contacts-border {
+        height: 40px;
+    }
+
+    .contacts-slogan {
+        height: auto;
+        font-size: 18px;
+    }
+
+    .business-card-main {
+        left: 530px;
+    }
+
+    .business-card-header {
+        gap: 15px;
+    }
+
+    .business-card-initials {
+        width: 70px;
+        height: 70px;
+        font-size: 23px;
+    }
+
+    .business-card-name {
+        font-size: 30px;
+        width: 225px;
+    }
+}
+
+
+@media(max-width: 850px) {
+    .kanban-title {
+        display: block;
+        padding-left: 20px;
+    }
+
+    .business-card-main {
+        left: 20px;
+        margin-top: -35px;
+        word-wrap: break-word;
+    }
+
+    .business-card-header {
+        width: auto;
+    }
+
+    .business-card-edit-frame {
+        display: none;
+    }
+
+    .business-card-phone-frame {
+        margin-top: 15px;
+    }
+
+    .business-card-email-frame {
+        margin-top: 15px;
+    }
+
+    .contacts-headline-container {
+        width: auto;
+        left: 20px;
+        top: 145px;
+    }
+
+    .contact-book-main {
+        width: 100%;
+        left: 0;
+        padding-top: 55px;
+        display: none;
+    }
+
+    .contact-book-container {
+        padding-right: 20px;
+    }
+
+    .contact-circle {
+        height: 45px;
+        width: 45px;
+    }
+
+    .new-contacts-btn {
+        display: none;
+    }
+
+    .new-contacts-btn-rs {
+        display: flex;
+    }
+
+    .edit-responsive {
+        position: absolute;
+        right: 0;
+        bottom: 0%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}
+
+
+@media(max-width: 350px) {
+    .contacts-headline {
+        font-size: 20px;
+    }
+
+    .contacts-slogan {
+        font-size: 14px;
+    }
+
+    .kanban-title {
+        font-size: 14px;
+    }
+
+    .business-card-name {
+        width: 160px;
+    }
 }

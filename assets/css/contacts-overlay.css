@@ -17,8 +17,6 @@
     background: #2A3647;
     border-radius: 30px;
     display: flex;
-    z-index: 2;
-
 }
 
 .overlay-left-part {
@@ -85,6 +83,18 @@
 }
 
 .close-overlay:hover {
+    cursor: pointer;
+}
+
+.close-overlay-rs {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: -65px;
+    display: none;
+}
+
+.close-overlay-rs:hover {
     cursor: pointer;
 }
 
@@ -297,6 +307,7 @@
     border-radius: 70px;
     color: #FFFFFF;
     font-size: 35px;
+    margin-top: -11%;
 }
 
 .overlay-save-frame {
@@ -318,4 +329,205 @@
     text-align: center;
     color: red;
     width: 100%;
+}
+
+
+@media(max-width: 1160px) {
+    .overlay-add-contact-container {
+        height: 450px;
+        width: 800px;
+    }
+
+    .overlay-left-part {
+        height: inherit;
+        width: 300px;
+        padding: 65px 20px;
+    }
+
+    .overlay-headline {
+        width: inherit;
+        font-size: 40px;
+        height: auto;
+    }
+
+    .overlay-join-logo {
+        width: 50px;
+        height: 60px;
+    }
+
+    .overlay-right-part {
+        padding: 10px;
+    }
+
+    .overlay-user-initials {
+        width: 90px;
+        height: 90px;
+        font-size: 30px;
+        margin-top: -13%;
+    }
+
+    .close-overlay {
+        top: -40px;
+        right: 15px;
+    }
+
+    .overlay-contacts-details-container {
+        width: 370px;
+        height: 250px;
+        gap: 25px;
+        justify-content: center;
+    }
+
+    .overlay-input-design {
+        width: 350px;
+        padding: 10px 10px;
+    }
+
+    .input-icon-user {
+        background-position-x: 315px;
+    }
+
+    .input-icon-phone {
+        background-position-x: 315px;
+    }
+
+    .input-icon-letter {
+        background-position-x: 315px;
+    }
+
+    .overlay-slogan {
+        font-size: 20px;
+    }
+
+    .overlay-user-icon-container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .overlay-btn-frame {
+        margin-right: -35px;
+        width: 100%;
+    }
+
+    .overlay-save-frame {
+        width: 85%;
+    }
+}
+
+
+@media(max-width: 850px) {
+    .overlay-add-contact-container {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        height: 90%;
+    }
+
+    .overlay-left-part {
+        height: 40%;
+    }
+
+    .overlay-right-part {
+        height: 60%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 30px;
+    }
+
+    .overlay-join-logo {
+        display: none;
+    }
+
+    .overlay-slogan {
+        width: 275px
+    }
+
+    .user-contacts-help-frame {
+        flex-direction: column;
+    }
+
+    .overlay-user-icon-container {
+        position: absolute;
+        top: 34%;
+    }
+
+    .close-overlay {
+        display: none;
+    }
+
+    .close-overlay-rs {
+        display: block;
+        position: absolute;
+        top: 55px;
+        padding-right: 5px;
+    }
+
+    .overlay-cancel-btn {
+        display: none;
+    }
+
+    .overlay-contacts-details-frame {
+        align-items: center;
+        width: auto;
+    }
+
+    .overlay-contacts-details-container {
+        width: inherit;
+        height: 200px;
+    }
+
+    .overlay-btn-frame {
+        margin-right: 0;
+    }
+
+    .overlay-headline {
+        width: 250px;
+    }
+
+    .overlay-save-frame {
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 400px) {
+    .overlay-left-part {
+        width: 270px;
+        padding-right: 0;
+        padding-left: 10px;
+    }
+
+    .overlay-input-design {
+        width: 240px;
+    }
+
+    .input-icon-letter {
+        background-position-x: 215px;
+    }
+
+    .input-icon-phone {
+        background-position-x: 215px;
+    }
+
+    .input-icon-user {
+        background-position-x: 215px;
+    }
+
+    .overlay-contacts-details-frame {
+        gap: 0;
+    }
+
+    .overlay-slogan {
+        font-size: 18px;
+        width: 260px;
+    }
+
+    .overlay-user-icon-container {
+        height: 80px;
+        width: 80px;
+    }
+
+    .overlay-user-icon-white {
+        width: 30px;
+        height: auto;
+    }
 }
