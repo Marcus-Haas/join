@@ -5,6 +5,10 @@ body {
     font-family: 'Inter';
 }
 
+.hide-status {
+    display: none;
+}
+
 .hide {
     display: none;
 }
@@ -888,7 +892,6 @@ body {
 }
 
 /* responsive */
-
 @media (max-width: 420px) {
     .hide-mobile {
         display: none;
@@ -946,7 +949,7 @@ body {
     }
 
     .scrollbar-task {
-        height: 20vh;
+        height: 29vh;
     }
 
     .container-tasks {
@@ -1105,11 +1108,35 @@ body {
 
     /* edit task */
     .person-and-profile-assigned-open-task-container {
-        width: 320px;
+        width: 300px;
     }
 
     .pop-up-child {
         margin-left: 10px;
+    }
+
+    .change-status-container {
+        display: flex;
+    }
+    
+    .change-status {
+        display: flex;
+        background: #FFFFFF;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        margin-left: 10px;
+        padding: 10px;
+        margin-bottom: 35px;
+        font-weight: 400;
+        font-size: 21px;
+        width: 290px;
+        height: 51px;
+        box-sizing: border-box;
+    }
+    
+    .change-status-text {
+        font-weight: 400;
+        font-size: 21px;
     }
 }
 
@@ -1333,6 +1360,30 @@ body {
 
     .pop-up-child {
         margin-left: 10px;
+    }
+
+    .change-status-container {
+        display: flex;
+    }
+    
+    .change-status {
+        display: flex;
+        background: #FFFFFF;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        margin-left: 10px;
+        padding: 10px;
+        margin-bottom: 35px;
+        font-weight: 400;
+        font-size: 21px;
+        width: 360px;
+        height: 51px;
+        box-sizing: border-box;
+    }
+    
+    .change-status-text {
+        font-weight: 400;
+        font-size: 21px;
     }
 }
 
@@ -1579,6 +1630,30 @@ body {
     .pop-up-child {
         margin-left: 10px;
     }
+
+    .change-status-container {
+        display: flex;
+    }
+    
+    .change-status {
+        display: flex;
+        background: #FFFFFF;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        margin-left: 10px;
+        padding: 10px;
+        margin-bottom: 35px;
+        font-weight: 400;
+        font-size: 21px;
+        width: 430px;
+        height: 51px;
+        box-sizing: border-box;
+    }
+    
+    .change-status-text {
+        font-weight: 400;
+        font-size: 21px;
+    }
 }
 
 @media (min-width: 851px) and (max-width: 1200px) {
@@ -1588,6 +1663,10 @@ body {
 
     .hide {
         display: unset;
+    }
+
+    .hide-status {
+        display: none;
     }
 
     .add-task-pop-up {
@@ -1851,6 +1930,10 @@ body {
 
     .add-task-pop-up {
         left: 60px;
+    }
+
+    .hide-status {
+        display: none;
     }
 
     .btn {

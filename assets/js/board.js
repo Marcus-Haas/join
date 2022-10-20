@@ -173,25 +173,6 @@ function createTodoFromAddTask() {
 
 
 /**
-* identify the selected category
-*/
-function identifySelectedCategory(sel) {
-    currentCategory = sel.options[sel.selectedIndex].text;
-}
-
-
-/**
-* identify the selected assigne
-*/
-function identifySelectedAssigne(sel) {
-    currentAssigned = sel.options[sel.selectedIndex].text;
-    splitFirstAndSecondNameOfAssignedAsArray = currentAssigned.split(" ");
-    firstNameLetter = splitFirstAndSecondNameOfAssignedAsArray[0].charAt(0);
-    secondNameLetter = splitFirstAndSecondNameOfAssignedAsArray[1].charAt(0);
-}
-
-
-/**
 * render todo area after drag and drop
 */
 function updateTodo() {
@@ -285,6 +266,16 @@ function moveTo(changeStatus) {
 }
 
 
+function changeStatus(i) {
+    let status = document.getElementById('changeStatus' + i).value;
+    allTasks[i]['status'] = status;
+    updateTodo();
+    updateInProgress();
+    updateAwaitingFeedback();
+    updateDone();
+}
+
+
 /**
 * delete icon if someone is tiping
 */
@@ -361,40 +352,6 @@ function openTaskDetails(i, event) {
 
 
 /**
- * close the popup task detail
-*/
-function closeTaskDetails() {
-    document.getElementById('overlay').classList.remove('overlay-bg');
-    document.getElementById('openTask').classList.add('d-none');
-    document.getElementById('mainContainer').classList.remove('hide-mobile');
-    document.getElementById('openTask').classList.remove('open-position');
-    document.getElementById('overlay').classList.remove('hide-mobile');
-    document.getElementById('editOpenTaskDetails').classList.remove('open-position-for-edit');
-    document.getElementById('editOpenTaskDetails').classList.add('d-none');
-}
-
-
-/**
- * get the current date for the inputfield type date
-*/
-function getCurrentDate() {
-    let now = new Date();
-    let day = ("0" + now.getDate()).slice(-2);
-    let month = ("0" + (now.getMonth() + 1)).slice(-2);
-    let today = now.getFullYear() + "-" + (month) + "-" + (day);
-    document.getElementById('duedate').value = today;
-}
-
-
-/**
- * function for stop propagation
-*/
-function doNotCloseDiv(event) {
-    event.stopPropagation();
-}
-
-
-/**
  * show edit details 
 */
 function editShowDetails(i) {
@@ -446,15 +403,4 @@ function saveEditDetails(i) {
     changeBgColorOfInitialLettersDetails(i);
     addInBackend();
     updateBoard();
-}
-
-
-/**
-* identify the selected assigne edit
-*/
-function identifySelectedAssigneEdit(sel) {
-    assignedEdit = sel.options[sel.selectedIndex].text;
-    splitFirstAndSecondNameOfAssignedAsArrayEdit = assignedEdit.split(" ");
-    firstNameLetterEdit = splitFirstAndSecondNameOfAssignedAsArrayEdit[0].charAt(0);
-    secondNameLetterEdit = splitFirstAndSecondNameOfAssignedAsArrayEdit[1].charAt(0);
 }

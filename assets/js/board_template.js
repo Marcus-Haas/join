@@ -203,6 +203,19 @@ function templateEditShowDetails(i) {
         </select>
         </div>
 
+        <div class="hide-status">
+        <div class="margin-popup"><label class="pop-up-child" for="select-status-popup">Status</label><br></div>
+        <div class="change-status-container">
+        <select id="changeStatus${i}" onclick="changeStatus(${i})" class="change-status">
+            <option value="" disabled selected>Select status</option>
+            <option value="todo">To do</option>
+            <option value="inProgress">In Progress</option>
+            <option value="awaitingFeedback">In Awaiting</option>
+            <option value="done">Done</option>
+        </select><br>
+        </div>
+        </div>
+
         <div>
         <div class="person-and-profile-assigned-open-task-container">
             <div class=".person-assigned-open-task-container-edit">
