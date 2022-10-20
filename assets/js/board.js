@@ -58,7 +58,7 @@ function createTodo() {
 
 
 function templateCreateTodo() {
-    return `    
+    return `  
     <div onclick="openTaskDetails(${index}, event)" draggable="true" ondragstart="startDragging(${index})" class="box">
         <div class="category-with-trash">
             <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
@@ -598,9 +598,11 @@ function changeColorLowReverse() {
 /**
 * open the pop-up
 */
-function openForm() {
+function openForm(event) {
+    event.stopPropagation();
     document.getElementById('overlayAddTask').classList.add('overlay-bg');
     document.getElementById('popup-window').style.display = 'unset';
+    document.getElementById('mainContainer').classList.add('hide-mobile');
 }
 
 
@@ -614,6 +616,7 @@ function closeForm() {
     currentTitle = document.getElementById('title');
     currentDescription = document.getElementById('descriptionPopup');
     currentDuedate = document.getElementById('duedate');
+    document.getElementById('mainContainer').classList.remove('hide-mobile');
 }
 
 
@@ -706,8 +709,11 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 */
 function openTaskDetails(i, event) {
     event.stopPropagation();
+    document.getElementById('mainContainer').classList.add('hide-mobile');
+    document.getElementById('overlay').classList.add('hide-mobile');
     let edit = document.getElementById('editOpenTaskDetails');
     edit.classList.add('d-none');
+    edit.classList.remove('open-position-for-edit')
     document.getElementById('overlay').classList.add('overlay-bg');
     document.getElementById('openTask').classList.remove('d-none');
     document.getElementById('openTask').classList.add('open-position');
@@ -723,7 +729,10 @@ function openTaskDetails(i, event) {
 function templateOpenTaskDetails(i) {
     return `
     <div>
-    <div onclick="closeTaskDetails()" class="close-open-task"><img src="assets/img/board/close-popup.svg"></div>
+    <div onclick="closeTaskDetails()" class="close-open-task">
+    <img src="assets/img/board/close-popup.svg" class="hide-mobile">
+    <img src="assets/img/board/goback.svg" class="hide arrow-back-mobile">
+    </div>
     <div id="categoryOpenTask${i}" class="category-open-task">${allTasks[i]['category']}</div>
     <div class="title-open-task">${allTasks[i]['title']}</div>
     <div class="description-open-task">${allTasks[i]['description']}</div>
@@ -739,7 +748,7 @@ function templateOpenTaskDetails(i) {
     </div>
     <div class="container-assigned-open-task">
         <div class="assigned-open-task">Assigned to:</div>
-        <div class="person-and-profile-assigned-open-task-container">
+        <div class="person-and-profile-assigned-open-task-container-hook">
             <div class="person-assigned-open-task-container">
                 <div  id="assignedForInitialLettersDetails${i}" class="profile-assigned-open-task">${allTasks[i]['firstLetter']}${allTasks[i]['secondLetter']}</div>
                 <div class="name-assigned-open-task">${allTasks[i]['assigned']}</div>
@@ -760,7 +769,11 @@ function templateOpenTaskDetails(i) {
 function closeTaskDetails() {
     document.getElementById('overlay').classList.remove('overlay-bg');
     document.getElementById('openTask').classList.add('d-none');
+    document.getElementById('mainContainer').classList.remove('hide-mobile');
     document.getElementById('openTask').classList.remove('open-position');
+    document.getElementById('overlay').classList.remove('hide-mobile');
+    document.getElementById('editOpenTaskDetails').classList.remove('open-position-for-edit');
+    document.getElementById('editOpenTaskDetails').classList.add('d-none');
 }
 
 
@@ -861,9 +874,11 @@ function doNotCloseDiv(event) {
 */
 function editShowDetails(i) {
     closeTaskDetails();
+    document.getElementById('mainContainer').classList.add('hide-mobile');
+    document.getElementById('overlay').classList.add('hide-mobile');
     document.getElementById('overlay').classList.add('overlay-bg');
     let edit = document.getElementById('editOpenTaskDetails');
-    edit.classList.add('open-position');
+    edit.classList.add('open-position-for-edit');
     edit.classList.remove('d-none');
     edit.innerHTML = templateEditShowDetails(i);
     let titleEdit = document.getElementById('titleEdit');
@@ -922,19 +937,29 @@ function identifySelectedAssigneEdit(sel) {
 
 function templateEditShowDetails(i) {
     return `
-    <div>
-            <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
+        <div>
+            <div class="margin-popup">
+            <label class="pop-up-child" for="title">Title</label><br>
+            </div>
             <input class="title-popup" type="text" id="titleEdit" name="title" placeholder="Enter a title" required>
         </div>
 
-        <div class="margin-popup"><label class="pop-up-child" for="descriptionPopup">Description</label><br>
-        </div>
-        <textarea class="description-popup" type="text" id="descriptionPopupEdit" name="descriptionPopup" rows="5" cols="20"
+        <div>
+            <div class="margin-popup">
+            <label class="pop-up-child" for="descriptionPopup">Description</label><br>
+            </div>
+            <textarea class="description-popup" type="text" id="descriptionPopupEdit" name="descriptionPopup" rows="5" cols="20"
             placeholder="Enter a Description" required></textarea>
+        </div>
 
-        <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
-        <input class="duedate-popup" type="date" id="duedateEdit" name="duedate" required>
+        <div>
+            <div class="margin-popup">
+            <label class="pop-up-child" for="duedate">Due Date</label>
+            </div>
+            <input class="duedate-popup" type="date" id="duedateEdit" name="duedate" required>
+        </div>
 
+        <div>
         <div class="margin-popup pop-up-child">Prio</div>
         <div class="prio-popup edit-prio-popup">
             <div id="urgentPopupEdit" onclick="changeColorUrgentEdit()" class="urgent-popup">Urgent
@@ -962,7 +987,9 @@ function templateEditShowDetails(i) {
                 </div>
             </div>
         </div>
+        </div>
 
+        <div>
         <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                 to</label><br>
         </div>
@@ -972,15 +999,18 @@ function templateEditShowDetails(i) {
             <option value="mariuskatzer">Marius Katzer</option>
             <option value="anilorhan">Anil Orhan</option>
         </select>
+        </div>
 
+        <div>
         <div class="person-and-profile-assigned-open-task-container">
-            <div class="person-assigned-open-task-container">
+            <div class=".person-assigned-open-task-container-edit">
                 <div id="profileAssignedEdit${i}" class="profile-assigned-open-task-edit"></div>
             </div>
             <div onclick="openTaskDetailsAfter(${i}, event);" class="edit-open-task-okay-and-hook">
                 <div class="edit-open-task-okay">Ok</div>
                 <div class="edit-open-task-hook-container"><img class="edit-open-task-hook" src="assets/img/board/hook.svg"></div>
             </div>
+        </div>
         </div>`;
 }
 

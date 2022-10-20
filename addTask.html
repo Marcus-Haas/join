@@ -28,22 +28,22 @@
     <div w3-include-html="assets/templates/sidebar.html"></div>
 
     <div class="main-container-addTask">
-        <div class="text-header">Add Task</div>
+        <div class="text-header text-header-addTask">Add Task</div>
 
-        <form onsubmit="createTodoForBoard(); return false;">
+        <form onsubmit="createTodoForBoard(); return false;" class="container-inputfield-addTask">
             <div class="container-for-seperate-left-and-right-content-addTask">
                 <div>
                     <div class="margin-popup"><label class="pop-up-child" for="title">Title</label><br></div>
-                    <input class="title-popup" type="text" id="title" name="title" placeholder="Enter a title" required>
+                    <input class="title-popup title-popup-addTask" type="text" id="title" name="title" placeholder="Enter a title" required>
 
                     <div class="margin-popup"><label class="pop-up-child" for="descriptionPopup">Description</label><br>
                     </div>
-                    <textarea class="description-popup" type="text" id="descriptionPopup" name="descriptionPopup"
+                    <textarea class="description-popup description-popup-addTask" type="text" id="descriptionPopup" name="descriptionPopup"
                         rows="5" cols="20" placeholder="Enter a Description" required></textarea>
 
                     <div class="margin-popup"><label class="pop-up-child" for="category-popup">Category</label><br>
                     </div>
-                    <select class="category-popup" id="category-popup" onChange="identifySelectedCategory(this);">
+                    <select class="category-popup category-popup-addTask" id="category-popup" onChange="identifySelectedCategory(this);">
                         <option value="" disabled selected>Select task category</option>
                         <option value="Sales">Sales</option>
                         <option value="Design">Design</option>
@@ -56,7 +56,7 @@
                     <div class="margin-popup"><label class="pop-up-child" for="assignedto-popup">Assigned
                             to</label><br>
                     </div>
-                    <select class="assignedto-popup" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
+                    <select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
                         <option value="" disabled selected>Select contacts to assign</option>
                             <option value="marcushaas">Marcus Haas</option>
                             <option value="mariuskatzer">Marius Katzer</option>
@@ -70,10 +70,10 @@
 
                 <div>
                     <div class="margin-popup"><label class="pop-up-child" for="duedate">Due Date</label></div>
-                    <input class="duedate-popup" type="date" id="duedate" name="duedate" required>
+                    <input class="duedate-popup duedate-popup-addTask " type="date" id="duedate" name="duedate" required>
 
                     <div class="margin-popup pop-up-child">Prio</div>
-                    <div class="prio-popup">
+                    <div class="prio-popup prio-popup-addTask">
                         <div id="urgentPopup" onclick="changeColorUrgent()" class="urgent-popup">Urgent
                             <div class="urgent-popup-child">
                                 <div class="position-urgent-arrow-popup-first"><img id="urgentFirstPopup"
@@ -100,10 +100,10 @@
                         </div>
                     </div>
 
-                    <div class="btn-popup">
-                        <button onclick="clearTodo()" id="btn-first" class="first-btn">Clear<img class="cross-popup-btn"
+                    <div class="btn-popup btn-popup-addTask">
+                        <button onclick="clearTodo()" id="btn-first btn-first-addTask" class="first-btn">Clear<img class="cross-popup-btn"
                                 src="assets/img/board/close-popup.svg"></button>
-                        <button type="submit" value="submit" class="second-btn">Create Task<img
+                        <button type="submit" value="submit" class="second-btn second-btn-addTask">Create Task<img
                                 class="hook-popup-btn" src="assets/img/board/hook-popup.svg"></button>
                     </div>
                 </div>

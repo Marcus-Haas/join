@@ -5,6 +5,10 @@ body {
     font-family: 'Inter';
 }
 
+.hide {
+    display: none;
+}
+
 .overlay-bg {
     position: absolute;
     top: 0;
@@ -129,6 +133,7 @@ body {
 
 .scrollbar-task::-webkit-scrollbar {
     width: 20px;
+    display: none;
 }
 
 .scrollbar-task::-webkit-scrollbar-track {
@@ -569,10 +574,6 @@ body {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
-#btn-first:hover .cross-popup-btn {
-    filter: invert(39%) sepia(66%) saturate(1450%) hue-rotate(184deg) brightness(107%) contrast(102%);
-}
-
 .second-btn {
     display: flex;
     flex-direction: row;
@@ -624,6 +625,21 @@ body {
 
 /* CSS open Tast */
 .open-position {
+    position: absolute;
+    top: 100px;
+    left: 650px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+    width: 450px;
+    padding: 25px;
+    gap: 25px;
+    z-index: 2;
+    min-height: 770px;
+}
+
+.open-position-for-edit {
     position: absolute;
     top: 100px;
     left: 650px;
@@ -756,6 +772,13 @@ body {
     justify-content: space-between;
 }
 
+.person-and-profile-assigned-open-task-container-hook {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
 .person-assigned-open-task-container {
     display: flex;
     margin-top: 25px;
@@ -862,4 +885,1185 @@ body {
     border: 2px solid #FFFFFF;
     border-radius: 58px;
     color: white;
+}
+
+/* responsive */
+
+@media (max-width: 420px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .hide {
+        display: unset;
+    }
+
+    .btn-for-mobile {
+        background: #2A3647;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 70px;
+        margin-bottom: 0px;
+        vertical-align: 14px;
+        cursor: pointer;
+    }
+
+    .btn-for-mobile:hover {
+        background-color: #0D99FF;
+    }
+
+    .arrow-back-mobile {
+        height: 20px;
+        width: 20px;
+    }
+
+    .main-container {
+        margin-left: 30px;
+        margin-top: 10px;
+        margin-right: unset;
+        height: 75vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .first-container {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .text-board {
+        margin-bottom: 30px;
+    }
+
+    .second-container {
+        display: unset;
+        justify-content: unset;
+        margin-left: 30px;
+    }
+
+    .box {
+        width: 250px;
+    }
+
+    .scrollbar-task {
+        height: 20vh;
+    }
+
+    .container-tasks {
+        height: 30vh;
+        min-height: unset;
+    }
+
+    .child-container-tasks {
+        width: 280px;
+        margin-bottom: 15.5px;
+        margin-top: 60px;
+    }
+
+    .container-for-seperate-left-and-right-content {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .padding-popup-box {
+        padding: 20px;
+    }
+
+    .btn-popup {
+        margin-top: 50px;
+    }
+
+    /* add task*/
+    .add-task-pop-up {
+        left: 0;
+        border-radius: 0;
+        background-color: #F5F5F5;
+        width: 100vw;
+    }
+
+    .title-popup {
+        width: 290px;
+        margin-left: 10px;
+    }
+
+    .description-popup {
+        width: 290px;
+        margin-left: 10px;
+    }
+
+    .category-popup {
+        width: 290px;
+        margin-left: 10px;
+    }
+
+    .assignedto-popup {
+        width: 290px;
+        margin-left: 10px;
+    }
+
+    .duedate-popup {
+        width: 290px;
+        margin-left: 10px;
+    }
+
+    .prio-popup {
+        width: 290px;
+        margin-left: 10px;
+    }
+
+    .first-btn {
+        font-size: 16px;
+    }
+
+    .second-btn {
+        font-size: 16px;
+    }
+
+    .urgent-popup {
+        width: 125px;
+        font-size: 15px;
+    }
+
+    .medium-popup {
+        width: 125px;
+        font-size: 15px;
+    }
+
+    .low-popup {
+        width: 125px;
+        font-size: 15px;
+    }
+
+    .btn-popup {
+        width: 290px;
+    }
+
+    .cross-popup {
+        margin-right: 20px;
+    }
+
+    .title-pop-up {
+        font-size: 38px;
+        margin-left: 11px;
+    }
+
+    /* details task*/
+    .open-position {
+        top: 80px;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .open-position-for-edit {
+        top: 80px;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .category-open-task {
+        margin-left: 10px;
+    }
+
+    .title-open-task {
+        margin-left: 10px;
+    }
+
+    .description-open-task {
+        margin-left: 10px;
+    }
+
+    .duedate-open-task {
+        margin-left: 10px;
+    }
+
+    .priority-open-task {
+        margin-left: 10px;
+    }
+
+    .assigned-open-task {
+        margin-left: 10px;
+    }
+
+    .person-assigned-open-task-container {
+        margin-left: 10px;
+    }
+
+    .close-open-task {
+        margin-right: 25px;
+        margin-top: 10px;
+    }
+
+    /* edit task */
+    .person-and-profile-assigned-open-task-container {
+        width: 320px;
+    }
+
+    .pop-up-child {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 421px) and (max-width: 500px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .hide {
+        display: unset;
+    }
+
+    .btn-for-mobile {
+        background: #2A3647;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 118px;
+        margin-bottom: 0px;
+        vertical-align: 14px;
+        cursor: pointer;
+    }
+
+    .btn-for-mobile:hover {
+        background-color: #0D99FF;
+    }
+
+    .arrow-back-mobile {
+        height: 20px;
+        width: 20px;
+    }
+
+    .main-container {
+        margin-left: 30px;
+        margin-top: 10px;
+        margin-right: unset;
+        height: 75vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .first-container {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .text-board {
+        margin-bottom: 30px;
+    }
+
+    .second-container {
+        display: unset;
+        justify-content: unset;
+        margin-left: 30px;
+    }
+
+    .box {
+        width: 300px;
+    }
+
+    .scrollbar-task {
+        height: 20vh;
+    }
+
+    .container-tasks {
+        height: 30vh;
+        min-height: unset;
+    }
+
+    .child-container-tasks {
+        width: 336px;
+        margin-bottom: 15.5px;
+        margin-top: 60px;
+    }
+
+    .container-for-seperate-left-and-right-content {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .padding-popup-box {
+        padding: 20px;
+    }
+
+    .btn-popup {
+        margin-top: 50px;
+    }
+
+    /* add task*/
+    .add-task-pop-up {
+        left: 0;
+        border-radius: 0;
+        background-color: #F5F5F5;
+        width: 100vw;
+    }
+
+    .title-popup {
+        width: 360px;
+        margin-left: 10px;
+    }
+
+    .description-popup {
+        width: 360px;
+        margin-left: 10px;
+    }
+
+    .category-popup {
+        width: 360px;
+        margin-left: 10px;
+    }
+
+    .assignedto-popup {
+        width: 360px;
+        margin-left: 10px;
+    }
+
+    .duedate-popup {
+        width: 360px;
+        margin-left: 10px;
+    }
+
+    .prio-popup {
+        width: 360px;
+        margin-left: 10px;
+    }
+
+    .first-btn {
+        font-size: 16px;
+    }
+
+    .second-btn {
+        font-size: 16px;
+    }
+
+    .urgent-popup {
+        width: 135px;
+        font-size: 15px;
+    }
+
+    .medium-popup {
+        width: 135px;
+        font-size: 15px;
+    }
+
+    .low-popup {
+        width: 135px;
+        font-size: 15px;
+    }
+
+    .btn-popup {
+        width: 360px;
+    }
+
+    .cross-popup {
+        margin-right: 20px;
+    }
+
+    .title-pop-up {
+        font-size: 38px;
+    }
+
+    /* details task*/
+    .open-position {
+        top: 80px;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .open-position-for-edit {
+        top: 80px;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .category-open-task {
+        margin-left: 10px;
+    }
+
+    .title-open-task {
+        margin-left: 10px;
+    }
+
+    .description-open-task {
+        margin-left: 10px;
+    }
+
+    .duedate-open-task {
+        margin-left: 10px;
+    }
+
+    .priority-open-task {
+        margin-left: 10px;
+    }
+
+    .assigned-open-task {
+        margin-left: 10px;
+    }
+
+    .person-assigned-open-task-container {
+        margin-left: 10px;
+    }
+
+    .close-open-task {
+        margin-right: 25px;
+        margin-top: 10px;
+    }
+
+    /* edit task */
+    .person-and-profile-assigned-open-task-container {
+        width: 370px;
+    }
+
+    .pop-up-child {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 850px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .hide {
+        display: unset;
+    }
+
+    .btn-for-mobile {
+        cursor: pointer;
+        background: #2A3647;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 76px;
+        margin-bottom: 0px;
+        vertical-align: 14px;
+    }
+
+    .btn-for-mobile:hover {
+        background-color: #0D99FF;
+    }
+
+    .arrow-back-mobile {
+        height: 20px;
+        width: 20px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: unset;
+        margin-top: 20px;
+        margin-right: unset;
+        height: 75vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .first-container {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .text-board {
+        margin-bottom: 30px;
+    }
+
+    .second-container {
+        display: unset;
+        justify-content: unset;
+        margin-left: 30px;
+        margin-top: unset;
+    }
+
+    .box {
+        width: 300px;
+    }
+
+    .scrollbar-task {
+        height: 20vh;
+    }
+
+    .container-tasks {
+        height: 30vh;
+        min-height: unset;
+    }
+
+    .child-container-tasks {
+        width: 336px;
+        margin-bottom: 15.5px;
+        margin-top: 60px;
+    }
+
+    .container-for-seperate-left-and-right-content {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .padding-popup-box {
+        padding: 20px;
+    }
+
+    .btn-popup {
+        margin-top: 50px;
+    }
+
+    /* add task*/
+    .add-task-pop-up {
+        left: 0;
+        border-radius: 0;
+        background-color: #F5F5F5;
+        width: 100vw;
+    }
+
+    .margin-popup {
+        margin-top: 10px;
+    }
+
+    .title-popup {
+        width: 430px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .description-popup {
+        width: 430px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .category-popup {
+        width: 430px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .assignedto-popup {
+        width: 430px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .duedate-popup {
+        width: 430px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .prio-popup {
+        width: 430px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .first-btn {
+        font-size: 16px;
+    }
+
+    .second-btn {
+        font-size: 16px;
+    }
+
+    .urgent-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .medium-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .low-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .btn-popup {
+        width: 430px;
+    }
+
+    .cross-popup {
+        margin-right: 20px;
+    }
+
+    .title-pop-up {
+        font-size: 38px;
+        margin-left: 10px;
+    }
+
+    /* details task*/
+    .open-position {
+        top: 80px;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .open-position-for-edit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 80px;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .category-open-task {
+        margin-left: 60px;
+    }
+
+    .title-open-task {
+        margin-left: 60px;
+    }
+
+    .description-open-task {
+        margin-left: 60px;
+    }
+
+    .duedate-open-task {
+        margin-left: 60px;
+    }
+
+    .priority-open-task {
+        margin-left: 60px;
+    }
+
+    .assigned-open-task {
+        margin-left: 60px;
+    }
+
+    .person-assigned-open-task-container {
+        margin-left: 60px;
+    }
+
+    .close-open-task {
+        margin-right: 100px;
+        margin-top: 10px;
+    }
+
+    /* edit task */
+    .person-and-profile-assigned-open-task-container {
+        width: 430px;
+    }
+
+    .person-and-profile-assigned-open-task-container-hook {
+        margin-right: 100px;
+    }
+
+    .pop-up-child {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 851px) and (max-width: 1200px) {
+    .hide-mobile {
+        display: none;
+    }
+
+    .hide {
+        display: unset;
+    }
+
+    .add-task-pop-up {
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        background-color: #F5F5F5;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .btn-for-mobile {
+        cursor: pointer;
+        background: #2A3647;
+        border-radius: 10px;
+        padding: 10px;
+        margin-left: 76px;
+        margin-bottom: 0px;
+        vertical-align: 14px;
+    }
+
+    .btn-for-mobile:hover {
+        background-color: #0D99FF;
+    }
+
+    .arrow-back-mobile {
+        height: 20px;
+        width: 20px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 157px;
+        margin-top: 20px;
+        margin-right: unset;
+        height: 75vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .first-container {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .text-board {
+        margin-bottom: 30px;
+    }
+
+    .second-container {
+        display: unset;
+        justify-content: unset;
+        margin-left: 30px;
+        margin-top: unset;
+    }
+
+    .box {
+        width: 300px;
+    }
+
+    .scrollbar-task {
+        height: 20vh;
+    }
+
+    .container-tasks {
+        height: 30vh;
+        min-height: unset;
+    }
+
+    .child-container-tasks {
+        width: 336px;
+        margin-bottom: 15.5px;
+        margin-top: 60px;
+    }
+
+    .container-for-seperate-left-and-right-content {
+        display: unset;
+        justify-content: unset;
+    }
+
+    .padding-popup-box {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-popup {
+        margin-top: 50px;
+    }
+
+    /* add task*/
+    .add-task-pop-up {
+        left: 0;
+        border-radius: 0;
+        background-color: #F5F5F5;
+        width: 100vw;
+    }
+
+    .margin-popup {
+        margin-top: 10px;
+    }
+
+    .title-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .description-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .category-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .assignedto-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .duedate-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .prio-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .first-btn {
+        font-size: 16px;
+    }
+
+    .second-btn {
+        font-size: 16px;
+    }
+
+    .urgent-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .medium-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .low-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .btn-popup {
+        width: 455px;
+    }
+
+    .cross-popup {
+        margin-right: 20px;
+    }
+
+    .title-pop-up {
+        font-size: 38px;
+    }
+
+    /* details task*/
+    .open-position {
+        top: 0;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .open-position-for-edit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 0;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .category-open-task {
+        margin-left: 60px;
+    }
+
+    .title-open-task {
+        margin-left: 60px;
+    }
+
+    .description-open-task {
+        margin-left: 60px;
+    }
+
+    .duedate-open-task {
+        margin-left: 60px;
+    }
+
+    .priority-open-task {
+        margin-left: 60px;
+    }
+
+    .assigned-open-task {
+        margin-left: 60px;
+    }
+
+    .person-assigned-open-task-container {
+        margin-left: 60px;
+    }
+
+    .close-open-task {
+        margin-right: 100px;
+        margin-top: 10px;
+    }
+
+    /* edit task */
+    .person-and-profile-assigned-open-task-container {
+        width: 465px;
+    }
+
+    .person-and-profile-assigned-open-task-container-hook {
+        margin-right: 100px;
+    }
+
+    .pop-up-child {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1550px) {
+    .arrow-back-mobile {
+        height: 20px;
+        width: 20px;
+    }
+
+    .padding-popup-box {
+        padding: 35px;
+    }
+
+    .add-task-pop-up {
+        left: 60px;
+    }
+
+    .btn {
+        font-size: 18px;
+        margin-left: 25px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: unset;
+        margin-top: 20px;
+        margin-right: unset;
+        height: 75vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .first-container {
+        justify-content: unset;
+        margin-left: 427px;
+    }
+
+    .inputfield-and-button {
+        margin-top: 17px;
+    }
+
+    .inputfield-container {
+        margin-left: 157px;
+    }
+
+    .text-board {
+        margin-bottom: 30px;
+    }
+
+    .second-container {
+        display: unset;
+        justify-content: unset;
+        margin-left: 30px;
+        margin-top: unset;
+    }
+
+    .box {
+        width: 300px;
+    }
+
+    .scrollbar-task {
+        height: 20vh;
+    }
+
+    .container-tasks {
+        height: 30vh;
+        min-height: unset;
+    }
+
+    .child-container-tasks {
+        width: 336px;
+        margin-bottom: 15.5px;
+        margin-top: 60px;
+    }
+
+    .btn-popup {
+        margin-top: 50px;
+    }
+
+    /* add task*/
+    .margin-popup {
+        margin-top: 10px;
+    }
+
+    .title-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .description-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .category-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .assignedto-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .duedate-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .prio-popup {
+        width: 455px;
+        margin-left: 10px;
+        margin-bottom: unset;
+    }
+
+    .first-btn {
+        font-size: 16px;
+    }
+
+    .second-btn {
+        font-size: 16px;
+    }
+
+    .urgent-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .medium-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .low-popup {
+        width: 145px;
+        font-size: 18px;
+    }
+
+    .btn-popup {
+        width: 455px;
+    }
+
+    .cross-popup {
+        margin-right: 20px;
+    }
+
+    .title-pop-up {
+        font-size: 38px;
+    }
+
+    /* details task*/
+    .open-position {
+        top: 0;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+    }
+
+    .open-position-for-edit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        top: 0;
+        left: 0;
+        background-color: #F5F5F5;
+        border-radius: unset;
+        width: 100vw;
+        padding: 0;
+        height: 100vh;
+        min-height: unset;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .category-open-task {
+        margin-left: 60px;
+    }
+
+    .title-open-task {
+        margin-left: 60px;
+    }
+
+    .description-open-task {
+        margin-left: 60px;
+    }
+
+    .duedate-open-task {
+        margin-left: 60px;
+    }
+
+    .priority-open-task {
+        margin-left: 60px;
+    }
+
+    .assigned-open-task {
+        margin-left: 60px;
+    }
+
+    .person-assigned-open-task-container {
+        margin-left: 60px;
+    }
+
+    .close-open-task {
+        margin-right: 100px;
+        margin-top: 10px;
+    }
+
+    /* edit task */
+    .person-and-profile-assigned-open-task-container {
+        width: 465px;
+    }
+
+    .person-and-profile-assigned-open-task-container-hook {
+        margin-right: 100px;
+    }
+
+    .pop-up-child {
+        margin-left: 10px;
+    }
 }

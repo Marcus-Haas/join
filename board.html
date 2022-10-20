@@ -27,11 +27,14 @@
 
     <div w3-include-html="assets/templates/sidebar.html"></div>
     <div id="overlay"></div>
-    <div onclick="closeForm()" id="overlayAddTask"></div>
+    <div onclick="closeForm()" id="overlayAddTask" class="hide-mobile"></div>
     <div id="mainContainer" class="main-container">
 
         <div class="first-container">
-            <div class="text-board">Board</div>
+            <div class="text-board">Board
+                <button onclick="openForm(event); getCurrentDate();" class="hide btn-for-mobile"><img class="icon-plus"
+                        src="assets/img/board/plus-icon.png"></button>
+            </div>
             <div class="inputfield-and-button">
                 <div class="inputfield-container">
                     <input onkeydown="deleteIconInSearchInputField()" onkeyup="loadIconAndLine()" class="inputfield"
@@ -42,15 +45,15 @@
                 </div>
 
 
-                <button onclick="openForm(); getCurrentDate();" class="btn">Add Task <img class="icon-plus"
-                        src="assets/img/board/plus-icon.png"></button>
+                <button onclick="openForm(event); getCurrentDate();" class="btn hide-mobile">Add Task <img
+                        class="icon-plus" src="assets/img/board/plus-icon.png"></button>
             </div>
         </div>
 
         <div class="second-container">
 
             <div ondrop="moveTo('todo')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id="todoChild" onclick="openForm()" class="child-container-tasks">
+                <div id="todoChild" onclick="openForm(event); getCurrentDate();" class="child-container-tasks">
                     <div class="title-area">To do</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -60,7 +63,7 @@
             </div>
 
             <div ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id=" todoChild" onclick="openForm()" class="child-container-tasks">
+                <div id=" todoChild" onclick="openForm(event); getCurrentDate();" class="child-container-tasks">
                     <div class="title-area">In Progress</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -70,7 +73,7 @@
             </div>
 
             <div ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id="todoChild" onclick="openForm()" class="child-container-tasks">
+                <div id="todoChild" onclick="openForm(event); getCurrentDate();" class="child-container-tasks">
                     <div class="title-area">Awaiting Feedback</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -80,7 +83,7 @@
             </div>
 
             <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="container-tasks">
-                <div id=" todoChild" onclick="openForm()" class="child-container-tasks">
+                <div id=" todoChild" onclick="openForm(event); getCurrentDate();" class="child-container-tasks">
                     <div class="title-area">Done</div>
                     <img class="plus-button" src="assets/img/board/plus-button.svg">
                 </div>
@@ -93,7 +96,9 @@
 
     <form onsubmit="createTodo(); return false;">
         <div onclick="doNotCloseDiv(event)" id="popup-window" class="add-task-pop-up">
-            <div onclick="closeForm()" class="cross-popup"><img src="assets/img/board/close-popup.svg"></div>
+            <div onclick="closeForm()" class="cross-popup">
+                <img src="assets/img/board/close-popup.svg">
+            </div>
             <div class="padding-popup-box">
                 <div class="title-pop-up">Add Task</div>
                 <div class="container-for-seperate-left-and-right-content">
@@ -133,7 +138,7 @@
                         </select>
                     </div>
 
-                    <div class="seperate-line-popup">
+                    <div class="seperate-line-popup hide-mobile">
 
                     </div>
 
@@ -170,7 +175,7 @@
                         </div>
 
                         <div class="btn-popup">
-                            <button onclick="closeForm()" id="btn-first" class="first-btn">Cancel<img
+                            <button onclick="closeForm()" id="btn-first" class="first-btn hide-mobile">Cancel<img
                                     class="cross-popup-btn" src="assets/img/board/close-popup.svg"></button>
                             <button type="submit" value="submit" class="second-btn">Create Task<img
                                     src="assets/img/board/hook-popup.svg"></button>
