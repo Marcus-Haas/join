@@ -1,14 +1,21 @@
+/**
+ * Setting all required varibles and arrays
+ */
 let duedate = [];
 let showUrgency = []
 let showUrgencyCounter = 0;
 let tasksInProgress = 0;
 let awaitingFeedback = 0;
 let date = new Date();
-let showTimeFormat = { month: 'long', day: 'numeric', year: 'numeric' } // Datumsanzeige anpassen nach bestimmten Optionen
-let showDueDate = date.toLocaleString('en-US', showTimeFormat); //nach frühestem Datum suchen bei allen Tasks, Datum, ohne Zeit, Format
+let showTimeFormat = { month: 'long', day: 'numeric', year: 'numeric' } // Customize date display according to specific options
+let showDueDate = date.toLocaleString('en-US', showTimeFormat);
 let tasksToDo = 0;
 let tasksDone = 0;
 
+
+/**
+ * Downloading files vom backend server, and run first functions
+ */
 async function initializeSummary() {
     await init();
     await initStart();
@@ -19,7 +26,9 @@ async function initializeSummary() {
     amounts();
 }
 
-// show my Name or Guest at summary.html //
+/**
+ * Show user login name or guest login name at start
+ */
 function showMyName() {
     let myName = activeUser[0];
     let Name = document.getElementById('my-name');
@@ -30,6 +39,10 @@ function showMyName() {
     }
 }
 
+/**
+ * Run serval functions to build the page summary.html with all variables.
+ * Change time format for 'showDueDate'.
+ */
 function amounts() {
     let tasksInBoard = allTasks.length;
     amountStatusSetDueDate();
@@ -38,64 +51,17 @@ function amounts() {
     checkIfUrgencyIsLow(showUrgency);
     checkIfUrgencyIsMedium(showUrgency);
     checkIfUrgencyIsUrgent(showUrgency);
+    date = new Date(showDueDate);
+    showDueDate = date.toLocaleString('en-US', showTimeFormat);
     showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone);
 }
 
-function checkIfUrgencyIsLow(showUrgency) {
-    if (showUrgency.find(x => x === 'Low')) {
-        document.getElementById('summary-urgency-image-arrow-urgent1').src = 'assets/img/summary/urgency-low.png';
-        document.getElementById('summary-urgency-image-arrow-urgent2').src = 'assets/img/summary/urgency-low.png';
-        document.getElementById('summary-urgency-image').classList.add('summary-urgency-image-low');
-        document.getElementById('summary-urgency-text').innerHTML = `Low`;
-        return showUrgency
-    }
-}
-
-function checkIfUrgencyIsMedium(showUrgency) {
-    if (showUrgency.find(x => x === 'Medium')) {
-        showUrgency = showUrgency.filter(e => e !== 'Low');
-        document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-low');
-        document.getElementById('summary-urgency-image-arrow-urgent1').src = 'assets/img/summary/urgency-medium.png';
-        document.getElementById('summary-urgency-image-arrow-urgent2').src = 'assets/img/summary/urgency-medium.png';
-        document.getElementById('summary-urgency-image').classList.add('summary-urgency-image-medium');
-        document.getElementById('summary-urgency-text').innerHTML = `Medium`;
-        return showUrgency
-    }
-}
-
-function checkIfUrgencyIsUrgent(showUrgency) {
-    if (showUrgency.find(x => x === 'Urgent')) {
-        showUrgency = showUrgency.filter(e => e !== 'Low', 'Medium');
-        document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-low');
-        document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-medium');
-        document.getElementById('summary-urgency-image-arrow-urgent1').src = 'assets/img/summary/urgency-high.png';
-        document.getElementById('summary-urgency-image-arrow-urgent2').src = 'assets/img/summary/urgency-high.png';
-        document.getElementById('summary-urgency-image').classList.add('summary-urgency-image-urgent');
-        document.getElementById('summary-urgency-text').innerHTML = `Urgent`;
-        return showUrgency
-    }
-}
-
-function showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone) {
-    document.getElementById('summary-tasks-amount-alltasks').innerHTML = `${tasksInBoard}`;
-    document.getElementById('summary-tasks-amount-task-in-progress').innerHTML = `${tasksInProgress}`;
-    document.getElementById('summary-tasks-amount-awaiting-feedback').innerHTML = `${awaitingFeedback}`;
-    document.getElementById('summary-tasks-amount-urgend').innerHTML = `${showUrgencyCounter}`;
-    document.getElementById('summary-tasks-amount-urgend-date').innerHTML = `${showDueDate}`;
-    document.getElementById('summary-tasks-amount-to-do').innerHTML = `${tasksToDo}`;
-    document.getElementById('summary-tasks-amount-done').innerHTML = `${tasksDone}`;
-    return tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone
-}
-
-function resetSummary() {
-    document.getElementById('summary-urgency-image-arrow-urgent2').src = '';
-    document.getElementById('summary-urgency-image-arrow-urgent2').src = '';
-    document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-low');
-    document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-medium');
-    document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-urgent');
-    document.getElementById('summary-urgency-text').innerHTML = '';
-}
-
+/**
+ * Check all registered tasks with different status from the array 'allTasks'. 
+ * Push all duedates from the array 'allTasks' into the array 'singleDueDate'.
+ * Put all duedates in order from the array 'singleDueDate', beginning at the first date.
+ * Show only the first date from the array 'singleDueDate'.
+ */
 function amountStatusSetDueDate() {
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i]['status'] == 'inProgress') {
@@ -116,9 +82,37 @@ function amountStatusSetDueDate() {
     }
 }
 
+/**
+ * Run serval functions to build the page summary.html with all variables
+ */
+function checkIfUrgencyIsLow(showUrgency) {
+    if (showUrgency.find(x => x === 'Low')) {
+        document.getElementById('summary-urgency-image-arrow-urgent1').src = 'assets/img/summary/urgency-low.png';
+        document.getElementById('summary-urgency-image-arrow-urgent2').src = 'assets/img/summary/urgency-low.png';
+        document.getElementById('summary-urgency-image').classList.add('summary-urgency-image-low');
+        document.getElementById('summary-urgency-text').innerHTML = `Low`;
+        return showUrgency
+    }
+}
+
+/**
+ * At reloading the page, all entries are reset.
+ */
+function resetSummary() {
+    document.getElementById('summary-urgency-image-arrow-urgent2').src = '';
+    document.getElementById('summary-urgency-image-arrow-urgent2').src = '';
+    document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-low');
+    document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-medium');
+    document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-urgent');
+    document.getElementById('summary-urgency-text').innerHTML = '';
+}
+
+/**
+ * Push all found duedates and urgencies into the array 'showUrgency'. 
+ * Count the number of all tasks.
+ */
 function pushAllDueDatesAndPrios() {
     for (let j = 0; j < allTasks.length; j++) {
-
         let searchForDueDate = allTasks[j]['duedate'];
         let searchForUrgency = allTasks[j]['prior'];
         if (showDueDate == searchForDueDate) {
@@ -126,4 +120,53 @@ function pushAllDueDatesAndPrios() {
             showUrgencyCounter += 1;
         }
     }
+}
+
+/**
+ * If the urgency from the array 'showUrgency' is 'medium', let all medium-elements shown.
+ * Find 'Medium' in the array 'showUrgency' and filter all entries with 'low' away.
+ * The aim is that only entries with the urgency 'medium' are displayed.
+ */
+function checkIfUrgencyIsMedium(showUrgency) {
+    if (showUrgency.find(x => x === 'Medium')) {
+        showUrgency = showUrgency.filter(e => e !== 'Low');
+        document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-low');
+        document.getElementById('summary-urgency-image-arrow-urgent1').src = 'assets/img/summary/urgency-medium.png';
+        document.getElementById('summary-urgency-image-arrow-urgent2').src = 'assets/img/summary/urgency-medium.png';
+        document.getElementById('summary-urgency-image').classList.add('summary-urgency-image-medium');
+        document.getElementById('summary-urgency-text').innerHTML = `Medium`;
+        return showUrgency
+    }
+}
+
+/**
+ * If the urgency from the array 'showUrgency' is 'urgent', let all urgent-elements shown.
+ * Find 'Urgent' in the array 'showUrgency' and filter all entries with 'low' and medium away.
+ * The aim is that only entries with the urgency 'urgent' are displayed.
+ */
+function checkIfUrgencyIsUrgent(showUrgency) {
+    if (showUrgency.find(x => x === 'Urgent')) {
+        showUrgency = showUrgency.filter(e => e !== 'Low', 'Medium');
+        document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-low');
+        document.getElementById('summary-urgency-image').classList.remove('summary-urgency-image-medium');
+        document.getElementById('summary-urgency-image-arrow-urgent1').src = 'assets/img/summary/urgency-high.png';
+        document.getElementById('summary-urgency-image-arrow-urgent2').src = 'assets/img/summary/urgency-high.png';
+        document.getElementById('summary-urgency-image').classList.add('summary-urgency-image-urgent');
+        document.getElementById('summary-urgency-text').innerHTML = `Urgent`;
+        return showUrgency
+    }
+}
+
+/**
+ * Insert all values for the html part
+ */
+function showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone) {
+    document.getElementById('summary-tasks-amount-alltasks').innerHTML = `${tasksInBoard}`;
+    document.getElementById('summary-tasks-amount-task-in-progress').innerHTML = `${tasksInProgress}`;
+    document.getElementById('summary-tasks-amount-awaiting-feedback').innerHTML = `${awaitingFeedback}`;
+    document.getElementById('summary-tasks-amount-urgend').innerHTML = `${showUrgencyCounter}`;
+    document.getElementById('summary-tasks-amount-urgend-date').innerHTML = `${showDueDate}`;
+    document.getElementById('summary-tasks-amount-to-do').innerHTML = `${tasksToDo}`;
+    document.getElementById('summary-tasks-amount-done').innerHTML = `${tasksDone}`;
+    return tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone
 }

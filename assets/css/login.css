@@ -29,26 +29,9 @@ body {
     height: 334.07px;
     width: 274px;
     animation-fill-mode: forwards;
-    /* animation: linear; */
     animation-name: logoSize;
     animation-duration: 2s;
-    /* animation-timing-function: ease-in-out; */
     z-index: 0;
-    
-
-    /* scale: 1; */
-}
-
-@keyframes logoSize {
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(0.3);
-        left: 77px;
-        top: -45px;
-    }
 }
 
 .login-screen-start {
@@ -78,43 +61,12 @@ body {
 .user-sign-up a {
     width: 161px;
     height: 25px;
-
-    /* Version 2/t6 */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
     color: #000000;
     text-decoration: none;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-.user-sign-up button {
-    padding: 4px 16px;
-    gap: 10px;
-
-    width: 91px;
-    height: 51px;
-    border: 1px solid #2A3647;
-    background: #2A3647;
-    border-radius: 8px;
-    color: #FFFFFF;
-    font-size: 16px;
-}
-
-.user-sign-up button:hover {
-    background-color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-    border: 1px solid #29ABE2;
 }
 
 .set-login-window {
@@ -216,242 +168,53 @@ body {
 }
 
 .login-headline {
-    font-family: 'Inter';
     width: 315px;
     height: 73px;
-
-    /* Version 2/t1 */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
     line-height: 120%;
-    /* or 73px */
-
     text-align: center;
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
     padding-bottom: 24px;
     border-bottom: #29ABE2 2px solid;
 }
 
 .forgot-password-headline {
-    font-family: 'Inter';
     width: 626px;
     height: 73px;
-
-    /* Version 2/t1 */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
     line-height: 120%;
-    /* or 73px */
-
     text-align: center;
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
     padding-bottom: 24px;
     border-bottom: #29ABE2 2px solid;
 }
 
 .reset-password-headline {
-    font-family: 'Inter';
     width: 626px;
     height: 73px;
-
-    /* Version 2/t1 */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 60px;
     line-height: 120%;
-    /* or 73px */
-
     text-align: center;
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
     padding-bottom: 24px;
     border-bottom: #29ABE2 2px solid;
-}
-
-.login-window-input-username {
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-
-    width: 422px;
-    height: 51px;
-
-    background: #FFFFFF;
-    /* Style */
-
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-
-    /* Inside auto layout */
-    font-size: 21px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    background-image: url(../img/login/user.png);
-    background-size: 18px;
-    background-position: 95%, right;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-
-.login-window-input-email {
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-
-    width: 422px;
-    height: 51px;
-
-    background: #FFFFFF;
-    /* Style */
-
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-
-    /* Inside auto layout */
-    font-size: 21px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    background-image: url(../img/login/letter.png);
-    background-size: 18px;
-    background-position: 95%, right;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-
-.login-window-input-passwort {
-    box-sizing: border-box;
-
-    /* Auto layout */
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 13px 21px;
-    gap: 10px;
-
-    width: 422px;
-    height: 51px;
-
-    background: #FFFFFF;
-    /* Style */
-
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-
-    /* Inside auto layout */
-    font-size: 21px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    /* background: url(../img/login/lock.png); */
-    background-size: 18px;
-    background-position: 95%, right;
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
-
-.login-password-visibilty-on {
-    background-image: url(../img/login/visibility_on.png) !important;
-    width: 20px !important;
-    height: 20px !important;
-    box-sizing: border-box !important;;
-    background-size: contain !important;;
-}
-
-.login-password-visibilty-off {
-    background-image: url(../img/login/visibility_off.png) !important;
-    width: 20px !important;
-    height: 20px !important;
-    box-sizing: border-box !important;;
-    background-size: contain !important;;
-}
-
-.remember-me-clickbox input {
-    /* position: absolute; */
-    cursor: pointer;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-
-    /* Boton gradient */
-
-    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
-    border: 1px solid #000000;
-    border-radius: 3px;
 }
 
 .remember-me-clickbox a {
     width: 154px;
     height: 19px;
-
-    /* Version 2/body */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    /* or 19px */
-
-
-    /* Ligth blue */
-
     color: #29ABE2;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
-
 
 .remember-me-forgot-my-passwort {
     display: flex;
@@ -464,16 +227,9 @@ body {
     text-decoration: none;
 }
 
-
 .login-guestlogin {
     display: flex;
     position: relative;
-    gap: 40px;
-    right: 100px;
-}
-
-.position-button {
-    display: flex;
     gap: 40px;
     right: 100px;
 }
@@ -483,118 +239,6 @@ body {
     align-items: center;
     gap: 40px;
     flex-direction: column;
-}
-
-.login-button {
-
-    padding: 4px 0px;
-    gap: 10px;
-
-    width: 145px;
-    height: 51px;
-    color: #FFFFFF;
-    background: #2A3647;
-    border-radius: 8px;
-    font-size: 21px;
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-.login-button:hover {
-    background-color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-    border: 1px solid #29ABE2;
-}
-
-
-.guestlogin-button {
-    width: 170px;
-    height: 51px;
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #2A3647;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    position: absolute;
-    right: 150px;
-    bottom: 70px;
-}
-
-.guestlogin-button:hover {
-    border: 2px solid #29ABE2;
-    color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-}
-
-
-.signup-button {
-    padding: 4px 0px;
-    width: 145px;
-    height: 51px;
-    color: #FFFFFF;
-    background: #2A3647;
-    border-radius: 8px;
-    font-size: 21px;
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-.signup-button:hover {
-    background-color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-    border: 1px solid #29ABE2;
-}
-
-.forgot-password-button {
-    padding: 4px 0px;
-    width: 145px;
-    height: 51px;
-    color: #FFFFFF;
-    background: #2A3647;
-    border-radius: 8px;
-    font-size: 21px;
-    /* Inside auto layout */
-
-    padding: 4px 0px;
-    gap: 10px;
-
-    width: 264px;
-    height: 51px;
-
-    background: #2A3647;
-    border-radius: 8px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    /* or 25px */
-    color: #FFFFFF;
-    /* Inside auto layout */
-    flex: none;
-}
-
-.forgot-password-button:hover {
-    background-color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-    border: 1px solid #29ABE2;
 }
 
 .signup-back {
@@ -621,31 +265,15 @@ body {
     cursor: pointer;
 }
 
-
 .forgot-password-window span {
     width: 656px;
-    /* height: 50px; */
-
-    /* Version 2/t6 */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
     text-align: center;
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    flex-grow: 0;
     z-index: 1;
-
 }
 
 .forgot-password-window form {
@@ -657,121 +285,23 @@ body {
 
 .reset-password-window span {
     width: 656px;
-
-    /* Version 2/t6 */
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
     text-align: center;
-
     color: #000000;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    flex-grow: 0;
     z-index: 1;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
-
-.login-input-image {
-    width: 20px;
-    height: 20px;
-    background: url(../img/login/lock.png) no-repeat;
-    content: ' ';
-    position: absolute;
-    right: 135px;
-    top: 100px;
-    cursor: pointer;
-}
-
-.signup-input-image {
-    width: 20px;
-    height: 20px;
-    background: url(../img/login/lock.png) no-repeat;
-    content: ' ';
-    position: absolute;
-    right: 135px;
-    top: 355px;
-    cursor: pointer;
-}
-
-.new-password-input-image {
-    width: 20px;
-    height: 20px;
-    background: url(../img/login/lock.png) no-repeat;
-    content: ' ';
-    position: absolute;
-    right: 200px;
-    top: 245px;
-    cursor: pointer;
-}
-
-.confirm-password-input-image {
-    width: 20px;
-    height: 20px;
-    background: url(../img/login/lock.png) no-repeat;
-    content: ' ';
-    position: absolute;
-    right: 200px;
-    top: 330px;
-    cursor: pointer;
-}
-
-
 
 .reset-password-window form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 35px;
-}
-
-.confirm-password-button {
-    width: 300px;
-    height: 51px;
-    background: #2A3647;
-    border-radius: 8px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    color: #FFFFFF;
-    position: relative;
-    animation-fill-mode: forwards;
-    animation-name: confirm-password-button;
-    animation-duration: 1s;
-}
-
-@keyframes confirm-password-button {
-    from {
-        top: 700px;
-        /* opacity: 0; */
-    }
-
-    to {
-        top: 0px;
-        /* opacity: 1; */
-    }
-}
-
-
-
-.confirm-password-button:hover {
-    background-color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-    border: 1px solid #29ABE2;
 }
 
 .confirm-signup-window {
@@ -788,32 +318,6 @@ body {
     opacity: 1;
     z-index: 1;
 }
-
-.confirm-signup-button {
-    width: 300px;
-    height: 51px;
-    background: #2A3647;
-    border-radius: 8px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    color: #FFFFFF;
-    position: relative;
-    animation-fill-mode: forwards;
-    animation-name: confirm-password-button;
-    animation-duration: 1s;
-    box-sizing: content-box;
-    padding: 8px;
-}
-
-.confirm-signup-button:hover {
-    background-color: #29ABE2;
-    cursor: pointer;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
-    border: 1px solid #29ABE2;
-}
-
 
 .red-font {
     color: red !important;

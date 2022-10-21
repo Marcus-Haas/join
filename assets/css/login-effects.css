@@ -1,0 +1,308 @@
+.user-sign-up button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.login-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.guestlogin-button:hover {
+    border: 2px solid #29ABE2;
+    color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+}
+
+.signup-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.forgot-password-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.confirm-password-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+.confirm-signup-button:hover {
+    background-color: #29ABE2;
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 2px 2px rgb(0 0 0 / 12%), 0 4px 4px rgb(0 0 0 / 12%), 0 8px 8px rgb(0 0 0 / 12%), 0 16px 16px rgb(0 0 0 / 12%);
+    border: 1px solid #29ABE2;
+}
+
+@keyframes logoSize {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0.3);
+        left: 77px;
+        top: -45px;
+    }
+}
+
+@keyframes confirm-password-button {
+    from {
+        top: 700px;
+    }
+
+    to {
+        top: 0px;
+    }
+}
+
+.signup-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 135px;
+    top: 355px;
+    cursor: pointer;
+}
+
+.new-password-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 200px;
+    top: 245px;
+    cursor: pointer;
+}
+
+.confirm-password-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 200px;
+    top: 330px;
+    cursor: pointer;
+}
+
+.login-input-image {
+    width: 20px;
+    height: 20px;
+    background: url(../img/login/lock.png) no-repeat;
+    content: ' ';
+    position: absolute;
+    right: 135px;
+    top: 100px;
+    cursor: pointer;
+}
+
+.login-window-input-username {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 21px;
+    background-image: url(../img/login/user.png);
+    background-size: 18px;
+    background-position: 95%, right;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.login-window-input-email {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 21px;
+    background-image: url(../img/login/letter.png);
+    background-size: 18px;
+    background-position: 95%, right;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.login-window-input-passwort {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
+    width: 422px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 21px;
+    background-size: 18px;
+    background-position: 95%, right;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.remember-me-clickbox input {
+    cursor: pointer;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+
+.position-button {
+    display: flex;
+    gap: 40px;
+    right: 100px;
+}
+
+
+.login-button {
+    padding: 4px 0px;
+    gap: 10px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+}
+
+.guestlogin-button {
+    width: 170px;
+    height: 51px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #2A3647;
+    position: absolute;
+    right: 150px;
+    bottom: 70px;
+}
+
+.signup-button {
+    padding: 4px 0px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+}
+
+.forgot-password-button {
+    padding: 4px 0px;
+    width: 145px;
+    height: 51px;
+    color: #FFFFFF;
+    background: #2A3647;
+    border-radius: 8px;
+    font-size: 21px;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.confirm-password-button {
+    width: 300px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: confirm-password-button;
+    animation-duration: 1s;
+}
+
+.confirm-signup-button {
+    width: 300px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: confirm-password-button;
+    animation-duration: 1s;
+    box-sizing: content-box;
+    padding: 8px;
+}
+
+.user-sign-up button {
+    padding: 4px 16px;
+    gap: 10px;
+    width: 91px;
+    height: 51px;
+    border: 1px solid #2A3647;
+    background: #2A3647;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+.login-password-visibilty-on {
+    background-image: url(../img/login/visibility_on.png) !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-sizing: border-box !important;
+    background-size: contain !important;
+}
+
+.login-password-visibilty-off {
+    background-image: url(../img/login/visibility_off.png) !important;
+    width: 20px !important;
+    height: 20px !important;
+    box-sizing: border-box !important;
+    background-size: contain !important;
+}
