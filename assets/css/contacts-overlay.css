@@ -486,6 +486,13 @@
     .overlay-save-frame {
         width: 100%;
     }
+
+    .overlay-user-initials {
+        position: absolute;
+        top: 34%;
+        left: 42%;
+        margin-top: 0;
+    }
 }
 
 

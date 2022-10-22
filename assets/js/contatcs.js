@@ -9,6 +9,16 @@ let newEmail = 0;
 let contacts = [];
 
 
+async function InitContacts() {
+    await init();
+    await initStart();
+    await loadContactsFromBackend();
+    renderContactBook();
+    openBusinessCard(0);
+
+}
+
+
 function showOverlay() {
     document.getElementById('overlay-background').classList.remove('d-none');
 }
@@ -30,7 +40,7 @@ async function addNewContact() {
 }
 
 
-function pushContacts(contactName, contactEmail, contactPhone, contactInitials) {
+async function pushContacts(contactName, contactEmail, contactPhone, contactInitials) {
     let contact = {
         'name': contactName,
         'email': contactEmail,
@@ -79,6 +89,7 @@ function renderContactBook() {
     for (let index = 0; index < contacts.length; index++) {
         container.innerHTML += generateHTMLforContactBook(index);
     }
+    renderContactBookResponsive();
 }
 
 
@@ -109,7 +120,7 @@ function openBusinessCard(i) {
 
 function generateBusinessCard(i) {
     return /*html*/ `
-    <div class="business-card-main">
+    <div class="business-card-main" id="business-card-main">
         <div class="business-card-header">
             <div class="business-card-initials">${contacts[i]['initials']}</div>
             <div>
@@ -132,7 +143,7 @@ function generateBusinessCard(i) {
             <div class="business-card-phone-headline">Phone</div>
             <div class="business-card-phone-number">${contacts[i]['phone']}</div>
         </div>
-        <div class="edit-responsive"><img src="assets/img/contacts/edit-responsive.svg" onclick="deleteContact(${i})"></div>
+        <div class="edit-responsive"><img src="assets/img/contacts/edit-responsive.svg" onclick="editContactResponsive(${i})"></div>
         <div class="delete-contact" onclick="deleteContact(${i})">Delete Contact!</div>
     </div>
     `;
@@ -164,10 +175,13 @@ function generateEditOverlay(i) {
             </div>
             <div class="overlay-right-part">
                 <img class="close-overlay" src="assets/img/contacts/cancel-icon.png" onclick="closeEditOverlay()">
+                <img class="close-overlay-rs" src="assets/img/contacts/cancel-white.svg" onclick="closeEditOverlayResponsive()">
                 <div class="user-contacts-help-frame">
-                    <div class="overlay-user-initials">${contacts[i]['initials']}</div>
+                    <div class="overlay-user-initials-container">
+                        <div class="overlay-user-initials">${contacts[i]['initials']}</div>
+                    </div>
 
-                    <form onsubmit="saveContact(${i}); return false;">
+                    <form class="save-contact-form" onsubmit="saveContact(${i}); return false;">
                         <div class="overlay-contacts-details-container">
                             <div class="overlay-contacts-details-frame">
                                 <input id="edit-name" class="overlay-input-design input-icon-user" required type="text"
@@ -179,6 +193,29 @@ function generateEditOverlay(i) {
                             </div>
                             <div class="overlay-contacts-details-frame">
                                 <input id="edit-phone" class="overlay-input-design input-icon-phone" required
+                                placeholder="Phone">
+                            </div>
+                        </div>
+                        <button class="overlay-save-frame">
+                            <div class="overlay-save-btn">
+                                <div class="overlay-save-btn-text">Save</div>
+                            </div>
+                        </button>
+                    </form>
+
+
+                    <form class="edit-responsive-form" onsubmit="saveContactResponsive(${i}); return false;">
+                        <div class="overlay-contacts-details-container">
+                            <div class="overlay-contacts-details-frame">
+                                <input id="edit-name-rs" class="overlay-input-design input-icon-user" required type="text"
+                                placeholder="Name">
+                            </div>
+                            <div class="overlay-contacts-details-frame">
+                                <input id="edit-email-rs" class="overlay-input-design input-icon-letter" required type="email"
+                                placeholder="Email">
+                            </div>
+                            <div class="overlay-contacts-details-frame">
+                                <input id="edit-phone-rs" class="overlay-input-design input-icon-phone" required
                                 placeholder="Phone">
                             </div>
                         </div>
@@ -233,15 +270,8 @@ function loadContactsFromBackend() {
 function deleteContact(i) {
     contacts.splice(i, 1);
     renderContactBook();
+    renderContactBookResponsive();
     pushContactsToBackend();
-}
-
-
-async function InitContacts() {
-    await init();
-    await initStart();
-    await loadContactsFromBackend();
-    renderContactBook();
 }
 
 
@@ -249,6 +279,85 @@ async function InitContacts() {
 
 function showOverlayResponsive() {
     showOverlay();
+    document.getElementById('contact-book-rs').style.display = 'none';
+    document.getElementById('new-contacts-btn-rs').classList.add('d-none');
+    document.getElementById('contacts-back-btn').classList.remove('d-none');
+    document.getElementById('contacts-kanban').classList.remove('d-none');
+    document.getElementById('contacts-headline-container').style.display = 'flex';
+    document.getElementById('business-card-main').style.display = 'flex';
 }
 
-function hideResponsvieContactBook(){}
+
+function closeOverlayResponsive() {
+    closeOverlay();
+    MoveBackToContacts();
+}
+
+
+function MoveBackToContacts() {
+    document.getElementById('contact-book-rs').style.display = 'flex';
+    document.getElementById('new-contacts-btn-rs').classList.remove('d-none');
+    document.getElementById('contacts-back-btn').classList.add('d-none');
+    document.getElementById('contacts-kanban').classList.add('d-none');
+    document.getElementById('contacts-headline-container').style.display = 'none';
+    document.getElementById('business-card-main').style.display = 'none';
+}
+
+
+function renderContactBookResponsive() {
+    let container = document.getElementById('contact-book-rs');
+    container.innerHTML = '';
+    for (let index = 0; index < contacts.length; index++) {
+        container.innerHTML += generateHTMLforContactBookResponsive(index);
+    }
+}
+
+
+function generateHTMLforContactBookResponsive(i) {
+    return /*html*/ `
+    <div class="contact-book-container" id="contact-book-bg${i}" onclick="openBusinessCardResponsive(${i})">
+        <div class="contact-circle">${contacts[i]['initials']}</div>
+        <div class="contact-book-frame">
+            <div id="contact-book-name${i}" class="contact-book-name">${contacts[i]['name']}</div>
+            <div class="contact-book-email">${contacts[i]['email']}</div>
+        </div>
+    </div>
+    `;
+}
+
+
+function openBusinessCardResponsive(i) {
+    openBusinessCard(i);
+    document.getElementById('contact-book-rs').style.display = 'none';
+    document.getElementById('new-contacts-btn-rs').classList.add('d-none');
+    document.getElementById('contacts-kanban').classList.remove('d-none');
+    document.getElementById('contacts-headline-container').style.display = 'flex';
+    document.getElementById('business-card-main').style.display = 'flex';
+    document.getElementById('contacts-back-btn').classList.remove('d-none');
+}
+
+
+function closeEditOverlayResponsive() {
+    closeEditOverlay();
+}
+
+
+async function saveContactResponsive(i) {
+    let contactName = document.getElementById('edit-name-rs').value;
+    let contactEmail = document.getElementById('edit-email-rs').value;
+    let contactPhone = document.getElementById('edit-phone-rs').value;
+    let contactInitials = contactName.match(/(\b\S)?/g).join("").toUpperCase();
+    await updateContatcs(i, contactName, contactEmail, contactPhone, contactInitials);
+    closeEditOverlay();
+    renderContactBookResponsive();
+    openBusinessCardResponsive(i);
+}
+
+
+function editContactResponsive(i) {
+    let edit = document.getElementById('edit');
+    edit.innerHTML = generateEditOverlay(i);
+    document.getElementById('edit-name-rs').value = contacts[i]['name'];
+    document.getElementById('edit-email-rs').value = contacts[i]['email'];
+    document.getElementById('edit-phone-rs').value = contacts[i]['phone'];
+}

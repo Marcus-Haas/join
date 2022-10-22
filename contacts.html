@@ -29,9 +29,13 @@
 
     <div w3-include-html="assets/templates/header.html"></div>
 
-    <div class="kanban-title">Kanban Project Managment Tool</div>
+    <div id="contacts-kanban" class="kanban-title d-none">Kanban Project Managment Tool</div>
 
-    <div class="contacts-headline-container">
+    <div class="contacts-back-btn d-none" id="contacts-back-btn" onclick="MoveBackToContacts()">
+            <img src="assets/img/legal notice/arrrow-left.png">
+    </div>
+
+    <div class="contacts-headline-container" id="contacts-headline-container">
         <div class="contacts-headline">Contacts</div>
         <div class="contacts-border"></div>
         <div class="contacts-slogan">Better with a team</div>
@@ -43,7 +47,7 @@
     </div>
 
 
-    <div class="new-contacts-btn-rs" onclick="showOverlayResponsive()">
+    <div class="new-contacts-btn-rs" id="new-contacts-btn-rs" onclick="showOverlayResponsive()">
         <div class="new-contacts-btn-text">New contact</div>
         <img class="new-contacts-icon" src="assets/img/contacts/new-contact.png">
     </div>
@@ -61,7 +65,7 @@
             </div>
             <div class="overlay-right-part">
                 <img class="close-overlay" src="assets/img/contacts/cancel-icon.png" onclick="closeOverlay()">
-                <img class="close-overlay-rs" src="assets/img/contacts/cancel-white.svg" onclick="closeOverlay()">
+                <img class="close-overlay-rs" src="assets/img/contacts/cancel-white.svg" onclick="closeOverlayResponsive()">
                 <div class="user-contacts-help-frame">
                     <div class="overlay-user-icon-container">
                         <img class="overlay-user-icon-white" src="assets/img/contacts/user-white.png">
@@ -108,6 +112,7 @@
 
     <!----------------------------------------------Kontaktbuch via JS-------------------------------------->
     <div class="contact-book-main" id="contact-book"></div>
+    <div class="contact-book-main-rs" id="contact-book-rs"></div>
 
 
     <!---------------------------------------------Business Card via JS------------------------------------->

@@ -5,7 +5,6 @@ body {
 }
 
 .kanban-title {
-    display: none;
     margin-top: 30px;
 }
 
@@ -113,6 +112,26 @@ body {
     padding-right: 10px;
     padding-top: 40px;
     z-index: -1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-book-main-rs {
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    width: 400px;
+    height: calc(100% - 80px);
+    position: absolute;
+    top: 80px;
+    left: 231px;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 40px;
+    z-index: -1;
+    display: none;
+    flex-direction: column;
 }
 
 .contact-book-container {
@@ -257,6 +276,28 @@ body {
     cursor: pointer;
 }
 
+.contacts-back-btn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 10px;
+    height: 20px;
+    margin-top: -20px;
+}
+
+.contacts-back-btn:hover {
+    cursor: pointer;
+}
+
+.edit-responsive-form {
+    display: none;
+}
+
+.d-none {
+    display: none;
+}
+
 
 @media(max-width: 1160px) {
     .contact-book-main {
@@ -311,14 +352,22 @@ body {
 
 @media(max-width: 850px) {
     .kanban-title {
-        display: block;
         padding-left: 20px;
+    }
+
+    .save-contact-form {
+        display: none;
+    }
+
+    .edit-responsive-form {
+        display: block;
     }
 
     .business-card-main {
         left: 20px;
         margin-top: -35px;
         word-wrap: break-word;
+        display: none;
     }
 
     .business-card-header {
@@ -341,17 +390,23 @@ body {
         width: auto;
         left: 20px;
         top: 145px;
+        display: none;
     }
 
     .contact-book-main {
+        display: none;
+    }
+
+    .contact-book-main-rs {
         width: 100%;
         left: 0;
         padding-top: 55px;
-        display: none;
+        display: flex;
     }
 
     .contact-book-container {
         padding-right: 20px;
+        align-items: inherit;
     }
 
     .contact-circle {
@@ -374,6 +429,10 @@ body {
         width: 100%;
         display: flex;
         justify-content: flex-end;
+    }
+
+    .delete-contact {
+        display: none;
     }
 
 }
