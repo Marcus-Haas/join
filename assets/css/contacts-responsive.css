@@ -1,0 +1,156 @@
+@media(max-width: 1160px) {
+    .contact-book-main {
+        width: 280px;
+    }
+
+    .contact-book-container {
+        padding-left: 20px;
+        gap: 30px;
+    }
+
+    .contacts-headline-container {
+        width: 378px;
+        gap: 10px;
+        left: 460px;
+    }
+
+    .contacts-headline {
+        height: auto;
+        font-size: 30px;
+    }
+
+    .contacts-border {
+        height: 40px;
+    }
+
+    .contacts-slogan {
+        height: auto;
+        font-size: 18px;
+    }
+
+    .business-card-main {
+        left: 530px;
+    }
+
+    .business-card-header {
+        gap: 15px;
+    }
+
+    .business-card-initials {
+        width: 70px;
+        height: 70px;
+        font-size: 23px;
+    }
+
+    .business-card-name {
+        font-size: 30px;
+        width: 225px;
+    }
+}
+
+
+@media(max-width: 850px) {
+    .kanban-title {
+        padding-left: 20px;
+    }
+
+    .save-contact-form {
+        display: none;
+    }
+
+    .edit-responsive-form {
+        display: block;
+    }
+
+    .business-card-main {
+        left: 20px;
+        margin-top: -35px;
+        word-wrap: break-word;
+        display: none;
+    }
+
+    .business-card-header {
+        width: auto;
+    }
+
+    .business-card-edit-frame {
+        display: none;
+    }
+
+    .business-card-phone-frame {
+        margin-top: 15px;
+    }
+
+    .business-card-email-frame {
+        margin-top: 15px;
+    }
+
+    .contacts-headline-container {
+        width: auto;
+        left: 20px;
+        top: 145px;
+        display: none;
+    }
+
+    .contact-book-main {
+        display: none;
+    }
+
+    .contact-book-main-rs {
+        width: 100%;
+        left: 0;
+        padding-top: 55px;
+        display: flex;
+    }
+
+    .contact-book-container {
+        padding-right: 20px;
+        align-items: inherit;
+    }
+
+    .contact-circle {
+        height: 45px;
+        width: 45px;
+    }
+
+    .new-contacts-btn {
+        display: none;
+    }
+
+    .new-contacts-btn-rs {
+        display: flex;
+    }
+
+    .edit-responsive {
+        position: absolute;
+        right: 0;
+        bottom: 0%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .delete-contact {
+        display: none;
+    }
+
+}
+
+
+@media(max-width: 350px) {
+    .contacts-headline {
+        font-size: 20px;
+    }
+
+    .contacts-slogan {
+        font-size: 14px;
+    }
+
+    .kanban-title {
+        font-size: 14px;
+    }
+
+    .business-card-name {
+        width: 160px;
+    }
+}
