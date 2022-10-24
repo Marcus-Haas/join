@@ -258,30 +258,37 @@ body {
 
     .title-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 
     .duedate-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 
     .description-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 
     .category-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 
     .assignedto-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 
     .prio-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 
     .btn-popup-addTask {
         margin-left: 10px !important;
+        margin-bottom: 25px !important;
     }
 }
 
@@ -309,6 +316,11 @@ body {
 
     .container-for-seperate-left-and-right-content-addTask {
         display: unset;
+    }
+
+    .container-inputfield-addTask {
+        height: 61vh;
+        overflow-y: scroll;
     }
 
     .btn-popup {
@@ -554,32 +566,32 @@ body {
     }
 
     .title-popup-addTask {
-        margin-bottom: 35px !important;
+        margin-bottom: 3.5px !important;
     }
 
     .duedate-popup-addTask {
-        margin-bottom: 35px !important;
+        margin-bottom: 3.5px !important;
     }
 
     .description-popup-addTask {
-        margin-bottom: 35px !important;
+        margin-bottom: 3.5px !important;
     }
 
     .category-popup-addTask {
-        margin-bottom: 35px !important;
+        margin-bottom: 3.5px !important;
     }
 
     .assignedto-popup-addTask {
-        margin-bottom: 35px !important;
+        margin-bottom: 3.5px !important;
     }
 
     .prio-popup-addTask {
-        margin-bottom: 35px !important;
+        margin-bottom: 3.5px !important;
     }
 
     .btn-popup-addTask {
-        margin-bottom: 35px !important;
-        margin-top: 283px !important;
+        margin-bottom: 8px !important;
+        margin-top: 230px !important;
         width: 290px !important;
         justify-content: flex-end;
     }
@@ -619,6 +631,8 @@ body {
 
     .container-inputfield-addTask {
         margin-left: -11px;
+        height: 65vh;
+        overflow-y: scroll;
     }
 
     .main-container-addTask {
@@ -751,6 +765,11 @@ body {
         margin-top: 10px;
     }
 
+    .container-inputfield-addTask {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+
     .title-popup {
         width: 400px;
 
@@ -793,37 +812,37 @@ body {
     }
 
     .title-popup-addTask {
-        width: 370px !important;
+        width: 300px !important;
         margin-bottom: 35px !important;
     }
 
     .duedate-popup-addTask {
-        width: 370px !important;
+        width: 300px !important;
         margin-bottom: 35px !important;
     }
 
     .description-popup-addTask {
-        width: 370px !important;
+        width: 300px !important;
         margin-bottom: 35px !important;
     }
 
     .category-popup-addTask {
-        width: 370px !important;
+        width: 300px !important;
         margin-bottom: 35px !important;
     }
 
     .assignedto-popup-addTask {
-        width: 370px !important;
+        width: 300px !important;
         margin-bottom: 35px !important;
     }
 
     .prio-popup-addTask {
-        width: 370px !important;
+        width: 300px !important;
         margin-bottom: 35px !important;
     }
 
     .btn-popup-addTask {
-        width: 383px !important;
+        width: 310px !important;
         margin-bottom: 35px !important;
         margin-top: 270px;
     }
