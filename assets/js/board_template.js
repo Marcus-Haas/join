@@ -1,14 +1,14 @@
 function templateCreateTodo() {
     return `  
-    <div onclick="openTaskDetails(${index}, event)" draggable="true" ondragstart="startDragging(${index})" class="box">
+    <div onclick="openTaskDetails(${j}, event)" draggable="true" ondragstart="startDragging(${j})" class="box">
         <div class="category-with-trash">
-            <div id="changeColorOfCategory${index}" class="category">${allTasks[index]['category']}</div>
-            <div><img onclick="deleteTask(${index}, event)" src="assets/img/board/trash.png"></div>
+            <div id="changeColorOfCategory${j}" class="category">${allTasks[j]['category']}</div>
+            <div><img onclick="deleteTask(${j}, event)" src="assets/img/board/trash.png"></div>
         </div>
-        <div class="title">${allTasks[index]['title']}</div>
-        <div class="description">${allTasks[index]['description']}</div>
+        <div class="title">${allTasks[j]['title']}</div>
+        <div class="description">${allTasks[j]['description']}</div>
         <div class="assigned-and-prio">
-            <div id="assignedForInitialLetters${j}" class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div id="assignedForInitialLetters${j}" class="assigned">${allTasks[j]['firstLetter']}${allTasks[j]['secondLetter']}</div>
                 <div class="prio">
                     <div class="first-arrow"><img id="createFirstImg${j}" src=""></div>
                     <div class="second-arrow"><img id="createSecondImg${j}" src=""></div>

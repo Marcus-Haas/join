@@ -44,7 +44,7 @@ function updateBoard() {
 
 function identifyId() {
     let length = allTasks.length - 1;
-    if(j > 0 || length > 0) {
+    if(j > 0 || length >= 0) {
         j = allTasks[length]['id'];
         j++;
     }

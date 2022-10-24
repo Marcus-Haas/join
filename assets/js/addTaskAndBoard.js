@@ -2,13 +2,13 @@
 * change the color depend on the inital letters
 */
 function changeBgColorOfInitialLetters() {
-    if (allTasks[index]['firstLetter'] == 'A' && allTasks[j]['secondLetter'] == 'O') {
+    if (allTasks[j]['firstLetter'] == 'A' && allTasks[j]['secondLetter'] == 'O') {
         document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-first');
     }
-    if (allTasks[index]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'H') {
+    if (allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'H') {
         document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-second');
     }
-    if (allTasks[index]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'K') {
+    if (allTasks[j]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'K') {
         document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-third');
     }
 }
@@ -216,7 +216,7 @@ function changeColorAfterCreateTaskReverse() {
  * change the category color 
 */
 function changeColorOfCategory() {
-    let categoryAddColor = document.getElementById('changeColorOfCategory' + index);
+    let categoryAddColor = document.getElementById('changeColorOfCategory' + j);
     let category = categoryAddColor.innerText;
     if (category == 'Sales') {
         categoryAddColor.classList.add('sales');
