@@ -86,7 +86,9 @@
         flex-direction: column;
         align-items: center;
         width: 90%;
-        height: 90%;
+        height: 85%;
+        position: absolute;
+        top: 10px;
     }
 
     .overlay-left-part {
@@ -113,7 +115,7 @@
 
     .overlay-user-icon-container {
         position: absolute;
-        top: 34%;
+        top: 32%;
     }
 
     .close-overlay {
@@ -123,7 +125,7 @@
     .close-overlay-rs {
         display: block;
         position: absolute;
-        top: 55px;
+        top: 25px;
         padding-right: 5px;
     }
 
@@ -155,8 +157,8 @@
 
     .overlay-user-initials {
         position: absolute;
-        top: 34%;
-        left: 42%;
+        top: 32%;
+        left: 41%;
         margin-top: 0;
     }
 }
@@ -171,18 +173,19 @@
 
     .overlay-input-design {
         width: 240px;
+        font-size: 16px;
     }
 
     .input-icon-letter {
-        background-position-x: 215px;
+        background-position-x: 210px;
     }
 
     .input-icon-phone {
-        background-position-x: 215px;
+        background-position-x: 210px;
     }
 
     .input-icon-user {
-        background-position-x: 215px;
+        background-position-x: 210px;
     }
 
     .overlay-contacts-details-frame {
@@ -190,7 +193,7 @@
     }
 
     .overlay-slogan {
-        font-size: 18px;
+        font-size: 16px;
         width: 260px;
     }
 
@@ -202,5 +205,13 @@
     .overlay-user-icon-white {
         width: 30px;
         height: auto;
+    }
+
+    .overlay-headline {
+        font-size: 30px;
+    }
+
+    .overlay-user-initials {
+        left: 35%;
     }
 }
