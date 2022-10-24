@@ -4,12 +4,25 @@
 async function createTodoForBoard() {
     await downloadFromServer();
     await getTaskFromBackendAddTask();
+    loadTheParameterJ();
     createTodoAddTask();
     let addTask = document.getElementById('addedTask');
     addTask.style = "display: flex;";
     clearTodo();
     openWindow();
 }
+
+/**
+ * load j 
+ */
+function loadTheParameterJ() {
+    let length = allTasks.length - 1;
+    if(j > 0 || length >= 0) {
+        j = allTasks[length]['id'];
+        j++;
+    }
+}
+
 
 
 /*

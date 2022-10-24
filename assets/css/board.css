@@ -901,6 +901,14 @@ body {
         display: unset;
     }
 
+    .hide-status {
+        display: unset;
+    }
+
+    .margin-top-for-more-distance {
+        margin-top: 70px !important;
+    }
+
     .btn-for-mobile {
         background: #2A3647;
         border-radius: 10px;
@@ -936,6 +944,7 @@ body {
 
     .text-board {
         margin-bottom: 30px;
+        font-size: 35px;
     }
 
     .second-container {
@@ -946,10 +955,11 @@ body {
 
     .box {
         width: 250px;
+        padding: 10px 19px;
     }
 
     .scrollbar-task {
-        height: 29vh;
+        height: 19vh;
     }
 
     .container-tasks {
@@ -960,7 +970,6 @@ body {
     .child-container-tasks {
         width: 280px;
         margin-bottom: 15.5px;
-        margin-top: 60px;
     }
 
     .container-for-seperate-left-and-right-content {
@@ -986,32 +995,32 @@ body {
 
     .title-popup {
         width: 290px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .description-popup {
         width: 290px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .category-popup {
         width: 290px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .assignedto-popup {
         width: 290px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .duedate-popup {
         width: 290px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .prio-popup {
         width: 290px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .first-btn {
@@ -1069,8 +1078,9 @@ body {
         border-radius: unset;
         width: 100vw;
         padding: 0;
-        height: 100vh;
+        height: 75vh;
         min-height: unset;
+        overflow-y: scroll;
     }
 
     .category-open-task {
@@ -1109,10 +1119,11 @@ body {
     /* edit task */
     .person-and-profile-assigned-open-task-container {
         width: 300px;
+        margin-left: 26px;
     }
 
     .pop-up-child {
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .change-status-container {
@@ -1124,7 +1135,7 @@ body {
         background: #FFFFFF;
         border: 1px solid #D1D1D1;
         border-radius: 10px;
-        margin-left: 10px;
+        margin-left: 26px;
         padding: 10px;
         margin-bottom: 35px;
         font-weight: 400;
@@ -1146,6 +1157,10 @@ body {
     }
 
     .hide {
+        display: unset;
+    }
+
+    .hide-status {
         display: unset;
     }
 
@@ -1184,6 +1199,7 @@ body {
 
     .text-board {
         margin-bottom: 30px;
+        font-size: 35px;
     }
 
     .second-container {
@@ -1194,10 +1210,15 @@ body {
 
     .box {
         width: 300px;
+        padding: 10px 19px;
     }
 
     .scrollbar-task {
-        height: 20vh;
+        height: 19vh;
+    }
+
+    .margin-top-for-more-distance {
+        margin-top: 70px !important;
     }
 
     .container-tasks {
@@ -1207,8 +1228,6 @@ body {
 
     .child-container-tasks {
         width: 336px;
-        margin-bottom: 15.5px;
-        margin-top: 60px;
     }
 
     .container-for-seperate-left-and-right-content {
@@ -1234,32 +1253,32 @@ body {
 
     .title-popup {
         width: 360px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .description-popup {
         width: 360px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .category-popup {
         width: 360px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .assignedto-popup {
         width: 360px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .duedate-popup {
         width: 360px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .prio-popup {
         width: 360px;
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .first-btn {
@@ -1305,8 +1324,9 @@ body {
         border-radius: unset;
         width: 100vw;
         padding: 0;
-        height: 100vh;
+        height: 75vh;
         min-height: unset;
+        overflow-y: scroll;
     }
 
     .open-position-for-edit {
@@ -1356,10 +1376,11 @@ body {
     /* edit task */
     .person-and-profile-assigned-open-task-container {
         width: 370px;
+        margin-left: 26px;
     }
 
     .pop-up-child {
-        margin-left: 10px;
+        margin-left: 26px;
     }
 
     .change-status-container {
@@ -1371,7 +1392,7 @@ body {
         background: #FFFFFF;
         border: 1px solid #D1D1D1;
         border-radius: 10px;
-        margin-left: 10px;
+        margin-left: 26px;
         padding: 10px;
         margin-bottom: 35px;
         font-weight: 400;
@@ -1395,6 +1416,10 @@ body {
     }
 
     .hide {
+        display: unset;
+    }
+
+    .hide-status {
         display: unset;
     }
 

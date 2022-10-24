@@ -139,7 +139,12 @@ body {
     }
 
     .text-header {
-        font-size: 40px;
+        font-size: 35px;
+        margin-left: 10px;
+    }
+
+    .pop-up-child-addedTask {
+        margin-left: 10px !important;
     }
 
     .main-container-addTask {
@@ -251,21 +256,49 @@ body {
         width: 300px;
     }
 
-    @keyframes cssAnimation {
-        0% {
-            bottom: 250px;
-            opacity: 1;
-        }
+    .title-popup-addTask {
+        margin-left: 10px !important;
+    }
 
-        60% {
-            bottom: 280px;
-            opacity: 1;
-        }
+    .duedate-popup-addTask {
+        margin-left: 10px !important;
+    }
 
-        100% {
-            bottom: 280px;
-            opacity: 0;
-        }
+    .description-popup-addTask {
+        margin-left: 10px !important;
+    }
+
+    .category-popup-addTask {
+        margin-left: 10px !important;
+    }
+
+    .assignedto-popup-addTask {
+        margin-left: 10px !important;
+    }
+
+    .prio-popup-addTask {
+        margin-left: 10px !important;
+    }
+
+    .btn-popup-addTask {
+        margin-left: 10px !important;
+    }
+}
+
+@keyframes cssAnimation {
+    0% {
+        bottom: 250px;
+        opacity: 1;
+    }
+
+    60% {
+        bottom: 280px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 280px;
+        opacity: 0;
     }
 }
 
