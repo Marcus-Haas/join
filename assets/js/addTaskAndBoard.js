@@ -2,14 +2,14 @@
 * change the color depend on the inital letters
 */
 function changeBgColorOfInitialLetters() {
-    if (allTasks[index]['firstLetter'] == 'A' && allTasks[index]['secondLetter'] == 'O') {
-        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-first');
+    if (allTasks[index]['firstLetter'] == 'A' && allTasks[j]['secondLetter'] == 'O') {
+        document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-first');
     }
-    if (allTasks[index]['firstLetter'] == 'M' && allTasks[index]['secondLetter'] == 'H') {
-        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-second');
+    if (allTasks[index]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'H') {
+        document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-second');
     }
-    if (allTasks[index]['firstLetter'] == 'M' && allTasks[index]['secondLetter'] == 'K') {
-        document.getElementById('assignedForInitialLetters' + index).classList.add('assigned-for-initial-letters-third');
+    if (allTasks[index]['firstLetter'] == 'M' && allTasks[j]['secondLetter'] == 'K') {
+        document.getElementById('assignedForInitialLetters' + j).classList.add('assigned-for-initial-letters-third');
     }
 }
 
@@ -45,20 +45,20 @@ function changeBgColorOfInitialLettersDetails(i) {
 */
 function changePrior() {
     if (currentPrior == 'Urgent') {
-        let firstImage = document.getElementById('createFirstImg' + index);
-        let secondImage = document.getElementById('createSecondImg' + index);
+        let firstImage = document.getElementById('createFirstImg' + j);
+        let secondImage = document.getElementById('createSecondImg' + j);
         firstImage.src = "assets/img/board/arrow-urgent.svg";
         secondImage.src = "assets/img/board/arrow-urgent.svg";
     }
     if (currentPrior == 'Medium') {
-        let firstImage = document.getElementById('createFirstImg' + index);
-        let secondImage = document.getElementById('createSecondImg' + index);
+        let firstImage = document.getElementById('createFirstImg' + j);
+        let secondImage = document.getElementById('createSecondImg' + j);
         firstImage.src = "assets/img/board/arrow-medium.svg";
         secondImage.src = "assets/img/board/arrow-medium.svg";
     }
     if (currentPrior == 'Low') {
-        let firstImage = document.getElementById('createFirstImg' + index);
-        let secondImage = document.getElementById('createSecondImg' + index);
+        let firstImage = document.getElementById('createFirstImg' + j);
+        let secondImage = document.getElementById('createSecondImg' + j);
         firstImage.src = "assets/img/board/arrow-low.svg";
         secondImage.src = "assets/img/board/arrow-low.svg";
     }

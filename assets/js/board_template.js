@@ -8,10 +8,10 @@ function templateCreateTodo() {
         <div class="title">${allTasks[index]['title']}</div>
         <div class="description">${allTasks[index]['description']}</div>
         <div class="assigned-and-prio">
-            <div id="assignedForInitialLetters${index}" class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
+            <div id="assignedForInitialLetters${j}" class="assigned">${allTasks[index]['firstLetter']}${allTasks[index]['secondLetter']}</div>
                 <div class="prio">
-                    <div class="first-arrow"><img id="createFirstImg${index}" src=""></div>
-                    <div class="second-arrow"><img id="createSecondImg${index}" src=""></div>
+                    <div class="first-arrow"><img id="createFirstImg${j}" src=""></div>
+                    <div class="second-arrow"><img id="createSecondImg${j}" src=""></div>
                 </div>
         </div>
     </div>`;

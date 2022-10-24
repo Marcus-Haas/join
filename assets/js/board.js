@@ -6,6 +6,7 @@ let currentAssigned;
 let currentDuedate;
 let currentDraggedElement;
 let index = 0;
+let j = 0;
 let currentPrior;
 let currentPriorEdit;
 let splitFirstAndSecondNameOfAssignedAsArray;
@@ -26,6 +27,7 @@ let splitFirstAndSecondNameOfAssignedAsArrayEdit;
 async function initialize() {
     await downloadFromServer();
     await getTasksFromBackend();
+    identifyId();
 }
 
 
@@ -37,6 +39,22 @@ function updateBoard() {
     updateInProgress();
     updateAwaitingFeedback();
     updateDone();
+}
+
+
+function identifyId() {
+    let length = allTasks.length - 1;
+    if(j > 0 || length > 0) {
+        j = allTasks[length]['id'];
+        j++;
+    }
+}
+
+
+function oneHigherId() {
+    if(j >= 0) {
+        j++;
+    }
 }
 
 
@@ -53,6 +71,7 @@ function createTodo() {
     cleanValues();
     changeColorOfCategory();
     addInBackend();
+    oneHigherId();
     index++;
 }
 
@@ -98,6 +117,7 @@ function pushTask() {
         'secondLetter': secondNameLetter,
         'prior': currentPrior,
         'status': 'todo',
+        'id': j,
     };
     allTasks.push(task);
 }
