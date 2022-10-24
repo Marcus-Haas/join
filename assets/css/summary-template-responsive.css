@@ -6,6 +6,7 @@
     .summary-greet-bottom {
         font-size: 32px;
     }
+
     .summary-greet-container {
         width: 375px;
     }
@@ -155,7 +156,6 @@
         border-radius: 25px;
     }
 
-
     .summary-tasks-btn {
         width: 110px;
         height: 110px;
@@ -238,6 +238,16 @@
     .summary-to-do-container {
         width: 100%;
     }
+
+    /* Test */
+    .responsive-container {
+        height: 100px;
+        display: block;
+    }
+
+    .summary-deadline-top {
+        font-size: 18px;
+    }
 }
 
 @media(max-width: 375px) {
@@ -292,7 +302,7 @@
     }
 
     .summary-deadline-top {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .summary-to-do-frame {
@@ -310,5 +320,33 @@
 
     .summary-headline-container {
         padding-right: 100px;
+    }
+
+    .summary-urgency-frame {
+        gap: 5px;
+    }
+
+    .summary-urgency-image-medium {
+        background-color: #FFA901 !important;
+        width: 50px;
+        height: 50px;
+    }
+
+    .summary-urgency-deadline {
+        height: unset;
+    }
+
+    .summary-urgency-text {
+        width: unset;
+        font-size: 14px;
+    }
+
+    .summary-urgency-image-medium {
+        width: 50px;
+        height: 50px;
+    }
+
+    .summary-urgency-deadline {
+        gap: 5px;
     }
 }

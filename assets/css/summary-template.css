@@ -369,3 +369,7 @@
     height: 70px;
     background-image: url(/assets/img/summary/done-icon.png);
 }
+
+.responsive-container {
+    display: none;
+}

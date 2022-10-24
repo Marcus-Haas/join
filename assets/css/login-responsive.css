@@ -1,5 +1,15 @@
 @media(max-width: 850px) {
 
+    .login-bg {
+        height: fit-content;
+    }
+
+    .set-login-window {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+
     .forgot-password-window {
         padding: 20px;
         width: 80%;
@@ -23,6 +33,7 @@
         margin-bottom: 25px;
         font-size: 18px;
     }
+
     .reset-password-window {
         padding: 20px;
         width: 80%;
@@ -75,36 +86,38 @@
     }
 
     .user-sign-up {
-        position: absolute;
+        position: fixed;
         top: unset;
         bottom: 0;
         right: 0;
         left: 0;
         z-index: 1;
-        left: 0;
-        right: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 21px;
-        height: 91px;
+        height: unset;
+        margin-bottom: 2%;
     }
 
     .user-sign-up a {
         font-size: 18px;
+        display: flex;
+        align-items: center;
+        height: 0;
     }
 
     .login-window {
         padding: 20px;
         width: 80%;
-        gap: 25px;
+        gap: 20px;
     }
 
     .login-headline {
         font-size: 35px;
         border-bottom: #29ABE2 2px solid;
         padding-bottom: 0;
-        height: 60px;
+        height: 55px;
         width: 80%;
     }
 
@@ -146,7 +159,7 @@
         position: unset;
         right: 0;
         bottom: 0;
-        margin-bottom: 10px;
+        margin-bottom: unset;
     }
 
     .login-window form {
@@ -233,6 +246,7 @@
     .confirm-password-input-image {
         right: 11%;
     }
+
     .signup-input-image {
         right: 11%;
         top: 295px;
@@ -285,6 +299,16 @@
     .signup-input-image {
         right: 12.7%;
         top: 295px;
+    }
+
+    .login-window {
+        padding: 20px;
+        width: 80%;
+        gap: 15px;
+    }
+
+    .login-window form {
+        gap: 15px;
     }
 }
 
