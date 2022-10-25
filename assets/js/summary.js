@@ -12,7 +12,6 @@ let showDueDate = date.toLocaleString('en-US', showTimeFormat);
 let tasksToDo = 0;
 let tasksDone = 0;
 
-
 /**
  * Downloading files vom backend server, and run first functions
  */
@@ -51,6 +50,7 @@ function amounts() {
     checkIfUrgencyIsLow(showUrgency);
     checkIfUrgencyIsMedium(showUrgency);
     checkIfUrgencyIsUrgent(showUrgency);
+    getDateAndTime();
     date = new Date(showDueDate);
     showDueDate = date.toLocaleString('en-US', showTimeFormat);
     showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone);
@@ -169,4 +169,21 @@ function showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, show
     document.getElementById('summary-tasks-amount-to-do').innerHTML = `${tasksToDo}`;
     document.getElementById('summary-tasks-amount-done').innerHTML = `${tasksDone}`;
     return tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone
+}
+
+/**
+ * Change greeting at summary depending on the time of day
+ */
+function getDateAndTime() {
+    let currentDate = new Date();
+    let welcome = document.getElementById('welcome');
+    welcome.innerHTML = ``;
+    let hour = currentDate.getHours();
+    if (hour < 12) {
+        welcome.innerHTML = "Good morning";
+      } else if (hour > 12 && hour < 17) {
+        welcome.innerHTML = "Good afternoon";
+      } else {
+        welcome.innerHTML = "Good evening";
+      }
 }

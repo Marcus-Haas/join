@@ -23,11 +23,7 @@ let users = [
     }
 ];
 
-let guestUser = [
-    // {
-    //     'name': 'Guest user',
-    // }
-];
+let guestUser = [];
 
 let activeUser = [];
 
@@ -35,24 +31,8 @@ async function initStart() {
     await downloadFromServer(); // wait for server
     // users.push('users'); // Test
     // users = JSON.parse(backend.getItem('users')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
-    activeUser = JSON.parse(backend.getItem('activeUser')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
+    activeUser = JSON.parse(backend.getItem('activeUser')) || [];
 }
-
-
-// **** TEST JSON ARRAY 'users' vom Backend laden ***
-// async function initStart() {
-//     await setURL(
-//         "https://gruppe-330.developerakademie.net/smallest_backend_ever/"
-//     );
-//     await downloadFromServer();
-//     users = (await JSON.parse(backend.getItem("users"))) || [];
-// }
-
-
-// Save
-// Add a user with this function:
-
-// marius.katzer@posteo.de
 
 async function confirmSignUpScreen() { //Add user
     document.getElementById(`failed-signup-window-input-email`).classList.add(`d-none`);
@@ -70,46 +50,13 @@ async function confirmSignUpScreen() { //Add user
         }
     }
     if (newUser == 0) {
-        users.push({ name: name.value, email: email.value, password: password.value }); // push to Array 'users'
+        users.push({ name: name, email: email, password: password }); // push to Array 'users'
         await backend.setItem('users', JSON.stringify(users));
         document.getElementById(`user-sign-up`).classList.add(`z-index-0`);
         document.getElementById(`confirm-signup-window`).classList.remove(`d-none`);
     }
 }
 
-// If you want to wait for the request you can add the await keyword as well:
-// Add a user with this function:
-
-// async function addUser() {
-//     users.push({ 'name': 'John', 'email': 'johndoe.dev.com', 'password': 'test123' });
-//     await backend.setItem('users', JSON.stringify(users));
-// }
-
-// Load
-// Fill your empty array with users from the Server
-
-// Delete
-// Delete all users from your array:
-
-
-function changeLoginPassword () {
-    document.getElementById(`failed-signup-window-input-email`).classList.remove(`d-none`); // Test, Funktion noch nicht fertig
-}
-
 async function deleteUser() {
     await backend.deleteItem('guestUser');
-}
-
-function deleteSingleUser() { //Übergabe des Wertes, der gelöscht werden soll, fehlt noch, Funktion noch nicht fertig, Key fehlt
- for (let i = 0; i < users.length; i++) {
-        let userName = users[i]['name'];
-        let userEmail = users[i]['email'];
-        let userPassword = users[i]['password'];
-        if (email == userEmail && password == userPassword) { //only splice array when item is found
-            activeUser.splice(users > -1);// 2nd parameter means remove one item only
-            activeUser.splice(users > -1);// 2nd parameter means remove one item only
-            activeUser.splice(users > -1);// 2nd parameter means remove one item only
-        }
-    }
-    // await backend.deleteItem('guestUser'); // Übergabe ans beckend
 }
