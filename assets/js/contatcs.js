@@ -161,6 +161,7 @@ function deleteContact(i) {
     renderContactBook();
     renderContactBookResponsive();
     pushContactsToBackend();
+    document.getElementById('business-card-main').classList.add('d-none');
 }
 
 
