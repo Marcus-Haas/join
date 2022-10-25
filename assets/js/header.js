@@ -1,3 +1,6 @@
+/**
+* generate and show logout button
+*/
 function showLogout() {
     document.getElementById('header-logout').innerHTML = /*html*/ `
     <div class="popup-frame-logout" id="hide-btn" onclick="hideLogout()">
@@ -14,16 +17,25 @@ function showLogout() {
 }
 
 
+/**
+* hide logout button
+*/
 function hideLogout() {
     document.getElementById('hide-btn').classList.add('d-none');
 }
 
 
+/**
+* stop propagation event for the logout button
+*/
 function doNotClose(event) {
     event.stopPropagation();
 }
 
 
+/**
+* clear active user status and send back to index.html - log in
+*/
 async function Logout() {
     await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
     window.open("index.html", "_self");
@@ -31,16 +43,25 @@ async function Logout() {
 }
 
 
+/**
+* open the privacy html
+*/
 function openPrivacy() {
     window.open("privacy.html", "_self");
 }
 
 
+/**
+* open the help html
+*/
 function openHelp() {
     window.open("help.html", "_self");
 }
 
 
+/**
+* open the legal notice html
+*/
 function openLegalNotice() {
     window.open("legal-notice.html", "_self");
 }

@@ -19,11 +19,17 @@ async function InitContacts() {
 }
 
 
+/**
+* show the overlay mask, where you can creat a new contact
+*/
 function showOverlay() {
     document.getElementById('overlay-background').classList.remove('d-none');
 }
 
 
+/**
+* close the overlay mask, where you can creat a new contact
+*/
 function closeOverlay() {
     document.getElementById('overlay-background').classList.add('d-none');
     hideEmailMessage();
@@ -31,6 +37,9 @@ function closeOverlay() {
 }
 
 
+/**
+* get the value from the diffrent inputfields and create the initials
+*/
 async function addNewContact() {
     let contactName = document.getElementById('new-name').value;
     let contactEmail = document.getElementById('new-email').value;
@@ -40,6 +49,9 @@ async function addNewContact() {
 }
 
 
+/**
+* push contact details to the frontend Array "Contacts"
+*/
 async function pushContacts(contactName, contactEmail, contactPhone, contactInitials) {
     let contact = {
         'name': contactName,
@@ -52,6 +64,9 @@ async function pushContacts(contactName, contactEmail, contactPhone, contactInit
 }
 
 
+/**
+* check if the new contact already exists by using the email of the contact
+*/
 function checkForDuplicate(contactName, contactEmail, contactPhone, contactInitials) {
     newEmail = 0;
     for (let i = 0; i < contacts.length; i++) {
@@ -75,16 +90,25 @@ function checkForDuplicate(contactName, contactEmail, contactPhone, contactIniti
 }
 
 
+/**
+* show a text messsage if the contact already exists
+*/
 function showEmailMessage() {
     document.getElementById('double-email').innerHTML = 'This contact already exists!';
 }
 
 
+/**
+* close the text messsage
+*/
 function hideEmailMessage() {
     document.getElementById('double-email').innerHTML = '';
 }
 
 
+/**
+* render and generate HTML Code for the contact book
+*/
 function renderContactBook() {
     let container = document.getElementById('contact-book');
     container.innerHTML = '';
@@ -95,6 +119,9 @@ function renderContactBook() {
 }
 
 
+/**
+* clear all values at inputfields
+*/
 function clearInputAtOverlay() {
     document.getElementById('new-name').value = '';
     document.getElementById('new-email').value = '';
@@ -102,12 +129,18 @@ function clearInputAtOverlay() {
 }
 
 
+/**
+* render and generate HTML Code for the business card
+*/
 function openBusinessCard(i) {
     let card = document.getElementById('business-card');
     card.innerHTML = generateBusinessCard(i);
 }
 
 
+/**
+* open the contact overlay as edit mode with the current contact details
+*/
 function editContact(i) {
     let edit = document.getElementById('edit');
     edit.innerHTML = generateEditOverlay(i);
@@ -117,11 +150,17 @@ function editContact(i) {
 }
 
 
+/**
+* close the edit overlay mask
+*/
 function closeEditOverlay() {
     document.getElementById('edit-background').classList.add('d-none');
 }
 
 
+/**
+* get the updated contact details
+*/
 async function saveContact(i) {
     let contactName = document.getElementById('edit-name').value;
     let contactEmail = document.getElementById('edit-email').value;
@@ -134,6 +173,9 @@ async function saveContact(i) {
 }
 
 
+/**
+* save the updated contact details to the frontend array contacts
+*/
 function updateContatcs(i, contactName, contactEmail, contactPhone, contactInitials) {
     contacts[i]['name'] = contactName
     contacts[i]['email'] = contactEmail
@@ -144,12 +186,18 @@ function updateContatcs(i, contactName, contactEmail, contactPhone, contactIniti
 }
 
 
+/**
+* save the contacts Array to the backend and use the user name as key
+*/
 function pushContactsToBackend() {
     let key = activeUser[0];
     backend.setItem(key, JSON.stringify(contacts));
 }
 
 
+/**
+* load the contacts array for the user from backend Server
+*/
 function loadContactsFromBackend() {
     let key = activeUser[0];
     contacts = JSON.parse(backend.getItem(key)) || [];
@@ -157,6 +205,9 @@ function loadContactsFromBackend() {
 }
 
 
+/**
+* delete the actual contact in front- and backend
+*/
 function deleteContact(i) {
     contacts.splice(i, 1);
     renderContactBook();
@@ -169,6 +220,9 @@ function deleteContact(i) {
 /////////////////////////////Responsive JS//////////////////////////////////////
 
 
+/**
+* show the overlay mask for creating new contacts
+*/
 function showOverlayResponsive() {
     showOverlay();
     document.getElementById('contact-book-rs').style.display = 'none';
@@ -180,12 +234,18 @@ function showOverlayResponsive() {
 }
 
 
+/**
+* close the overlay mask for creating new contacts
+*/
 function closeOverlayResponsive() {
     closeOverlay();
     MoveBackToContacts();
 }
 
 
+/**
+* send you back to the contactbook
+*/
 function MoveBackToContacts() {
     document.getElementById('contact-book-rs').style.display = 'flex';
     document.getElementById('new-contacts-btn-rs').classList.remove('d-none');
@@ -196,6 +256,9 @@ function MoveBackToContacts() {
 }
 
 
+/**
+* render and generate HTML Code for the contactbook in responsive mode
+*/
 function renderContactBookResponsive() {
     let container = document.getElementById('contact-book-rs');
     container.innerHTML = '';
@@ -205,6 +268,9 @@ function renderContactBookResponsive() {
 }
 
 
+/**
+* render and generate HTML Code for the businesscard in responsive mode
+*/
 function openBusinessCardResponsive(i) {
     openBusinessCard(i);
     document.getElementById('contact-book-rs').style.display = 'none';
@@ -216,11 +282,17 @@ function openBusinessCardResponsive(i) {
 }
 
 
+/**
+* close edit overlay mask for updating contacts
+*/
 function closeEditOverlayResponsive() {
     closeEditOverlay();
 }
 
 
+/**
+* update the contacts in responsive mode
+*/
 async function saveContactResponsive(i) {
     let contactName = document.getElementById('edit-name-rs').value;
     let contactEmail = document.getElementById('edit-email-rs').value;
@@ -233,6 +305,9 @@ async function saveContactResponsive(i) {
 }
 
 
+/**
+* open edit overlay mask for updating contacts
+*/
 function editContactResponsive(i) {
     let edit = document.getElementById('edit');
     edit.innerHTML = generateEditOverlay(i);
