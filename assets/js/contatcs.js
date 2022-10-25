@@ -70,6 +70,7 @@ function checkForDuplicate(contactName, contactEmail, contactPhone, contactIniti
         closeOverlay();
         renderContactBook();
         clearInputAtOverlay();
+        openBusinessCard(contacts.length);
     }
 }
 
@@ -161,7 +162,7 @@ function deleteContact(i) {
     renderContactBook();
     renderContactBookResponsive();
     pushContactsToBackend();
-    document.getElementById('business-card-main').classList.add('d-none');
+    document.getElementById('business-card-main').style.display = 'none';
 }
 
 

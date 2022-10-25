@@ -122,16 +122,13 @@
     }
 
     .edit-responsive {
-        position: absolute;
-        right: 0;
-        bottom: 0%;
         width: 100%;
         display: flex;
         justify-content: flex-end;
     }
 
     .delete-contact {
-        display: none;
+        margin-top: 0;
     }
 
 }
