@@ -19,6 +19,7 @@ let assignedEdit;
 let firstNameLetterEdit;
 let secondNameLetterEdit;
 let splitFirstAndSecondNameOfAssignedAsArrayEdit;
+let alreadyEmpty = true;
 
 
 /**
@@ -42,17 +43,23 @@ function updateBoard() {
 }
 
 
+/**
+* update the board
+*/
 function identifyId() {
     let length = allTasks.length - 1;
-    if(j > 0 || length >= 0) {
+    if (j > 0 || length >= 0) {
         j = allTasks[length]['id'];
         j++;
     }
 }
 
 
+/**
+* update the board
+*/
 function oneHigherId() {
-    if(j >= 0) {
+    if (j >= 0) {
         j++;
     }
 }
@@ -62,17 +69,21 @@ function oneHigherId() {
 * render todo box
 */
 function createTodo() {
-    updateArrayTodo();
-    pushTask();
-    let todo = document.getElementById('todo');
-    todo.innerHTML += templateCreateTodo();
-    changeBgColorOfInitialLetters();
-    changePrior();
-    cleanValues();
-    changeColorOfCategory();
-    addInBackend();
-    oneHigherId();
-    index++;
+    if (currentPrior == 'Urgent' || currentPrior == 'Medium' || currentPrior == 'Low') {
+        updateArrayTodo();
+        pushTask();
+        let todo = document.getElementById('todo');
+        todo.innerHTML += templateCreateTodo();
+        changeBgColorOfInitialLetters();
+        changePrior();
+        cleanValues();
+        changeColorOfCategory();
+        addInBackend();
+        oneHigherId();
+        index++;
+    } else {
+        alert('Please select a priority');
+    }
 }
 
 
@@ -86,6 +97,21 @@ function cleanValues() {
     selectedCategoryDefaultValue();
     selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
+    closeForm();
+}
+
+
+function cleanForm() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('descriptionPopup');
+    let dudate = document.getElementById('duedate');
+    title.value = ``;
+    description.value = ``;
+    dudate.value = ``;
+    selectedCategoryDefaultValue();
+    selectedAssignedDefaultValue();
+    changeColorAfterCreateTask();
+    duedateChangeColorToStandard();
     closeForm();
 }
 
@@ -159,6 +185,9 @@ async function deleteTask(i, event) {
 }
 
 
+/**
+* delete a task
+*/
 async function deleteAllTasksArray() {
     await backend.deleteItem('allTasks');
 }
@@ -272,11 +301,17 @@ function startDragging(id) {
 }
 
 
+/**
+* drag and drop a task
+*/
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
 
+/**
+* drag and drop a task
+*/
 function moveTo(changeStatus) {
     allTasks[currentDraggedElement]['status'] = changeStatus;
     updateTodo();
@@ -286,6 +321,9 @@ function moveTo(changeStatus) {
 }
 
 
+/**
+* drag and drop a task
+*/
 function changeStatus(i) {
     let status = document.getElementById('changeStatus' + i).value;
     allTasks[i]['status'] = status;
@@ -346,6 +384,7 @@ function closeForm() {
     currentDescription = document.getElementById('descriptionPopup');
     currentDuedate = document.getElementById('duedate');
     document.getElementById('mainContainer').classList.remove('hide-mobile');
+    duedateChangeColorToStandard();
 }
 
 
@@ -375,7 +414,7 @@ function openTaskDetails(i, event) {
  * show edit details 
 */
 function editShowDetails(i) {
-    closeTaskDetails();
+    //closeTaskDetails();
     document.getElementById('mainContainer').classList.add('hide-mobile');
     document.getElementById('overlay').classList.add('hide-mobile');
     document.getElementById('overlay').classList.add('overlay-bg');
@@ -396,6 +435,9 @@ function editShowDetails(i) {
 }
 
 
+/**
+ * open tasks after detail
+*/
 function openTaskDetailsAfter(i, event) {
     saveEditDetails(i);
     openTaskDetails(i, event);
@@ -423,4 +465,83 @@ function saveEditDetails(i) {
     changeBgColorOfInitialLettersDetails(i);
     addInBackend();
     updateBoard();
+}
+
+
+/**
+ * change color of due date after select
+*/
+function duedateChangeColor() {
+    document.getElementById('duedate').style.color = 'black';
+}
+
+
+/**
+ * change color of due date after clear
+*/
+function duedateChangeColorToStandard() {
+    document.getElementById('duedate').style.color = '#D1D1D1';
+}
+
+
+/**
+ * change color of cross to blue
+*/
+function changeCrossToBlue() {
+    document.getElementById('crossForHoverInBoard').style = 'filter: invert(39%) sepia(66%) saturate(1450%) hue-rotate(184deg) brightness(107%) contrast(102%);';
+}
+
+
+/**
+ * change color of cross to black
+*/
+function changeColorOfCrossToBlack() {
+    document.getElementById('crossForHoverInBoard').style = 'black;';
+}
+
+
+function searchFilter() {
+    let search = document.getElementById('searchTask');
+    let todo = document.getElementById('todo');
+    let inProgress = document.getElementById('inProgress');
+    let awaitingFeedback = document.getElementById('awaitingFeedback');
+    let done = document.getElementById('done');
+    todo.innerHTML = ``;
+    inProgress.innerHTML = ``;
+    awaitingFeedback.innerHTML = ``;
+    done.innerHTML = ``;
+    if (search.value == '' && alreadyEmpty == true) {
+        updateBoard();
+        alreadyEmpty = false;
+    } else {
+        alreadyEmpty = true;
+        for (let i = 0; i < allTasks.length; i++) {
+            if (allTasks[i]['title'].includes(search.value)) {
+                if (allTasks[i]['status'] == 'todo') {
+                    todo.innerHTML += templateUpdateTodo(i);
+                    changeBgColorOfInitialLettersAfterSearch(i);
+                    changePriorAfterSearchFilter(i);
+                    changeColorOfCategoryAfterSearchFilter(i);
+                }
+                if (allTasks[i]['status'] == 'inProgress') {
+                    inProgress.innerHTML += templateUpdateInProgress(i);
+                    changeBgColorOfInitialLettersAfterSearch(i);
+                    changePriorAfterSearchFilter(i);
+                    changeColorOfCategoryAfterSearchFilter(i);
+                }
+                if (allTasks[i]['status'] == 'awaitingFeedback') {
+                    awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
+                    changeBgColorOfInitialLettersAfterSearch(i);
+                    changePriorAfterSearchFilter(i);
+                    changeColorOfCategoryAfterSearchFilter(i);
+                }
+                if (allTasks[i]['status'] == 'done') {
+                    done.innerHTML += templateUpdateDone(i);
+                    changeBgColorOfInitialLettersAfterSearch(i);
+                    changePriorAfterSearchFilter(i);
+                    changeColorOfCategoryAfterSearchFilter(i);
+                }
+            }
+        }
+    }
 }

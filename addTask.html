@@ -25,7 +25,7 @@
     <title>Add Task</title>
 </head>
 
-<body onload="init(); getCurrentDate();">
+<body onload="init()">
     <div w3-include-html="assets/templates/header.html"></div>
 
     <div w3-include-html="assets/templates/sidebar.html"></div>
@@ -36,17 +36,23 @@
         <form onsubmit="createTodoForBoard(); return false;" class="container-inputfield-addTask">
             <div class="container-for-seperate-left-and-right-content-addTask">
                 <div>
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask" for="title">Title</label><br></div>
-                    <input class="title-popup title-popup-addTask" type="text" id="title" name="title" placeholder="Enter a title" required>
+                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                            for="title">Title</label><br></div>
+                    <input class="title-popup title-popup-addTask" type="text" id="title" name="title"
+                        placeholder="Enter a title" required>
 
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask" for="descriptionPopup">Description</label><br>
+                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                            for="descriptionPopup">Description</label><br>
                     </div>
-                    <textarea class="description-popup description-popup-addTask" type="text" id="descriptionPopup" name="descriptionPopup"
-                        rows="5" cols="20" placeholder="Enter a Description" required></textarea>
+                    <textarea class="description-popup description-popup-addTask" type="text" id="descriptionPopup"
+                        name="descriptionPopup" rows="5" cols="20" placeholder="Enter a Description"
+                        required></textarea>
 
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask" for="category-popup">Category</label><br>
+                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                            for="category-popup">Category</label><br>
                     </div>
-                    <select class="category-popup category-popup-addTask" id="category-popup" onChange="identifySelectedCategory(this);">
+                    <select class="category-popup category-popup-addTask" id="category-popup"
+                        onChange="identifySelectedCategory(this);" required>
                         <option value="" disabled selected>Select task category</option>
                         <option value="Sales">Sales</option>
                         <option value="Design">Design</option>
@@ -56,14 +62,16 @@
                         <option value="Media">Media</option>
                     </select><br>
 
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask" for="assignedto-popup">Assigned
+                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask"
+                            for="assignedto-popup">Assigned
                             to</label><br>
                     </div>
-                    <select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup" onChange="identifySelectedAssigne(this);">
+                    <select class="assignedto-popup assignedto-popup-addTask" id="assignedto-popup"
+                        onChange="identifySelectedAssigne(this);" required>
                         <option value="" disabled selected>Select contacts to assign</option>
-                            <option value="marcushaas">Marcus Haas</option>
-                            <option value="mariuskatzer">Marius Katzer</option>
-                            <option value="anilorhan">Anil Orhan</option>
+                        <option value="marcushaas">Marcus Haas</option>
+                        <option value="mariuskatzer">Marius Katzer</option>
+                        <option value="anilorhan">Anil Orhan</option>
                     </select>
                 </div>
 
@@ -72,8 +80,10 @@
                 </div>
 
                 <div>
-                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask" for="duedate">Due Date</label></div>
-                    <input class="duedate-popup duedate-popup-addTask " type="date" id="duedate" name="duedate" required>
+                    <div class="margin-popup"><label class="pop-up-child pop-up-child-addedTask" for="duedate">Due
+                            Date</label></div>
+                    <input onchange="duedateChangeColor()" class="duedate-popup duedate-popup-addTask " type="date"
+                        id="duedate" name="duedate" required>
 
                     <div class="margin-popup pop-up-child pop-up-child-addedTask">Prio</div>
                     <div class="prio-popup prio-popup-addTask">
@@ -104,8 +114,9 @@
                     </div>
 
                     <div class="btn-popup btn-popup-addTask">
-                        <button onclick="clearTodo()" id="btn-first btn-first-addTask" class="first-btn">Clear<img class="cross-popup-btn"
-                                src="assets/img/board/close-popup.svg"></button>
+                        <button type="button" onmouseover="changeColorOfCross()" onmouseleave="changeColorOfCrossToStandard()" onclick="cleanFormAddTask()" id="btn-first btn-first-addTask" class="first-btn">Clear
+                            <img id="getCrossForHover" class="cross-popup-btn" src="assets/img/board/close-popup.svg">
+                        </button>
                         <button type="submit" value="submit" class="second-btn second-btn-addTask">Create Task<img
                                 class="hook-popup-btn" src="assets/img/board/hook-popup.svg"></button>
                     </div>

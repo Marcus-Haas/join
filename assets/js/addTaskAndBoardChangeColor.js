@@ -29,6 +29,9 @@ function changeColorUrgentEdit() {
 }
 
 
+/**
+* change bg color of low
+*/
 function changeColorUrgentEditReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopupEdit');
     let changeColorSecond = document.getElementById('mediumSecondPopupEdit');
@@ -60,6 +63,9 @@ function changeColorEditMedium() {
 }
 
 
+/**
+* change bg color of low
+*/
 function changeColorEditMediumReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopupEdit');
     let changeColorSecond = document.getElementById('mediumSecondPopupEdit');
@@ -91,6 +97,9 @@ function changeColorEditLow() {
 }
 
 
+/**
+* change bg color of low
+*/
 function changeColorEditLowReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopupEdit');
     let changeColorSecond = document.getElementById('mediumSecondPopupEdit');
@@ -126,18 +135,6 @@ function changePriorColorByEdit(i) {
         document.getElementById('lowFirstPopupEdit').classList.add('change-color-img');
         document.getElementById('lowSecondPopupEdit').classList.add('change-color-img');
     }
-}
-
-
-/**
- * get the current date for the inputfield type date
-*/
-function getCurrentDate() {
-    let now = new Date();
-    let day = ("0" + now.getDate()).slice(-2);
-    let month = ("0" + (now.getMonth() + 1)).slice(-2);
-    let today = now.getFullYear() + "-" + (month) + "-" + (day);
-    document.getElementById('duedate').value = today;
 }
 
 

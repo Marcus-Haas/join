@@ -14,6 +14,9 @@ function changeBgColorOfInitialLetters() {
 }
 
 
+/**
+* change the color depend on the inital letters
+*/
 function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
     if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
         document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
@@ -27,6 +30,9 @@ function changeBgColorOfInitialLettersAfterDragAndDrop(i) {
 }
 
 
+/**
+* change the color depend on the inital letters
+*/
 function changeBgColorOfInitialLettersDetails(i) {
     if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
         document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-first');
@@ -36,6 +42,23 @@ function changeBgColorOfInitialLettersDetails(i) {
     }
     if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
         document.getElementById('assignedForInitialLettersDetails' + i).classList.add('assigned-for-initial-letters-third');
+    }
+}
+
+
+
+/**
+* change the color depend on the inital letters 
+*/
+function changeBgColorOfInitialLettersAfterSearch(i) {
+    if (allTasks[i]['firstLetter'] == 'A' && allTasks[i]['secondLetter'] == 'O') {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-first');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'H') {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-second');
+    }
+    if (allTasks[i]['firstLetter'] == 'M' && allTasks[i]['secondLetter'] == 'K') {
+        document.getElementById('assignedForInitialLetters' + i).classList.add('assigned-for-initial-letters-third');
     }
 }
 
@@ -65,7 +88,35 @@ function changePrior() {
 }
 
 
+/**
+* change color prior in task box
+*/
 function changePriorAfterDragAndDrop(i) {
+    if (allTasks[i]['prior'] == 'Urgent') {
+        let firstImage = document.getElementById('createFirstImg' + i);
+        let secondImage = document.getElementById('createSecondImg' + i);
+        firstImage.src = "assets/img/board/arrow-urgent.svg";
+        secondImage.src = "assets/img/board/arrow-urgent.svg";
+    }
+    if (allTasks[i]['prior'] == 'Medium') {
+        let firstImage = document.getElementById('createFirstImg' + i);
+        let secondImage = document.getElementById('createSecondImg' + i);
+        firstImage.src = "assets/img/board/arrow-medium.svg";
+        secondImage.src = "assets/img/board/arrow-medium.svg";
+    }
+    if (allTasks[i]['prior'] == 'Low') {
+        let firstImage = document.getElementById('createFirstImg' + i);
+        let secondImage = document.getElementById('createSecondImg' + i);
+        firstImage.src = "assets/img/board/arrow-low.svg";
+        secondImage.src = "assets/img/board/arrow-low.svg";
+    }
+}
+
+
+/**
+* change color prior in task box
+*/
+function changePriorAfterSearchFilter(i) {
     if (allTasks[i]['prior'] == 'Urgent') {
         let firstImage = document.getElementById('createFirstImg' + i);
         let secondImage = document.getElementById('createSecondImg' + i);
@@ -102,6 +153,9 @@ function changeColorUrgent() {
 }
 
 
+/**
+* change bg color of urgent
+*/
 function changeColorUrgentReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopup');
     let changeColorSecond = document.getElementById('mediumSecondPopup');
@@ -133,6 +187,9 @@ function changeColorMedium() {
 }
 
 
+/**
+* change bg color of medium
+*/
 function changeColorMediumReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopup');
     let changeColorSecond = document.getElementById('mediumSecondPopup');
@@ -164,6 +221,9 @@ function changeColorLow() {
 }
 
 
+/**
+* change bg color of low
+*/
 function changeColorLowReverse() {
     let changeColorFirst = document.getElementById('mediumFirstPopup');
     let changeColorSecond = document.getElementById('mediumSecondPopup');
@@ -196,6 +256,9 @@ function changeColorAfterCreateTask() {
 }
 
 
+/**
+ * change the prio to the basic form 
+*/
 function changeColorAfterCreateTaskReverse() {
     let changeColorFirstUrgent = document.getElementById('urgentFirstPopup');
     let changeColorSecondUrgent = document.getElementById('urgentSecondPopup');
@@ -239,6 +302,9 @@ function changeColorOfCategory() {
 }
 
 
+/**
+ * change the category color 
+*/
 function changeColorOfCategoryAfterDragAndDrop(i) {
     let categoryAddColor = document.getElementById('changeColorOfCategoryAfterDragAndDrop' + i);
     let category = categoryAddColor.innerText;
@@ -264,6 +330,34 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 
 
 /**
+ * change the category color 
+*/
+function changeColorOfCategoryAfterSearchFilter(i) {
+    let categoryAddColor = document.getElementById('changeColorOfCategory' + i);
+    let category = categoryAddColor.innerText;
+    if (category == 'Sales') {
+        categoryAddColor.classList.add('sales');
+    }
+    if (category == 'Design') {
+        categoryAddColor.classList.add('design');
+    }
+    if (category == 'Backoffice') {
+        categoryAddColor.classList.add('backoffice');
+    }
+    if (category == 'Marketing') {
+        categoryAddColor.classList.add('marketing');
+    }
+    if (category == 'IT') {
+        categoryAddColor.classList.add('it');
+    }
+    if (category == 'Media') {
+        categoryAddColor.classList.add('media');
+    }
+}
+
+
+
+/**
  * change the color of prior depend of prior
 */
 function changeColorPriorInShowDetails(i) {
@@ -282,6 +376,9 @@ function changeColorPriorInShowDetails(i) {
 }
 
 
+/**
+ * change the color of prior depend of prior
+*/
 function changePriorShowDetails(i) {
     if (allTasks[i]['prior'] == 'Urgent') {
         let firstImage = document.getElementById('currentPriorImgFirstOpenTask' + i);

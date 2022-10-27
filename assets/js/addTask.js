@@ -2,14 +2,18 @@
  * create task for board
 */
 async function createTodoForBoard() {
-    await downloadFromServer();
-    await getTaskFromBackendAddTask();
-    loadTheParameterJ();
-    createTodoAddTask();
-    let addTask = document.getElementById('addedTask');
-    addTask.style = "display: flex;";
-    clearTodo();
-    openWindow();
+    if (currentPrior == 'Urgent' || currentPrior == 'Medium' || currentPrior == 'Low') {
+        await downloadFromServer();
+        await getTaskFromBackendAddTask();
+        loadTheParameterJ();
+        createTodoAddTask();
+        let addTask = document.getElementById('addedTask');
+        addTask.style = "display: flex;";
+        clearTodo();
+        openWindow();
+    } else {
+        alert('Please select a priority');
+    }
 }
 
 /**
@@ -17,7 +21,7 @@ async function createTodoForBoard() {
  */
 function loadTheParameterJ() {
     let length = allTasks.length - 1;
-    if(j > 0 || length >= 0) {
+    if (j > 0 || length >= 0) {
         j = allTasks[length]['id'];
         j++;
     }
@@ -41,7 +45,7 @@ async function getTaskFromBackendAddTask() {
 */
 function openWindow() {
     let url = 'board.html';
-    setTimeout(function() {window.open(url, '_self') }, 2700);
+    setTimeout(function () { window.open(url, '_self') }, 2700);
 
 }
 
@@ -71,4 +75,33 @@ function clearTodo() {
     selectedCategoryDefaultValue();
     selectedAssignedDefaultValue();
     changeColorAfterCreateTask();
+    duedateChangeColorToStandard();
 }
+
+
+/*
+ * change color of cross
+*/
+function changeColorOfCross() {
+    document.getElementById('getCrossForHover').style = 'filter: invert(39%) sepia(66%) saturate(1450%) hue-rotate(184deg) brightness(107%) contrast(102%);';
+}
+
+
+ function changeColorOfCrossToStandard() {
+    document.getElementById('getCrossForHover').style = 'black;';
+ }
+
+
+ function cleanFormAddTask() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('descriptionPopup');
+    let dudate = document.getElementById('duedate');
+    title.value = ``;
+    description.value = ``;
+    dudate.value = ``;
+    selectedCategoryDefaultValue();
+    selectedAssignedDefaultValue();
+    changeColorAfterCreateTask();
+    duedateChangeColorToStandard();
+    closeForm();
+ }

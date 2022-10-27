@@ -15,10 +15,6 @@ body {
     display: flex;
 }
 
-.btn-popup-addTask:hover .cross-popup-btn {
-    filter: invert(39%) sepia(66%) saturate(1450%) hue-rotate(184deg) brightness(107%) contrast(102%);
-}
-
 .seperate-line-popup-addTask {
     width: 0px;
     height: 551px;
@@ -128,7 +124,9 @@ body {
     }
 
     .container-for-seperate-left-and-right-content-addTask {
-        display: unset;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .btn-popup {
@@ -139,8 +137,9 @@ body {
     }
 
     .text-header {
+        display: flex;
+        justify-content: center;
         font-size: 35px;
-        margin-left: 10px;
     }
 
     .pop-up-child-addedTask {
@@ -259,36 +258,43 @@ body {
     .title-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 
     .duedate-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 
     .description-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 
     .category-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 
     .assignedto-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 
     .prio-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 
     .btn-popup-addTask {
         margin-left: 10px !important;
         margin-bottom: 25px !important;
+        width: 270px !important;
     }
 }
 
@@ -315,7 +321,9 @@ body {
     }
 
     .container-for-seperate-left-and-right-content-addTask {
-        display: unset;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .container-inputfield-addTask {
@@ -331,6 +339,8 @@ body {
     }
 
     .text-header {
+        display: flex;
+        justify-content: center;
         font-size: 40px;
     }
 
@@ -453,10 +463,21 @@ body {
         margin-bottom: 20px;
     }
 
+    .container-for-seperate-left-and-right-content-addTask {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .main-container-addTask {
         margin-left: 10px;
         margin-right: 10px;
         margin-top: 20px;
+    }
+
+    .text-header {
+        display: flex;
+        justify-content: center;
     }
 
     .title-popup {
