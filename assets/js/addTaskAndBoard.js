@@ -143,6 +143,7 @@ function changePriorAfterSearchFilter(i) {
 */
 function changeColorUrgent() {
     currentPrior = document.getElementById('urgentPopup').innerText;
+    checkCurrentPrior = document.getElementById('urgentPopup').innerText;
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
     let low = document.getElementById('lowPopup');
@@ -177,6 +178,7 @@ function changeColorUrgentReverse() {
 */
 function changeColorMedium() {
     currentPrior = document.getElementById('mediumPopup').innerText;
+    checkCurrentPrior = document.getElementById('mediumPopup').innerText;
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
     let low = document.getElementById('lowPopup');
@@ -211,6 +213,7 @@ function changeColorMediumReverse() {
 */
 function changeColorLow() {
     currentPrior = document.getElementById('lowPopup').innerText;
+    checkCurrentPrior = document.getElementById('lowPopup').innerText;
     let urgent = document.getElementById('urgentPopup');
     let medium = document.getElementById('mediumPopup');
     let low = document.getElementById('lowPopup');
@@ -334,24 +337,28 @@ function changeColorOfCategoryAfterDragAndDrop(i) {
 */
 function changeColorOfCategoryAfterSearchFilter(i) {
     let categoryAddColor = document.getElementById('changeColorOfCategory' + i);
-    let category = categoryAddColor.innerText;
-    if (category == 'Sales') {
-        categoryAddColor.classList.add('sales');
-    }
-    if (category == 'Design') {
-        categoryAddColor.classList.add('design');
-    }
-    if (category == 'Backoffice') {
-        categoryAddColor.classList.add('backoffice');
-    }
-    if (category == 'Marketing') {
-        categoryAddColor.classList.add('marketing');
-    }
-    if (category == 'IT') {
-        categoryAddColor.classList.add('it');
-    }
-    if (category == 'Media') {
-        categoryAddColor.classList.add('media');
+    if (categoryAddColor == null) {
+        changeColorOfCategoryAfterDragAndDrop(i);
+    } else {
+        let category = categoryAddColor.innerText;
+        if (category == 'Sales') {
+            categoryAddColor.classList.add('sales');
+        }
+        if (category == 'Design') {
+            categoryAddColor.classList.add('design');
+        }
+        if (category == 'Backoffice') {
+            categoryAddColor.classList.add('backoffice');
+        }
+        if (category == 'Marketing') {
+            categoryAddColor.classList.add('marketing');
+        }
+        if (category == 'IT') {
+            categoryAddColor.classList.add('it');
+        }
+        if (category == 'Media') {
+            categoryAddColor.classList.add('media');
+        }
     }
 }
 

@@ -2,7 +2,7 @@
  * create task for board
 */
 async function createTodoForBoard() {
-    if (currentPrior == 'Urgent' || currentPrior == 'Medium' || currentPrior == 'Low') {
+    if (checkCurrentPrior == 'Urgent' || checkCurrentPrior == 'Medium' || checkCurrentPrior == 'Low') {
         await downloadFromServer();
         await getTaskFromBackendAddTask();
         loadTheParameterJ();

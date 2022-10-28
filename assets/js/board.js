@@ -20,6 +20,7 @@ let firstNameLetterEdit;
 let secondNameLetterEdit;
 let splitFirstAndSecondNameOfAssignedAsArrayEdit;
 let alreadyEmpty = true;
+let checkCurrentPrior;
 
 
 /**
@@ -69,7 +70,7 @@ function oneHigherId() {
 * render todo box
 */
 function createTodo() {
-    if (currentPrior == 'Urgent' || currentPrior == 'Medium' || currentPrior == 'Low') {
+    if (checkCurrentPrior == 'Urgent' || checkCurrentPrior == 'Medium' || checkCurrentPrior == 'Low') {
         updateArrayTodo();
         pushTask();
         let todo = document.getElementById('todo');
@@ -81,6 +82,7 @@ function createTodo() {
         addInBackend();
         oneHigherId();
         index++;
+        checkCurrentPrior = '';
     } else {
         alert('Please select a priority');
     }
@@ -500,6 +502,9 @@ function changeColorOfCrossToBlack() {
 }
 
 
+/**
+ * search task
+*/
 function searchFilter() {
     let search = document.getElementById('searchTask');
     let todo = document.getElementById('todo');
@@ -519,29 +524,34 @@ function searchFilter() {
             if (allTasks[i]['title'].includes(search.value)) {
                 if (allTasks[i]['status'] == 'todo') {
                     todo.innerHTML += templateUpdateTodo(i);
-                    changeBgColorOfInitialLettersAfterSearch(i);
-                    changePriorAfterSearchFilter(i);
+                    executeFunction(i);
                     changeColorOfCategoryAfterSearchFilter(i);
                 }
                 if (allTasks[i]['status'] == 'inProgress') {
                     inProgress.innerHTML += templateUpdateInProgress(i);
-                    changeBgColorOfInitialLettersAfterSearch(i);
-                    changePriorAfterSearchFilter(i);
+                    executeFunction(i);
                     changeColorOfCategoryAfterSearchFilter(i);
                 }
                 if (allTasks[i]['status'] == 'awaitingFeedback') {
                     awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
-                    changeBgColorOfInitialLettersAfterSearch(i);
-                    changePriorAfterSearchFilter(i);
+                    executeFunction(i);
                     changeColorOfCategoryAfterSearchFilter(i);
                 }
                 if (allTasks[i]['status'] == 'done') {
                     done.innerHTML += templateUpdateDone(i);
-                    changeBgColorOfInitialLettersAfterSearch(i);
-                    changePriorAfterSearchFilter(i);
+                    executeFunction(i);
                     changeColorOfCategoryAfterSearchFilter(i);
                 }
             }
         }
     }
+}
+
+
+/**
+ * execution function in search task
+*/
+function executeFunction(i) {
+    changeBgColorOfInitialLettersAfterSearch(i);
+    changePriorAfterSearchFilter(i);
 }
