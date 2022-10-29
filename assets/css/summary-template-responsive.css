@@ -1,4 +1,4 @@
-@media(max-width: 1300px) {
+@media(max-width: 1400px) {
     .summary-greet-top {
         font-size: 20px;
     }
@@ -12,7 +12,7 @@
     }
 }
 
-@media(max-width: 1180px) {
+@media(max-width: 1280px) {
     .summary-headline-left {
         font-size: 47px;
     }
@@ -27,7 +27,7 @@
     }
 }
 
-@media(max-width: 950px) {
+@media(max-width: 1050px) {
     .summary-tasks-container {
         gap: 35px;
         width: fit-content;
@@ -87,6 +87,19 @@
     }
 
 }
+
+@media(max-width: 900px) {
+    .summary-headline-container {
+        padding-left: 300px;
+        padding-top: 40px;
+    }
+
+    .summary-details-container {
+        padding-left: 300px;
+    }
+
+}
+
 
 @media(max-width: 850px) {
 

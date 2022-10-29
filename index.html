@@ -14,13 +14,44 @@
     <script src="assets/js/mini_backend.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/register.js"></script>
-    <script src="assets/templates/login-html.js"></script>
+    <script src="assets/js/login-template.js"></script>
     <script> setURL('https://gruppe-330.developerakademie.net/smallest_backend_ever/');</script>
 </head>
 
-<body onload="initStart(); renderStartScreen()">
+<body onload="initStart(); renderStartScreen(); emptyActiveUser()">
     <div id="render-login-html">
     </div>
 </body>
 
-</html>
+</html> 
+
+
+to:
+(- Login: Active User immer leeren beim Start, erfolgreich!)
+(- Summary: Fehleranzeige behoben, wenn das Array allTasks leer ist)
+- Legal Notic: jeder für sich abändern
+- Summary: Abstand zu den Seiten gleich bzw. Inhalt mittig im Desktop-Modus - Anpassung an Anils Design
+
+- Summary, Board, Add Task, Contacts: aktives Fenster sichtbar ONCLICK FUNKTION!!!
+- Summary Logik in der Anzeige erklären: jüngstes Datum (upcoming Deadline) wird angezeigt und die Dringlichkeit richtet sich nach dem 'to do' mit der höchsten Priorität
+- Login: Remember me -> speichern im Local Storage; Daten im Login Input wird beim wiederholtem Laden wieder angezeigt
+
+- Board: Entfernen der Scrollbalken durch Verringern der Abstände zwischen 'To do' und Überschrift 'Board'
+- Add Task: Striche im Eingabefeld 'Description' entfernen (element style: rezise: none), schwarzen Rahmen entfernen (element style: outline: none) beim Anklicken
+- Add Task: DueDate - Datum in schwarz anzeigen lassen, wenn ausgewählt
+- Contacts: Stift-Bild und 'Edit Contact' zentrieren (align-items: center ?)
+- Contacts: Add Contact-Fenster: Cancel-Button gleichmäßig mit Create Contact-Button aufteilen
+- Add Task: trotz 'Clear'-Button wird man weitergeleitet und es wird übernommen, es sollte nichts passieren.
+- Add Task: 'Clear'-Button keine Form-Validation
+- Add Task: Hovern über 'Create Task'-Button: das 'X' von Clear leuchtet auch auf
+- Add Task: Hovern über beide Buttons: kein Rahmen sichtbar oder lightgray wie der vertikale Trennstrich
+- Board: schwarzer Rahmen in der Suchleiste entfernen, wenn aktiv
+- Board: Filter-Funktion fehlt, sollte eingebaut werden
+- Board responive: '+'-Button schwarzer Rahmen beim hovern entfernen
+- Board responive: mittig anordnen
+- Add Task responive: mittig anordnen
+- Add Task responive: horizontaler Scrollbalken entfernen bzw. Fenster verkleinern
+- Contacts: Kontaktleiste/-übersicht horizontaler Scrollbalken entfernen bzw. Fenster verkleinern (ggf. Overflow X: hidden) beim Kleinerziehen
+- Contacts: Kontaktdetails horizontaler Scrollbalken entfernen bzw. Fenster verkleinern (ggf. Overflow X: hidden) beim Kleinerziehen
+- Contacts: ggf. 'New contact' Button nach unten versetzen mittig (?)
+- JSDOCS: nochmal alle Funktionen prüfen, damit überall eine Doku steht

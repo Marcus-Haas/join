@@ -2,7 +2,7 @@
  * Setting all required varibles and arrays
  */
 let duedate = [];
-let showUrgency = []
+let showUrgency = [];
 let showUrgencyCounter = 0;
 let tasksInProgress = 0;
 let awaitingFeedback = 0;
@@ -12,17 +12,19 @@ let showDueDate = date.toLocaleString('en-US', showTimeFormat);
 let tasksToDo = 0;
 let tasksDone = 0;
 
+
+
 /**
  * Downloading files vom backend server, and run first functions
  */
 async function initializeSummary() {
     await init();
-    await initStart();
     await downloadFromServer();
     let allTasksAsJson = await backend.getItem('allTasks');
     allTasks = JSON.parse(allTasksAsJson);
     showMyName();
     amounts();
+    addActiveClass0();
 }
 
 /**
@@ -39,22 +41,42 @@ function showMyName() {
 }
 
 /**
- * Run serval functions to build the page summary.html with all variables.
+ * Check if the array allTasks is empty to set all variables to '0'
+ * Otherwise run serval functions to build the page summary.html with all variables (access to array allTasks).
  * Change time format for 'showDueDate'.
  */
 function amounts() {
-    let tasksInBoard = allTasks.length;
-    amountStatusSetDueDate();
-    resetSummary();
-    pushAllDueDatesAndPrios();
-    checkIfUrgencyIsLow(showUrgency);
-    checkIfUrgencyIsMedium(showUrgency);
-    checkIfUrgencyIsUrgent(showUrgency);
-    getDateAndTime();
-    date = new Date(showDueDate);
-    showDueDate = date.toLocaleString('en-US', showTimeFormat);
-    showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone);
+    if (allTasks == null) {
+        emptyScreen();
+    } else {
+        let tasksInBoard = allTasks.length;
+        amountStatusSetDueDate();
+        resetSummary();
+        pushAllDueDatesAndPrios();
+        checkIfUrgencyIsLow(showUrgency);
+        checkIfUrgencyIsMedium(showUrgency);
+        checkIfUrgencyIsUrgent(showUrgency);
+        getDateAndTime();
+        date = new Date(showDueDate);
+        showDueDate = date.toLocaleString('en-US', showTimeFormat);
+        showSummaryResult(tasksInBoard, tasksInProgress, awaitingFeedback, showUrgencyCounter, showDueDate, tasksToDo, tasksToDo, tasksDone);
+    }
 }
+
+
+/**
+ * Set all variables to '0' if the array allTasks is empty 
+ */
+function emptyScreen() {
+        document.getElementById('summary-tasks-amount-alltasks').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-task-in-progress').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-awaiting-feedback').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-urgend').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-urgend-date').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-to-do').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-done').innerHTML = `0`;
+}
+
 
 /**
  * Check all registered tasks with different status from the array 'allTasks'. 
@@ -181,9 +203,19 @@ function getDateAndTime() {
     let hour = currentDate.getHours();
     if (hour < 12) {
         welcome.innerHTML = "Good morning";
-      } else if (hour > 12 && hour < 17) {
+    } else if (hour > 12 && hour < 17) {
         welcome.innerHTML = "Good afternoon";
-      } else {
+    } else {
         welcome.innerHTML = "Good evening";
-      }
+    }
+}
+
+/**
+ * Show active site on the navigation bar -> Summary
+ */
+function addActiveClass0() {
+    document.getElementById('addActiveClass-0').classList.add('active');
+    document.getElementById('addActiveClass-1').classList.remove('active');
+    document.getElementById('addActiveClass-2').classList.remove('active');
+    document.getElementById('addActiveClass-3').classList.remove('active');
 }

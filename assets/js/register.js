@@ -22,18 +22,29 @@ let users = [
         'password': 'test',
     }
 ];
-
 let guestUser = [];
-
 let activeUser = [];
 
+
+/**
+ * Download data from backend
+ */
 async function initStart() {
     await downloadFromServer(); // wait for server
-    // users.push('users'); // Test
-    // users = JSON.parse(backend.getItem('users')) || []; // wenn noch keine Varible users gespeichert ist, wird diese durch ein leeres Array ersetzt
     activeUser = JSON.parse(backend.getItem('activeUser')) || [];
 }
 
+/**
+ * Empty array activeUser on login-screen
+ */
+async function emptyActiveUser() {
+    await backend.setItem('activeUser', JSON.stringify(activeUser.length = 0));
+}
+
+/**
+ * Take data from input-fields of the sign up screen, check if the email-adress already exists (unique feature),
+ * if the email-adress does not exist, push the input values into the array 'users'
+ */
 async function confirmSignUpScreen() { //Add user
     document.getElementById(`failed-signup-window-input-email`).classList.add(`d-none`);
     let name = document.getElementById('signup-window-input-username').value;
@@ -55,8 +66,4 @@ async function confirmSignUpScreen() { //Add user
         document.getElementById(`user-sign-up`).classList.add(`z-index-0`);
         document.getElementById(`confirm-signup-window`).classList.remove(`d-none`);
     }
-}
-
-async function deleteUser() {
-    await backend.deleteItem('guestUser');
 }

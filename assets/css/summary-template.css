@@ -3,8 +3,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 300px;
-    padding-top: 40px;
+    padding-left: 355px;
+    padding-top: 81px;
     gap: 20px;
     width: 100%;
 }
@@ -12,7 +12,7 @@
 .summary-headline-left {
     height: 73px;
     font-weight: 700;
-    font-size: 60px;
+    font-size: 61px;
 }
 
 .summary-headline-middle {
@@ -44,8 +44,8 @@
     position: absolute;
     width: 385px;
     height: 136px;
-    left: 930px;
-    top: 433px;
+    left: 1000px;
+    top: 474px;
 }
 
 .summary-greet-top {
@@ -60,13 +60,13 @@
     width: 375px;
     height: 77px;
     font-weight: 700;
-    font-size: 50px;
+    font-size: 45px;
     color: #29ABE2;
 }
 
 .summary-details-container {
     box-sizing: border-box;
-    padding-left: 300px;
+    padding-left: 355px;
     padding-top: 40px;
     display: flex;
     flex-direction: column;
