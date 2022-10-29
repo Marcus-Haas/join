@@ -15,7 +15,6 @@ async function InitContacts() {
     await loadContactsFromBackend();
     renderContactBook();
     openBusinessCard(0);
-
 }
 
 
@@ -116,6 +115,7 @@ function renderContactBook() {
         container.innerHTML += generateHTMLforContactBook(index);
     }
     renderContactBookResponsive();
+    addActiveClass3();
 }
 
 
@@ -201,7 +201,6 @@ function pushContactsToBackend() {
 function loadContactsFromBackend() {
     let key = activeUser[0];
     contacts = JSON.parse(backend.getItem(key)) || [];
-
 }
 
 
@@ -314,4 +313,12 @@ function editContactResponsive(i) {
     document.getElementById('edit-name-rs').value = contacts[i]['name'];
     document.getElementById('edit-email-rs').value = contacts[i]['email'];
     document.getElementById('edit-phone-rs').value = contacts[i]['phone'];
+}
+
+ /**
+ * Show active site on the navigation bar -> Contacts
+ */
+function addActiveClass3() {
+    document.getElementById('addActiveClass-3').classList.add('active');
+    document.getElementById('addActiveClassResponsive-3').classList.add('active');
 }

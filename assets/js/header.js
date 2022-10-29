@@ -6,9 +6,9 @@ function showLogout() {
     <div class="popup-frame-logout" id="hide-btn" onclick="hideLogout()">
         <div onclick="doNotClose(event)">
             <div class="logout-btn">
-                <div class="rs-logout" onclick="openHelp()">Help</div>
-                <div class="rs-logout" onclick="openLegalNotice()">Legal notice</div>
-                <div class="rs-logout" onclick="openPrivacy()">Privacy</div>
+                <div class="rs-logout" onclick="openHelp()" id="addActiveClassResponsive-6">Help</div>
+                <div class="rs-logout" onclick="openLegalNotice()" id="addActiveClassResponsive-4">Legal notice</div>
+                <div class="rs-logout" onclick="openPrivacy()" id="addActiveClassResponsive-5">Privacy</div>
                 <div class="logout-inner-btn" onclick="Logout()">Log out</div>
             </div>
         </div>
@@ -64,4 +64,37 @@ function openHelp() {
 */
 function openLegalNotice() {
     window.open("legal-notice.html", "_self");
+}
+
+
+ /**
+ * Show active site on the navigation bar -> Legal notice
+ */
+  function addActiveClass4() {
+    setTimeout(function () {
+        document.getElementById('addActiveClass-4').classList.add('active');
+        // document.getElementById('addActiveClassResponsive-4').classList.add('rs-logout-active');
+    }, 150);
+}
+
+
+ /**
+ * Show active site on the navigation bar -> Legal notice
+ */
+  function addActiveClass5() {
+    setTimeout(function () {
+        document.getElementById('addActiveClass-5').classList.add('active');
+        // document.getElementById('addActiveClassResponsive-5').classList.add('rs-logout-active');
+    }, 150);
+}
+
+
+ /**
+ * Hide question mark on header bar -> Help
+ */
+  function addActiveClass6() {
+    setTimeout(function () {
+        document.getElementById('addActiveClass-6').classList.add('d-none');
+        // document.getElementById('addActiveClassResponsive-6').classList.add('rs-logout-active');
+    }, 100);
 }

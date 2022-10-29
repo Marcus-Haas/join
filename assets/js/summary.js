@@ -215,7 +215,5 @@ function getDateAndTime() {
  */
 function addActiveClass0() {
     document.getElementById('addActiveClass-0').classList.add('active');
-    document.getElementById('addActiveClass-1').classList.remove('active');
-    document.getElementById('addActiveClass-2').classList.remove('active');
-    document.getElementById('addActiveClass-3').classList.remove('active');
+    document.getElementById('addActiveClassResponsive-0').classList.add('active');
 }

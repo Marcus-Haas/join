@@ -105,3 +105,13 @@ function changeColorOfCross() {
     duedateChangeColorToStandard();
     closeForm();
  }
+
+ /**
+ * Show active site on the navigation bar -> Add Task
+ */
+ function addActiveClass2() {
+    setTimeout(function () {
+        document.getElementById('addActiveClass-2').classList.add('active');
+        document.getElementById('addActiveClassResponsive-2').classList.add('active');
+    }, 150);
+}

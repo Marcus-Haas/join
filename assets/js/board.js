@@ -30,6 +30,7 @@ async function initialize() {
     await downloadFromServer();
     await getTasksFromBackend();
     identifyId();
+    addActiveClass1();
 }
 
 
@@ -554,4 +555,12 @@ function searchFilter() {
 function executeFunction(i) {
     changeBgColorOfInitialLettersAfterSearch(i);
     changePriorAfterSearchFilter(i);
+}
+
+/**
+ * Show active site on the navigation bar -> Board
+ */
+function addActiveClass1() {
+    document.getElementById('addActiveClass-1').classList.add('active');
+    document.getElementById('addActiveClassResponsive-1').classList.add('active');
 }

@@ -95,6 +95,10 @@ header {
     display: none;
 }
 
+.rs-logout-active {
+    color: white;
+    cursor: pointer;
+}
 
 @media(min-width: 851px) {
     .logout-btn:hover {
@@ -130,7 +134,6 @@ header {
         justify-content: center;
         color: #CDCDCD;
         width: 100%;
-
     }
 
     .rs-logout:hover {
