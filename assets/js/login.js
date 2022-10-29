@@ -37,8 +37,8 @@ async function openUserStartScreen() { // Log in when signed up
  * Open and close windows to prevent overlapping
  */
 function hideFailedLoginAndUserSignUP() {
- document.getElementById('failed-login').classList.add('d-none');
- document.getElementById('user-sign-up').classList.add('d-none');
+    document.getElementById('failed-login').classList.add('d-none');
+    document.getElementById('user-sign-up').classList.add('d-none');
 }
 
 

@@ -13,7 +13,6 @@ let tasksToDo = 0;
 let tasksDone = 0;
 
 
-
 /**
  * Downloading files vom backend server, and run first functions
  */
@@ -72,7 +71,7 @@ function emptyScreen() {
         document.getElementById('summary-tasks-amount-task-in-progress').innerHTML = `0`;
         document.getElementById('summary-tasks-amount-awaiting-feedback').innerHTML = `0`;
         document.getElementById('summary-tasks-amount-urgend').innerHTML = `0`;
-        document.getElementById('summary-tasks-amount-urgend-date').innerHTML = `0`;
+        document.getElementById('summary-tasks-amount-urgend-date').innerHTML = `No`;
         document.getElementById('summary-tasks-amount-to-do').innerHTML = `0`;
         document.getElementById('summary-tasks-amount-done').innerHTML = `0`;
 }
