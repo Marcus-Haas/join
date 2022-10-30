@@ -96,7 +96,7 @@ header {
 }
 
 .rs-logout-active {
-    color: white;
+    color: white !important;
     cursor: pointer;
 }
 

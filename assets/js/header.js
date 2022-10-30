@@ -14,6 +14,9 @@ function showLogout() {
         </div>
     </div>
     `;
+    helpMenuActive();
+    legalNoticeMenuActive();
+    privacyMenuActive();
 }
 
 
@@ -67,34 +70,70 @@ function openLegalNotice() {
 }
 
 
- /**
- * Show active site on the navigation bar -> Legal notice
- */
-  function addActiveClass4() {
+/**
+* Show active site on the navigation bar -> Legal notice
+*/
+function addActiveClass4() {
     setTimeout(function () {
         document.getElementById('addActiveClass-4').classList.add('active');
-        // document.getElementById('addActiveClassResponsive-4').classList.add('rs-logout-active');
-    }, 150);
+    }, 125);
 }
 
 
- /**
- * Show active site on the navigation bar -> Legal notice
- */
-  function addActiveClass5() {
+/**
+* Show active site on the navigation bar -> Legal notice
+*/
+function addActiveClass5() {
     setTimeout(function () {
         document.getElementById('addActiveClass-5').classList.add('active');
-        // document.getElementById('addActiveClassResponsive-5').classList.add('rs-logout-active');
-    }, 150);
+    }, 125);
 }
 
 
- /**
- * Hide question mark on header bar -> Help
- */
-  function addActiveClass6() {
+/**
+* Hide question mark on header bar like in the mockup-> Help
+*/
+function addActiveClass6() {
     setTimeout(function () {
         document.getElementById('addActiveClass-6').classList.add('d-none');
-        // document.getElementById('addActiveClassResponsive-6').classList.add('rs-logout-active');
-    }, 100);
+    }, 125);
+}
+
+
+/**
+* Show active site on the responsive navigation bar -> Help
+*/
+function helpMenuActive() {
+    if (document.getElementById('help-active') == null) {
+    } else {
+        if (document.getElementById('addActiveClassResponsive-6').innerHTML == document.getElementById('help-active').innerHTML) {
+            document.getElementById('addActiveClassResponsive-6').classList.add('rs-logout-active');
+        }
+    }
+}
+
+
+/**
+* Show active site on the responsive navigation bar -> Legal notice
+*/
+function legalNoticeMenuActive() {
+    if (document.getElementById('legal-notice-active') == null) {
+    } else {
+        if (document.getElementById('addActiveClassResponsive-4').innerHTML == document.getElementById('legal-notice-active').innerHTML) {
+            document.getElementById('addActiveClassResponsive-4').classList.add('rs-logout-active');
+        }
+    }
+}
+
+
+/**
+* Show active site on the responsive navigation bar -> Privacy
+*/
+function privacyMenuActive() {
+    if (document.getElementById('privacy-active') == null) {
+    } else {
+        if (document.getElementById('addActiveClassResponsive-5').innerHTML == document.getElementById('privacy-active').innerHTML) {
+            document.getElementById('addActiveClassResponsive-5').classList.add('rs-logout-active');
+        }
+    }
 }
