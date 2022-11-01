@@ -44,6 +44,10 @@
         justify-content: center;
     }
 
+    .overlay-contacts-details-frame {
+        width: 350px;
+    }
+
     .overlay-input-design {
         width: 350px;
         padding: 10px 10px;
@@ -77,6 +81,10 @@
 
     .overlay-save-frame {
         width: 85%;
+    }
+
+    .overlay-cancel-btn {
+        display: none;
     }
 }
 
@@ -127,10 +135,6 @@
         position: absolute;
         top: 25px;
         padding-right: 5px;
-    }
-
-    .overlay-cancel-btn {
-        display: none;
     }
 
     .overlay-contacts-details-frame {

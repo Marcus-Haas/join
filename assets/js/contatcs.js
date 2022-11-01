@@ -14,7 +14,8 @@ async function InitContacts() {
     await initStart();
     await loadContactsFromBackend();
     renderContactBook();
-    openBusinessCard(0);
+    if (contacts > [])
+        openBusinessCard(0);
 }
 
 
@@ -27,7 +28,7 @@ function showOverlay() {
 
 
 /**
-* close the overlay mask, where you can creat a new contact
+* close the overlay mask, where you can create a new contact
 */
 function closeOverlay() {
     document.getElementById('overlay-background').classList.add('d-none');
@@ -80,12 +81,21 @@ function checkForDuplicate(contactName, contactEmail, contactPhone, contactIniti
         }
     }
     if (newEmail == 0) {
-        pushContacts(contactName, contactEmail, contactPhone, contactInitials);
-        closeOverlay();
-        renderContactBook();
-        clearInputAtOverlay();
-        openBusinessCard(contacts.length);
+        pushContactsToArrays(contactName, contactEmail, contactPhone, contactInitials);
     }
+}
+
+
+/**
+* start different functions with the result of pushing contacts to arrays
+*/
+function pushContactsToArrays(contactName, contactEmail, contactPhone, contactInitials) {
+    pushContacts(contactName, contactEmail, contactPhone, contactInitials);
+    closeOverlay();
+    renderContactBook();
+    clearInputAtOverlay();
+    openBusinessCard(contacts.length - 1);
+    openBusinessCardResponsive(contacts.length - 1);
 }
 
 
@@ -315,9 +325,9 @@ function editContactResponsive(i) {
     document.getElementById('edit-phone-rs').value = contacts[i]['phone'];
 }
 
- /**
- * Show active site on the navigation bar -> Contacts
- */
+/**
+* Show active site on the navigation bar -> Contacts
+*/
 function addActiveClass3() {
     document.getElementById('addActiveClass-3').classList.add('active');
     document.getElementById('addActiveClassResponsive-3').classList.add('active');
