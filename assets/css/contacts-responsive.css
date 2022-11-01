@@ -1,4 +1,4 @@
-@media(max-width: 1160px) {
+@media(max-width: 1190px) {
     .contact-book-main {
         width: 280px;
     }
@@ -45,6 +45,13 @@
     .business-card-name {
         font-size: 30px;
         width: 225px;
+    }
+}
+
+
+@media(max-width: 1030px) {
+    .business-card-header {
+        width: 325px;
     }
 }
 

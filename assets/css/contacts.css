@@ -227,7 +227,7 @@ body {
 
 .business-card-edit-frame {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     font-size: 14px;
 }
 
