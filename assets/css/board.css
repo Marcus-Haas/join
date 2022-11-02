@@ -80,7 +80,7 @@ body {
 
 .btn:hover {
     background-color: #0D99FF;
-    border: none;
+    border-color: #0D99FF;
 }
 
 .icon-plus {
@@ -429,7 +429,7 @@ body {
 
 .edit-open-task:hover {
     background-color: #0D99FF;
-    border: none;
+    border-color: #0D99FF;
 }
 
 .edit-img-pen-open-task {
@@ -467,7 +467,7 @@ body {
 
 .edit-open-task-okay-and-hook:hover {
     background-color: #0D99FF;
-    border: none;
+    border-color: #0D99FF;
 }
 
 .edit-open-task-okay {
