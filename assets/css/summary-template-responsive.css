@@ -1,14 +1,16 @@
 @media(max-width: 1400px) {
     .summary-greet-top {
         font-size: 20px;
+        width: auto;
     }
 
     .summary-greet-bottom {
         font-size: 32px;
+        width: auto;
     }
 
     .summary-greet-container {
-        width: 375px;
+        width: 280px;
     }
 }
 
