@@ -59,6 +59,7 @@
 
 @media(max-width: 850px) {
     .kanban-title {
+        display: block;
         padding-left: 20px;
     }
 

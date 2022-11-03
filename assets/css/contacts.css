@@ -294,6 +294,10 @@ body {
     display: none;
 }
 
+.kanban-title {
+    display: none;
+}
+
 .d-none {
     display: none;
 }
