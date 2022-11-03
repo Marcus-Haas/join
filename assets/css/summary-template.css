@@ -328,11 +328,11 @@
 }
 
 .summary-to-do-frame:hover .summary-pen-image {
-    background-image: url(/assets/img/summary/white-pen-icon.png);
+    background-image: url(../img/summary/white-pen-icon.png);
 }
 
 .summary-to-do-frame:hover .summary-done-image {
-    background-image: url(/assets/img/summary/white-check-icon.png);
+    background-image: url(../img/summary/white-check-icon.png);
 }
 
 .summary-to-do-check {
@@ -361,13 +361,13 @@
 .summary-pen-image {
     width: 70px;
     height: 70px;
-    background-image: url(/assets/img/summary/pen-icon.png);
+    background-image: url(../img/summary/pen-icon.png);
 }
 
 .summary-done-image {
     width: 70px;
     height: 70px;
-    background-image: url(/assets/img/summary/done-icon.png);
+    background-image: url(../img/summary/done-icon.png);
 }
 
 .responsive-container {
