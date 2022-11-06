@@ -508,6 +508,88 @@ function changeColorOfCrossToBlack() {
 */
 function searchFilter() {
     let search = document.getElementById('searchTask');
+    clearBoardBeforeFilter();
+    if (search.value == '' && alreadyEmpty == true) {
+        updateBoard();
+        alreadyEmpty = false;
+    } else {
+        ifSearchFilterIsNotEmpty(search);
+    }
+}
+
+
+/**
+ * search task
+*/
+function ifSearchFilterIsNotEmpty(search) {
+    alreadyEmpty = true;
+    for (let i = 0; i < allTasks.length; i++) {
+        if (allTasks[i]['title'].includes(search.value)) {
+            if (allTasks[i]['status'] == 'todo') {
+                todoFilter(i);
+            }
+            if (allTasks[i]['status'] == 'inProgress') {
+                inProgressFilter(i);
+            }
+            if (allTasks[i]['status'] == 'awaitingFeedback') {
+                inAwaitingFeedbackFilter(i);
+            }
+            if (allTasks[i]['status'] == 'done') {
+                doneFilter(i);
+            }
+        }
+    }
+}
+
+/**
+ * filter for todo
+*/
+function todoFilter(i) {
+    let todo = document.getElementById('todo');
+    todo.innerHTML += templateUpdateTodo(i);
+    executeFunction(i);
+    changeColorOfCategoryAfterSearchFilter(i);
+}
+
+
+/**
+ * filter for in progress
+*/
+function inProgressFilter(i) {
+    let inProgress = document.getElementById('inProgress');
+    inProgress.innerHTML += templateUpdateInProgress(i);
+    executeFunction(i);
+    changeColorOfCategoryAfterSearchFilter(i);
+}
+
+
+/**
+ * filter for in awaiting feedback
+*/
+function inAwaitingFeedbackFilter(i) {
+    let awaitingFeedback = document.getElementById('awaitingFeedback');
+    awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
+    executeFunction(i);
+    changeColorOfCategoryAfterSearchFilter(i);
+}
+
+
+/**
+ * filter for done
+*/
+function doneFilter(i) {
+    let done = document.getElementById('done');
+    done.innerHTML += templateUpdateDone(i);
+    executeFunction(i);
+    changeColorOfCategoryAfterSearchFilter(i);
+}
+
+
+
+/**
+ * clear the board before filter starts
+*/
+function clearBoardBeforeFilter() {
     let todo = document.getElementById('todo');
     let inProgress = document.getElementById('inProgress');
     let awaitingFeedback = document.getElementById('awaitingFeedback');
@@ -516,36 +598,6 @@ function searchFilter() {
     inProgress.innerHTML = ``;
     awaitingFeedback.innerHTML = ``;
     done.innerHTML = ``;
-    if (search.value == '' && alreadyEmpty == true) {
-        updateBoard();
-        alreadyEmpty = false;
-    } else {
-        alreadyEmpty = true;
-        for (let i = 0; i < allTasks.length; i++) {
-            if (allTasks[i]['title'].includes(search.value)) {
-                if (allTasks[i]['status'] == 'todo') {
-                    todo.innerHTML += templateUpdateTodo(i);
-                    executeFunction(i);
-                    changeColorOfCategoryAfterSearchFilter(i);
-                }
-                if (allTasks[i]['status'] == 'inProgress') {
-                    inProgress.innerHTML += templateUpdateInProgress(i);
-                    executeFunction(i);
-                    changeColorOfCategoryAfterSearchFilter(i);
-                }
-                if (allTasks[i]['status'] == 'awaitingFeedback') {
-                    awaitingFeedback.innerHTML += templateUpdateAwaitingFeedback(i);
-                    executeFunction(i);
-                    changeColorOfCategoryAfterSearchFilter(i);
-                }
-                if (allTasks[i]['status'] == 'done') {
-                    done.innerHTML += templateUpdateDone(i);
-                    executeFunction(i);
-                    changeColorOfCategoryAfterSearchFilter(i);
-                }
-            }
-        }
-    }
 }
 
 
