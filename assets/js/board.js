@@ -509,7 +509,7 @@ function changeColorOfCrossToBlack() {
 function searchFilter() {
     let search = document.getElementById('searchTask');
     clearBoardBeforeFilter();
-    if (search.value == '' && alreadyEmpty == true) {
+    if (search.value == '' && alreadyEmpty) {
         updateBoard();
         alreadyEmpty = false;
     } else {
