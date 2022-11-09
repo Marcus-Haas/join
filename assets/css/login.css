@@ -14,11 +14,11 @@ body {
     z-index: -2;
 }
 
-.start-screen {
+/* .start-screen {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .start-screen-logo-big {
     position: absolute;

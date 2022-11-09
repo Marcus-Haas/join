@@ -18,7 +18,7 @@ function renderLoginHTML() {
             <div class="set-login-window">
                 <div class="login-window" id="login-window">
                     <div class="login-headline">Log in</div>
-                    <form onsubmit="openUserStartScreen(); return false;">
+                    <form onsubmit="login(); return false;">
                         <input type="email" required class="login-window-input-email" id="login-window-input-email"
                             placeholder="Email">
                         <div class="set-login-window-input-passwort">
@@ -69,10 +69,8 @@ function renderLoginHTML() {
                 <!-- *********************** CONFIRM SIGN UP SECTION FOR JS ****************** -->
                 <div class="confirm-signup-window d-none" id="confirm-signup-window">
                     <div class="position-button">
-                        <button class="confirm-signup-button" onclick="ConfirmSignUpBackToLoginScreen()">To finish the
-                            sign
-                            up,
-                            please confirm your email adress</button>
+                        <button class="confirm-signup-button" onclick="ConfirmSignUpBackToLoginScreen()">
+                Thanks for signing up, <br> you can sign in now</button>
                     </div>
                 </div>
                 <!-- *********************** FORGOT PASSWORD SECTION FOR JS ****************** -->

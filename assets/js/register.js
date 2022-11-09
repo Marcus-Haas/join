@@ -63,7 +63,7 @@ async function confirmSignUpScreen() { //Add user
     if (newUser == 0) {
         users.push({ name: name, email: email, password: password }); // push to Array 'users'
         await backend.setItem('users', JSON.stringify(users));
-        document.getElementById(`user-sign-up`).classList.add(`z-index-0`);
+        document.getElementById(`user-sign-up`).classList.add(`d-none`);
         document.getElementById(`confirm-signup-window`).classList.remove(`d-none`);
     }
 }

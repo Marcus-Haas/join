@@ -1,0 +1,414 @@
+@media(max-height: 575px) {
+    @media(max-width: 2500px) {
+        .user-sign-up {
+            bottom: 11%;
+        }
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 6.0vw;
+                top: -6.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1720px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 6.0vw;
+                top: -7.0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1520px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 5.0vw;
+                top: -7.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1320px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 4.0vw;
+                top: -8.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1120px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 2.0vw;
+                top: -8.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1020px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 1.0vw;
+                top: -9.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 920px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 0vw;
+                top: -10.0vw;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+@media(max-height: 550px) {
+    .user-sign-up {
+        bottom: 9%;
+    }
+}
+
+@media(max-height: 525px) {
+    .user-sign-up {
+        bottom: 8%;
+    }
+}
+
+@media(max-height: 500px) {
+    .user-sign-up {
+        bottom: 4.5%;
+    }
+
+    .remember-me-forgot-my-passwort {
+        flex-direction: unset;
+    }
+}
+
+@media(max-height: 500px) {
+    .user-sign-up {
+        bottom: 10%;
+    }
+}
+
+@media(max-height: 475px) {
+    .user-sign-up {
+        bottom: 8%;
+    }
+}
+
+@media(max-height: 460px) {
+    .user-sign-up {
+        bottom: 16%;
+    }
+
+    .login-guestlogin {
+        right: 100px;
+    }
+
+    .guestlogin-button {
+        position: absolute;
+        right: 37%;
+        bottom: 40px;
+    }
+
+    @media(max-width: 1600px) {
+        .guestlogin-button {
+            right: 36%;
+        }
+    }
+
+    @media(max-width: 1500px) {
+        .guestlogin-button {
+            right: 35%;
+        }
+    }
+
+    @media(max-width: 1400px) {
+        .guestlogin-button {
+            right: 34%;
+        }
+    }
+
+    @media(max-width: 1300px) {
+        .guestlogin-button {
+            right: 33%;
+        }
+    }
+
+    @media(max-width: 1200px) {
+        .guestlogin-button {
+            right: 32%;
+        }
+    }
+
+    @media(max-width: 1100px) {
+        .guestlogin-button {
+            right: 30%;
+        }
+    }
+
+    @media(max-width: 1000px) {
+        .guestlogin-button {
+            right: 28%;
+        }
+    }
+
+    @media(max-width: 900px) {
+        .guestlogin-button {
+            right: 26%;
+        }
+    }
+
+    @media(max-width: 800px) {
+        .guestlogin-button {
+            right: 25%;
+        }
+    }
+
+    @media(max-width: 700px) {
+        .guestlogin-button {
+            right: 22.5%;
+        }
+    }
+
+    @media(max-width: 600px) {
+        .guestlogin-button {
+            right: 20%;
+        }
+    }
+
+    @media(max-width: 500px) {
+        .guestlogin-button {
+            right: 16%;
+        }
+    }
+}
+
+@media(max-height: 440px) {
+    .user-sign-up {
+        bottom: 14.5%;
+    }
+
+    .set-login-window {
+        margin-bottom: 1.5%;
+    }
+
+    .login-window form {
+        gap: 20px;
+    }
+}
+
+@media(max-height: 420px) {
+    .user-sign-up {
+        bottom: 12.5%;
+    }
+
+    .set-login-window {
+        margin-bottom: 1%;
+    }
+
+    .login-button {
+        height: 41px;
+    }
+
+    .guestlogin-button {
+        height: 41px;
+    }
+
+    .user-sign-up button {
+        height: 41px;
+    }
+}
+
+@media(max-height: 410px) {
+    .set-login-window {
+        margin-bottom: 0;
+        bottom: unset;
+    }
+
+    .login-window-input-email {
+        height: 41px;
+    }
+
+    .login-window-input-passwort {
+        height: 41px;
+    }
+
+    .login-input-image {
+        top: -32px;
+    }
+
+    .login-headline {
+        height: 50px;
+    }
+
+    .user-sign-up {
+        bottom: 17%;
+        margin-bottom: unset;
+    }
+
+    @media(max-width: 2500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 6.0vw;
+                top: -5.0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1720px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 6.0vw;
+                top: -6.0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1520px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 5.0vw;
+                top: -6.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1320px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 4.0vw;
+                top: -8.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1120px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 2.0vw;
+                top: -10.0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 1020px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 1.0vw;
+                top: -10.0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-width: 920px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: 0vw;
+                top: -12.0vw;
+                z-index: 1;
+            }
+        }
+    }
+}

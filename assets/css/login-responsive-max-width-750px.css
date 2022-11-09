@@ -1,0 +1,358 @@
+@media(max-width: 750px) {
+
+    @media(max-height: 2500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.2);
+                left: -5vw;
+                top: -15vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 650px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: 0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 620px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -3vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 590px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -4vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 560px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -6vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 530px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -8vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -10vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 480px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -11.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 460px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -13vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 410px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -14.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 380px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -4vw;
+                top: -16vw;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+
+@media(max-width: 700px) {
+
+    @media(max-height: 2500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.2);
+                left: -5vw;
+                top: -15vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 650px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: 0vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 620px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -3vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 590px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -4vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 560px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -6vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 530px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -8vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -10vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 480px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -11.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 460px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -13vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 410px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -14.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 380px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.1);
+                left: -5vw;
+                top: -16vw;
+                z-index: 1;
+            }
+        }
+    }
+}

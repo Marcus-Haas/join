@@ -141,7 +141,6 @@ a.active {
     }
 }
 
-
 @media (max-width: 340px) {
     .rs-main {
         padding: 0px 6px;
@@ -157,5 +156,11 @@ a.active {
 
     .rs-boxes {
         width: 60px;
+    }
+}
+
+@media (max-height: 750px) {
+    .sidebar-main-frame {
+        height: fit-content;
     }
 }

@@ -1,0 +1,397 @@
+@media(max-width: 850px) {
+
+    @media(max-height: 2500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.2);
+                left: -5vw;
+                top: -10vw;
+            }
+        }
+    }
+
+    @media(max-height: 700px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.15);
+                left: -5vw;
+                top: -12vw;
+            }
+        }
+    }
+
+    @media(max-height: 615px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -1vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 600px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -2.5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 580px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -4vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 560px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -5vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 540px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -6vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 520px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -7vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 500px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -9vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 480px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -11vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 400px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -12vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    @media(max-height: 365px) {
+
+        @keyframes logoSize {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(0.10);
+                left: -3vw;
+                top: -14vw;
+                z-index: 1;
+            }
+        }
+    }
+
+    .login-bg {
+        height: fit-content;
+    }
+
+    .set-login-window {
+        overflow: hidden;
+    }
+
+    .forgot-password-window {
+        padding: 20px;
+        width: 80%;
+        gap: 25px;
+    }
+
+    .forgot-password-headline {
+        font-size: 35px;
+        border-bottom: #29ABE2 2px solid;
+        padding-bottom: 15px;
+        height: fit-content;
+        width: 80%;
+    }
+
+    .forgot-password-window span {
+        width: 97%;
+        font-size: 18px;
+    }
+
+    .forgot-password-button {
+        margin-bottom: 25px;
+        font-size: 18px;
+    }
+
+    .reset-password-window {
+        padding: 20px;
+        width: 80%;
+        gap: 25px;
+    }
+
+    .reset-password-headline {
+        font-size: 35px;
+        border-bottom: #29ABE2 2px solid;
+        padding-bottom: 15px;
+        height: fit-content;
+        width: 80%;
+    }
+
+    .reset-password-window span {
+        width: 97%;
+        font-size: 18px;
+    }
+
+    .new-password-input-image {
+        right: 10%;
+        top: 165px;
+    }
+
+    .confirm-password-input-image {
+        right: 10%;
+        top: 250px;
+    }
+
+    .login-window-input-passwort {
+        font-size: 18px;
+    }
+
+    .remember-me-forgot-my-passwort {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        gap: 25px;
+    }
+
+    .user-sign-up {
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 21px;
+        height: unset;
+        margin-bottom: 2%;
+    }
+
+    .user-sign-up a {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        height: 0;
+    }
+
+    .login-window {
+        padding: 20px;
+        width: 80%;
+        gap: 20px;
+    }
+
+    .login-headline {
+        font-size: 35px;
+        border-bottom: #29ABE2 2px solid;
+        padding-bottom: 0;
+        height: 55px;
+        width: 80%;
+    }
+
+    .login-window-input-email {
+        width: 75vw;
+        font-size: 18px;
+    }
+
+    .set-login-window-input-passwort {
+        height: 51px;
+    }
+
+    .login-window-input-passwort {
+        width: 75vw;
+        font-size: 18px;
+    }
+
+    .login-input-image {
+        position: relative;
+        top: -37px;
+        left: 92%;
+    }
+
+    .login-guestlogin {
+        right: 0;
+    }
+
+    .login-button {
+        width: 170px;
+    }
+
+    .guestlogin-button {
+        position: unset;
+        right: 0;
+        bottom: 0;
+        margin-bottom: unset;
+    }
+
+    .login-window form {
+        gap: 25px;
+    }
+
+    .forgot-password-window {
+        padding: 20px;
+        width: 80%;
+        gap: 25px;
+    }
+
+    .forgot-password-headline {
+        font-size: 35px;
+        border-bottom: #29ABE2 2px solid;
+        padding-bottom: 15px;
+        height: fit-content;
+        width: 80%;
+    }
+
+    .forgot-password-window span {
+        width: 97%;
+        font-size: 18px;
+    }
+
+    .forgot-password-button {
+        margin-bottom: 25px;
+        font-size: 18px;
+    }
+
+    .reset-password-window {
+        padding: 20px;
+        width: 80%;
+        gap: 25px;
+    }
+
+    .reset-password-headline {
+        font-size: 35px;
+        border-bottom: #29ABE2 2px solid;
+        padding-bottom: 15px;
+        height: fit-content;
+        width: 80%;
+    }
+
+    .reset-password-window span {
+        width: 97%;
+        font-size: 18px;
+    }
+
+    .login-window-input-username {
+        width: 75vw;
+        font-size: 18px;
+    }
+
+    .signup-window {
+        padding: 20px;
+        width: 80%;
+        gap: 25px;
+    }
+
+    .signup-input-image {
+        right: 10.1%;
+        top: 289px;
+    }
+}

@@ -21,6 +21,7 @@
 
     .summary-headline-right {
         font-size: 20px;
+        height: unset;
     }
 
     /* ACHTUNG AB HIER MUSS DIE ANIMATION EINGEBAUT WERDEN */
@@ -123,7 +124,6 @@
         margin: -25px -25px -25px 45px;
     }
 
-
     .body-responsive {
         display: flex;
         align-items: center;
@@ -154,6 +154,103 @@
 
     .summary-headline-right {
         width: unset;
+    }
+
+    @media (max-height: 865px) {
+        .responsive-container {
+            display: block;
+            height: 75px;
+        }
+    }
+}
+
+
+@media (max-height: 850px) {
+
+    .summary-greet-container {
+        left: 900px;
+        top: 460px;
+    }
+
+    .summary-tasks-container {
+        gap: 35px;
+        width: fit-content;
+    }
+
+    .summary-tasks-btn {
+        width: 120px;
+        height: 120px;
+    }
+
+    .summary-tasks-amount {
+        font-size: 35px;
+    }
+
+    .summary-tasks-text {
+        font-size: 18px;
+    }
+
+    .summary-urgency-container {
+        width: 430px;
+        gap: inherit;
+    }
+
+    .summary-urgency-image-urgent {
+        width: 50px;
+        height: 50px;
+    }
+
+    .summary-urgency-class {
+        font-size: 35px;
+        height: 50px;
+    }
+
+    .summary-to-do-container {
+        width: 430px;
+    }
+
+    .summary-to-do-frame {
+        width: 197px;
+    }
+
+    .summary-pen-image {
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+    }
+
+    .summary-done-image {
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+    }
+
+    .summary-to-do-amount {
+        font-size: 35px;
+        height: 50px;
+    }
+}
+
+/* ***************************************************************** */
+@media (max-height: 800px) {
+    .summary-greet-container {
+        left: 830px;
+        top: 415px;
+    }
+
+    .summary-headline-left {
+        font-size: 35px;
+        height: 50px;
+    }
+
+    .summary-headline-container {
+        padding-top: 40px;
+    }
+}
+
+@media (max-height: 750px) {
+    .summary-greet-container {
+        top: 415px;
     }
 }
 
@@ -276,9 +373,6 @@
 
     .summary-headline-left {
         font-size: 35px;
-    }
-
-    .summary-headline-left {
         height: 50px;
     }
 

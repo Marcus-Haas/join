@@ -14,7 +14,7 @@ function renderStartScreen() {
  * If the entries match, push the data into the array 'activeUser' and open summary.html.
  * The 'active User' is from now on the basis for further actions.
  */
-async function openUserStartScreen() { // Log in when signed up
+async function login() { // Log in when signed up
     let email = document.getElementById('login-window-input-email').value;
     let password = document.getElementById('login-window-input-passwort').value;
     hideFailedLoginAndUserSignUP();
@@ -26,10 +26,13 @@ async function openUserStartScreen() { // Log in when signed up
             activeUser.push(userName);
             activeUser.push(userEmail);
             activeUser.push(userPassword);
+            await backend.setItem('activeUser', JSON.stringify(activeUser));
+            window.open("summary.html", "_self");
+        } else {
+            document.getElementById('failed-login').classList.remove('d-none');
         }
     }
-    await backend.setItem('activeUser', JSON.stringify(activeUser));
-    window.open("summary.html", "_self");
+
 }
 
 /**
