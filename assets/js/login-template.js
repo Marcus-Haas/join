@@ -4,16 +4,17 @@
 
 function renderLoginHTML() {
     return /*html*/ `
-<div class="login-bg">
-        </div>
-        <div class="start-screen">
-            <img src="assets/img/login/Capa 2.svg" class="start-screen-logo-big" id="start-screen-logo-big">
-        </div>
-        <div class="login-screen-start" id="login-screen">
+
+        <div class="logo-sign-up"> 
+            <div class="start-screen" id="logo">
+                <img src="assets/img/login/Capa 2.svg" class="start-screen-logo-big" id="start-screen-logo-big">
+            </div>
             <div class="user-sign-up" id="user-sign-up">
-                <a href="#">Not a Join user?</a>
+                <span>Not a Join user?</span>
                 <button onclick="showSignUp()">Sign up</button>
             </div>
+        </div>
+        <div class="login-screen-start" id="login-screen">
             <!-- *********************** LOGIN SECTION FOR JS ****************** -->
             <div class="set-login-window">
                 <div class="login-window" id="login-window">
@@ -53,7 +54,7 @@ function renderLoginHTML() {
                             id="signup-window-input-username" placeholder="Name">
                         <input type="email" required class="login-window-input-email" id="signup-window-input-email"
                             placeholder="Email">
-                        <div>
+                        <div class="login-window-input-passwort-container">
                             <input type="password" required class="login-window-input-passwort"
                                 id="signup-window-input-passwort" placeholder="Password"
                                 onclick="activateShowSignUpPassword()">
@@ -100,7 +101,7 @@ function renderLoginHTML() {
                     <!-- *********************** FORM VALIDATION ****************** -->
                     <span>Change your account password.</span>
                     <form onsubmit="showConfirmPasswordScreen(); return false;">
-                        <div>
+                        <div class="login-window-input-passwort-container" >
                             <input type="password" required class="login-window-input-passwort"
                                 id="new-password-window-input-email" onclick="activateShowNewPassword()"
                                 placeholder="New password">
@@ -108,7 +109,7 @@ function renderLoginHTML() {
                                 id="new-password-input-image"></div>
                         </div>
 
-                        <div>
+                        <div class="login-window-input-passwort-container">
                             <input type="password" required class="login-window-input-passwort"
                                 id="confirm-password-window-input-email" onclick="activateShowConfirmNewPassword()"
                                 placeholder="Confirm password">
@@ -130,6 +131,10 @@ function renderLoginHTML() {
                             password</button>
                     </div>
                 </div>
+            </div>
+            <div class="user-sign-up-end" id="user-sign-up-end">
+                    <span>Not a Join user?</span>
+                    <button onclick="showSignUp()">Sign up</button>
             </div>
         </div>
 `;

@@ -5,6 +5,8 @@ function renderStartScreen() {
     document.getElementById('render-login-html').innerHTML = renderLoginHTML();
     setTimeout(function () {
         document.getElementById(`login-screen`).classList.add(`login-screen-end`);
+        document.getElementById(`user-sign-up`).classList.add(`login-screen-end`);
+        document.getElementById(`user-sign-up-end`).classList.add(`login-screen-end`);
     }, 350);
 }
 
@@ -30,6 +32,7 @@ async function login() { // Log in when signed up
             window.open("summary.html", "_self");
         } else {
             document.getElementById('failed-login').classList.remove('d-none');
+            document.getElementById('login-window').classList.add('login-window-failed');
         }
     }
 
@@ -41,9 +44,8 @@ async function login() { // Log in when signed up
  */
 function hideFailedLoginAndUserSignUP() {
     document.getElementById('failed-login').classList.add('d-none');
-    document.getElementById('user-sign-up').classList.add('d-none');
+    document.getElementById('login-window').classList.remove('login-window-failed');
 }
-
 
 /**
  * LOG IN FUNCTION: 
@@ -63,14 +65,8 @@ async function openGuestStartScreen() { // Log in as a guest
 function showSignUp() {
     document.getElementById(`login-window`).classList.add(`d-none`);
     document.getElementById(`signup-window`).classList.remove(`d-none`);
-    document.getElementById(`forgot-password-window`).classList.add(`d-none`);
-    document.getElementById(`reset-password-window`).classList.add(`d-none`);
-    document.getElementById(`confirm-password-window`).classList.add(`d-none`);
-    document.getElementById(`new-password-window-input-email`).value = ``;
-    document.getElementById(`confirm-password-window-input-email`).value = ``;
-    document.getElementById(`forgot-password-window-input-email`).value = ``;
-    document.getElementById(`confirm-signup-window`).classList.add(`d-none`);
     document.getElementById('user-sign-up').classList.add('d-none');
+    document.getElementById('user-sign-up-end').classList.add('user-sign-up-end-off');
 }
 
 /**
@@ -81,6 +77,7 @@ function signUpBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById(`signup-window`).classList.add(`d-none`);
     document.getElementById('user-sign-up').classList.remove('d-none');
+    document.getElementById('user-sign-up-end').classList.remove('user-sign-up-end-off');
 }
 
 /**
@@ -91,6 +88,7 @@ function showForgetPassword() {
     document.getElementById(`login-window`).classList.add(`d-none`);
     document.getElementById(`forgot-password-window`).classList.remove(`d-none`);
     document.getElementById(`user-sign-up`).classList.add(`d-none`);
+    document.getElementById(`user-sign-up-end`).classList.add(`user-sign-up-end-off`);
 }
 
 /**
@@ -119,6 +117,7 @@ function forgotPasswordBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById(`forgot-password-window`).classList.add(`d-none`);
     document.getElementById('user-sign-up').classList.remove('d-none');
+    document.getElementById('user-sign-up-end').classList.remove('user-sign-up-end-off');
 }
 
 /**
@@ -165,6 +164,7 @@ function showConfirmPasswordScreenAfterConfirmingThePassword() {
     document.getElementById(`confirm-password-window`).classList.remove(`d-none`);
     document.getElementById(`repeat-password`).classList.add(`d-none`);
     document.getElementById('user-sign-up').classList.add('d-none');
+    document.getElementById('user-sign-up-end').classList.add('user-sign-up-end-off');
 }
 
 /**
@@ -173,13 +173,31 @@ function showConfirmPasswordScreenAfterConfirmingThePassword() {
  * Empty entries
  */
 function ConfirmPasswordBackToLoginScreen() {
-    document.getElementById(`new-password-window-input-email`).value = ``;
-    document.getElementById(`confirm-password-window-input-email`).value = ``;
-    document.getElementById(`forgot-password-window-input-email`).value = ``;
+    showConfirmPasswordScreenAfterConfirmingThePassword();
+    emptyInputFlields();
+    document.getElementById('login-window').classList.remove('login-window-failed');
+    document.getElementById(`failed-login`).classList.add(`d-none`);
     document.getElementById(`reset-password-window`).classList.add(`d-none`);
     document.getElementById(`confirm-password-window`).classList.add(`d-none`);
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById('user-sign-up').classList.remove('d-none');
+    document.getElementById('user-sign-up-end').classList.remove('user-sign-up-end-off');
+}
+
+/**
+ * LOG IN FUNCTIONALTY: 
+ * Empty entries in the input flields
+ */
+
+function emptyInputFlields() {
+    document.getElementById(`signup-window-input-username`).value = ``;
+    document.getElementById(`signup-window-input-email`).value = ``;
+    document.getElementById(`signup-window-input-passwort`).value = ``;
+    document.getElementById(`login-window-input-email`).value = ``;
+    document.getElementById(`login-window-input-passwort`).value = ``;
+    document.getElementById(`new-password-window-input-email`).value = ``;
+    document.getElementById(`confirm-password-window-input-email`).value = ``;
+    document.getElementById(`forgot-password-window-input-email`).value = ``;
 }
 
 /**
@@ -188,13 +206,14 @@ function ConfirmPasswordBackToLoginScreen() {
  * Empty entries
  */
 function ConfirmSignUpBackToLoginScreen() {
-    document.getElementById(`signup-window-input-username`).value = ``;
-    document.getElementById(`signup-window-input-email`).value = ``;
-    document.getElementById(`signup-window-input-passwort`).value = ``;
+    emptyInputFlields();
     document.getElementById(`confirm-signup-window`).classList.add(`d-none`);
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById(`signup-window`).classList.add(`d-none`);
     document.getElementById('user-sign-up').classList.remove('d-none');
+    document.getElementById('user-sign-up-end').classList.remove('user-sign-up-end-off');
+    document.getElementById('failed-login').classList.add('d-none');
+    document.getElementById('login-window').classList.remove('login-window-failed');
 }
 
 /**

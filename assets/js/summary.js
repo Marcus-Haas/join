@@ -43,6 +43,7 @@ function showMyName() {
  * Check if the array allTasks is empty to set all variables to '0'
  * Otherwise run serval functions to build the page summary.html with all variables (access to array allTasks).
  * Change time format for 'showDueDate'.
+ * Logic: the most recent date (upcoming deadline) is displayed and the urgency is based on the 'to do' with the highest priority
  */
 function amounts() {
     if (allTasks == null) {
