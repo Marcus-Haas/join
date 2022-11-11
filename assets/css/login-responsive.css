@@ -5,6 +5,10 @@
         height: 380px;
     }
 
+    .login-window form {
+        width: 380px;
+    }
+
     .login-window-failed {
         height: 440px;
     }
@@ -16,7 +20,7 @@
     }
 
     .login-input-image {
-        right: 152px;
+        right: 16px;
         top: 100px;
     }
 
@@ -123,6 +127,7 @@
 
     .login-window form {
         gap: 20px;
+        width: 280px;
     }
 
     .login-headline {
