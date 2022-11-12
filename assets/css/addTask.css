@@ -154,6 +154,26 @@ body {
         overflow-y: scroll;
     }
 
+    .main-container-addTask::-webkit-scrollbar {
+        width: 20px;
+        display: none;
+    }
+    
+    .main-container-addTask::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 3px #F5F5F5;
+        border-radius: 10px;
+        display: none;
+    }
+    
+    .main-container-addTask::-webkit-scrollbar-thumb {
+        background: #F5F5F5;
+        border-radius: 10px;
+    }
+    
+    .main-container-addTask::-webkit-scrollbar-thumb:hover {
+        background: #F5F5F5;
+    }
+
     .title-popup {
         width: 305px;
     }
@@ -331,6 +351,26 @@ body {
         overflow-y: scroll;
     }
 
+    .container-inputfield-addTask::-webkit-scrollbar {
+        width: 20px;
+        display: none;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 3px #F5F5F5;
+        border-radius: 10px;
+        display: none;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-thumb {
+        background: #F5F5F5;
+        border-radius: 10px;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-thumb:hover {
+        background: #F5F5F5;
+    }
+
     .btn-popup {
         justify-content: unset;
         margin-top: 59px;
@@ -469,8 +509,28 @@ body {
 
     .container-inputfield-addTask {
         margin-left: -11px;
-        height: 90vh;
+        height: 85vh;
         overflow-y: scroll;
+    }
+
+    .container-inputfield-addTask::-webkit-scrollbar {
+        width: 20px;
+        display: none;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 3px #F5F5F5;
+        border-radius: 10px;
+        display: none;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-thumb {
+        background: #F5F5F5;
+        border-radius: 10px;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-thumb:hover {
+        background: #F5F5F5;
     }
 
     .main-container-addTask {
@@ -607,6 +667,26 @@ body {
         height: 78vh;
         overflow-y: scroll;
         scroll-behavior: smooth;
+    }
+
+    .container-inputfield-addTask::-webkit-scrollbar {
+        width: 20px;
+        display: none;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 3px #F5F5F5;
+        border-radius: 10px;
+        display: none;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-thumb {
+        background: #F5F5F5;
+        border-radius: 10px;
+    }
+    
+    .container-inputfield-addTask::-webkit-scrollbar-thumb:hover {
+        background: #F5F5F5;
     }
 
     .title-popup {
