@@ -1930,7 +1930,7 @@ body {
 
     .first-container {
         justify-content: center;
-        margin-left: 376px;
+        margin-left: 339px;
     }
 
     .inputfield-and-button {
@@ -1943,6 +1943,7 @@ body {
 
     .text-board {
         margin-bottom: 30px;
+        font-size: 47px;
     }
 
     .second-container {
