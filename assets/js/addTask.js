@@ -113,5 +113,6 @@ function changeColorOfCross() {
     setTimeout(function () {
         document.getElementById('addActiveClass-2').classList.add('active');
         document.getElementById('addActiveClassResponsive-2').classList.add('active');
+        document.getElementById('sidebar-main-frame').classList.add('sidebar-fit');
     }, 150);
 }
