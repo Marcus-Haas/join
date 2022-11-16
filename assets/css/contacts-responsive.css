@@ -1,12 +1,12 @@
-@media(max-width: 1190px) {
+@media(max-width: 1210px) {
     .contact-book-main {
         width: 280px;
         word-wrap: break-word;
     }
 
     .contact-book-container {
-        padding-left: 20px;
-        gap: 30px;
+        padding-left: 0;
+        gap: 15px;
     }
 
     .contacts-headline-container {
@@ -35,6 +35,7 @@
 
     .business-card-header {
         gap: 15px;
+        width: 480px;
     }
 
     .business-card-initials {
@@ -52,7 +53,13 @@
 
 @media(max-width: 1030px) {
     .business-card-header {
-        width: 320px;
+        width: 300px;
+    }
+
+    .business-card-initials {
+        width: 55px;
+        height: 55px;
+        font-size: 20px;
     }
 }
 
@@ -111,11 +118,12 @@
         padding-top: 55px;
         display: flex;
         word-wrap: break-word;
+        min-height: initial;
+        height: calc(100% - 160px);
     }
 
     .contact-book-container {
-        padding-right: 20px;
-        align-items: inherit;
+        justify-content: flex-start;
     }
 
     .contact-circle {

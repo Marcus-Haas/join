@@ -8,7 +8,6 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
     padding-left: 350px;
     padding-right: 50px;
     overflow: auto;
@@ -71,6 +70,7 @@ body {
         padding: 0;
         padding-left: 25px;
         padding-right: 25px;
+        height: calc(100vh - 160px);
     }
 
     .privacy-title-container {

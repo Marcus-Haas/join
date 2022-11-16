@@ -8,7 +8,6 @@ body {
 .legal-notice-main {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
     padding-left: 350px;
     padding-right: 50px;
     height: calc(100vh - 160px);
