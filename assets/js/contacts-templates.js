@@ -113,7 +113,7 @@ function generateHTMLforContactBook(i) {
 
 function generateHTMLforContactBookResponsive(i) {
     return /*html*/ `
-    <div class="contact-book-container" id="contact-book-bg${i}" onclick="openBusinessCardResponsive(${i})">
+    <div class="contact-book-container" id="contact-book-bg${i}" onclick="openBusinessCardResponsive(${i}); addBackButton()">
         <div class="contact-circle">${contacts[i]['initials']}</div>
         <div class="contact-book-frame">
             <div id="contact-book-name${i}" class="contact-book-name">${contacts[i]['name']}</div>

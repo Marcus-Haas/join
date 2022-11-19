@@ -236,7 +236,6 @@ function showOverlayResponsive() {
     showOverlay();
     document.getElementById('contact-book-rs').style.display = 'none';
     document.getElementById('new-contacts-btn-rs').classList.add('d-none');
-    document.getElementById('contacts-back-btn').classList.remove('d-none');
     document.getElementById('contacts-kanban').classList.remove('d-none');
     document.getElementById('contacts-headline-container').style.display = 'flex';
     document.getElementById('business-card-main').style.display = 'flex';
@@ -287,7 +286,14 @@ function openBusinessCardResponsive(i) {
     document.getElementById('contacts-kanban').classList.remove('d-none');
     document.getElementById('contacts-headline-container').style.display = 'flex';
     document.getElementById('business-card-main').style.display = 'flex';
-    document.getElementById('contacts-back-btn').classList.remove('d-none');
+
+}
+
+/**
+* add back button
+*/
+function addBackButton() {
+    document.getElementById('contacts-back-btn').classList.remove('d-none')
 }
 
 
@@ -311,6 +317,7 @@ async function saveContactResponsive(i) {
     closeEditOverlay();
     renderContactBookResponsive();
     openBusinessCardResponsive(i);
+    //document.getElementById('contacts-back-btn').classList.remove('d-none');//
 }
 
 
@@ -324,6 +331,7 @@ function editContactResponsive(i) {
     document.getElementById('edit-email-rs').value = contacts[i]['email'];
     document.getElementById('edit-phone-rs').value = contacts[i]['phone'];
 }
+
 
 /**
 * Show active site on the navigation bar -> Contacts
