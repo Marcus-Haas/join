@@ -165,6 +165,15 @@ a.active {
 
 @media (max-height: 750px) {
     .sidebar-main-frame {
-        height: fit-content;
+        gap: 60px;
+    }
+
+    .sidebar-menu {
+        gap: 0;
+    }
+
+    .sidebar-logo {
+        height: 80px;
+        padding-top: 40px;
     }
 }

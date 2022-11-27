@@ -104,7 +104,6 @@ body {
     background-color: #FFFFFF;
     width: 400px;
     height: calc(100% - 80px);
-    min-height: 680px;
     position: absolute;
     top: 80px;
     left: 231px;
@@ -123,7 +122,6 @@ body {
     background-color: #FFFFFF;
     width: 400px;
     height: calc(100% - 80px);
-    min-height: 680px;
     position: absolute;
     top: 80px;
     left: 231px;
