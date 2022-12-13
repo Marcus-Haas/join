@@ -2,7 +2,7 @@
  * create task for board
 */
 async function createTodoForBoard() {
-    if (checkCurrentPrior == 'Urgent' || checkCurrentPrior == 'Medium' || checkCurrentPrior == 'Low') {
+    if (checkPriority()) {
         await downloadFromServer();
         await getTaskFromBackendAddTask();
         loadTheParameterJ();
@@ -14,6 +14,16 @@ async function createTodoForBoard() {
     } else {
         alert('Please select a priority');
     }
+}
+
+/*
+ * check Priorty and return value
+*/
+
+function checkPriority() {
+    return  checkCurrentPrior == 'Urgent' ||
+            checkCurrentPrior == 'Medium' ||
+            checkCurrentPrior == 'Low'
 }
 
 /**
@@ -87,12 +97,12 @@ function changeColorOfCross() {
 }
 
 
- function changeColorOfCrossToStandard() {
+function changeColorOfCrossToStandard() {
     document.getElementById('getCrossForHover').style = 'black;';
- }
+}
 
 
- function cleanFormAddTask() {
+function cleanFormAddTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('descriptionPopup');
     let dudate = document.getElementById('duedate');
@@ -104,12 +114,12 @@ function changeColorOfCross() {
     changeColorAfterCreateTask();
     duedateChangeColorToStandard();
     closeForm();
- }
+}
 
- /**
- * Show active site on the navigation bar -> Add Task
- */
- function addActiveClass2() {
+/**
+* Show active site on the navigation bar -> Add Task
+*/
+function addActiveClass2() {
     setTimeout(function () {
         document.getElementById('addActiveClass-2').classList.add('active');
         document.getElementById('addActiveClassResponsive-2').classList.add('active');

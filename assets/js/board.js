@@ -400,10 +400,8 @@ function openTaskDetails(i, event) {
     document.getElementById('overlay').classList.add('hide-mobile');
     let edit = document.getElementById('editOpenTaskDetails');
     edit.classList.add('d-none');
-    edit.classList.remove('open-position-for-edit')
-    document.getElementById('overlay').classList.add('overlay-bg');
-    document.getElementById('openTask').classList.remove('d-none');
-    document.getElementById('openTask').classList.add('open-position');
+    edit.classList.remove('open-position-for-edit');
+    showTask();
     let openTask = document.getElementById('openTask');
     openTask.innerHTML = templateOpenTaskDetails(i);
     changeColorPriorInShowDetails(i);
@@ -412,15 +410,17 @@ function openTaskDetails(i, event) {
     changeBgColorOfInitialLettersDetails(i);
 }
 
+function showTask() {
+    document.getElementById('overlay').classList.add('overlay-bg');
+    document.getElementById('openTask').classList.remove('d-none');
+    document.getElementById('openTask').classList.add('open-position');
+}
 
 /**
  * show edit details 
 */
 function editShowDetails(i) {
-    //closeTaskDetails();
-    document.getElementById('mainContainer').classList.add('hide-mobile');
-    document.getElementById('overlay').classList.add('hide-mobile');
-    document.getElementById('overlay').classList.add('overlay-bg');
+    hideOverlay();
     let edit = document.getElementById('editOpenTaskDetails');
     edit.classList.add('open-position-for-edit');
     edit.classList.remove('d-none');
@@ -437,6 +437,11 @@ function editShowDetails(i) {
     changePriorColorByEdit(i);
 }
 
+function hideOverlay() {
+    document.getElementById('mainContainer').classList.add('hide-mobile');
+    document.getElementById('overlay').classList.add('hide-mobile');
+    document.getElementById('overlay').classList.add('overlay-bg');
+}
 
 /**
  * open tasks after detail

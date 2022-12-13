@@ -11,7 +11,6 @@ function renderStartScreen() {
 }
 
 /**
- * LOG IN FUNCTION: 
  * Check if, input entries already exist in the array 'users'.
  * If the entries match, push the data into the array 'activeUser' and open summary.html.
  * The 'active User' is from now on the basis for further actions.
@@ -38,17 +37,12 @@ async function login() { // Log in when signed up
 
 }
 
-/**
- * LOG IN FUNCTIONALTY: 
- * Open and close windows to prevent overlapping
- */
 function hideFailedLoginAndUserSignUP() {
     document.getElementById('failed-login').classList.add('d-none');
     document.getElementById('login-window').classList.remove('login-window-failed');
 }
 
 /**
- * LOG IN FUNCTION: 
  * Logging in as a guest, pushes the data into the array 'guestUser' and open summary.html.
  */
 async function openGuestStartScreen() { // Log in as a guest
@@ -58,7 +52,6 @@ async function openGuestStartScreen() { // Log in as a guest
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Open and close windows to prevent overlapping
  * Empty entries
  */
@@ -69,10 +62,6 @@ function showSignUp() {
     document.getElementById('user-sign-up-end').classList.add('user-sign-up-end-off');
 }
 
-/**
- * LOG IN FUNCTIONALTY: 
- * Open and close windows to prevent overlapping
- */
 function signUpBackToLoginScreen() {
     document.getElementById(`login-window`).classList.remove(`d-none`);
     document.getElementById(`signup-window`).classList.add(`d-none`);
@@ -81,7 +70,6 @@ function signUpBackToLoginScreen() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Open and close windows to prevent overlapping
  */
 function showForgetPassword() {
@@ -110,7 +98,6 @@ function showResetPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Open and close windows to prevent overlapping
  */
 function forgotPasswordBackToLoginScreen() {
@@ -121,7 +108,6 @@ function forgotPasswordBackToLoginScreen() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Open and close windows to prevent overlapping
  */
 function resetPasswordBackToForgotPasswordScreen() {
@@ -156,10 +142,6 @@ function showConfirmPasswordScreen() {
     }
 }
 
-/**
-* LOG IN FUNCTIONALTY: 
-* Open and close windows to prevent overlapping
-*/
 function showConfirmPasswordScreenAfterConfirmingThePassword() {
     document.getElementById(`confirm-password-window`).classList.remove(`d-none`);
     document.getElementById(`repeat-password`).classList.add(`d-none`);
@@ -168,7 +150,6 @@ function showConfirmPasswordScreenAfterConfirmingThePassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Open and close windows to prevent overlapping
  * Empty entries
  */
@@ -184,11 +165,6 @@ function ConfirmPasswordBackToLoginScreen() {
     document.getElementById('user-sign-up-end').classList.remove('user-sign-up-end-off');
 }
 
-/**
- * LOG IN FUNCTIONALTY: 
- * Empty entries in the input flields
- */
-
 function emptyInputFlields() {
     document.getElementById(`signup-window-input-username`).value = ``;
     document.getElementById(`signup-window-input-email`).value = ``;
@@ -201,7 +177,6 @@ function emptyInputFlields() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Open and close windows to prevent overlapping
  * Empty entries
  */
@@ -217,7 +192,6 @@ function ConfirmSignUpBackToLoginScreen() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function showSignInPassword() {
@@ -234,7 +208,6 @@ function showSignInPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function activateShowSignInPassword() {
@@ -243,7 +216,6 @@ function activateShowSignInPassword() {
 
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function showSignUpPassword() {
@@ -260,7 +232,6 @@ function showSignUpPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function activateShowSignUpPassword() {
@@ -268,7 +239,6 @@ function activateShowSignUpPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function showNewPassword() {
@@ -285,7 +255,6 @@ function showNewPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function activateShowNewPassword() {
@@ -293,7 +262,6 @@ function activateShowNewPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function showConfirmPassword() {
@@ -310,7 +278,6 @@ function showConfirmPassword() {
 }
 
 /**
- * LOG IN FUNCTIONALTY: 
  * Reveal/hide the entered password by clicking the symbol in the input field.
  */
 function activateShowConfirmNewPassword() {

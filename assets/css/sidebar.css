@@ -127,6 +127,10 @@ a.active {
     height: 26px;
 }
 
+.sidebar-fit {
+    gap: 92px !important
+}
+
 
 /***********************************Responsive Sidebar******************************************************/
 
@@ -161,15 +165,6 @@ a.active {
 
 @media (max-height: 750px) {
     .sidebar-main-frame {
-        gap: 60px;
-    }
-
-    .sidebar-menu {
-        gap: 0;
-    }
-
-    .sidebar-logo {
-        height: 80px;
-        padding-top: 40px;
+        height: fit-content;
     }
 }
